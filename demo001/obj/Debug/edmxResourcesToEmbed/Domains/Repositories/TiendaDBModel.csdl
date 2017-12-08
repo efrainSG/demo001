@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Etiqueta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="etiquetas" Relationship="Self.fk_etiqueta_etiquetas" FromRole="etiqueta" ToRole="etiquetas" />
+  </EntityType>
+  <EntityType Name="Localidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idtipolocalidad" Type="Int32" Nullable="false" />
+    <Property Name="idlocalidad" Type="Int32" />
+    <NavigationProperty Name="localidad1" Relationship="Self.fk_localidad_localidad" FromRole="localidad" ToRole="localidad1" />
+    <NavigationProperty Name="localidad2" Relationship="Self.fk_localidad_localidad" FromRole="localidad1" ToRole="localidad" />
+  </EntityType>
+  <EntityType Name="Seccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="seccionplantillas" Relationship="Self.fk_seccion_seccionplantilla" FromRole="seccion" ToRole="seccionplantilla" />
+  </EntityType>
+  <EntityType Name="SeccionPlantilla">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idplantilla" Type="Int32" Nullable="false" />
+    <Property Name="idseccion" Type="Int32" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="seccion" Relationship="Self.fk_seccion_seccionplantilla" FromRole="seccionplantilla" ToRole="seccion" />
+    <NavigationProperty Name="negocioplantillas" Relationship="Self.fk_seccionplantilla_negocioplantilla" FromRole="seccionplantilla" ToRole="negocioplantilla" />
+  </EntityType>
+  <EntityType Name="Negocio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="urllogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idpropietario" Type="Int32" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="contactoes" Relationship="Self.fk_negocio_contacto" FromRole="negocio" ToRole="contacto" />
+    <NavigationProperty Name="etiquetas" Relationship="Self.fk_negocio_etiquetas" FromRole="negocio" ToRole="etiquetas" />
+    <NavigationProperty Name="negocioplantillas" Relationship="Self.fk_negocio_negocioplantilla" FromRole="negocio" ToRole="negocioplantilla" />
+    <NavigationProperty Name="ofertas" Relationship="Self.fk_negocio_oferta" FromRole="negocio" ToRole="oferta" />
+    <NavigationProperty Name="propietario" Relationship="Self.fk_propietario_negocio" FromRole="negocio" ToRole="propietario" />
+  </EntityType>
+  <EntityType Name="Propietario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="registro" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="negocios" Relationship="Self.fk_propietario_negocio" FromRole="propietario" ToRole="negocio" />
+  </EntityType>
+  <EntityType Name="Contacto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idnegocio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="negocio" Relationship="Self.fk_negocio_contacto" FromRole="contacto" ToRole="negocio" />
+  </EntityType>
+  <EntityType Name="Etiquetas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idnegocio" Type="Int32" Nullable="false" />
+    <Property Name="idetiqueta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="etiqueta" Relationship="Self.fk_etiqueta_etiquetas" FromRole="etiquetas" ToRole="etiqueta" />
+    <NavigationProperty Name="negocio" Relationship="Self.fk_negocio_etiquetas" FromRole="etiquetas" ToRole="negocio" />
+  </EntityType>
+  <EntityType Name="NegocioPlantilla">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idnegocio" Type="Int32" Nullable="false" />
+    <Property Name="idseccionplantilla" Type="Int32" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="seccionplantilla" Relationship="Self.fk_seccionplantilla_negocioplantilla" FromRole="negocioplantilla" ToRole="seccionplantilla" />
+    <NavigationProperty Name="negocio" Relationship="Self.fk_negocio_negocioplantilla" FromRole="negocioplantilla" ToRole="negocio" />
+  </EntityType>
+  <EntityType Name="Oferta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mostrarprecio" Type="Boolean" Nullable="false" />
+    <Property Name="idnegocio" Type="Int32" Nullable="false" />
+    <Property Name="idtipooferta" Type="Int32" Nullable="false" />
+    <Property Name="idstatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="negocio" Relationship="Self.fk_negocio_oferta" FromRole="oferta" ToRole="negocio" />
+  </EntityType>
+  <Association Name="fk_etiqueta_etiquetas">
+    <End Role="etiqueta" Type="TiendaModel.Etiqueta" Multiplicity="1" />
+    <End Role="etiquetas" Type="TiendaModel.Etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="etiqueta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="etiquetas">
+        <PropertyRef Name="idetiqueta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_localidad_localidad">
+    <End Role="localidad" Type="TiendaModel.Localidad" Multiplicity="0..1" />
+    <End Role="localidad1" Type="TiendaModel.Localidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="localidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="localidad1">
+        <PropertyRef Name="idlocalidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_seccion_seccionplantilla">
+    <End Role="seccion" Type="TiendaModel.Seccion" Multiplicity="1" />
+    <End Role="seccionplantilla" Type="TiendaModel.SeccionPlantilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="seccionplantilla">
+        <PropertyRef Name="idseccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_seccionplantilla_negocioplantilla">
+    <End Role="seccionplantilla" Type="TiendaModel.SeccionPlantilla" Multiplicity="1" />
+    <End Role="negocioplantilla" Type="TiendaModel.NegocioPlantilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seccionplantilla">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="negocioplantilla">
+        <PropertyRef Name="idseccionplantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_negocio_contacto">
+    <End Role="negocio" Type="TiendaModel.Negocio" Multiplicity="1" />
+    <End Role="contacto" Type="TiendaModel.Contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="negocio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contacto">
+        <PropertyRef Name="idnegocio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_negocio_etiquetas">
+    <End Role="negocio" Type="TiendaModel.Negocio" Multiplicity="1" />
+    <End Role="etiquetas" Type="TiendaModel.Etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="negocio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="etiquetas">
+        <PropertyRef Name="idnegocio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_negocio_negocioplantilla">
+    <End Role="negocio" Type="TiendaModel.Negocio" Multiplicity="1" />
+    <End Role="negocioplantilla" Type="TiendaModel.NegocioPlantilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="negocio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="negocioplantilla">
+        <PropertyRef Name="idnegocio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_negocio_oferta">
+    <End Role="negocio" Type="TiendaModel.Negocio" Multiplicity="1" />
+    <End Role="oferta" Type="TiendaModel.Oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="negocio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="oferta">
+        <PropertyRef Name="idnegocio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_propietario_negocio">
+    <End Role="propietario" Type="TiendaModel.Propietario" Multiplicity="1" />
+    <End Role="negocio" Type="TiendaModel.Negocio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="propietario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="negocio">
+        <PropertyRef Name="idpropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TiendaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Etiquetas2" EntityType="TiendaModel.Etiqueta" />
+    <EntitySet Name="Localidads1" EntityType="TiendaModel.Localidad" />
+    <EntitySet Name="Seccions1" EntityType="TiendaModel.Seccion" />
+    <EntitySet Name="SeccionPlantillas1" EntityType="TiendaModel.SeccionPlantilla" />
+    <EntitySet Name="Negocios1" EntityType="TiendaModel.Negocio" />
+    <EntitySet Name="Propietarios1" EntityType="TiendaModel.Propietario" />
+    <EntitySet Name="Contactoes1" EntityType="TiendaModel.Contacto" />
+    <EntitySet Name="etiquetas1" EntityType="TiendaModel.Etiquetas" />
+    <EntitySet Name="NegocioPlantillas1" EntityType="TiendaModel.NegocioPlantilla" />
+    <EntitySet Name="Ofertas1" EntityType="TiendaModel.Oferta" />
+    <AssociationSet Name="fk_etiqueta_etiquetas" Association="Self.fk_etiqueta_etiquetas">
+      <End Role="etiqueta" EntitySet="Etiquetas2" />
+      <End Role="etiquetas" EntitySet="etiquetas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_localidad_localidad" Association="Self.fk_localidad_localidad">
+      <End Role="localidad" EntitySet="Localidads1" />
+      <End Role="localidad1" EntitySet="Localidads1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_seccion_seccionplantilla" Association="Self.fk_seccion_seccionplantilla">
+      <End Role="seccion" EntitySet="Seccions1" />
+      <End Role="seccionplantilla" EntitySet="SeccionPlantillas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_seccionplantilla_negocioplantilla" Association="Self.fk_seccionplantilla_negocioplantilla">
+      <End Role="seccionplantilla" EntitySet="SeccionPlantillas1" />
+      <End Role="negocioplantilla" EntitySet="NegocioPlantillas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_negocio_contacto" Association="Self.fk_negocio_contacto">
+      <End Role="negocio" EntitySet="Negocios1" />
+      <End Role="contacto" EntitySet="Contactoes1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_negocio_etiquetas" Association="Self.fk_negocio_etiquetas">
+      <End Role="negocio" EntitySet="Negocios1" />
+      <End Role="etiquetas" EntitySet="etiquetas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_negocio_negocioplantilla" Association="Self.fk_negocio_negocioplantilla">
+      <End Role="negocio" EntitySet="Negocios1" />
+      <End Role="negocioplantilla" EntitySet="NegocioPlantillas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_negocio_oferta" Association="Self.fk_negocio_oferta">
+      <End Role="negocio" EntitySet="Negocios1" />
+      <End Role="oferta" EntitySet="Ofertas1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_propietario_negocio" Association="Self.fk_propietario_negocio">
+      <End Role="propietario" EntitySet="Propietarios1" />
+      <End Role="negocio" EntitySet="Negocios1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
