@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Serna Sistemas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Servicios", "Servicios", "Home")</li>
+                    @*<li>@Html.ActionLink("Productos", "Productos", "Home")</li>*@
+                    <li>@Html.ActionLink("Acerca de mí", "About", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div>
+                <div class="col-md-6">
+                    <small class="">
+                        <p>&copy; @DateTime.Now.Year - Serna Sistemas</p>
+                        <ul>
+                            <li><a href="https://www.freelancer.com/u/efrainserna" target="_blank">Freelancer</a></li>
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/" target="_blank">Prolancer</a></li>
+                            <li><a href="https://www.workana.com/freelancer/affe77e812185c8100a76adc0268e72d" target="_blank">Workana</a></li>
+                            <li><a href="https://www.linkedin.com/in/efrain-serna-gracia-98566b43/" target="_blank">Linked In</a></li>
+                            @*<li><a href="" target="_blank">Tutellus</a></li>*@
+                            <li><a href="https://twitter.com/Maverick_XXI" target="_blank">Twitter</a></li>
+                            <li><a href="https://itcoffeecups.blogspot.mx/" target="_blank">Blogger</a></li>
+                            <li><a href="https://www.youtube.com/channel/UCTlkkrGcxPUFnUX_yBjB_Ow" target="_blank">Youtube</a></li>
+                        </ul>
+                    </small>
+                </div>
+                <div class="col-md-6">
+                    <small>
+                        <ul>
+                            @*<li>@Html.ActionLink("Tiendas", "Index", "Home")</li>
+                    <li>@Html.ActionLink("CoTeDiv", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Historias clínicas", "Index", "Home")</li>*@
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/998/" class="btn-link" target="_blank">Revisión de tesis</a></li>
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/1020/" class="btn-link" target="_blank">Desarrollo de sistios económicos</a></li>
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn-link" target="_blank">Desarrollo de sistemas</a></li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

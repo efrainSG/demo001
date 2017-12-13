@@ -1,0 +1,40 @@
+﻿<form class="form-group" method="post" action="@Url.Action("FormContacto")">
+    <h4 class="text-primary">Ponte en contacto conmigo</h4>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            @Html.TextBox("txtNombre", "", htmlAttributes: new {
+                @class = "form-control", @style="width:100%", @placeholder = "Nombre"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+            @Html.TextBox("txtTelefono", "", htmlAttributes: new {
+                @class = "form-control", @placeholder = "Teléfono o celular"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            @Html.TextBox("txtCorreo", "", htmlAttributes: new {
+                @class = "form-control", @placeholder = "correo electrónico"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+            @Html.TextArea("txtMensaje", "", htmlAttributes: new {
+                @class = "form-control", @placeholder = "¿En qué te puedo ayudar?"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center col-md-12">
+            <input type="submit" class="btn btn-primary" value="Enviar" />
+        </div>
+    </div>
+</form>

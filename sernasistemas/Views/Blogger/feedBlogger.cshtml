@@ -1,0 +1,9 @@
+﻿@model SernaSistemas.Models.BloggerFeedModel
+<h4>Últimas entradas en el blog</h4>
+<ul>
+    @foreach (var item in Model.entries) {
+        <li>
+            @item
+        </li>
+    }
+</ul>

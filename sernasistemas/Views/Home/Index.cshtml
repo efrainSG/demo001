@@ -1,0 +1,355 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<div class="jumbotron">
+    @*<h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+    <h1>
+        Lorem Ipsum<br />
+        <small>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </small>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <p>
+           @Html.Partial("FormContacto")
+        </p>
+        <p>
+            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+        </p>
+        @*<h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-7">
+        @Html.Partial("../Blogger/feedBlogger")
+        @*<h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+    </div>
+    @*<div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <p>
+            Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+        </p>
+        <p>
+            Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+        </p>
+    </div>
+    <div class="col-md-5">
+        <p>
+            Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa.
+        </p>
+        <p>
+            Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit.
+        </p>
+        <p>
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit.
+        </p>
+    </div>
+</div>
+
+@*<p>
+    <script language="JavaScript">
+    // <![CDATA[ /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /* SHA-1 implementation in JavaScript (c) Chris Veness 2002-2014 / MIT Licence */
+    /* */
+    /* - see http://csrc.nist.gov/groups/ST/toolkit/secure_hashing.html */
+    /* http://csrc.nist.gov/groups/ST/toolkit/examples.html */
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /* jshint node:true
+        */
+        /*
+        global define, escape, unescape
+        */
+    'use strict';
+    /*
+        *
+        * SHA-1 hash function reference implementation.
+        *
+        * @namespace
+        */
+    var Sha1 = {}; //var msg = 7174110123400125000484820346227741;
+    /*
+    *
+    * Generates SHA-1 hash of string.
+    *
+    * @param { string } msg - (Unicode) string to be hashed.
+    * @returns { string } Hash of msg as hex character string.
+    */
+        Sha1.hash = function (msg) {
+            // convert string to UTF- 8, as SHA only deals with byte-
+            streams msg = msg.utf8Encode(); // constants [§4.2.1]
+            var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6];
+            // PREPROCESSING
+            msg += String.fromCharCode(0x80);
+            // add trailing '1' bit (+ 0's padding) to string [§5.1.1]
+            // convert string msg into 512-bit/16-integer blocks arrays of ints [§5.2.1]
+            var l = msg.length / 4 + 2;
+            // length (in 32-bit integers) of msg + ‘1’ + appended length
+            var N = Math.ceil(l / 16);
+            // number of 16-integer-blocks required to hold 'l' ints
+            var M = new Array(N);
+            for (var i = 0; i < N; i++) {
+                M[i] = new Array(16);
+                for (var j = 0; j < 16; j++) {
+                    // encode 4 chars per integer, big-endian
+                    encoding M[i][j] = (msg.charCodeAt(i * 64 + j * 4) << 24) |
+                        (msg.charCodeAt(i * 64 + j * 4 + 1) << 16) |
+                        (msg.charCodeAt(i * 64 + j * 4 + 2) << 8) |
+                        (msg.charCodeAt(i * 64 + j * 4 + 3));
+                }
+                // note running off the end of msg is ok 'cos bitwise ops on NaN return 0
+            }
+            // add length (in bits) into final pair of 32-bit integers (big-endian) [§5.1.1]
+            // note: most significant word would be (len-1)*8 >>> 32, but since JS converts
+            // bitwise-op args to 32 bits, we need to simulate this by arithmetic
+            operators M[N - 1][14] = ((msg.length - 1) * 8) / Math.pow(2, 32);
+            M[N - 1][14] = Math.floor(M[N - 1][14]);
+            M[N - 1][15] = ((msg.length - 1) * 8) & 0xffffffff;
+            // set initial hash value [§5.3.1]
+            var H0 = 0x67452301;
+            var H1 = 0xefcdab89;
+            var H2 = 0x98badcfe;
+            var H3 = 0x10325476;
+            var H4 = 0xc3d2e1f0;
+            // HASH COMPUTATION [§6.1.2]
+            var W = new Array(80);
+            var a, b, c, d, e;
+            for (var i = 0; i < N; i++) {
+                // 1 - prepare message schedule 'W'
+                for (var t = 0; t < 16; t++)
+                    W[t] = M[i][t];
+                for (var t = 16; t < 80; t++)
+                    W[t] = Sha1.ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);
+                // 2 - initialise five working variables a, b, c, d, e with previous hash value
+                a = H0; b = H1; c = H2; d = H3; e = H4;
+                // 3 - main loop
+                for (var t = 0; t < 80; t++) {
+                    var s = Math.floor(t / 20);
+                    // seq for blocks of 'f' functions and 'K' constants
+                    var T = (Sha1.ROTL(a, 5) + Sha1.f(s, b, c, d) + e + K[s] + W[t]) & 0xffffffff;
+                    e = d; d = c; c = Sha1.ROTL(b, 30); b = a; a = T;
+                }
+                // 4 - compute the new intermediate hash value (note 'addition modulo 2^32')
+                H0 = (H0 + a) & 0xffffffff;
+                H1 = (H1 + b) & 0xffffffff;
+                H2 = (H2 + c) & 0xffffffff;
+                H3 = (H3 + d) & 0xffffffff;
+                H4 = (H4 + e) & 0xffffffff;
+            }
+            return Sha1.toHexStr(H0) + Sha1.toHexStr(H1) + Sha1.toHexStr(H2) + Sha1.toHexStr(H3) + Sha1.toHexStr(H4);
+        };
+        /*
+        *
+        * Function 'f' [§4.1.1].
+        * @private
+        */
+        Sha1.f = function (s, x, y, z) {
+            switch (s) {
+                case 0: return (x & y) ^ (~x & z); // Ch()
+                case 1: return x ^ y ^ z; // Parity()
+                case 2: return (x & y) ^ (x & z) ^ (y & z); // Maj()
+                case 3: return x ^ y ^ z; // Parity()
+            }
+        };
+        /*
+        *
+        * Rotates left (circular left shift) value x by n positions [§3.2.5].
+        * @private
+        */
+        Sha1.ROTL = function (x, n) {
+            return (x << n) | (x >>> (32 - n));
+        };
+        /*
+        *
+        * Hexadecimal representation of a number.
+        * @private
+        */
+        Sha1.toHexStr = function (n) {
+            // note can't use toString(16) as it is implementation-dependant,
+            // and in IE returns signed numbers when used on full words
+            var s = "", v;
+            for (var i = 7; i >= 0; i--) {
+                v = (n >>> (i * 4)) & 0xf;
+                s += v.toString(16);
+            }
+            return s;
+        };
+        /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+        /*
+        * Extend String object with method to encode multi-byte string to utf8
+        * - monsur.hossa.in/2012/07/20/utf-8-in-javascript.html
+        */
+        if (typeof String.prototype.utf8Encode == 'undefined') {
+            String.prototype.utf8Encode = function () {
+                return unescape(encodeURIComponent(this));
+            };
+        }
+        /*
+        * Extend String object with method to decode utf8 string to multi-byte
+        */
+        if (typeof String.prototype.utf8Decode == 'undefined') {
+            String.prototype.utf8Decode = function () {
+                try {
+                    return decodeURIComponent(escape(this));
+                } catch (e) {
+                    return this; // invalid UTF-8? return as-is
+                }
+            };
+        }
+        /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+        if (typeof module != 'undefined' && module.exports)
+            module.exports = Sha1;
+        // CommonJs export
+        if (typeof define == 'function' && define.amd) define([], function () { return Sha1; });
+        // AMD //
+        ]]>
+    </script>
+</p>
+<div id="folio" style="text-align: center; visibility: hidden;">
+    <form action="http://webacmax-001-site6.btempurl.com/conecta_ordenes.php" method="post" target="top">
+        <input name="input" type="hidden" value="1" />
+        <input style="font-family: Century Gothic; padding: 7px 20px; font-size: 18px; color: white; background: #488AC7;" height="400" type="SUBMIT" value="Clic para obtener el Folio de Pago con Tarjeta" width="200" />
+    </form>
+</div>*@
+@*<p>
+    <script language="JavaScript">
+            // <![CDATA[
+                    var ftotal = 0.0;
+            var fDolar = 20.75;
+            var ana_tipo_pago = document.getElementsByClassName("payment-method");
+            ana_stipo_pago = ana_tipo_pago[0].innerText;
+            var ana_vlargo = ana_stipo_pago.length;
+            // vLargo 93 para: PaymentPayInStore largo 31 para: PaymentPayPalStandard
+            //
+            document.write("<p>Ana ana_vlargo:</p> "); //
+            document.writeln(ana_vlargo);
+            if (ana_vlargo > 50) {
+                document.getElementById("folio").style.visibility = "visible";
+            }
+            var longitud = 0;
+            var x = location.search;
+            var longitud = x.length;
+            ana_orden_id = x.substring(1, longitud);
+            fhola = fDolar.toFixed(2);
+            hola = fhola.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            // ana hace falta
+            if (ana_vlargo > 50) {
+                document.write("<p>Valor actual del Dolar: USD $" + hola + "</p>");
+            }
+            var sAna = "0";
+            var fAna = 0.0;
+            // Se lee EL TOTAL DEL RESUMEN DE LA COMPRA ( ES EL CUARTO DE LA ESE CLASE: CART-TOTAL-RIGHT)
+            // PARA ESO TUVE QUE COLOCAR EL RESUMEN DE LA COMPRA EN LA PARTE DE ARRIBA
+            var priceEls = document.getElementsByClassName("cart-total-right");
+            sAna = priceEls[4].innerText;
+            var largo = sAna.length;
+            sAna = sAna.substring(1, largo);
+            // QUITARLE LA , PARA PODER CONVERTIRLO A DECIMAL
+            var fields = sAna.split(/,/);
+            var nuevo_numero = "";
+            var fraccion = "0";
+            for (var i = 0; i < 3; i++) {
+                fraccion = fields[i];
+                //
+                alert("fraccion: " + fraccion);
+                nuevo_numero = nuevo_numero + fraccion;
+            } sAna = nuevo_numero;
+            //
+            document.write("<p>Ana string:</p> ");
+            //
+            document.writeln(sAna);
+            // CONVERTIRLO A NUMERO Y MULTIPLICARLO POR EL DOLAR ( SE CAMBIA AQUI MANUALMENTE)
+            fAna = parseFloat(sAna) * fDolar;
+            //
+            document.write(" <p> Ana multiplicado con fix : </p> ");
+            //
+            document.writeln(fAna);
+            fhola = fAna.toFixed(2);
+            hola = fhola.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            //
+            document.write("<p>El total en pesos mexicanos de su compra : $ " + fAna.toFixed(2) + "</p>");
+            // ana hace falta
+            document.write("<p>El total en pesos mexicanos de su compra : $ " + hola + "</p>");
+            // PORQUE PROSA NO QUIERE QUE VAYA EL PUNTO DECIMAL
+            fAna = fAna * 100;
+            fAna = Math.trunc(fAna);
+            //
+            document.write(" <p> Ana multiplicado x 100 : </p> ");
+            //
+            document.writeln(fAna); stotal = fAna.toString();
+            //
+            document.write(" <p> stotal ya en string : </p> ");
+            //
+            document.writeln(stotal);
+            var varMerchant = "7727222";
+            var varStore = "1234";
+            var varTerm = "001";
+            var varTotal = stotal;
+            var varCurrency = "484";
+            var varOrder_id = ana_orden_id;
+            // se compro ya el 626 Y ME SALTO AL 630
+            var valDigest = "";
+            var val = varMerchant + varStore + varTerm + varTotal + varCurrency + varOrder_id;
+            // ana hace falta
+            document.writeln(val);
+            //< !--document.write(Sha1.hash(val)); -->
+            valDigest = Sha1.hash(val); // ana hace falta
+            document.write(valDigest); // ]]>
+    </script>
+</p>
+<div id="cont1" style="text-align: center; visibility: hidden;">
+    <form id="myPayTC" action="https://www.procom.prosa.com.mx/eMerchant/7727222_acmaxdemexico.jsp" method="post" name="myPayTC">
+        <input id="merchant" name="merchant" type="hidden" value="7727222" />
+        <input id="store" name="store" type="hidden" value="1234" />
+        <input id="term" name="term" type="hidden" value="001" />
+        <input id="total" name="total" type="hidden" value="total" />
+        <input id="currency" name="currency" type="hidden" value="484" />
+        <input id="order_id" name="order_id" type="hidden" value="order_id" />
+        <input id="digest" name="digest" type="hidden" value="valDigest" />
+        <input id="address" name="address" type="hidden" value="ACMAX" />
+        <input id="urlBack" name="urlBack" type="hidden" value="http://webacmax-001-site1.ctempurl.com" />
+        <input id="return_target" name="return_target" type="hidden" value="N/A" />
+        <input style="font-family: Century Gothic; padding: 7px 20px; ; font-size: 18px; color: white; background: #488AC7;" height="400" type="SUBMIT" value="Confirmar Pago con Tarjeta" width="200" />
+    </form>
+</div>
+<p>
+    <script>
+        // <![CDATA[
+        document.getElementById('order_id').value = ana_orden_id;
+        document.getElementById('digest').value = valDigest;
+        document.getElementById('total').value = varTotal;
+        var tipo_pago = document.getElementsByClassName("payment-method");
+        stipo_pago = tipo_pago[0].innerText;
+        var vlargo = stipo_pago.length;
+        // vLargo 93 para: PaymentPayInStore largo 31 para: PaymentPayPalStandard
+        if ((vlargo > 50) && (longitud != 0)) {
+            document.write("<p>Folio para pago con Tarjeta : " + ana_orden_id + "</p>");
+            document.getElementById("cont1").style.visibility = "visible";
+            document.getElementById("folio").style.visibility = "hidden";
+        } //
+        document.write(valDigest); //
+        document.write("<p> Valor actual del Dolar : </p> "); //
+        document.write(fDolar); //
+        document.write("<p>varOrder_id: </p> "); //
+        document.writeln(varOrder_id); //
+        document.write(" <p> varTotal: </p>"); //
+        document.writeln(varTotal);
+            // ]]>
+    </script>
+</p>*@
+

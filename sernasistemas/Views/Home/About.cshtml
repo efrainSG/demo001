@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Acerca de mí";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <dl>
+                <dt>
+                    ¿Qué soy?
+                </dt>
+                <dd>
+                    Soy desarrollador de sistemas. He sido catedrático, asesor de tesis y sinodal en exámenes profesionales.
+                </dd>
+                <dt>
+                    ¿Cuáles son mis estudios?
+                </dt>
+                <dd>
+                    Tengo la Licenciatura en Ciencias de la Computación por parte de la BUAP.<br />
+                    Tengo la maestría en Comunicación y Tecnologías Educativas por parte del ILCE
+                </dd>
+                <dt>
+                    ¿Qué lenguajes trabajo?
+                </dt>
+                <dd>
+                    Trabajo con C#, Visual Basic, ANSI SQL, Transact SQL, PHP, Object Pascal, Turbo Pascal, C/C++, HTML, JavaScript
+                </dd>
+                <dt>¿Qué he hecho?</dt>
+                <dd>
+                    He desarrollado un sistema de gestión escolar (académico, administrativo y financiero), un sistema de biblioteca, punto de venta, una plataforma ludico-educativa, he hecho sistemas que integran información entre diferentes bases de datos, un sistema para el registro de expedientes médicos a nivel general.
+                </dd>
+                <dt>¿A qué me dedico?</dt>
+                <dd>
+                    Desarrollo sistemas por mi cuenta, participo en equipos de desarrollo, escribo artículos en mi blog sobre TI, también tengo un blog general; he impartido cursos de programación, redes, bases de datos, y de matemáticas en diferentes áreas.
+                </dd>
+            </dl>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    <li><span class="glyphicon glyphicon-phone"></span> Celular: 22-25-29-9764</li>
+                    <li><span class="glyphicon glyphicon-envelope"></span> E-mail 1: <a href="mailto:efrain_serna@hotmail.com" target="_blank">efrain_serna@hotmail.com</a></li>
+                    <li><small><span class="glyphicon glyphicon-envelope"></span> E-mail 2: <a href="mailto:lcc_efrain_s@yahoo.com.mx" target="_blank">lcc_efrain_s@yahoo.com.mx</a></small></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li><a href="https://www.freelancer.com/u/efrainserna" target="_blank">Freelancer</a></li>
+                    <li><a href="https://www.prolancer.com.mx/MaverickXXI/" target="_blank"><i class="material-icons" style="font-size:12px;">local_parking</i> Prolancer</a></li>
+                    <li><a href="https://www.workana.com/freelancer/affe77e812185c8100a76adc0268e72d" target="_blank"><b><span class="fa fa-circle-o"></span></b> Workana</a></li>
+                    <li><a href="https://www.linkedin.com/in/efrain-serna-gracia-98566b43/" target="_blank"><span class="fa fa-linkedin-square"></span> Linked In</a></li>
+                    @*<li><a href="" target="_blank">Tutellus</a></li>*@
+                    <li><a href="https://twitter.com/Maverick_XXI" target="_blank"><span class="fa fa-twitter"></span> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        @Html.Partial("FormContacto")
+    </div>
+</div>
+
