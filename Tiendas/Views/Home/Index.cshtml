@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("Browse", null)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="well">
+            @Html.Partial("loadResults", null)
+            @Html.Partial("loadMap", null)
+        </div>
+    </div>
+    <div class="col-md-3">
+        @Html.Partial("Login", new SernaSistemas.Core.Models.LoginModel())
+        @Html.Partial("Contact", new SernaSistemas.Core.Models.ContactoModel())
+    </div>
+</div>
+

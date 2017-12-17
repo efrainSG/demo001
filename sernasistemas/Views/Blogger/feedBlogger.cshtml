@@ -1,9 +1,23 @@
 ﻿@model SernaSistemas.Models.BloggerFeedModel
 <h4>Últimas entradas en el blog</h4>
 <ul>
-    @foreach (var item in Model.entries) {
+    @if (string.IsNullOrEmpty(Model.MsgError)) {
+
+        foreach (var item in Model.entries) {
+            <li>
+                <a href="@(item.Value)" target="_blank">@(item.Key)</a>
+                @if (item.Key.Equals(Model.topEntryContent.Key)) {
+                <p class="text-info" style=" background-color:#0a1738; padding-left:10px; padding-right:10px; border-right:3px solid #4e6090">
+                    @Model.topEntryContent.Value
+                </p>
+                }
+            </li>
+        }
+    } else {
         <li>
-            @item
+            <p class="bg-danger text-danger">
+                @Model.MsgError
+            </p>
         </li>
     }
 </ul>

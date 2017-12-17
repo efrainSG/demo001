@@ -5,12 +5,21 @@ using System.Web;
 
 namespace SernaSistemas.Models {
     public class BloggerFeedModel {
-        public List<string> entries {
+        public string MsgError {
             get; set;
         }
 
+        public Dictionary<string,string> entries {
+            get; set;
+        }
+
+        public KeyValuePair<string,string> topEntryContent {
+            get; set;
+        }
         public BloggerFeedModel() {
-            entries = new List<string>();
+            entries = new Dictionary<string, string>();
+            topEntryContent = new KeyValuePair<string, string>();
+            MsgError = string.Empty;
         }
     }
 }
