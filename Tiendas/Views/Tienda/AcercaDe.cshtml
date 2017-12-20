@@ -1,0 +1,33 @@
+﻿@model Tiendas.Models.TiendaModel
+
+@{
+    Layout = "~/Views/Shared/_Basica.cshtml";
+    ViewBag.Title = "AcercaDe";
+}
+
+<h2>AcercaDe</h2>
+
+
+@section pie_izquierdo{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Nombre)
+        </li>
+    </ul>
+}
+
+@section pie_central{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Direccion)
+        </li>
+    </ul>
+}
+
+@section pie_derecho{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Telefono)
+        </li>
+    </ul>
+}

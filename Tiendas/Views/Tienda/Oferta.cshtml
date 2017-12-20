@@ -1,0 +1,51 @@
+﻿@model Tiendas.Models.OfertaModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn btn-default">
+            @if (Model.IdTipoOferta.Equals(Tiendas.Models.tipoOferta.Producto)) {
+                <i class="glyphicon glyphicon-picture"></i>
+                <div class="row">
+                    <div style="overflow-wrap:normal;" class="col-md-12">
+                        <p>
+                            <small>
+                                Lorem ipsum dolor sit amet,<br />
+                                consectetuer adipiscing elit.<br />
+                                Aenean commodo ligula eget dolor.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    @Html.DisplayFor(model => model.Precio)
+                </p>
+                @Html.ActionLink(linkText: "Detalles", actionName: "verOferta", controllerName: "Tienda", routeValues: new {
+                    idOferta = Model.Id, tipo = (int)Model.IdTipoOferta, tienda = ViewBag.Id
+                }, htmlAttributes: new {
+                    @class = "btn btn-success"
+                })
+            }
+            @if (Model.IdTipoOferta.Equals(Tiendas.Models.tipoOferta.Servicio)) {
+                <i class="glyphicon glyphicon-picture"></i>
+                <div class="row">
+                    <div style="overflow-wrap:normal;" class="col-md-12">
+                        <p>
+                            <small>
+                                Lorem ipsum dolor sit amet,<br />
+                                consectetuer adipiscing elit.<br />
+                                Aenean commodo ligula eget dolor.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                @*<p>
+                    @Html.DisplayFor(model => model.Precio)
+                </p>*@
+                @Html.ActionLink(linkText: "Detalles", actionName: "verOferta", controllerName: "Tienda", routeValues: new {
+                    idOferta = Model.Id, tipo = (int)Model.IdTipoOferta, tienda = ViewBag.Id
+                }, htmlAttributes: new {
+                    @class = "btn btn-info"
+                })
+            }
+        </div>
+    </div>
+</div>

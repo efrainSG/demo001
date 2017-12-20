@@ -1,0 +1,44 @@
+﻿@model Tiendas.Models.TiendaModel
+@{
+    Layout = "~/Views/Shared/_Basica.cshtml";
+    ViewBag.Title = "Index";
+}
+<p>Carrousel de imágenes más representativas</p>
+<div class="row">
+    <div class="col-md-3">
+        @Html.Partial("Contacto",new SernaSistemas.Core.Models.ContactoModel())
+    </div>
+    <div class="col-md-9">
+        <p>Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. </p>
+        <p>Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.</p>
+        <p>Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto.</p>
+        <p> - ¿Qué me ha ocurrido? No estaba soñando.</p>
+        <p>Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.</p>
+        <p>Sobre la mesa había desparramado un muestrario</p>
+    </div>
+</div>
+@Html.Partial("loadMap")
+
+@section pie_izquierdo{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Nombre)
+        </li>
+    </ul>
+}
+
+@section pie_central{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Direccion)
+        </li>
+    </ul>
+}
+
+@section pie_derecho{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Telefono)
+        </li>
+    </ul>
+}

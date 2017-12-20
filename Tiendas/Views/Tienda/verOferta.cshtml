@@ -1,0 +1,68 @@
+﻿@model Tiendas.Models.OfertaModel
+@{
+    Layout = "~/Views/Shared/_Basica.cshtml";
+    ViewBag.Title = "Productos";
+}
+<style>
+    .badge-lg {
+        font-size: 16px;
+        padding: 4px 12px 5px;
+    }
+
+    .badge-info {
+        background-color: #3a87ad;
+    }
+
+        .badge-info:hover {
+            background-color: #2d6987;
+        }
+
+    .badge-sucess {
+        background-color: #0f870a;
+    }
+
+    .badge-success:hover {
+        background-color: #11690d;
+    }
+</style>
+
+<div class="well well-lg">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.IdTipoOferta.Equals(Tiendas.Models.tipoOferta.Producto)) {
+                <span class="badge badge-lg badge-info">
+                    @Html.DisplayFor(model => model.Id) -
+                    @Html.DisplayFor(model => model.IdTipoOferta)
+                </span>
+            }
+            @if (Model.IdTipoOferta.Equals(Tiendas.Models.tipoOferta.Servicio)) {
+                <span class="badge badge-lg badge-success">
+                    @Html.DisplayFor(model => model.Id) -
+                    @Html.DisplayFor(model => model.IdTipoOferta)
+                </span>
+            }
+            <h1 class="text-right text-primary">
+                @Html.DisplayFor(model => model.Nombre)
+                <small>
+                    @Html.DisplayFor(model => model.Breve)
+                </small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Descripcion)
+            <h2>
+                <span class="btn-lg btn-primary">
+                    $
+                    @Html.DisplayFor(model => model.Precio)
+                </span>
+            </h2>
+        </div>
+        <div class="col-md-4 text-center">
+            <span class="glyphicon glyphicon-picture"></span>
+        </div>
+    </div>
+    @Html.DisplayFor(model => model.IdTienda)
+
+</div>

@@ -1,10 +1,20 @@
-﻿<form class="form-group well" method="post" action="@Url.Action("FormContacto")">
+﻿@model SernaSistemas.Core.Models.LoginModel
+<form class="form-group well" method="post" action="@Url.Action("Login")" id="frmLogin">
     @Html.ValidationSummary(true)
-    <h4 class="text-primary">Inicia sesión<small><br />... Y administra tus tiendas</small></h4>
+    @Html.HiddenFor(model => model.Nuevo)
+    <h4 class="text-primary">
+        Inicia sesión<small>
+            <br />
+            ... Y administra tus tiendas
+            <p style="font-size:75%;" class="text-info">
+                ¡Puedes escribir un nombre de usuario para usarlo en tu registro!
+            </p>
+        </small>
+    </h4>
     <div class="row">
         <div class="col-md-12 input-group">
             <span class="input-group-addon" id="addonNombre"><i class="glyphicon glyphicon-user"></i></span>
-            @Html.TextBox("txtUsuario", "", htmlAttributes: new {
+            @Html.TextBoxFor(model => model.NombreUsuario, htmlAttributes: new {
                 @class = "form-control", @style = "width:100%", @placeholder = "Nombre", @id = "txtNombre"
             })
         </div>
@@ -12,19 +22,18 @@
     <div class="row">
         <div class="col-md-12 input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            @Html.Password("txtPasswd", "", htmlAttributes: new {
+            @Html.PasswordFor(model => model.LoginPass, htmlAttributes: new {
                 @class = "form-control", @placeholder = "Contraseña", @id = "txtPasswd"
             })
         </div>
     </div>
     <div class="row">
         <div class="text-center col-md-12">
-            <button type="submit" class="btn btn-primary">Ingresar&nbsp;
+            <button type="submit" class="btn btn-primary btn-sm">
+                Ingresar&nbsp;
                 <i class="glyphicon glyphicon-log-in"></i>
-            </button>
+            </button><br />
+            <a href="#" class="btn-link" id="lnkSignUp">Regístrate</a>
         </div>
     </div>
-    @*}*@
 </form>
-
-

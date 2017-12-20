@@ -1,0 +1,13 @@
+﻿@model SernaSistemas.Core.Models.LoginModel
+
+<div>
+    <h1>Registro nuevo</h1>
+    @Html.TextBoxFor(model => model.NombreUsuario, htmlAttributes: new {
+        @class = "form-control"
+    })
+    @Html.PasswordFor(model => model.LoginPass, htmlAttributes: new {
+        @class = "form-control"
+    })
+    @Html.DisplayFor(model => model.UltimoLogin)
+</div>
+

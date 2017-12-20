@@ -1,0 +1,44 @@
+﻿@model Tiendas.Models.TiendaModel
+@{
+    Layout = "~/Views/Shared/_Basica.cshtml";
+    ViewBag.Title = "Galeria";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.</p>
+<p>Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto.</p>
+<p>Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.</p>
+<div class="row">
+    @for (int i = 0; i < 12; i++) {
+        <div class="col-md-4">
+            <div class="btn btn-default">
+                <i class="glyphicon glyphicon-picture"></i>
+                <p>Foto</p>
+            </div>
+        </div>
+    }
+</div>
+
+@section pie_izquierdo{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Nombre)
+        </li>
+    </ul>
+}
+
+@section pie_central{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Direccion)
+        </li>
+    </ul>
+}
+
+@section pie_derecho{
+    <ul>
+        <li>
+            @Html.DisplayFor(m => m.Telefono)
+        </li>
+    </ul>
+}

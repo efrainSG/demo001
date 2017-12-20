@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace SernaSistemas.Core.Models {
         public string NombreUsuario {
             get; set;
         }
+        public string LoginPass {
+
+            get;set;
+        }
         public DateTime UltimoLogin {
             get; set;
         }
@@ -24,6 +29,9 @@ namespace SernaSistemas.Core.Models {
         public List<int> Permisos {
             get; set;
         }
+        public bool Nuevo {
+            get; set;
+        } = false;
 
         public LoginModel() {
             Permisos = new List<int>();

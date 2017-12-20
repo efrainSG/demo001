@@ -11,39 +11,89 @@ namespace Tiendas.Tests.Controllers {
     [TestClass]
     public class HomeControllerTest {
         [TestMethod]
-        public void Index() {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void About() {
-            // Arrange
+            #region Arrange
             HomeController controller = new HomeController();
-
-            // Act
+            #endregion
+            #region Act
             ViewResult result = controller.About() as ViewResult;
-
-            // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            #endregion
+            #region Assert
+            Assert.AreEqual("Tu negocio en línea", result.ViewBag.Message);
+            #endregion
         }
-
+        [TestMethod]
+        public void Browse() {
+            #region Arrange
+            HomeController controller = new HomeController();
+            #endregion
+            #region Act
+            ViewResult result = controller.Browse() as ViewResult;
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result);
+            #endregion
+        }
         [TestMethod]
         public void Contact() {
-            // Arrange
+            #region Arrange
             HomeController controller = new HomeController();
-
-            // Act
+            #endregion
+            #region Act
             ViewResult result = controller.Contact() as ViewResult;
-
-            // Assert
+            #endregion
+            #region Assert
             Assert.IsNotNull(result);
+            #endregion
+        }
+        [TestMethod]
+        public void Index() {
+            #region Arrange
+            HomeController controller = new HomeController();
+            #endregion
+            #region Act
+            ViewResult result = controller.Index() as ViewResult;
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result);
+            #endregion
+        }
+        [TestMethod]
+        public void loadMap() {
+            #region Arrange
+            HomeController controller = new HomeController();
+            #endregion
+            #region Act
+            ViewResult result = controller.loadMap() as ViewResult;
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result);
+            #endregion
+        }
+        [TestMethod]
+        public void Login() {
+            #region Arrange
+            HomeController controller = new HomeController();
+            #endregion
+            #region Act
+            ViewResult result = controller.Login() as ViewResult;
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result);
+            #endregion
+        }
+        [TestMethod]
+        public void verNegocio() {
+            #region Arrange
+            HomeController controller = new HomeController();
+            int idNegocio = 1;
+            #endregion
+            #region Act
+            ViewResult result = controller.verNegocio(idNegocio) as ViewResult;
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result);
+            #endregion
         }
     }
 }

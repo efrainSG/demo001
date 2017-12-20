@@ -142,10 +142,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropietarioController.cs" />
+    <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OfertaModel.cs" />
+    <Compile Include="Models\TiendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,10 +194,23 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\loadMap.cshtml" />
     <Content Include="Views\Home\loadResults.cshtml" />
+    <Content Include="Views\Tienda\Productos.cshtml" />
+    <Content Include="Views\Tienda\Index.cshtml" />
+    <Content Include="Views\Tienda\Servicios.cshtml" />
+    <Content Include="Views\Tienda\AcercaDe.cshtml" />
+    <Content Include="Views\Tienda\Galeria.cshtml" />
+    <Content Include="Views\Tienda\Contacto.cshtml" />
+    <Content Include="Views\Tienda\loadMap.cshtml" />
+    <Content Include="Views\Shared\_Basica.cshtml" />
+    <Content Include="Views\Tienda\Oferta.cshtml" />
+    <Content Include="Views\Tienda\verOferta.cshtml" />
+    <Content Include="Views\Home\Registrar.cshtml" />
+    <Content Include="Views\Shared\_Gestion.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Propietario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
