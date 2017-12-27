@@ -30,7 +30,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Servicios", "Servicios", "Home")</li>
-                    <li>@Html.ActionLink("Productos", "Productos", "Home")</li>
+                    @*<li>@Html.ActionLink("Productos", "Productos", "Home")</li>*@
                     <li>@Html.ActionLink("Acerca de mí", "About", "Home")</li>
                 </ul>
             </div>
@@ -40,10 +40,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <div>
+            <div class="row">
                 <div class="col-md-6">
                     <small class="">
-                        <p>&copy; @DateTime.Now.Year - Serna Sistemas</p>
+                        <p>&copy; @DateTime.Now.Year - Serna Sistemas - v. 1.0.1</p>
                         <ul>
                             <li><a href="https://www.freelancer.com/u/efrainserna" target="_blank">Freelancer</a></li>
                             <li><a href="https://www.prolancer.com.mx/MaverickXXI/" target="_blank">Prolancer</a></li>

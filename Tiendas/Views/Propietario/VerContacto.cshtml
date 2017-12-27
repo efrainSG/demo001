@@ -1,0 +1,27 @@
+﻿@model List<SernaSistemas.Core.Models.ContactoModel>
+@{
+    ViewBag.Title = "Listar contactos";
+    Layout = "~/Views/Shared/_Gestion.cshtml";
+}
+
+<h2>@ViewBag.Title  </h2>
+<table class="table table-bordered table-condensed table-hover table-striped">
+    @{
+        int i = 0;
+        foreach (SernaSistemas.Core.Models.ContactoModel item in Model) {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Telefono</td>
+                <td>@item.Email</td>
+                <td>@item.Registrado</td>
+                <td>
+                    @Html.ActionLink("Ver", "VerContacto", new {
+                        id = ViewBag.Id,
+                        fecha = ViewBag.UltimoLogin,
+                        idcontacto = i
+                    })
+                </td>
+            </tr>
+        }
+    }
+</table>

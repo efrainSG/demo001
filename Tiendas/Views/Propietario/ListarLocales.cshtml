@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Listar contactos";
+    Layout = "~/Views/Shared/_Gestion.cshtml";
+}
+
+<h2>@ViewBag.Title  </h2>
+<table class="table table-bordered table-condensed table-hover table-striped">
+    @{
+        for (int i = 0; i < 3; i++) {
+            <tr>
+                <td>Local</td>
+                <td>Tipo</td>
+                <td>Dirección</td>
+                <td>Teléfono</td>
+                <td>Correo</td>
+                <td>
+                    @Html.ActionLink("Ver", "CrearLocal", new {
+                        id = ViewBag.Id,
+                        fecha = ViewBag.UltimoLogin,
+                        idcontacto = i,
+                        operacion = "editar"
+                    })
+                </td>
+            </tr>
+        }
+    }
+</table>

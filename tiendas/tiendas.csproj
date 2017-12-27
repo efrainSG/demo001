@@ -208,6 +208,17 @@
     <Content Include="Views\Shared\_Gestion.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Propietario\Index.cshtml" />
+    <Content Include="Views\Propietario\ListarContactos.cshtml" />
+    <Content Include="Views\Propietario\Perfil.cshtml" />
+    <Content Include="Views\Propietario\CrearTienda.cshtml" />
+    <Content Include="Views\Propietario\CrearLocal.cshtml" />
+    <Content Include="Views\Propietario\CrearOferta.cshtml" />
+    <Content Include="Views\Propietario\VerContacto.cshtml" />
+    <Content Include="Views\Propietario\Responder.cshtml" />
+    <Content Include="Views\Propietario\Inicio.cshtml" />
+    <Content Include="Views\Propietario\ListarOfertas.cshtml" />
+    <Content Include="Views\Propietario\ListarTiendas.cshtml" />
+    <Content Include="Views\Propietario\ListarLocales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

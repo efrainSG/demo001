@@ -55,6 +55,7 @@ namespace Tiendas.Controllers {
                     case "admin":
                         return RedirectToAction("Index", "Admin", model);
                     case "yo":
+                        model.idUsuario = DateTime.Today.DayOfYear;
                         return RedirectToAction("Index", "Propietario", model);
                     default:
                         break;

@@ -12,14 +12,14 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new {
+                @Html.ActionLink("Cerrar sesión", "Index", "Home", new {
                     area = ""
                 }, new {
                     @class = "navbar-brand"
@@ -27,10 +27,40 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index")</li>
-                    <li>@Html.ActionLink("About", "About")</li>
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li>
+                        @Html.ActionLink("Inicio", "Inicio", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Tiendas", "ListarTiendas", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Locales", "ListarLocales", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Ofertas", "LIstarOfertas", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Contactos", "ListarContactos", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Perfil", "Perfil", "Propietario", routeValues: new {
+                            id = ViewBag.Id, fecha = ViewBag.UltimoLogin
+                        }, htmlAttributes: null)
+                    </li>
                 </ul>
+                    <p class="navbar-text navbar-right">
+                        @ViewBag.UltimoLogin
+                    </p>
             </div>
         </div>
     </div>

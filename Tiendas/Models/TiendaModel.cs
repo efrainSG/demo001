@@ -1,10 +1,14 @@
-﻿using System;
+﻿using SernaSistemas.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Tiendas.Models {
     public class TiendaModel {
+        public LoginModel usuario {
+            get; set;
+        }
         public int Id {
             get; set;
         }
@@ -35,6 +39,7 @@ namespace Tiendas.Models {
             Horario.Add("Miércoles", "08:00 - 17:00");
             Horario.Add("Jueves", "08:00 - 17:00");
             Horario.Add("Viernes", "08:00 - 17:00");
+            usuario = new LoginModel();
         }
     }
 }

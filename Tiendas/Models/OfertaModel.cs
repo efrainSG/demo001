@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SernaSistemas.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,9 @@ namespace Tiendas.Models {
         Servicio = 2
     };
     public class OfertaModel {
+        public LoginModel usuario {
+            get;set;
+        }
         public int Id {
             get; set;
         }
@@ -38,7 +42,7 @@ namespace Tiendas.Models {
             Descripcion = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.";
             Breve = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
             Precio = 1M;
-
+            usuario = new LoginModel();
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Crear oferta (producto/servicio)";
+    Layout = "~/Views/Shared/_Gestion.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.TextBox("txtNombre", value: null, htmlAttributes: new {
+        @class = "form-control", @placeholder = "Nombre de la tienda"
+    })
+
+    @Html.TextBox("txtDireccion", value: null, htmlAttributes: new {
+        @class = "form-control", @placeholder = "Dirección fiscal"
+    })
+
+    @Html.TextBox("txtTelefono", value: null, htmlAttributes: new {
+        @class = "form-control", @placeholder = "Teléfono principal"
+    })
+
+    @Html.TextBox("txtMail", value: null, htmlAttributes: new {
+        @class = "form-control", @placeholder = "Correo electrónico principal"
+    })
+    @Html.DropDownList(name: "Locales",
+                    selectList: (ViewBag.Locales as IEnumerable<SelectListItem>),
+                    htmlAttributes: new {
+                        @class = "form-control"
+                    })
+    @Html.DropDownList(name: "Tipos",
+                selectList: (ViewBag.Tipos as IEnumerable<SelectListItem>),
+                htmlAttributes: new {
+                    @class = "form-control"
+                })
+    <input type="submit" class="btn btn-lg btn-primary" value="Guardar" />
+}

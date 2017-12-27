@@ -211,6 +211,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -240,7 +242,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Servicios.cshtml" />
     <Content Include="Views\Home\FormContacto.cshtml" />
@@ -259,6 +260,10 @@
     <ProjectReference Include="..\SernaSistemas.Core\SernaSistemas.Core.csproj">
       <Project>{3F8959AF-0CC4-489B-B7E7-B4299B6C4024}</Project>
       <Name>SernaSistemas.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFSernaSistemasLib\WCFSernaSistemasLib.csproj">
+      <Project>{CCE974C2-7583-43E3-AC15-E276B68BBE95}</Project>
+      <Name>WCFSernaSistemasLib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

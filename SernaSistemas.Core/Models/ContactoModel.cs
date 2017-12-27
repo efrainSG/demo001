@@ -32,5 +32,9 @@ namespace SernaSistemas.Core.Models {
         public DateTime Registrado {
             get; set;
         }
+
+        public string mensaje {
+            get; set;
+        }
     }
 }

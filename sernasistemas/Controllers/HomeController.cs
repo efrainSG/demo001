@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using SernaSistemas.Core.Models;
 using SernaSistemas.Models;
+using WCFSernaSistemasLib;
 
 namespace SernaSistemas.Controllers {
     public class HomeController : Controller {
@@ -41,7 +42,9 @@ namespace SernaSistemas.Controllers {
             return model;
         }
 
-        public ActionResult Index() {
+        public ActionResult Index(ContactoModel model) {
+            var data = ViewBag;
+            data = ViewData;
             return View(getPosts(
                 APIKey: "AIzaSyA9SEDz5J3h61m1xMkL2EPLyFWaCYqn2QA",
                 BlogID: "3484139233446513265"
@@ -71,7 +74,18 @@ namespace SernaSistemas.Controllers {
         [ActionName("FormContacto")]
         public ActionResult postContacto(ContactoModel model) {
             model.Registrado = DateTime.Today;
-
+            SernaSistemasServices servicio = new SernaSistemasServices();
+            var response =
+            servicio.registrarContacto(new ContactoRequest() {
+                Nombre = model.Nombre,
+                Telefono = model.Telefono,
+                 eMail = model.Email,
+                 Comentario = model.Comentario,
+                 FechaContacto = model.Registrado
+            });
+            ViewData.Add("mensaje", response.Mensaje);
+            if (response.tieneError)
+                return View("Error", response);
             return Redirect(Request.UrlReferrer.ToString());
         }
     }

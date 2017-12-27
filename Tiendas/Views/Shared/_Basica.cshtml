@@ -15,7 +15,7 @@
         var mapcode;
         var diag;
         function initialize() {
-            if (document.getElementById('map_populate')===null)
+            if (document.getElementById('map_populate') === null)
                 return;
             mapcode = new google.maps.Geocoder();
             var lnt = new google.maps.LatLng(26.45, 82.85);
@@ -52,17 +52,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new {
+                @Html.ActionLink("Tiendas", "Index", "Home", routeValues: new {
                     area = ""
-                }, new {
+                }, htmlAttributes: new {
                     @class = "navbar-brand"
                 })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Tienda", routeValues:new {
-                       id = ViewBag.Id
-                   }, htmlAttributes: null)</li>
                     <li>
                         @Html.ActionLink(linkText: "Galería", actionName: "Galeria", controllerName: "Tienda", routeValues: new {
                             id = ViewBag.Id
@@ -79,11 +76,10 @@
                         }, htmlAttributes: null)
                     </li>
                     <li>
-                        @Html.ActionLink(linkText: "AcercaDe", actionName: "AcercaDe", controllerName: "Tienda", routeValues: new {
+                        @Html.ActionLink(linkText: "Acerca de", actionName: "AcercaDe", controllerName: "Tienda", routeValues: new {
                             id = ViewBag.Id
                         }, htmlAttributes: null)
                     </li>
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
             </div>
         </div>
