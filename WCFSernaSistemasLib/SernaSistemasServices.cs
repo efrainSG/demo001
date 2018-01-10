@@ -32,6 +32,19 @@ namespace WCFSernaSistemasLib {
                 };
                 mensaje.ReplyToList.Add(request.eMail);
                 cliente.Send(mensaje);
+                mensaje = new MailMessage(new MailAddress(credenciales.UserName), new MailAddress(request.eMail)) {
+                    Body = "<p><strong>Muchas gracias por ponerte en contacto conmigo.</strong></p> " +
+                    "<p>En breve me pondré en contacto a tu número telefónico " +
+                    "(en caso de haberlo proporcionado) o a tu dirección de correo electrónico.<br />" +
+                    "<em>Este correo es una confirmación que recibí tu información.</em> " +
+                    "Los siguientes correos llevan por título <strong>CONTACTO SERNA-SISTEMAS</strong> " +
+                    "y servirá para dar un seguimiento más sencillo a tu inquietud, por lo que te sugiero no cambiar " +
+                    "el asunto de esos correos.</p>" +
+                    "<p>Nuevamente, muchas gracias por tu contacto.</p>",
+                    Subject = "Solicitud de contacto",
+                    IsBodyHtml = true
+                };
+                cliente.Send(mensaje);
                 response.tieneError = false;
                 response.Mensaje = "Correo enviado";
             } catch (Exception ex) {

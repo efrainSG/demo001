@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SernaSistemas" Class="SernaSistemasDataModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\ProjectsV13;Initial Catalog=SernaSistemas;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="SernaSistemas.DataAccess.Properties.Settings" SettingsPropertyName="SernaSistemasConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="Configuracion.Institucion" Member="Institucions">
+    <Type Name="Institucion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdLocacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Institucion_Alumno" Member="Alumnos" ThisKey="Id" OtherKey="IdInstitucion" Type="Alumno" />
+      <Association Name="Institucion_ExpertoEscuela" Member="ExpertoEscuelas" ThisKey="Id" OtherKey="IdInstitucion" Type="ExpertoEscuela" />
+      <Association Name="Institucion_Titulo" Member="Titulos" ThisKey="Id" OtherKey="IdInstitucion" Type="Titulo" />
+      <Association Name="Locacion_Institucion" Member="Locacion" ThisKey="IdLocacion" OtherKey="Id" Type="Locacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Configuracion.Locacion" Member="Locacions">
+    <Type Name="Locacion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Lat" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Lon" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Locacion_Institucion" Member="Institucions" ThisKey="Id" OtherKey="IdLocacion" Type="Institucion" />
+    </Type>
+  </Table>
+  <Table Name="Configuracion.Sistema" Member="Sistemas">
+    <Type Name="Sistema">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Sistema_StatusSistema" Member="StatusSistemas" ThisKey="Id" OtherKey="IdSistema" Type="StatusSistema" />
+      <Association Name="Sistema_Permiso" Member="Permisos" ThisKey="Id" OtherKey="IdSistema" Type="Permiso" />
+      <Association Name="Sistema_Rol" Member="Rols" ThisKey="Id" OtherKey="IdSistema" Type="Rol" />
+      <Association Name="Sistema_UsuarioSistema" Member="UsuarioSistemas" ThisKey="Id" OtherKey="IdSistema" Type="UsuarioSistema" />
+    </Type>
+  </Table>
+  <Table Name="Configuracion.Status" Member="Status">
+    <Type Name="Status">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Status_StatusSistema" Member="StatusSistemas" ThisKey="Id" OtherKey="IdStatus" Type="StatusSistema" />
+      <Association Name="Status_Alumno" Member="Alumnos" ThisKey="Id" OtherKey="IdStatus" Type="Alumno" />
+      <Association Name="Status_Experto" Member="Expertos" ThisKey="Id" OtherKey="IdStatus" Type="Experto" />
+      <Association Name="Status_Publicacion" Member="Publicacions" ThisKey="Id" OtherKey="IdStatus" Type="Publicacion" />
+      <Association Name="Status_Negocio" Member="Negocios" ThisKey="Id" OtherKey="IdStatus" Type="Negocio" />
+      <Association Name="Status_Oferta" Member="Ofertas" ThisKey="Id" OtherKey="IdStatus" Type="Oferta" />
+      <Association Name="Status_Telefono" Member="Telefonos" ThisKey="Id" OtherKey="IdStatus" Type="Telefono" />
+    </Type>
+  </Table>
+  <Table Name="Configuracion.StatusSistema" Member="StatusSistemas">
+    <Type Name="StatusSistema">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="Sistema_StatusSistema" Member="Sistema" ThisKey="IdSistema" OtherKey="Id" Type="Sistema" IsForeignKey="true" />
+      <Association Name="Status_StatusSistema" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Configuracion.TipoElemento" Member="TipoElementos">
+    <Type Name="TipoElemento">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoElemento_Persona_Direccion" Member="Persona_Direccions" ThisKey="Id" OtherKey="IdTipoElemento" Type="Persona_Direccion" />
+      <Association Name="TipoElemento_ElementoDireccion" Member="ElementoDireccions" ThisKey="Id" OtherKey="IdTipoElemento" Type="ElementoDireccion" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Alumno" Member="Alumnos">
+    <Type Name="Alumno">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUsuarioSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Resumen" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="Alumno_Valoracion" Member="Valoracions" ThisKey="Id" OtherKey="IdValorador" Type="Valoracion" />
+      <Association Name="Alumno_Publicacion" Member="Publicacions" ThisKey="Id" OtherKey="IdAutor" Type="Publicacion" />
+      <Association Name="Institucion_Alumno" Member="Institucion" ThisKey="IdInstitucion" OtherKey="Id" Type="Institucion" IsForeignKey="true" />
+      <Association Name="Status_Alumno" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+      <Association Name="UsuarioSistema_Alumno" Member="UsuarioSistema" ThisKey="IdUsuarioSistema" OtherKey="Id" Type="UsuarioSistema" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Valoracion" Member="Valoracions">
+    <Type Name="Valoracion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPublicacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdValorador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Alumno_Valoracion" Member="Alumno" ThisKey="IdValorador" OtherKey="Id" Type="Alumno" IsForeignKey="true" />
+      <Association Name="Publicacion_Valoracion" Member="Publicacion" ThisKey="IdPublicacion" OtherKey="Id" Type="Publicacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Area" Member="Areas">
+    <Type Name="Area">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdArea" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Area_Area" Member="Areas" ThisKey="Id" OtherKey="IdArea" Type="Area" />
+      <Association Name="Area_ExpertoArea" Member="ExpertoAreas" ThisKey="Id" OtherKey="IdArea" Type="ExpertoArea" />
+      <Association Name="Area_Area" Member="Area1" ThisKey="IdArea" OtherKey="Id" Type="Area" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Evaluacion" Member="Evaluacions">
+    <Type Name="Evaluacion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPublicacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdExperto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Experto_Evaluacion" Member="Experto" ThisKey="IdExperto" OtherKey="Id" Type="Experto" IsForeignKey="true" />
+      <Association Name="Publicacion_Evaluacion" Member="Publicacion" ThisKey="IdPublicacion" OtherKey="Id" Type="Publicacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Experto" Member="Expertos">
+    <Type Name="Experto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUsuarioSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Resumen" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="Experto_Evaluacion" Member="Evaluacions" ThisKey="Id" OtherKey="IdExperto" Type="Evaluacion" />
+      <Association Name="Experto_ExpertoArea" Member="ExpertoAreas" ThisKey="Id" OtherKey="IdExperto" Type="ExpertoArea" />
+      <Association Name="Experto_ExpertoEscuela" Member="ExpertoEscuelas" ThisKey="Id" OtherKey="IdExperto" Type="ExpertoEscuela" />
+      <Association Name="Status_Experto" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+      <Association Name="UsuarioSistema_Experto" Member="UsuarioSistema" ThisKey="IdUsuarioSistema" OtherKey="Id" Type="UsuarioSistema" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.ExpertoArea" Member="ExpertoAreas">
+    <Type Name="ExpertoArea">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdExperto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdArea" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Area_ExpertoArea" Member="Area" ThisKey="IdArea" OtherKey="Id" Type="Area" IsForeignKey="true" />
+      <Association Name="Experto_ExpertoArea" Member="Experto" ThisKey="IdExperto" OtherKey="Id" Type="Experto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.ExpertoEscuela" Member="ExpertoEscuelas">
+    <Type Name="ExpertoEscuela">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdExperto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Experto_ExpertoEscuela" Member="Experto" ThisKey="IdExperto" OtherKey="Id" Type="Experto" IsForeignKey="true" />
+      <Association Name="Institucion_ExpertoEscuela" Member="Institucion" ThisKey="IdInstitucion" OtherKey="Id" Type="Institucion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Cotediv.Publicacion" Member="Publicacions">
+    <Type Name="Publicacion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdAutor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Contenido" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Publicacion_Valoracion" Member="Valoracions" ThisKey="Id" OtherKey="IdPublicacion" Type="Valoracion" />
+      <Association Name="Publicacion_Evaluacion" Member="Evaluacions" ThisKey="Id" OtherKey="IdPublicacion" Type="Evaluacion" />
+      <Association Name="Alumno_Publicacion" Member="Alumno" ThisKey="IdAutor" OtherKey="Id" Type="Alumno" IsForeignKey="true" />
+      <Association Name="Status_Publicacion" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Persona.Direccion" Member="Persona_Direccions">
+    <Type Name="Persona_Direccion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTipoElemento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoElemento_Persona_Direccion" Member="TipoElemento" ThisKey="IdTipoElemento" OtherKey="Id" Type="TipoElemento" IsForeignKey="true" />
+      <Association Name="Persona_Persona_Direccion" Member="Persona" ThisKey="IdPersona" OtherKey="Id" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Persona.Foto" Member="Persona_Fotos">
+    <Type Name="Persona_Foto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Foto" Member="Foto1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Persona_Persona_Foto" Member="Persona" ThisKey="IdPersona" OtherKey="Id" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Persona.Nombre" Member="Nombres">
+    <Type Name="Nombre">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Orden" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Persona_Nombre" Member="Persona" ThisKey="IdPersona" OtherKey="Id" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Persona.Persona" Member="Personas">
+    <Type Name="Persona">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Nacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Persona_Persona_Direccion" Member="Persona_Direccions" ThisKey="Id" OtherKey="IdPersona" Type="Persona_Direccion" />
+      <Association Name="Persona_Persona_Foto" Member="Persona_Fotos" ThisKey="Id" OtherKey="IdPersona" Type="Persona_Foto" />
+      <Association Name="Persona_Nombre" Member="Nombres" ThisKey="Id" OtherKey="IdPersona" Type="Nombre" />
+      <Association Name="Persona_Titulo" Member="Titulos" ThisKey="Id" OtherKey="IdPersona" Type="Titulo" />
+      <Association Name="Usuario_Persona" Member="Usuario" ThisKey="IdUsuario" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Persona.Titulo" Member="Titulos">
+    <Type Name="Titulo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdInstitucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Institucion_Titulo" Member="Institucion" ThisKey="IdInstitucion" OtherKey="Id" Type="Institucion" IsForeignKey="true" />
+      <Association Name="Persona_Titulo" Member="Persona" ThisKey="IdPersona" OtherKey="Id" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.Permiso" Member="Permisos">
+    <Type Name="Permiso">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Permiso_RolPermiso" Member="RolPermisos" ThisKey="Id" OtherKey="IdPermiso" Type="RolPermiso" />
+      <Association Name="Sistema_Permiso" Member="Sistema" ThisKey="IdSistema" OtherKey="Id" Type="Sistema" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.Rol" Member="Rols">
+    <Type Name="Rol">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Rol_RolPermiso" Member="RolPermisos" ThisKey="Id" OtherKey="IdRol" Type="RolPermiso" />
+      <Association Name="Rol_UsuarioSistema" Member="UsuarioSistemas" ThisKey="Id" OtherKey="IdRol" Type="UsuarioSistema" />
+      <Association Name="Sistema_Rol" Member="Sistema" ThisKey="IdSistema" OtherKey="Id" Type="Sistema" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.RolPermiso" Member="RolPermisos">
+    <Type Name="RolPermiso">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdPermiso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Permitido" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Denegado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Permiso_RolPermiso" Member="Permiso" ThisKey="IdPermiso" OtherKey="Id" Type="Permiso" IsForeignKey="true" />
+      <Association Name="Rol_RolPermiso" Member="Rol" ThisKey="IdRol" OtherKey="Id" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Passwd" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Persona" Member="Personas" ThisKey="Id" OtherKey="IdUsuario" Type="Persona" />
+      <Association Name="Usuario_UsuarioSistema" Member="UsuarioSistemas" ThisKey="Id" OtherKey="IdUsuario" Type="UsuarioSistema" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.UsuarioSistema" Member="UsuarioSistemas">
+    <Type Name="UsuarioSistema">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UsuarioSistema_Alumno" Member="Alumnos" ThisKey="Id" OtherKey="IdUsuarioSistema" Type="Alumno" />
+      <Association Name="UsuarioSistema_Experto" Member="Expertos" ThisKey="Id" OtherKey="IdUsuarioSistema" Type="Experto" />
+      <Association Name="UsuarioSistema_Negocio" Member="Negocios" ThisKey="Id" OtherKey="IdPropietario" Type="Negocio" />
+      <Association Name="Rol_UsuarioSistema" Member="Rol" ThisKey="IdRol" OtherKey="Id" Type="Rol" IsForeignKey="true" />
+      <Association Name="Sistema_UsuarioSistema" Member="Sistema" ThisKey="IdSistema" OtherKey="Id" Type="Sistema" IsForeignKey="true" />
+      <Association Name="Usuario_UsuarioSistema" Member="Usuario" ThisKey="IdUsuario" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Contacto" Member="Contactos">
+    <Type Name="Contacto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdNegocio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Negocio_Contacto" Member="Negocio" ThisKey="IdNegocio" OtherKey="Id" Type="Negocio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.TipoOferta" Member="TipoOfertas">
+    <Type Name="TipoOferta">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoOferta_Oferta" Member="Ofertas" ThisKey="Id" OtherKey="IdTipoOferta" Type="Oferta" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.ElementoDireccion" Member="ElementoDireccions">
+    <Type Name="ElementoDireccion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTipoElemento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoElemento_ElementoDireccion" Member="TipoElemento" ThisKey="IdTipoElemento" OtherKey="Id" Type="TipoElemento" IsForeignKey="true" />
+      <Association Name="Direccion_ElementoDireccion" Member="Direccion" ThisKey="IdDireccion" OtherKey="Id" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Etiqueta" Member="Etiquetas">
+    <Type Name="Etiqueta">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Etiqueta_NegocioEtiqueta" Member="NegocioEtiquetas" ThisKey="Id" OtherKey="IdEtiqueta" Type="NegocioEtiqueta" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Negocio" Member="Negocios">
+    <Type Name="Negocio">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IdPropietario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Negocio_Contacto" Member="Contactos" ThisKey="Id" OtherKey="IdNegocio" Type="Contacto" />
+      <Association Name="Negocio_NegocioEtiqueta" Member="NegocioEtiquetas" ThisKey="Id" OtherKey="IdNegocio" Type="NegocioEtiqueta" />
+      <Association Name="Negocio_Oferta" Member="Ofertas" ThisKey="Id" OtherKey="IdNegocio" Type="Oferta" />
+      <Association Name="UsuarioSistema_Negocio" Member="UsuarioSistema" ThisKey="IdPropietario" OtherKey="Id" Type="UsuarioSistema" IsForeignKey="true" />
+      <Association Name="Status_Negocio" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.NegocioEtiqueta" Member="NegocioEtiquetas">
+    <Type Name="NegocioEtiqueta">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdNegocio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdEtiqueta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Etiqueta_NegocioEtiqueta" Member="Etiqueta" ThisKey="IdEtiqueta" OtherKey="Id" Type="Etiqueta" IsForeignKey="true" />
+      <Association Name="Negocio_NegocioEtiqueta" Member="Negocio" ThisKey="IdNegocio" OtherKey="Id" Type="Negocio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Oferta" Member="Ofertas">
+    <Type Name="Oferta">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdTipoOferta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Breve" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IdNegocio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Negocio_Oferta" Member="Negocio" ThisKey="IdNegocio" OtherKey="Id" Type="Negocio" IsForeignKey="true" />
+      <Association Name="Status_Oferta" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+      <Association Name="TipoOferta_Oferta" Member="TipoOferta" ThisKey="IdTipoOferta" OtherKey="Id" Type="TipoOferta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Telefono" Member="Telefonos">
+    <Type Name="Telefono">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Status_Telefono" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+      <Association Name="Direccion_Telefono" Member="Direccion" ThisKey="IdDireccion" OtherKey="Id" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.TipoLocal" Member="TipoLocals">
+    <Type Name="TipoLocal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Direccion" Member="Direccions">
+    <Type Name="Direccion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdNegocio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdLocacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTipoLocal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Direccion_ElementoDireccion" Member="ElementoDireccions" ThisKey="Id" OtherKey="IdDireccion" Type="ElementoDireccion" />
+      <Association Name="Direccion_Telefono" Member="Telefonos" ThisKey="Id" OtherKey="IdDireccion" Type="Telefono" />
+    </Type>
+  </Table>
+  <Table Name="Tienda.Foto" Member="Fotos">
+    <Type Name="Foto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IdOferta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EsCarrousel" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Seguridad.vUsuariosSistemas" Member="vUsuariosSistemas">
+    <Type Name="vUsuariosSistema">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Passwd" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="IdRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdSistema" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sistema" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

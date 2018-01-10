@@ -4,54 +4,57 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using WCFTiendasLib.Contracts;
 
 namespace WCFTiendasLib {
     [ServiceContract]
     interface ITiendasServices {
         [OperationContract]
-        LoginResponse login(loginRequest request);
+        LoginResponse Login(LoginRequest request);
 
         [OperationContract]
-        PropietarioResponse crearCuenta(RegistrarPropietarioRequest request);
+        PropietarioResponse CrearCuenta(RegistrarPropietarioRequest request);
         [OperationContract]
-        VerPropietarioResponse verPropietario(VerPropietarioRequest request);
+        VerPropietarioResponse VerPropietario(VerPropietarioRequest request);
         [OperationContract]
-        PropietarioResponse guardarDatos(RegistrarPropietarioRequest request);
+        PropietarioResponse GuardarDatos(RegistrarPropietarioRequest request);
 
         [OperationContract]
-        ListarTiendasResponse listarTiendas(ListarTiendasRequest request);
+        ListarTiendasResponse ListarTiendas(ListarTiendasRequest request);
         [OperationContract]
-        TiendaResponse registrarTienda(TiendaRequest request);
+        TiendaResponse RegistrarTienda(TiendaRequest request);
         [OperationContract]
-        TiendaResponse verTienda(TiendaRequest request);
+        TiendaResponse VerTienda(TiendaRequest request);
 
         [OperationContract]
-        ListarLocalesResponse listarLocales(ListarLocalesRequest request);
+        ListarLocalesResponse ListarLocales(ListarLocalesRequest request);
         [OperationContract]
-        LocalResponse registrarLocal(LocalRequest request);
+        LocalResponse RegistrarLocal(LocalRequest request);
         [OperationContract]
-        LocalResponse verLocal(LocalRequest request);
+        LocalResponse VerLocal(LocalRequest request);
 
         [OperationContract]
-        ListarOfertasResponse listarOfertas(ListarOfertasRequest request);
+        ListarOfertasResponse ListarOfertas(ListarOfertasRequest request);
         [OperationContract]
-        OfertaResponse registrarOferta(OfertaRequest request);
+        OfertaResponse RegistrarOferta(OfertaRequest request);
         [OperationContract]
-        OfertaResponse verOferta(OfertaRequest request);
+        OfertaResponse VerOferta(OfertaRequest request);
 
         [OperationContract]
-        ListarFotoResponse listarFotos(ListarFotoRequest request);
+        ListarFotoResponse ListarFotos(ListarFotoRequest request);
         [OperationContract]
-        FotoResponse registrarFoto(FotoRequest request);
+        FotoResponse RegistrarFoto(FotoRequest request);
         [OperationContract]
-        FotoResponse verFoto(FotoRequest request);
+        FotoResponse VerFoto(FotoRequest request);
 
         [OperationContract]
-        ListarContactosResponse listarContactos(ListarContactosRequest request);
+        ListarContactosResponse ListarContactos(ListarContactosRequest request);
         [OperationContract]
-        ContactoResponse registrarContacto(ContactoRequest request);
+        ContactoResponse RegistrarContacto(ContactoRequest request);
         [OperationContract]
-        VerContactoResponse verContacto(VerContactoRequest request);
+        VerContactoResponse VerContacto(VerContactoRequest request);
+        [OperationContract]
+        VerEtiquetasResponse VerEtiquetas(VerEtiquetasRequest request);
     }
 
 }

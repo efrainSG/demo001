@@ -1,23 +1,23 @@
 ﻿using SernaSistemas.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WCFCotedivLib;
+using WCFCotedivLib.Contracts;
 
 namespace CoTeDiv.Controllers {
     public class HomeController : Controller {
+        CotedivServices cs = new CotedivServices();
+
         public ActionResult Index() {
-            CotedivServices cs = new CotedivServices();
-            ViewData.Add("Posts", cs.getPosts(1));
+            ViewData.Add("Posts", cs.ListarEntradas(10).Resultados);
             return View();
         }
+
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
+
         public ActionResult Contact() {
             ViewBag.Message = "Your contact page.";
 
@@ -32,20 +32,32 @@ namespace CoTeDiv.Controllers {
             return View();
         }
 
-        public ActionResult buscar() {
+        public ActionResult Buscar() {
             return View();
         }
 
         [HttpPost, ActionName("Login")]
         public ActionResult HazLogin(LoginModel model) {
-            if (model.NombreUsuario == "yo")
-                return RedirectToAction("Index", "Estudiante", model);
-            return View();
+            var response = cs.Login(new LoginRequest() { UserId = model.NombreUsuario, Password = model.LoginPass });
+            if (response.Success) {
+                TempData.Add("login", new LoginModel() {
+                    Hash = response.Modelo.Hash,
+                    IdNivel = response.Modelo.IdNivel,
+                    IdRol = response.Modelo.IdRol,
+                    IdUsuario = response.Modelo.IdUsuario,
+                    NombreUsuario = response.Modelo.NombreUsuario,
+                    Permisos = response.Modelo.Permisos,
+                    UltimoLogin = response.Modelo.UltimoLogin
+                });
+                return RedirectToAction("Index", "Estudiante", response.Modelo.Hash);
+            }
+            return RedirectToAction("Index");
         }
+
         [HttpPost, ActionName("buscar")]
-        public ActionResult HazBusqueda(LoginModel model, string query) {
+        public ActionResult HazBusqueda(string query) {
             return View(new {
-                model, query
+                query
             });
         }
     }

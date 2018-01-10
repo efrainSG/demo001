@@ -34,22 +34,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\NopCommerce_3.8\src\Presentation\Nop.Web\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\NopCommerce_3.8\src\Presentation\Nop.Web\bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CotedivContracts.cs" />
     <Compile Include="CotedivServices.cs" />
     <Compile Include="ICotedivServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SernaSistemas.Core\SernaSistemas.Core.csproj">
+      <Project>{3F8959AF-0CC4-489B-B7E7-B4299B6C4024}</Project>
+      <Name>SernaSistemas.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SernaSistemas.DataAccess\SernaSistemas.DataAccess.csproj">
+      <Project>{3801434f-88c9-446a-b111-a13a334968fd}</Project>
+      <Name>SernaSistemas.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SernaSistemas.Core.Models {
     public class LoginModel {
-        public int idUsuario {
+        public int IdUsuario {
             get; set;
         }
         public int IdNivel {
@@ -32,6 +32,9 @@ namespace SernaSistemas.Core.Models {
         public bool Nuevo {
             get; set;
         } = false;
+        public string Hash {
+            get; set;
+        }
 
         public LoginModel() {
             Permisos = new List<int>();
@@ -40,6 +43,7 @@ namespace SernaSistemas.Core.Models {
             NombreUsuario = nombre;
             UltimoLogin = DateTime.Now;
             Permisos = new List<int>();
+            Hash = hash;
         }
     }
 }

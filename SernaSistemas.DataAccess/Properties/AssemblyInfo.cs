@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SernaSistemas.DataAccess")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("685025d2-d084-4595-b1ea-c69377d1a24b")]
+[assembly: Guid("3801434f-88c9-446a-b111-a13a334968fd")]
 
 // Version information for an assembly consists of the following four values:
 //

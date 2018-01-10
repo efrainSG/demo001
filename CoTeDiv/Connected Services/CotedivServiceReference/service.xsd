@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" />
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q1:LoginRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="LoginResult" nillable="true" type="q2:LoginResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Logout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="LogoutResult" nillable="true" type="q3:BoolResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarEntrada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q4:EntradaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarEntradaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="GuardarEntradaResult" nillable="true" type="q5:EntradaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerEntrada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q6:EntradaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerEntradaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="VerEntradaResult" nillable="true" type="q7:EntradaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BorrarEntrada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q8:EntradaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BorrarEntradaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="BorrarEntradaResult" nillable="true" type="q9:BoolResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntradas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntradasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="ListarEntradasResult" nillable="true" type="q10:ListaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValorarEntrada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q11:EntradaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValorarEntradaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="ValorarEntradaResult" nillable="true" type="q12:EntradaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EvaluarEntrada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q13:EntradaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EvaluarEntradaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="EvaluarEntradaResult" nillable="true" type="q14:EntradaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarPerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q15:PerfilRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="GuardarPerfilResult" nillable="true" type="q16:PerfilResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerPerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q17:PerfilRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="VerPerfilResult" nillable="true" type="q18:PerfilResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExpertos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExpertosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="ListarExpertosResult" nillable="true" type="q19:ListaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearCuenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="request" nillable="true" type="q20:AlumnoRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearCuentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" minOccurs="0" name="CrearCuentaResult" nillable="true" type="q21:AlumnoResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

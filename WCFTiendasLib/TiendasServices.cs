@@ -3,82 +3,87 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WCFTiendasLib.Contracts;
 
 namespace WCFTiendasLib {
     public class TiendasServices : ITiendasServices {
-        public PropietarioResponse crearCuenta(RegistrarPropietarioRequest request) {
+        public PropietarioResponse CrearCuenta(RegistrarPropietarioRequest request) {
             throw new NotImplementedException();
         }
 
-        public PropietarioResponse guardarDatos(RegistrarPropietarioRequest request) {
+        public PropietarioResponse GuardarDatos(RegistrarPropietarioRequest request) {
             throw new NotImplementedException();
         }
 
-        public ListarContactosResponse listarContactos(ListarContactosRequest request) {
+        public ListarContactosResponse ListarContactos(ListarContactosRequest request) {
             throw new NotImplementedException();
         }
 
-        public ListarFotoResponse listarFotos(ListarFotoRequest request) {
+        public ListarFotoResponse ListarFotos(ListarFotoRequest request) {
             throw new NotImplementedException();
         }
 
-        public ListarLocalesResponse listarLocales(ListarLocalesRequest request) {
+        public ListarLocalesResponse ListarLocales(ListarLocalesRequest request) {
             throw new NotImplementedException();
         }
 
-        public ListarOfertasResponse listarOfertas(ListarOfertasRequest request) {
+        public ListarOfertasResponse ListarOfertas(ListarOfertasRequest request) {
             throw new NotImplementedException();
         }
 
-        public ListarTiendasResponse listarTiendas(ListarTiendasRequest request) {
+        public ListarTiendasResponse ListarTiendas(ListarTiendasRequest request) {
             throw new NotImplementedException();
         }
 
-        public LoginResponse login(loginRequest request) {
+        public LoginResponse Login(LoginRequest request) {
             throw new NotImplementedException();
         }
 
-        public ContactoResponse registrarContacto(ContactoRequest request) {
+        public ContactoResponse RegistrarContacto(ContactoRequest request) {
             throw new NotImplementedException();
         }
 
-        public FotoResponse registrarFoto(FotoRequest request) {
+        public FotoResponse RegistrarFoto(FotoRequest request) {
             throw new NotImplementedException();
         }
 
-        public LocalResponse registrarLocal(LocalRequest request) {
+        public LocalResponse RegistrarLocal(LocalRequest request) {
             throw new NotImplementedException();
         }
 
-        public OfertaResponse registrarOferta(OfertaRequest request) {
+        public OfertaResponse RegistrarOferta(OfertaRequest request) {
             throw new NotImplementedException();
         }
 
-        public TiendaResponse registrarTienda(TiendaRequest request) {
+        public TiendaResponse RegistrarTienda(TiendaRequest request) {
             throw new NotImplementedException();
         }
 
-        public VerContactoResponse verContacto(VerContactoRequest request) {
+        public VerContactoResponse VerContacto(VerContactoRequest request) {
             throw new NotImplementedException();
         }
 
-        public FotoResponse verFoto(FotoRequest request) {
+        public VerEtiquetasResponse VerEtiquetas(VerEtiquetasRequest request) {
             throw new NotImplementedException();
         }
 
-        public LocalResponse verLocal(LocalRequest request) {
+        public FotoResponse VerFoto(FotoRequest request) {
             throw new NotImplementedException();
         }
 
-        public OfertaResponse verOferta(OfertaRequest request) {
+        public LocalResponse VerLocal(LocalRequest request) {
             throw new NotImplementedException();
         }
 
-        public VerPropietarioResponse verPropietario(VerPropietarioRequest request) {
+        public OfertaResponse VerOferta(OfertaRequest request) {
             throw new NotImplementedException();
         }
 
-        public TiendaResponse verTienda(TiendaRequest request) {
+        public VerPropietarioResponse VerPropietario(VerPropietarioRequest request) {
+            throw new NotImplementedException();
+        }
+
+        public TiendaResponse VerTienda(TiendaRequest request) {
             throw new NotImplementedException();
         }
     }

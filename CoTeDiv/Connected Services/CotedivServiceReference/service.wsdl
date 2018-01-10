@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CotedivServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFCotedivLib.Contracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICotedivServices_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_GuardarEntrada_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEntrada" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_GuardarEntrada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEntradaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_VerEntrada_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerEntrada" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_VerEntrada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerEntradaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_BorrarEntrada_InputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarEntrada" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_BorrarEntrada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarEntradaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ListarEntradas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEntradas" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ListarEntradas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEntradasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ValorarEntrada_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValorarEntrada" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ValorarEntrada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValorarEntradaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_EvaluarEntrada_InputMessage">
+    <wsdl:part name="parameters" element="tns:EvaluarEntrada" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_EvaluarEntrada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EvaluarEntradaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_GuardarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_GuardarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_VerPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerPerfil" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_VerPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ListarExpertos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExpertos" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_ListarExpertos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExpertosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_CrearCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCuenta" />
+  </wsdl:message>
+  <wsdl:message name="ICotedivServices_CrearCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCuentaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICotedivServices">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/Login" message="tns:ICotedivServices_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/LoginResponse" message="tns:ICotedivServices_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/Logout" message="tns:ICotedivServices_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/LogoutResponse" message="tns:ICotedivServices_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEntrada">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/GuardarEntrada" message="tns:ICotedivServices_GuardarEntrada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/GuardarEntradaResponse" message="tns:ICotedivServices_GuardarEntrada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerEntrada">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/VerEntrada" message="tns:ICotedivServices_VerEntrada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/VerEntradaResponse" message="tns:ICotedivServices_VerEntrada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarEntrada">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/BorrarEntrada" message="tns:ICotedivServices_BorrarEntrada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/BorrarEntradaResponse" message="tns:ICotedivServices_BorrarEntrada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEntradas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/ListarEntradas" message="tns:ICotedivServices_ListarEntradas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/ListarEntradasResponse" message="tns:ICotedivServices_ListarEntradas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValorarEntrada">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/ValorarEntrada" message="tns:ICotedivServices_ValorarEntrada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/ValorarEntradaResponse" message="tns:ICotedivServices_ValorarEntrada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EvaluarEntrada">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/EvaluarEntrada" message="tns:ICotedivServices_EvaluarEntrada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/EvaluarEntradaResponse" message="tns:ICotedivServices_EvaluarEntrada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/GuardarPerfil" message="tns:ICotedivServices_GuardarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/GuardarPerfilResponse" message="tns:ICotedivServices_GuardarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/VerPerfil" message="tns:ICotedivServices_VerPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/VerPerfilResponse" message="tns:ICotedivServices_VerPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarExpertos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/ListarExpertos" message="tns:ICotedivServices_ListarExpertos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/ListarExpertosResponse" message="tns:ICotedivServices_ListarExpertos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICotedivServices/CrearCuenta" message="tns:ICotedivServices_CrearCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICotedivServices/CrearCuentaResponse" message="tns:ICotedivServices_CrearCuenta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICotedivServices" type="tns:ICotedivServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEntrada">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/GuardarEntrada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerEntrada">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/VerEntrada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarEntrada">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/BorrarEntrada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEntradas">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/ListarEntradas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValorarEntrada">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/ValorarEntrada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EvaluarEntrada">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/EvaluarEntrada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarPerfil">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/GuardarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerPerfil">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/VerPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarExpertos">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/ListarExpertos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCuenta">
+      <soap:operation soapAction="http://tempuri.org/ICotedivServices/CrearCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CotedivServices">
+    <wsdl:port name="BasicHttpBinding_ICotedivServices" binding="tns:BasicHttpBinding_ICotedivServices">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WCFCotedivLib/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

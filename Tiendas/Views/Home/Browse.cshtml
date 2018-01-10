@@ -1,7 +1,7 @@
 ﻿<h1>Buscar negocios</h1>
 <div class="row">
     <div class="col-md-12">
-        <form>
+        <form method="post" action="@Url.Action("loadResults")">
             <div class="input-group">
                 <input type="text" id="txtBuscar" name="txtBuscar" class="form-control" placeholder="¿Qué negocio buscas?" />
                 <div class="input-group-btn">
@@ -12,11 +12,11 @@
             </div>
             <br />
             <div class="input-group">
-                @for (int i = 0; i < 10; i++) {
-                    <label for="tag@(i)">
-                        Tag @i.ToString()
+                @foreach (var item in (ViewBag.Etiquetas as Dictionary<string, string>)) {
+                    <label for="@item.Key">
+                        @item.Value
                     </label>
-                    <input type="checkbox" id="tag@(i)" />
+                    <input type="checkbox" id="@item.Key" />
                 }
             </div>
         </form>

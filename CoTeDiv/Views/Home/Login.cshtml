@@ -1,6 +1,5 @@
 ﻿@model SernaSistemas.Core.Models.LoginModel
-@using (Html.BeginForm(Model)) {
-
+<form id="frmLogin" name="frmLogin" action="@Url.Action("Login")" method="post">
     @Html.TextBoxFor(m => m.NombreUsuario, new {
         @class = "form-control", @placeholder = "Nombre de usuario"
     })<br />
@@ -8,7 +7,7 @@
         @class = "form-control", @placeholder = "Contraseña"
     })<br />
     <button value="Iniciar sesión" class="btn btn-primary">Iniciar sesión</button><br />
-}
+</form>
 @Html.ActionLink(linkText: "Regístrate", actionName: "Registrar", routeValues: null, htmlAttributes: new {
     @class = "btn btn-link btn-lg"
 })

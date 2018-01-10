@@ -1,19 +1,23 @@
-﻿<h2>Resultados de la búsqueda</h2>
-@for (int i = 0; i < 10; i++) {
-    <div class="row">
-        <div class="col-md-1">
-            @Html.ActionLink(">>", "verNegocio", new {
-                @id = i
-            })
+﻿
+<h2>Resultados de la búsqueda</h2>
+@if (ViewBag.Resultados != null) {
+
+    foreach (var item in (ViewBag.Resultados as Dictionary<int, Tiendas.Models.TiendaModel>)) {
+        <div class="row">
+            <div class="col-md-1">
+                @Html.ActionLink(">>", "verNegocio", new {
+                    @id = item.Key
+                })
+            </div>
+            <div class="col-md-5">
+                @item.Value.Nombre
+            </div>
+            <div class="col-md-3">
+                @item.Value.Telefono
+            </div>
+            <div class="col-md-3">
+                @item.Value.Direccion
+            </div>
         </div>
-        <div class="col-md-5">
-            Negocio @i.ToString()
-        </div>
-        <div class="col-md-3">
-            Teléfono @i.ToString()
-        </div>
-        <div class="col-md-3">
-            @string.Concat("Correo", i.ToString(), "@dominio", i.ToString(), ".ext")
-        </div>
-    </div>
+    }
 }

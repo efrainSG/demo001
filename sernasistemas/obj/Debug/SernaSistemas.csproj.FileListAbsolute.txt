@@ -109,3 +109,12 @@ C:\Users\EFSERN\source\repos\SernaSistemas\SernaSistemas\bin\Google.Apis.xml
 C:\Users\EFSERN\source\repos\SernaSistemas\SernaSistemas\bin\Google.Apis.Auth.xml
 C:\Users\EFSERN\source\repos\SernaSistemas\SernaSistemas\bin\Google.Apis.Blogger.v3.xml
 C:\Users\EFSERN\source\repos\SernaSistemas\SernaSistemas\bin\Google.Apis.Core.xml
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.IO.Compression.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas\bin\roslyn\VBCSCompiler.exe

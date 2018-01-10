@@ -9,13 +9,13 @@ namespace Tiendas.Controllers {
         private LoginModel setData(int id, DateTime date) {
             ViewData.Add("Id", id);
             ViewData.Add("UltimoLogin", date.ToShortDateString());
-            return new LoginModel("YO", "***", string.Empty) { idUsuario = id, UltimoLogin = date };
+            return new LoginModel("YO", "***", string.Empty) { IdUsuario = id, UltimoLogin = date };
         }
 
         public ActionResult Index(LoginModel model) {
-            var data = setData(model.idUsuario, model.UltimoLogin);
+            var data = setData(model.IdUsuario, model.UltimoLogin);
             return RedirectToAction("Inicio", new {
-                id = model.idUsuario, fecha = model.UltimoLogin.ToShortDateString()
+                id = model.IdUsuario, fecha = model.UltimoLogin.ToShortDateString()
             });
         }
         public ActionResult Inicio(int id, string fecha) {

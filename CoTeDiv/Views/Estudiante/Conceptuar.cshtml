@@ -1,7 +1,37 @@
-﻿
+﻿@model CoTeDiv.Models.ResponseModel
 @{
     ViewBag.Title = "Conceptuar";
+    Layout = "~/Views/Shared/Estudiante.cshtml";
 }
 
 <h2>Conceptuar</h2>
 
+<form id="frmConcepto" name="frmConcepto" action="@Url.Action("Conceptuar")" method="post">
+    @Html.HiddenFor(m => m.Concepto.Id)
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Concepto.Titulo)
+        </div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Concepto.Titulo, new {
+                @class = "form-control", @placeholder = "Título de tu concepto"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Concepto.Contenido)
+        </div>
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Concepto.Contenido, new {
+                @class = "form-control", @placeholder = "Escribe tu concepto"
+            })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-lg btn-primary" value="Guardar" />
+        </div>
+    </div>
+
+</form>

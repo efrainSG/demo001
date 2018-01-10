@@ -10,7 +10,7 @@ namespace SernaSistemas.Controllers {
     public class HomeController : Controller {
         const string URL_BLOGGER = "https://itcoffeecups.blogspot.com/";
 
-        private BloggerFeedModel getPosts(string APIKey, string BlogID) {
+        private BloggerFeedModel GetPosts(string APIKey, string BlogID) {
             BloggerFeedModel model = new BloggerFeedModel();
 
             Google.Apis.Blogger.v3.BloggerService servicio = new Google.Apis.Blogger.v3.BloggerService(
@@ -45,7 +45,7 @@ namespace SernaSistemas.Controllers {
         public ActionResult Index(ContactoModel model) {
             var data = ViewBag;
             data = ViewData;
-            return View(getPosts(
+            return View(GetPosts(
                 APIKey: "AIzaSyA9SEDz5J3h61m1xMkL2EPLyFWaCYqn2QA",
                 BlogID: "3484139233446513265"
                 ));
@@ -72,7 +72,7 @@ namespace SernaSistemas.Controllers {
 
         [HttpPost]
         [ActionName("FormContacto")]
-        public ActionResult postContacto(ContactoModel model) {
+        public ActionResult PostContacto(ContactoModel model) {
             model.Registrado = DateTime.Today;
             SernaSistemasServices servicio = new SernaSistemasServices();
             var response =

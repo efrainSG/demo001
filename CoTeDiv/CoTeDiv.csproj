@@ -144,7 +144,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
+    <Compile Include="Connected Services\CotedivServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -157,12 +157,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
-    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+    <None Include="Connected Services\CotedivServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\CotedivServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\CotedivServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -177,14 +178,20 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\ServiceReference1\Arrays.xsd">
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.AlumnoResponse.datasource" />
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.BoolResponse.datasource" />
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.EntradaResponse.datasource" />
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.ListaResponse.datasource" />
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.LoginResponse.datasource" />
+    <Content Include="Properties\DataSources\WCFCotedivLib.Contracts.PerfilResponse.datasource" />
+    <None Include="Connected Services\CotedivServiceReference\service.wsdl" />
+    <None Include="Connected Services\CotedivServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference1\service.wsdl" />
-    <None Include="Connected Services\ServiceReference1\service.xsd">
+    <None Include="Connected Services\CotedivServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference1\service1.xsd">
+    <None Include="Connected Services\CotedivServiceReference\WCFCotedivLib.Contracts.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -198,7 +205,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -220,10 +229,11 @@
     <Content Include="Views\Estudiante\Conceptuar.cshtml" />
     <Content Include="Views\Estudiante\ListarConceptos.cshtml" />
     <Content Include="Views\Shared\HazBusqueda.cshtml" />
+    <Content Include="Views\Shared\Estudiante.cshtml" />
+    <Content Include="Views\Estudiante\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Administrador\" />
     <Folder Include="Views\Concepto\" />
     <Folder Include="Views\Experto\" />
@@ -245,9 +255,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SernaSistemas.Core\SernaSistemas.Core.csproj">
       <Project>{3F8959AF-0CC4-489B-B7E7-B4299B6C4024}</Project>
       <Name>SernaSistemas.Core</Name>
@@ -256,6 +263,9 @@
       <Project>{CEEE7934-5BCC-42E1-813B-31B8777743A6}</Project>
       <Name>WCFCotedivLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CotedivServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
