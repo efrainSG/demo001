@@ -1,16 +1,34 @@
-﻿@model object
-<h1>Resultados</h1>
-@for (int i = 0; i < 10; i++) {
-    <div class="row">
-        <div class="col-md-2">
-            Concepto @i.ToString()
-        </div>
-        <div class="col-md-9">
-            Definición @i.ToString()
-        </div>
-        <div class="col-md-1">
-            <a href="#" id="notlike">no Ok</a> / 
-            <a href="#" id="like">Ok</a>
-        </div>
-    </div>
+﻿@model CoTeDiv.Models.ResponseModel
+@{
+    ViewBag.Title = "Resultados de búsqueda";
+    Layout = ViewBag.Layout; // "~/Views/Shared/Estudiante.cshtml";
+}
+<h1>@ViewBag.Title</h1>
+
+@if (Model.Posts.Count > 0) {
+    <dl class="dl-horizontal">
+        @foreach (var item in Model.Posts) {
+            <dt class="well well-sm">
+                @Html.ActionLink(linkText: item.Value.Titulo, actionName: "VerPost", routeValues: new {
+                    @id = item.Key
+                }, htmlAttributes: null)
+                @if (item.Value.Evaluacion == 0) {
+                    <br />
+                    @Html.ActionLink(linkText: " ", actionName: "Valorar", routeValues: new {
+                        @id = item.Key, @valor = 1
+                    }, htmlAttributes: new {
+                        @class = "btn btn-sm btn-success"
+                    })
+                    @Html.ActionLink(linkText: " ", actionName: "Valorar", routeValues: new {
+                        @id = item.Key, @valor = -1
+                    }, htmlAttributes: new {
+                        @class = "btn btn-sm btn-danger"
+                    })
+                }
+            </dt>
+            <dd>
+                @item.Value.Contenido
+            </dd>
+        }
+    </dl>
 }

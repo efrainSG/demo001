@@ -1,0 +1,61 @@
+﻿
+@model SernaSistemas.Core.Models.ContactoModel
+
+
+<form class="form-group well" method="post" action="@Url.Action("FormContacto")">
+    @ViewBag.mensaje
+    <br />
+    @Html.ValidationSummary(true)
+    <h4 class="text-primary">Ponte en contacto conmigo</h4>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon" id="addonNombre"><i class="glyphicon glyphicon-user"></i></span>
+            @Html.TextBoxFor(model => model.Nombre, htmlAttributes: new {
+                @class = "form-control", @style = "width:100%", @placeholder = "Nombre", @id = "errNombre"
+            })
+        </div>
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+            @Html.TextBoxFor(model => model.Telefono, htmlAttributes: new {
+                @class = "form-control", @placeholder = "Teléfono o celular"
+            })
+        </div>
+        <br /><span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Telefono)
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            @Html.TextBoxFor(model => model.Email, htmlAttributes: new {
+                @class = "form-control", @placeholder = "correo electrónico"
+            })
+        </div>
+        <br /><span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Email)
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+            @Html.TextAreaFor(model => model.Comentario, htmlAttributes: new {
+                @class = "form-control", @placeholder = "¿En qué te puedo ayudar?"
+            })
+        </div>
+        <br /><span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Comentario)
+        </span>
+    </div>
+    <div class="row">
+        <div class="text-center col-md-12">
+            <input type="submit" class="btn btn-primary" value="Enviar" />
+        </div>
+    </div>
+    @*}*@
+</form>
+

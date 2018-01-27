@@ -1,0 +1,8 @@
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.dll.config
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\bin\Debug\SernaSistemas.Core.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\bin\Debug\SernaSistemas.Core.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.csproj.CoreCompileInputs.cache
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.pdb

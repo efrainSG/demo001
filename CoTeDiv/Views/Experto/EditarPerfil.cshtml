@@ -1,0 +1,113 @@
+﻿@model CoTeDiv.Models.ResponseModel
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/Experto.cshtml";
+}
+<style>
+    div.well-profile {
+        background-color: #fff;
+        border-width: 2px;
+        border-color: #84d312;
+    }
+
+    div.col-profile {
+        background-color: rgba(255, 216, 0, 0.67);
+    }
+</style>
+<h2>Perfil</h2>
+<div class="container well well-sm">
+    <form id="frmPerfil" name="frmPerfil" action="@Url.Action("Perfil")" method="post">
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre:
+            </dt>
+            <dd>
+                @for (var i = 0; i < Model.Perfil.Nombres.Count; i++) {
+                    @Html.TextBoxFor(m => m.Perfil.Nombres[i].Valor, new {
+                        @class = "form-control"
+                    })
+                }
+            </dd>
+            <dt>
+                Teléfono:
+            </dt>
+            <dd>
+                @Html.TextBoxFor(m=>m.Perfil.Telefono, new {
+           @class="form-control"})
+            </dd>
+            <dt>
+                Correo:
+            </dt>
+            <dd>
+                @Html.TextBoxFor(m => m.Perfil.Correo, new {
+                    @class = "form-control"
+                })
+            </dd>
+            <dt>
+                Fecha de nacimiento:
+            </dt>
+            <dd>
+                @Html.TextBoxFor(m => m.Perfil.Nacimiento, new {
+                    @class = "form-control"
+                })
+            </dd>
+            <dt>
+                Resumen:
+            </dt>
+            <dd>
+                @Html.TextAreaFor(m => m.Perfil.Resumen, new {
+                    @class = "form-control"
+                })
+            </dd>
+            @*<dt>
+                Institución:
+            </dt>
+            <dd>
+                @Html.DropDownListFor(m => m.Perfil.IdInstitucion, new SelectList(ViewBag.Instituciones, "Id", "Nombre"), new {
+               @class="form-control"
+           })*@
+
+                @*<select id="Perfil_Institucion" name="Perfil.Institucion" class="form-control">
+                    @for (int i = 0; i < (ViewBag.Instituciones as List<CoTeDiv.Models.InstitucionModel>).Count; i++) {
+                        <option value="@ViewBag.Instituciones[i].Id">
+                            @ViewBag.Instituciones[i].Nombre
+                        </option>
+                    }*@
+                @*</select>
+            </dd>*@
+            <dt>
+                Dirección:
+            </dt>
+            <dd>
+                <dl class="dl-horizontal">
+                    @{ var n = 0;
+                        foreach (var item in ViewBag.TipoElementoDireccion as Dictionary<int, string>) {
+                            <dt>
+                                @item.Value
+                            </dt>
+                            <dd>
+                                <input type="hidden" id="TipoElementoDireccion_@{n}__ "
+<input type="text" id="Perfil_Direccion_@{ @n }__Valor"
+                                       name="Perfil.Direccion[@{ @n }].Valor"
+                                       class="form-control"
+                                       value="@{
+                                       var e = Model.Perfil.Direccion.FirstOrDefault(d => d.IdTipoElemento.Equals(item.Key));
+                                       if (e != null) {
+                                   @e.Valor
+                                       }
+                               } " />
+                            </dd>
+                            n++;
+                        }
+                    }
+                </dl>
+            </dd>
+        </dl>
+        <br />
+        <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-lg btn-primary" value="Guardar" />
+            </div>
+        </div>
+    </form>
+</div>

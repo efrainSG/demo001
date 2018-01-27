@@ -231,12 +231,18 @@
     <Content Include="Views\Shared\HazBusqueda.cshtml" />
     <Content Include="Views\Shared\Estudiante.cshtml" />
     <Content Include="Views\Estudiante\About.cshtml" />
+    <Content Include="Views\Estudiante\editarPerfil.cshtml" />
+    <Content Include="Views\Shared\Experto.cshtml" />
+    <Content Include="Views\Experto\Inicio.cshtml" />
+    <Content Include="Views\Experto\About.cshtml" />
+    <Content Include="Views\Experto\Perfil.cshtml" />
+    <Content Include="Views\Experto\EditarPerfil.cshtml" />
+    <Content Include="Views\Experto\ListarConceptos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Administrador\" />
     <Folder Include="Views\Concepto\" />
-    <Folder Include="Views\Experto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -258,6 +264,10 @@
     <ProjectReference Include="..\SernaSistemas.Core\SernaSistemas.Core.csproj">
       <Project>{3F8959AF-0CC4-489B-B7E7-B4299B6C4024}</Project>
       <Name>SernaSistemas.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SernaSistemas.DataAccess\SernaSistemas.DataAccess.csproj">
+      <Project>{3801434F-88C9-446A-B111-A13A334968FD}</Project>
+      <Name>SernaSistemas.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\WCFCotedivLib\WCFCotedivLib.csproj">
       <Project>{CEEE7934-5BCC-42E1-813B-31B8777743A6}</Project>

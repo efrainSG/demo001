@@ -1,0 +1,75 @@
+﻿@model CoTeDiv.Models.ResponseModel
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/Experto.cshtml";
+}
+<style>
+    div.well-profile {
+        background-color: #fff;
+        border-width: 2px;
+        border-color: #84d312;
+    }
+
+    div.col-profile {
+        background-color: rgba(255, 216, 0, 0.67);
+    }
+</style>
+<h2>Perfil</h2>
+<div class="container well well-sm">
+    <dl class="dl-horizontal">
+        <dt>Nombre completo:</dt>
+        <dd>
+            @Model.Perfil.NombreCompleto
+        </dd>
+        <dt>Domicilio:</dt>
+        <dd>
+            @Model.Perfil.DireccionCompleta
+        </dd>
+        <dt>Correo electrónico:</dt>
+        <dd>
+            @Model.Perfil.Correo
+        </dd>
+        <dt>Id:</dt>
+        <dd>
+            @Model.Perfil.Id
+        </dd>
+        <dt>Id de status:</dt>
+        <dd>
+            @Model.Perfil.IdStatus
+        </dd>
+        <dt>Fecha de nacimiento:</dt>
+        <dd>
+            @Model.Perfil.Nacimiento.ToShortDateString()
+        </dd>
+        <dt>Resumen:</dt>
+        <dd>
+            @Model.Perfil.Resumen
+        </dd>
+        <dt>Teléfono:</dt>
+        <dd>
+            @Model.Perfil.Telefono
+        </dd>
+        <dt>Instituciones:</dt>
+        <dd>
+            <dl>
+                @foreach (var item in Model.Perfil.Instituciones) {
+                    <dt>
+                        @item.Nombre
+                    </dt>
+                    <dd>
+                        @item.Id - @item.Lat , @item.Lon
+                    </dd>
+                }
+            </dl>
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink(linkText: "Modificar", actionName: "EditarPerfil", routeValues: new {
+            @id = Model.LoginData.IdUsuario, @hash = Model.LoginData.Hash
+        }, htmlAttributes: new {
+            @class = "btn btn-lg btn-primary"
+        })
+    </div>
+</div>

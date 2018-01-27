@@ -1,0 +1,7 @@
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll.config
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.pdb

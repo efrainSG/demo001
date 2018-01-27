@@ -1,536 +1,663 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 38.75" name="SernaSistemasDataModel">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.75, 41.75" name="SernaSistemasDataModel">
   <DataContextMoniker Name="/SernaSistemasDataModelDataContext" />
   <nestedChildShapes>
-    <classShape Id="1338e77d-61ba-4861-ad83-dba4e9e06413" absoluteBounds="6.5, 23, 2, 1.3862939453125023">
+    <classShape Id="6fa38bab-f665-41e9-994d-a79939f52620" absoluteBounds="9, 12.5, 2, 1.3862939453124987">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Institucion" />
       <nestedChildShapes>
-        <elementListCompartment Id="f548835e-c96a-4c99-a912-a6e8f5f2db21" absoluteBounds="6.5150000000000006, 23.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="65e1eabe-16ad-4317-b84a-34a52c9533fd" absoluteBounds="9.015, 12.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="eaefe401-015f-48dc-92c3-886e8352f1fa" absoluteBounds="3.75, 22.875, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Locacion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff615343-0cc7-4249-9348-ed6044e33345" absoluteBounds="3.7650000000000006, 23.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="8753e160-7eb2-408d-8a79-2fe061c23d01" absoluteBounds="3.75, 4, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Sistema" />
-      <nestedChildShapes>
-        <elementListCompartment Id="eb7138b7-8904-470f-b1f3-29f987ee7cf7" absoluteBounds="3.765, 4.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" absoluteBounds="0.75, 13.125, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Status" />
-      <nestedChildShapes>
-        <elementListCompartment Id="f90b5fea-0f9b-482f-8a80-6bf968e63086" absoluteBounds="0.765, 13.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7aa6b2b0-90c3-4b84-9c38-cfb27c16ddc1" absoluteBounds="6.5, 9.875, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema" />
-      <nestedChildShapes>
-        <elementListCompartment Id="717f0eb0-36a3-451c-b982-9fd898e35564" absoluteBounds="6.5150000000000006, 10.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f5429b8f-3459-4ef5-9a92-e1b110bece6b" absoluteBounds="4.25, 34, 2, 1.3862939453125023">
+    <classShape Id="44511bef-6329-40f0-a959-196583ce0c81" absoluteBounds="6.25, 34, 2, 1.3862939453125023">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/TipoElemento" />
       <nestedChildShapes>
-        <elementListCompartment Id="41218060-005e-437c-8f04-027d656b866d" absoluteBounds="4.265, 34.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6f2291b5-67ea-433d-9d2f-2d07afd202f6" absoluteBounds="6.2650000000000006, 34.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.75 : 23.6931469726563); (6.04166666666667 : 23.6931469726563 : JumpStart); (6.20833333333333 : 23.6931469726563 : JumpEnd); (6.5 : 23.6931469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="71cb8953-9456-4fa6-882e-96efea7ab3f2" absoluteBounds="6.25, 12.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Locacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="08dd192d-8b6f-45c7-9f31-6949c36d0bf4" absoluteBounds="6.2650000000000006, 12.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b03f4d0-e050-433b-9130-6d4a2f1ae329" absoluteBounds="0.75, 20.125, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Sistema" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46ba8ac2-35bc-430d-afd3-078410ca5835" absoluteBounds="0.76499999999999968, 20.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="603c7880-d208-46f2-b284-6ae6c94283fb" absoluteBounds="0.75, 17.25, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Status" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55acc263-ba47-4a32-a91d-6f0063dd875f" absoluteBounds="0.765, 17.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" absoluteBounds="3.5, 20, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50ddd883-a0ed-4940-a9b1-fb76ace2da14" absoluteBounds="3.515, 20.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 13.1931469726562); (9 : 13.1931469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Locacion/Locacion_Institucion" />
       <nodes>
-        <classShapeMoniker Id="eaefe401-015f-48dc-92c3-886e8352f1fa" />
-        <classShapeMoniker Id="1338e77d-61ba-4861-ad83-dba4e9e06413" />
+        <classShapeMoniker Id="71cb8953-9456-4fa6-882e-96efea7ab3f2" />
+        <classShapeMoniker Id="6fa38bab-f665-41e9-994d-a79939f52620" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.75 : 5.3862939453125); (4.75 : 6.75); (5.57291666666667 : 6.75 : JumpStart); (5.73958333333333 : 6.75 : JumpEnd); (5.75 : 6.75); (5.75 : 10.6642976888021); (6.5 : 10.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 20.8181469726563); (3.5 : 20.8181469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Sistema/Sistema_StatusSistema" />
       <nodes>
-        <classShapeMoniker Id="8753e160-7eb2-408d-8a79-2fe061c23d01" />
-        <classShapeMoniker Id="7aa6b2b0-90c3-4b84-9c38-cfb27c16ddc1" />
+        <classShapeMoniker Id="0b03f4d0-e050-433b-9130-6d4a2f1ae329" />
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 13.1764325236378); (2.94107443490112 : 12.9853580887367 : JumpStart); (3.05892556509888 : 12.8675069585389 : JumpEnd); (3.28125 : 12.6451825236378); (3.28125 : 12.0785953776042); (5.875 : 12.0785953776042); (6.5 : 11.4535953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 18.4430730572416); (3.125 : 18.8180730572416); (3.125 : 20.3778214863281); (3.5 : 20.3778214863281)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_StatusSistema" />
       <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="7aa6b2b0-90c3-4b84-9c38-cfb27c16ddc1" />
+        <classShapeMoniker Id="603c7880-d208-46f2-b284-6ae6c94283fb" />
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
       </nodes>
     </associationConnector>
-    <classShape Id="c71874a3-7fa5-4040-8b71-93fae29889fa" absoluteBounds="3.5, 15.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Alumno" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d2cd3e59-2394-414c-880d-fef2b924600a" absoluteBounds="3.5150000000000006, 16.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="383669f1-0f4a-4c85-a2c3-ae6d88f7a0c1" absoluteBounds="9, 18.625, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Valoracion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="78f2c5e4-62a3-414e-9f40-c75e1f8da6e0" absoluteBounds="9.015, 19.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c3d646ed-7ac2-444c-9215-53d0459213c5" absoluteBounds="3.5, 7, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Area" />
-      <nestedChildShapes>
-        <elementListCompartment Id="be05a6f9-843b-43be-ae83-f1cfe30e6cb5" absoluteBounds="3.5150000000000006, 7.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="517b58c6-ba83-4fdb-9284-25615434240b" absoluteBounds="12, 14.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Evaluacion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7b4a5f08-fe31-439f-a26b-1587e326b3c3" absoluteBounds="12.015, 15.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" absoluteBounds="3.5, 9.875, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Experto" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4ebd08e9-1578-40b9-a28e-017a9cfde628" absoluteBounds="3.5150000000000006, 10.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="ef2e1db0-a134-4a84-bcfb-6d5f03fdab05" absoluteBounds="6.25, 7, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/ExpertoArea" />
-      <nestedChildShapes>
-        <elementListCompartment Id="eea29778-1180-4bce-83a3-bc521da3eab7" absoluteBounds="6.2650000000000006, 7.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="41448603-3010-4196-b4f4-d817f1f4b6db" absoluteBounds="9.25, 10, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/ExpertoEscuela" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4ac3f46a-cfa9-47b7-9ef6-126ec7158903" absoluteBounds="9.265, 10.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="40acbdd5-8ff7-4e61-9817-2219c5b2667f" absoluteBounds="6.25, 19.375, 2, 1.9631982421874952">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Publicacion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="fb10e70d-b6c6-44b7-adb5-3caeabda4c52" absoluteBounds="6.2650000000000006, 19.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(6.5 : 23.3153214863281); (6.20833333333333 : 23.3153214863281 : JumpStart); (6.04166666666667 : 23.3153214863281 : JumpEnd); (6 : 23.3153214863281); (6 : 22.625); (4.5 : 22.625); (4.5 : 17.5208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_Alumno" />
-      <nodes>
-        <classShapeMoniker Id="1338e77d-61ba-4861-ad83-dba4e9e06413" />
-        <classShapeMoniker Id="c71874a3-7fa5-4040-8b71-93fae29889fa" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 14.3189925130208); (1.75 : 16.6354484049479); (3.5 : 16.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Alumno" />
-      <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="c71874a3-7fa5-4040-8b71-93fae29889fa" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.0312525 : 17.5208968098958); (5.0312525 : 18.96875); (6.04166666666667 : 18.96875 : JumpStart); (6.20833333333333 : 18.96875 : JumpEnd); (8.79166666666667 : 18.96875 : JumpStart); (8.95833333333333 : 18.96875 : JumpEnd); (9 : 18.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_Valoracion" />
-      <nodes>
-        <classShapeMoniker Id="c71874a3-7fa5-4040-8b71-93fae29889fa" />
-        <classShapeMoniker Id="383669f1-0f4a-4c85-a2c3-ae6d88f7a0c1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.19931705603966 : 8.3862939453125); (4.19931705603966 : 8.6362939453125); (4.81500117938702 : 8.6362939453125); (4.81500117938702 : 8.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Area/Area_Area" />
-      <nodes>
-        <classShapeMoniker Id="c3d646ed-7ac2-444c-9215-53d0459213c5" />
-        <classShapeMoniker Id="c3d646ed-7ac2-444c-9215-53d0459213c5" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.47449961313101 : 11.4535953776042); (5.66199961313101 : 11.6410953776042); (6.22916666666667 : 11.6410953776042 : JumpStart); (6.39583333333333 : 11.6410953776042 : JumpEnd); (13 : 11.6410953776042); (13 : 14.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_Evaluacion" />
-      <nodes>
-        <classShapeMoniker Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" />
-        <classShapeMoniker Id="517b58c6-ba83-4fdb-9284-25615434240b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.73071242863582 : 13.125); (2.94107443490112 : 12.9146379937347 : JumpStart); (3.05892556509888 : 12.7967868635369 : JumpEnd); (3.125 : 12.7307124286358); (3.125 : 10.6642976888021); (3.27604166666667 : 10.6642976888021 : JumpStart); (3.44270833333333 : 10.6642976888021 : JumpEnd); (3.5 : 10.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Experto" />
-      <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.69314697265625); (6.25 : 7.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Area/Area_ExpertoArea" />
-      <nodes>
-        <classShapeMoniker Id="c3d646ed-7ac2-444c-9215-53d0459213c5" />
-        <classShapeMoniker Id="ef2e1db0-a134-4a84-bcfb-6d5f03fdab05" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 9.875); (5.875 : 9.5); (5.875 : 8.07097245898438); (6.25 : 8.07097245898438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_ExpertoArea" />
-      <nodes>
-        <classShapeMoniker Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" />
-        <classShapeMoniker Id="ef2e1db0-a134-4a84-bcfb-6d5f03fdab05" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 11.4268796865986); (5.875 : 11.8018796865986); (5.875 : 11.7612939453125); (6.10896809895837 : 11.7612939453125 : JumpStart); (6.27563476562503 : 11.7612939453125 : JumpEnd); (8.66666666666667 : 11.7612939453125 : JumpStart); (8.83333333333333 : 11.7612939453125 : JumpEnd); (8.875 : 11.7612939453125); (8.94107443490112 : 11.6952195104114 : JumpStart); (9.05892556509888 : 11.5773683802136 : JumpEnd); (9.25 : 11.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_ExpertoEscuela" />
-      <nodes>
-        <classShapeMoniker Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" />
-        <classShapeMoniker Id="41448603-3010-4196-b4f4-d817f1f4b6db" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(7.5 : 23); (7.5 : 21.5881982421875); (8.75 : 21.5881982421875); (8.75 : 10.6618949726562); (8.91666666666667 : 10.6618949726562 : JumpStart); (9.08333333333333 : 10.6618949726562 : JumpEnd); (9.25 : 10.6618949726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_ExpertoEscuela" />
-      <nodes>
-        <classShapeMoniker Id="1338e77d-61ba-4861-ad83-dba4e9e06413" />
-        <classShapeMoniker Id="41448603-3010-4196-b4f4-d817f1f4b6db" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 19.8854484049479); (8.79166666666667 : 19.8854484049479 : JumpStart); (8.95833333333333 : 19.8854484049479 : JumpEnd); (9 : 19.8854484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Publicacion/Publicacion_Valoracion" />
-      <nodes>
-        <classShapeMoniker Id="40acbdd5-8ff7-4e61-9817-2219c5b2667f" />
-        <classShapeMoniker Id="383669f1-0f4a-4c85-a2c3-ae6d88f7a0c1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 20.8982975260417); (13 : 20.8982975260417); (13 : 16.5208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Publicacion/Publicacion_Evaluacion" />
-      <nodes>
-        <classShapeMoniker Id="40acbdd5-8ff7-4e61-9817-2219c5b2667f" />
-        <classShapeMoniker Id="517b58c6-ba83-4fdb-9284-25615434240b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.9999975 : 17.5208968098958); (3.9999975 : 20.3565991210937); (6.25 : 20.3565991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_Publicacion" />
-      <nodes>
-        <classShapeMoniker Id="c71874a3-7fa5-4040-8b71-93fae29889fa" />
-        <classShapeMoniker Id="40acbdd5-8ff7-4e61-9817-2219c5b2667f" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.09375 : 14.3189925130208); (1.09375 : 20.89349609375); (6.25 : 20.89349609375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Publicacion" />
-      <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="40acbdd5-8ff7-4e61-9817-2219c5b2667f" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="48cbc760-d803-4c05-9d07-d63de06d09e8" absoluteBounds="7, 29, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona_Direccion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5b08ec66-8633-4667-b3bc-44daf91ac908" absoluteBounds="7.0150000000000006, 29.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="cc64a22b-ddb4-4ef1-9fa7-6c2f768f8752" absoluteBounds="7, 32.25, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona_Foto" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1429cae0-6a33-4351-81d2-200117c48f75" absoluteBounds="7.0150000000000006, 32.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c32a5566-6a2c-42c7-b49e-943258b86514" absoluteBounds="7, 36.875, 2, 1.5785953776041595">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Nombre" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d0466267-eb2f-4b50-b350-8d8de0a3b849" absoluteBounds="7.0150000000000006, 37.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2f3047ef-d071-40fe-97f5-92e988499040" absoluteBounds="4.25, 30.875, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a035a100-8ac9-43da-8736-1a863b0b9b07" absoluteBounds="4.265, 31.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4ddec92c-77ef-44a4-b490-26876a26edb3" absoluteBounds="9.25, 25.875, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Titulo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7cb7d917-92fd-49f8-930b-0bb8f9d3319a" absoluteBounds="9.265, 26.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a3025a2a-175c-4b74-b7fc-00986fc31988" absoluteBounds="6.5, 1, 2, 1.3862939453125023">
+    <classShape Id="ac70c639-278f-499b-a6b7-025cd8498dc1" absoluteBounds="3.5, 23.625, 2, 1.3862939453125023">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Permiso" />
       <nestedChildShapes>
-        <elementListCompartment Id="f46cdc04-e138-457c-8c9d-9c47bea47a7d" absoluteBounds="6.5150000000000006, 1.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="24b4a98e-f950-421d-a901-900a401d446a" absoluteBounds="3.515, 24.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f2365322-0f72-497a-ac34-d1038a00b17a" absoluteBounds="1.5, 0.875, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Rol" />
-      <nestedChildShapes>
-        <elementListCompartment Id="af390269-8e5f-4cfa-b3f2-6a80a7dba080" absoluteBounds="1.5150000000000001, 1.3350000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3febca6f-1650-4ae0-b5cb-67d9dab5dd91" absoluteBounds="9.25, 0.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/RolPermiso" />
-      <nestedChildShapes>
-        <elementListCompartment Id="190e39b4-b59a-44f4-89ec-869eea73943e" absoluteBounds="9.265, 1.2100000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="20209524-21fd-490b-ab6e-c990cb368eb7" absoluteBounds="1.5, 19, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Usuario" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b5ae80fd-a784-4776-82dd-0a80cf1607ff" absoluteBounds="1.5150000000000001, 19.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" absoluteBounds="0.75, 8.875, 2, 1.5785953776041666">
+    <classShape Id="16516606-093a-4264-a056-1e281e2001a0" absoluteBounds="6.25, 22.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema" />
       <nestedChildShapes>
-        <elementListCompartment Id="a2ab2155-957d-4c23-97c6-fcda38a2ca9c" absoluteBounds="0.76499999999999968, 9.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="dca7e98e-77c0-4a82-b9bb-a0e379ca76ce" absoluteBounds="6.2650000000000006, 23.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.25 : 32.5845955357071); (6.56607443490112 : 32.9006699706082 : JumpStart); (6.68392556509888 : 33.018521100806 : JumpEnd); (6.8125 : 33.1470955357071); (6.8125 : 37.6642976888021); (7 : 37.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Nombre" />
-      <nodes>
-        <classShapeMoniker Id="2f3047ef-d071-40fe-97f5-92e988499040" />
-        <classShapeMoniker Id="c32a5566-6a2c-42c7-b49e-943258b86514" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 23.6931469726563); (10.25 : 23.6931469726563); (10.25 : 25.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_Titulo" />
-      <nodes>
-        <classShapeMoniker Id="1338e77d-61ba-4861-ad83-dba4e9e06413" />
-        <classShapeMoniker Id="4ddec92c-77ef-44a4-b490-26876a26edb3" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(6.03125 : 30.875); (6.03125 : 25.96875); (7.41666666666667 : 25.96875 : JumpStart); (7.58333333333333 : 25.96875 : JumpEnd); (9.25 : 25.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Titulo" />
-      <nodes>
-        <classShapeMoniker Id="2f3047ef-d071-40fe-97f5-92e988499040" />
-        <classShapeMoniker Id="4ddec92c-77ef-44a4-b490-26876a26edb3" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.75 : 4); (4.75 : 1.69314697265625); (6.5 : 1.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="b498e4ef-837b-4246-9e38-6e3ae480b3be" absoluteBounds="3.5, 25.875, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Rol" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdb56ede-35de-49d3-be25-210b024124b2" absoluteBounds="3.5150000000000006, 26.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eaa6436d-d38a-4c62-a1b7-6680e54007cb" absoluteBounds="6.25, 25.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/RolPermiso" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56fbd3ae-a1d9-47a9-98f4-2e42cbd0f088" absoluteBounds="6.265, 25.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="536df06b-b07e-41cd-8795-0bcea726b3fd" absoluteBounds="3.5, 28, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="041c6166-1afd-4a6c-a26a-be600e4eb2ca" absoluteBounds="3.5150000000000006, 28.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.892378213443997 : 21.5112939453125); (0.892378213443997 : 24.3181469726563); (3.5 : 24.3181469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Sistema/Sistema_Permiso" />
       <nodes>
-        <classShapeMoniker Id="8753e160-7eb2-408d-8a79-2fe061c23d01" />
-        <classShapeMoniker Id="a3025a2a-175c-4b74-b7fc-00986fc31988" />
+        <classShapeMoniker Id="0b03f4d0-e050-433b-9130-6d4a2f1ae329" />
+        <classShapeMoniker Id="ac70c639-278f-499b-a6b7-025cd8498dc1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.2187475 : 4); (4.2187475 : 1.28407348632813); (3.5 : 1.28407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Sistema/Sistema_Rol" />
-      <nodes>
-        <classShapeMoniker Id="8753e160-7eb2-408d-8a79-2fe061c23d01" />
-        <classShapeMoniker Id="f2365322-0f72-497a-ac34-d1038a00b17a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 1.69314697265625); (9.25 : 1.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Permiso/Permiso_RolPermiso" />
-      <nodes>
-        <classShapeMoniker Id="a3025a2a-175c-4b74-b7fc-00986fc31988" />
-        <classShapeMoniker Id="3febca6f-1650-4ae0-b5cb-67d9dab5dd91" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.5 : 0.90625); (9.25 : 0.90625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Rol/Rol_RolPermiso" />
-      <nodes>
-        <classShapeMoniker Id="f2365322-0f72-497a-ac34-d1038a00b17a" />
-        <classShapeMoniker Id="3febca6f-1650-4ae0-b5cb-67d9dab5dd91" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 20.3862939453125); (2.5 : 31.7604484049479); (4.25 : 31.7604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Usuario/Usuario_Persona" />
-      <nodes>
-        <classShapeMoniker Id="20209524-21fd-490b-ab6e-c990cb368eb7" />
-        <classShapeMoniker Id="2f3047ef-d071-40fe-97f5-92e988499040" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.72449961313101 : 10.4535953776042); (3.1875 : 10.9165957644732); (3.1875 : 16.161472202474); (3.27604166666667 : 16.161472202474 : JumpStart); (3.44270833333333 : 16.161472202474 : JumpEnd); (3.5 : 16.161472202474)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema/UsuarioSistema_Alumno" />
-      <nodes>
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
-        <classShapeMoniker Id="c71874a3-7fa5-4040-8b71-93fae29889fa" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.1020799333183); (3.27604166666667 : 10.1020799333183 : JumpStart); (3.44270833333333 : 10.1020799333183 : JumpEnd); (3.5 : 10.1020799333183)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema/UsuarioSistema_Experto" />
-      <nodes>
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
-        <classShapeMoniker Id="be9d70e7-4cf0-4509-8ce2-c0bb53b67471" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.1484375 : 2.2612939453125); (3.1484375 : 9.0781225); (2.75 : 9.0781225)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Rol/Rol_UsuarioSistema" />
-      <nodes>
-        <classShapeMoniker Id="f2365322-0f72-497a-ac34-d1038a00b17a" />
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.65625 : 5.3862939453125); (5.65625 : 9.34375); (2.75 : 9.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.49228555171149 : 21.5112939453125); (2.49228555171149 : 23.21875); (6.25 : 23.21875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Sistema/Sistema_UsuarioSistema" />
       <nodes>
-        <classShapeMoniker Id="8753e160-7eb2-408d-8a79-2fe061c23d01" />
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
+        <classShapeMoniker Id="0b03f4d0-e050-433b-9130-6d4a2f1ae329" />
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.359375 : 19); (3.359375 : 9.72291496665915); (2.75 : 9.72291496665915)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 25.875); (5.875 : 25.5); (5.875 : 23.8674246888021); (6.25 : 23.8674246888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Rol/Rol_UsuarioSistema" />
+      <nodes>
+        <classShapeMoniker Id="b498e4ef-837b-4246-9e38-6e3ae480b3be" />
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.69233188257774 : 21.5112939453125); (1.69233188257774 : 26.5681469726563); (3.5 : 26.5681469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Sistema/Sistema_Rol" />
+      <nodes>
+        <classShapeMoniker Id="0b03f4d0-e050-433b-9130-6d4a2f1ae329" />
+        <classShapeMoniker Id="b498e4ef-837b-4246-9e38-6e3ae480b3be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 24.9494429077524); (6.0625 : 25.5119429077524); (6.0625 : 25.3111387716847); (6.2513612283153 : 25.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Permiso/Permiso_RolPermiso" />
+      <nodes>
+        <classShapeMoniker Id="ac70c639-278f-499b-a6b7-025cd8498dc1" />
+        <classShapeMoniker Id="eaa6436d-d38a-4c62-a1b7-6680e54007cb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 26.5993994726563); (5.85416666666667 : 26.5993994726563 : JumpStart); (6.02083333333333 : 26.5993994726563 : JumpEnd); (6.25 : 26.5993994726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Rol/Rol_RolPermiso" />
+      <nodes>
+        <classShapeMoniker Id="b498e4ef-837b-4246-9e38-6e3ae480b3be" />
+        <classShapeMoniker Id="eaa6436d-d38a-4c62-a1b7-6680e54007cb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 28.0618490375601); (5.9375 : 27.6243490375601); (5.9375 : 24.1917620332031); (6.25 : 24.1917620332031)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Usuario/Usuario_UsuarioSistema" />
       <nodes>
-        <classShapeMoniker Id="20209524-21fd-490b-ab6e-c990cb368eb7" />
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
+        <classShapeMoniker Id="536df06b-b07e-41cd-8795-0bcea726b3fd" />
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
       </nodes>
     </associationConnector>
-    <classShape Id="52246067-5982-49be-874b-60ecf237c13a" absoluteBounds="6.25, 15.75, 2, 2.1554996744791666">
+    <classShape Id="79e13d2a-1e05-4d3f-8d77-064263ee8dcf" absoluteBounds="9, 30.875, 2, 1.578595377604163">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona_Direccion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42bba557-e187-450d-90e6-5bff8853e36f" absoluteBounds="9.015, 31.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fc55610f-bd9e-4ace-bcf2-23e507314550" absoluteBounds="14.75, 15.625, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Titulo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ac61700-b03f-44a2-a202-3a182fb30f10" absoluteBounds="14.765, 16.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fcbcc36b-e9e1-4c6a-b96d-8aa3863cd7f5" absoluteBounds="9, 34.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona_Foto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="105207a4-8146-480d-b10a-f2e01bbd618b" absoluteBounds="9.015, 35.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3fab91e-4927-4544-8cf9-7705dcb4f852" absoluteBounds="9, 36.75, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Nombre" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d137f809-a391-477c-8a08-baa39c4084c8" absoluteBounds="9.015, 37.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" absoluteBounds="6.25, 30.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Persona" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75f5c05a-daf5-473f-bc4f-676040370a80" absoluteBounds="6.2650000000000006, 31.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 34); (8.625 : 33.625); (8.625 : 31.6642976888021); (9 : 31.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/TipoElemento/TipoElemento_Direccion" />
+      <nodes>
+        <classShapeMoniker Id="44511bef-6329-40f0-a959-196583ce0c81" />
+        <classShapeMoniker Id="79e13d2a-1e05-4d3f-8d77-064263ee8dcf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 13.1931469726562); (11.5 : 13.1931469726562); (11.5 : 14.3958968098958); (15.75 : 14.3958968098958); (15.75 : 15.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_Titulo" />
+      <nodes>
+        <classShapeMoniker Id="6fa38bab-f665-41e9-994d-a79939f52620" />
+        <classShapeMoniker Id="fc55610f-bd9e-4ace-bcf2-23e507314550" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 31.207148844401); (9 : 31.207148844401)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Direccion" />
+      <nodes>
+        <classShapeMoniker Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" />
+        <classShapeMoniker Id="79e13d2a-1e05-4d3f-8d77-064263ee8dcf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 30.75); (8.625 : 30.375); (8.625 : 17.7708968098958); (9.91666666666667 : 17.7708968098958 : JumpStart); (10.0833333333333 : 17.7708968098958 : JumpEnd); (14.375 : 17.7708968098958); (14.75 : 17.3958968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Titulo" />
+      <nodes>
+        <classShapeMoniker Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" />
+        <classShapeMoniker Id="fc55610f-bd9e-4ace-bcf2-23e507314550" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 32.4909267869591); (8.875 : 33.1159267869591); (8.875 : 35.3181469726563); (9 : 35.3181469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Foto" />
+      <nodes>
+        <classShapeMoniker Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" />
+        <classShapeMoniker Id="fcbcc36b-e9e1-4c6a-b96d-8aa3863cd7f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 32.5195335815805); (8.78125 : 33.0507835815805); (8.78125 : 37.5392976888021); (9 : 37.5392976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Nombre" />
+      <nodes>
+        <classShapeMoniker Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" />
+        <classShapeMoniker Id="d3fab91e-4927-4544-8cf9-7705dcb4f852" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 29.3862939453125); (4.5 : 31.6354484049479); (6.25 : 31.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Usuario/Usuario_Persona" />
+      <nodes>
+        <classShapeMoniker Id="536df06b-b07e-41cd-8795-0bcea726b3fd" />
+        <classShapeMoniker Id="e44b6683-53fb-4c84-8fd5-73646690fb8b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" absoluteBounds="9, 21.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Alumno" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87668639-da81-4d01-a2a4-6486d297f183" absoluteBounds="9.015, 21.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4a78655-c9a1-4b78-98fc-08951996cb42" absoluteBounds="14.75, 18.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Valoracion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90995026-3cac-49c3-9431-15ba4dfa199e" absoluteBounds="14.765, 18.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9d2bc4b0-9a9d-463f-b2d9-ec63fcf369ea" absoluteBounds="3.5, 16, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Area" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98139213-96e1-4cda-91f5-925908f37ca5" absoluteBounds="3.515, 16.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="afbf7da8-5927-4759-8f9f-64b49a8e3f43" absoluteBounds="6.25, 17, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/BancoPregunta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94a77923-0c65-4547-b173-bad7c26b956d" absoluteBounds="6.265, 17.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ee9e42fc-7056-4b01-aba0-fbdd04c9da25" absoluteBounds="14.75, 21.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Cuestionario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ab0d4db-748d-473b-913a-3abe094c8570" absoluteBounds="14.765, 21.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b354e43c-ca8b-4c8c-9ffe-4b188ac042cf" absoluteBounds="11.75, 12.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Distractor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71b8e675-343d-49e3-b2b9-9372ba1030cf" absoluteBounds="11.765, 12.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f4776ae7-e40f-4eb0-aacb-48d4faf2c437" absoluteBounds="17.5, 24.625, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Evaluacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82ca4de5-aa5c-4cd8-b008-f94cb7c8b7d8" absoluteBounds="17.515, 25.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" absoluteBounds="9, 18.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Experto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="438146da-5504-4593-bbc3-645eeb053f03" absoluteBounds="9.015, 18.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="985caae5-e28c-40f2-ad51-5316b8b6d3a7" absoluteBounds="11.75, 18.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/ExpertoArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ed94a4ca-c329-4f98-9c4e-8ca388bcfd2d" absoluteBounds="11.765, 18.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74881021-ebbd-4dd4-b42b-cb3d5ee9ccfc" absoluteBounds="11.75, 15.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/ExpertoEscuela" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24c670c2-0d45-47a4-b034-a6766af152cd" absoluteBounds="11.765, 15.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5320e8c-185f-44a3-be5f-3483424fd124" absoluteBounds="11.75, 22.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/GrupoTrabajo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9d03fd3a-b126-4665-bca6-50769517f64d" absoluteBounds="11.765, 23.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e368616c-ecd2-4bf4-8340-63cdc09af474" absoluteBounds="17.5, 21.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/IntegranteGrupo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="693540a2-aca0-4393-ac82-870632eacd9d" absoluteBounds="17.515, 21.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3bf33d6c-27fc-4277-a555-3e308a23b775" absoluteBounds="9, 15.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Pregunta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="605ce588-0507-41bd-923e-6d32286b3188" absoluteBounds="9.015, 15.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5df03d16-0eeb-4a1c-8674-1e261eb2dd75" absoluteBounds="14.75, 24.625, 2, 1.9631982421874952">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Publicacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="728c8513-b502-4271-9acc-bfcd4b5e5a45" absoluteBounds="14.765, 25.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3a712fbd-c22e-428f-a4c2-e6b4243977fc" absoluteBounds="17.5, 17, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Reactivo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f4b26ce1-7678-4d58-a8ea-0694994644f2" absoluteBounds="17.515, 17.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="abbc6d30-1614-4f54-9169-d6b17b5d0973" absoluteBounds="12, 32.625, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Tipo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eea7567b-650e-4318-ad07-ada7e9e3b27a" absoluteBounds="12.015, 33.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.9776060208834 : 13.8862939453125); (11.28125 : 14.1899379244291); (11.28125 : 21.0951112283153); (11 : 21.3763612283153)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_Alumno" />
+      <nodes>
+        <classShapeMoniker Id="6fa38bab-f665-41e9-994d-a79939f52620" />
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 21.5785953776042); (4.5 : 22.1955481888021); (8.54166666666667 : 22.1955481888021 : JumpStart); (8.86458333333333 : 22.1955481888021 : JumpEnd); (9 : 22.1955481888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Alumno" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 22.9017136910056); (8.4375 : 22.7142136910056); (8.4375 : 23.7083968098958); (8.56607443490112 : 23.5798223749947 : JumpStart); (8.68392556509888 : 23.4619712447969 : JumpEnd); (9 : 23.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema/UsuarioSistema_Alumno" />
+      <nodes>
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 21.4049680229367); (11.625 : 20.7799680229367); (11.625 : 20.5208968098958); (14.375 : 20.5208968098958); (14.75 : 20.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_Valoracion" />
+      <nodes>
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+        <classShapeMoniker Id="b4a78655-c9a1-4b78-98fc-08951996cb42" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.19931705603966 : 17.3862939453125); (4.19931705603966 : 17.6362939453125); (4.81500117938702 : 17.6362939453125); (4.81500117938702 : 17.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Area/Area_Area" />
+      <nodes>
+        <classShapeMoniker Id="9d2bc4b0-9a9d-463f-b2d9-ec63fcf369ea" />
+        <classShapeMoniker Id="9d2bc4b0-9a9d-463f-b2d9-ec63fcf369ea" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 17.1931469726563); (5.79166666666667 : 17.1931469726563 : JumpStart); (5.95833333333333 : 17.1931469726563 : JumpEnd); (6.25 : 17.1931469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Area/Area_BancoPregunta" />
+      <nodes>
+        <classShapeMoniker Id="9d2bc4b0-9a9d-463f-b2d9-ec63fcf369ea" />
+        <classShapeMoniker Id="afbf7da8-5927-4759-8f9f-64b49a8e3f43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 20.0570712944211); (6.03125 : 19.5258212944211); (6.03125 : 17.9171231751302); (6.25 : 17.9171231751302)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_BancoPregunta" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="afbf7da8-5927-4759-8f9f-64b49a8e3f43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 22.0774865114683); (11.2916666666667 : 22.0774865114683 : JumpStart); (11.4583333333333 : 22.0774865114683 : JumpEnd); (13.8229166666667 : 22.0774865114683 : JumpStart); (13.9895833333333 : 22.0774865114683 : JumpEnd); (14.75 : 22.0774865114683)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_Cuestionario" />
+      <nodes>
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+        <classShapeMoniker Id="ee9e42fc-7056-4b01-aba0-fbdd04c9da25" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9 : 19.2660958776042); (8.86458333333333 : 19.2660958776042 : JumpStart); (8.54166666666667 : 19.2660958776042 : JumpEnd); (7.25 : 19.2660958776042); (7.25 : 18.5785953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_BancoPregunta" />
+      <nodes>
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+        <classShapeMoniker Id="afbf7da8-5927-4759-8f9f-64b49a8e3f43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 19.1642976888021); (11.1979166666667 : 19.1642976888021 : JumpStart); (11.3645833333333 : 19.1642976888021 : JumpEnd); (11.5 : 19.1642976888021); (11.5 : 20.3958968098958); (14.4166666666667 : 20.3958968098958 : JumpStart); (14.5833333333333 : 20.3958968098958 : JumpEnd); (17.25 : 20.3958968098958); (17.25 : 24.25); (18.5 : 24.25); (18.5 : 24.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_Evaluacion" />
+      <nodes>
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+        <classShapeMoniker Id="f4776ae7-e40f-4eb0-aacb-48d4faf2c437" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.4687475 : 20); (4.4687475 : 19.6410981276042); (5.83263983348357 : 19.6410981276042 : JumpStart); (5.99930650015023 : 19.6410981276042 : JumpEnd); (8.54166666666667 : 19.6410981276042 : JumpStart); (8.86458333333333 : 19.6410981276042 : JumpEnd); (9 : 19.6410981276042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Experto" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 22.8798562165465); (8.56607443490112 : 22.5637817816454 : JumpStart); (8.68392556509888 : 22.4459306514476 : JumpEnd); (8.78125 : 22.3486062165465); (8.78125 : 18.7892959388021); (9 : 18.7892959388021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema/UsuarioSistema_Experto" />
+      <nodes>
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 16.4687505); (7.16666666666667 : 16.4687505 : JumpStart); (7.33333333333333 : 16.4687505 : JumpEnd); (8.75 : 16.4687505); (8.75 : 17.3285953776042); (9.91666666666667 : 17.3285953776042 : JumpStart); (10.0833333333333 : 17.3285953776042 : JumpEnd); (11.1979166666667 : 17.3285953776042 : JumpStart); (11.3645833333333 : 17.3285953776042 : JumpEnd); (12.75 : 17.3285953776042); (12.75 : 18.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Area/Area_ExpertoArea" />
+      <nodes>
+        <classShapeMoniker Id="9d2bc4b0-9a9d-463f-b2d9-ec63fcf369ea" />
+        <classShapeMoniker Id="985caae5-e28c-40f2-ad51-5316b8b6d3a7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 19.5877958170573); (11.1979166666667 : 19.5877958170573 : JumpStart); (11.3645833333333 : 19.5877958170573 : JumpEnd); (11.4166666666667 : 19.5877958170573 : JumpStart); (11.5833333333333 : 19.5877958170573 : JumpEnd); (11.75 : 19.5877958170573)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_ExpertoArea" />
+      <nodes>
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+        <classShapeMoniker Id="985caae5-e28c-40f2-ad51-5316b8b6d3a7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 18.375); (11.2223244349011 : 18.1526755650989 : JumpStart); (11.3401755650989 : 18.0348244349011 : JumpEnd); (11.5 : 17.875); (11.5 : 16.1931469726563); (11.75 : 16.1931469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_ExpertoEscuela" />
+      <nodes>
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+        <classShapeMoniker Id="74881021-ebbd-4dd4-b42b-cb3d5ee9ccfc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 13.862832586238); (11.3160744349011 : 14.1789070211391 : JumpStart); (11.4339255650989 : 14.2967581513369 : JumpEnd); (11.625 : 14.487832586238); (11.625 : 15.8153214863281); (11.75 : 15.8153214863281)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Institucion/Institucion_ExpertoEscuela" />
+      <nodes>
+        <classShapeMoniker Id="6fa38bab-f665-41e9-994d-a79939f52620" />
+        <classShapeMoniker Id="74881021-ebbd-4dd4-b42b-cb3d5ee9ccfc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 19.9535953776042); (11.2223244349011 : 20.1759198125053 : JumpStart); (11.3401755650989 : 20.2937709427031 : JumpEnd); (11.375 : 20.3285953776042); (11.375 : 23.5392976888021); (11.75 : 23.5392976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Experto/Experto_GrupoTrabajo" />
+      <nodes>
+        <classShapeMoniker Id="1d32ae6a-754c-4363-b6e2-406362a48ad2" />
+        <classShapeMoniker Id="c5320e8c-185f-44a3-be5f-3483424fd124" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 21.375); (10 : 20.875); (11.1979166666667 : 20.875 : JumpStart); (11.3645833333333 : 20.875 : JumpEnd); (11.4466346896034 : 20.875 : JumpStart); (11.61330135627 : 20.875 : JumpEnd); (17.125 : 20.875); (17.125 : 22.1642976888021); (17.1666666666667 : 22.1642976888021 : JumpStart); (17.3333333333333 : 22.1642976888021 : JumpEnd); (17.5 : 22.1642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_IntegranteGrupo" />
+      <nodes>
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+        <classShapeMoniker Id="e368616c-ecd2-4bf4-8340-63cdc09af474" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 23.7964998372396); (13.8229166666667 : 23.7964998372396 : JumpStart); (13.9895833333333 : 23.7964998372396 : JumpEnd); (14.4166666666667 : 23.7964998372396 : JumpStart); (14.5833333333333 : 23.7964998372396 : JumpEnd); (15.6666666666667 : 23.7964998372396 : JumpStart); (15.8333333333333 : 23.7964998372396 : JumpEnd); (17.1041666666667 : 23.7964998372396 : JumpStart); (17.3333333333333 : 23.7964998372396 : JumpEnd); (18 : 23.7964998372396); (18 : 22.9535953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/GrupoTrabajo/GrupoTrabajo_IntegranteGrupo" />
+      <nodes>
+        <classShapeMoniker Id="c5320e8c-185f-44a3-be5f-3483424fd124" />
+        <classShapeMoniker Id="e368616c-ecd2-4bf4-8340-63cdc09af474" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 20.8205496888021); (6 : 20.8205496888021); (6 : 21.8285953776042); (8.5 : 21.8285953776042); (8.5 : 21); (18.5 : 21); (18.5 : 21.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_IntegranteGrupo" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="e368616c-ecd2-4bf4-8340-63cdc09af474" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 15.5); (11.2223244349011 : 15.2776755650989 : JumpStart); (11.3401755650989 : 15.1598244349011 : JumpEnd); (11.375 : 15.125); (11.375 : 13.669521391276); (11.75 : 13.669521391276)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Pregunta/Pregunta_Distractor" />
+      <nodes>
+        <classShapeMoniker Id="3bf33d6c-27fc-4277-a555-3e308a23b775" />
+        <classShapeMoniker Id="b354e43c-ca8b-4c8c-9ffe-4b188ac042cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 17); (7.25 : 15.98437525); (9 : 15.98437525)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/BancoPregunta/BancoPregunta_Pregunta" />
+      <nodes>
+        <classShapeMoniker Id="afbf7da8-5927-4759-8f9f-64b49a8e3f43" />
+        <classShapeMoniker Id="3bf33d6c-27fc-4277-a555-3e308a23b775" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.47449961313101 : 20); (5.875 : 19.599499613131); (5.875 : 16.70312525); (7.16666666666667 : 16.70312525 : JumpStart); (7.33333333333333 : 16.70312525 : JumpEnd); (8.66666666666667 : 16.70312525 : JumpStart); (8.83333333333333 : 16.70312525 : JumpEnd); (9 : 16.70312525)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Pregunta" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="3bf33d6c-27fc-4277-a555-3e308a23b775" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 24.6869152522536); (17.1875 : 24.2494152522536); (17.1875 : 20.5833968098958); (16.75 : 20.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Publicacion/Publicacion_Valoracion" />
+      <nodes>
+        <classShapeMoniker Id="5df03d16-0eeb-4a1c-8674-1e261eb2dd75" />
+        <classShapeMoniker Id="b4a78655-c9a1-4b78-98fc-08951996cb42" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 25.5726585310747); (17.5 : 25.5726585310747)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Publicacion/Publicacion_Evaluacion" />
+      <nodes>
+        <classShapeMoniker Id="5df03d16-0eeb-4a1c-8674-1e261eb2dd75" />
+        <classShapeMoniker Id="f4776ae7-e40f-4eb0-aacb-48d4faf2c437" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 23.0845955357071); (11.5625 : 23.6470955357071); (11.5625 : 25.2187505); (13.8229166666667 : 25.2187505 : JumpStart); (13.9895833333333 : 25.2187505 : JumpEnd); (14.4166666666667 : 25.2187505 : JumpStart); (14.5833333333333 : 25.2187505 : JumpEnd); (14.75 : 25.2187505)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Alumno/Alumno_Publicacion" />
+      <nodes>
+        <classShapeMoniker Id="1cbd0eb2-acfd-44a1-b779-c193e4f30539" />
+        <classShapeMoniker Id="5df03d16-0eeb-4a1c-8674-1e261eb2dd75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 21.2308245332031); (5.75 : 21.2308245332031); (5.75 : 21.9535953776042); (8.6875 : 21.9535953776042); (8.6875 : 23.3958968098958); (11.25 : 23.3958968098958); (11.25 : 24.5785953776042); (13.8229166666667 : 24.5785953776042 : JumpStart); (13.9895833333333 : 24.5785953776042 : JumpEnd); (14.5 : 24.5785953776042); (14.5 : 23.5304996744792); (15.75 : 23.5304996744792); (15.75 : 24.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Publicacion" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="5df03d16-0eeb-4a1c-8674-1e261eb2dd75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 21.1557682307692); (17.1285744349011 : 20.7771937958681 : JumpStart); (17.3089255650989 : 20.5968426656703 : JumpEnd); (17.34375 : 20.5620182307692); (17.34375 : 17.8854484049479); (17.5 : 17.8854484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Cuestionario/Cuestionario_Reactivo" />
+      <nodes>
+        <classShapeMoniker Id="ee9e42fc-7056-4b01-aba0-fbdd04c9da25" />
+        <classShapeMoniker Id="3a712fbd-c22e-428f-a4c2-e6b4243977fc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 13.2604484049479); (18.5 : 13.2604484049479); (18.5 : 17)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Distractor/Distractor_Reactivo" />
+      <nodes>
+        <classShapeMoniker Id="b354e43c-ca8b-4c8c-9ffe-4b188ac042cf" />
+        <classShapeMoniker Id="3a712fbd-c22e-428f-a4c2-e6b4243977fc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 17.0785953776042); (10 : 18.1306495017027); (17.5 : 18.1306495017027)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Pregunta/Pregunta_Reactivo" />
+      <nodes>
+        <classShapeMoniker Id="3bf33d6c-27fc-4277-a555-3e308a23b775" />
+        <classShapeMoniker Id="3a712fbd-c22e-428f-a4c2-e6b4243977fc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.90625 : 32.625); (13.90625 : 21.5699907557342); (14.75 : 21.5699907557342)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Tipo/Tipo_Cuestionario" />
+      <nodes>
+        <classShapeMoniker Id="abbc6d30-1614-4f54-9169-d6b17b5d0973" />
+        <classShapeMoniker Id="ee9e42fc-7056-4b01-aba0-fbdd04c9da25" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ff5e9f7d-bf2b-4ceb-a9c8-7ccc8ef997fe" absoluteBounds="11.75, 29.375, 2, 2.1554996744791666">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Contacto" />
       <nestedChildShapes>
-        <elementListCompartment Id="300b6aac-2db7-40b8-8c8a-4e311ac20774" absoluteBounds="6.2650000000000006, 16.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="726edbd8-f01f-4f17-ba8f-ddebbe112264" absoluteBounds="11.765, 29.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3d023ff1-0803-4dbe-8a12-5c4a8f8414a0" absoluteBounds="6.5, 26.125, 2, 1.1939925130208309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/TipoOferta" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8a30b316-0b47-435f-8758-c1d61f076645" absoluteBounds="6.5150000000000006, 26.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3fcc6fa5-9909-4bbe-a5d6-fe39a5791318" absoluteBounds="10, 30.375, 2, 1.5785953776041666">
+    <classShape Id="a5f2c381-267b-44d7-9180-50545af0527e" absoluteBounds="9, 39.875, 2, 1.5785953776041595">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/ElementoDireccion" />
       <nestedChildShapes>
-        <elementListCompartment Id="1d58f365-28c3-4d13-ab85-c516f6075b83" absoluteBounds="10.015, 30.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="28c96a23-0623-4659-9cd3-65559faac655" absoluteBounds="9.015, 40.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9c173139-0049-4c07-a18b-107d23ab1dbf" absoluteBounds="6.5, 4.125, 2, 1.1939925130208309">
+    <classShape Id="89d833a7-4293-4c74-a4af-a440fe9ebdd9" absoluteBounds="12, 34.625, 2, 1.1939925130208309">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Etiqueta" />
       <nestedChildShapes>
-        <elementListCompartment Id="2070578f-410a-49a1-846a-3d9b460e4f2a" absoluteBounds="6.5150000000000006, 4.5850000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="be048e31-789e-4498-b569-7596983a71a7" absoluteBounds="12.015, 35.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="636612fe-9dc2-4454-803a-858db0f9a6c1" absoluteBounds="3.5, 12.75, 2, 1.9631982421874987">
+    <classShape Id="1d53bb71-cba3-425e-a671-3bd90218470e" absoluteBounds="9, 24.25, 2, 1.9631982421875023">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Negocio" />
       <nestedChildShapes>
-        <elementListCompartment Id="610fda43-1cb3-4aee-b8f2-463765ffef3e" absoluteBounds="3.5150000000000006, 13.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="725bf155-11f5-472e-be0c-93589bba93fb" absoluteBounds="9.015, 24.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="91b3eeea-ec79-434a-bf16-1b2b4afb272c" absoluteBounds="9.25, 13, 2, 1.3862939453124987">
+    <classShape Id="2c6fd250-b0c4-4450-88c8-36589c5e19b1" absoluteBounds="14.75, 27.5, 2, 1.3862939453125023">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/NegocioEtiqueta" />
       <nestedChildShapes>
-        <elementListCompartment Id="31e479f7-f59d-44ac-918e-eeec680b07c7" absoluteBounds="9.265, 13.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c864a11a-28ff-4034-b086-16e7c04c9519" absoluteBounds="14.765, 27.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="637b76ba-695d-42a2-8846-f4dd844d05ab" absoluteBounds="9.25, 15.5, 2, 2.3478011067708362">
+    <classShape Id="18db2fef-1c92-4c40-b779-24e9fa8d757f" absoluteBounds="11.75, 25.875, 2, 2.3478011067708309">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Oferta" />
       <nestedChildShapes>
-        <elementListCompartment Id="39117967-0604-4fec-89fc-cf0dac730b5f" absoluteBounds="9.265, 15.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="57d0146d-eebe-43de-bf42-2dd5e2a712b0" absoluteBounds="11.765, 26.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b4fbdf14-c96f-48ee-b8c8-67862ea73083" absoluteBounds="6.5, 12.875, 2, 1.5785953776041666">
+    <classShape Id="0d43d5a4-df51-43da-9c41-16d5c615584e" absoluteBounds="6.25, 20, 2, 1.5785953776041666">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Telefono" />
       <nestedChildShapes>
-        <elementListCompartment Id="337dd19a-6a36-4923-9420-b74b2d6c12a1" absoluteBounds="6.5150000000000006, 13.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="621c1159-2d6a-4beb-94af-45f07b8d8df4" absoluteBounds="6.265, 20.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="dcefc58f-ffff-44b9-9722-07d246c6632f" absoluteBounds="8.75, 6.75, 2, 1.1939925130208344">
+    <classShape Id="06456f54-7333-4ec6-b40b-be1263ba6038" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/TipoLocal" />
       <nestedChildShapes>
-        <elementListCompartment Id="b76d4dfc-7556-484b-ac3e-d1a80b9d5f17" absoluteBounds="8.765, 7.2100000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="552e8b76-23b0-44f2-9500-ef145f286b5e" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.25 : 34.7243994726563); (11 : 34.7243994726563); (11 : 31.9535953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="e3e1dfde-2dce-4727-8ee6-01aef8f22fb7" absoluteBounds="9, 27.5, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/TipoOferta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7652e1c3-1695-4bef-8fb2-fe34f6ae96f4" absoluteBounds="9.015, 27.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.25 : 35.3862939453125); (7.25 : 40.6642976888021); (9 : 40.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/TipoElemento/TipoElemento_ElementoDireccion" />
       <nodes>
-        <classShapeMoniker Id="f5429b8f-3459-4ef5-9a92-e1b110bece6b" />
-        <classShapeMoniker Id="3fcc6fa5-9909-4bbe-a5d6-fe39a5791318" />
+        <classShapeMoniker Id="44511bef-6329-40f0-a959-196583ce0c81" />
+        <classShapeMoniker Id="a5f2c381-267b-44d7-9180-50545af0527e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.6146468098958); (6.04166666666667 : 14.6146468098958 : JumpStart); (6.20833333333333 : 14.6146468098958 : JumpEnd); (6.34375 : 14.6146468098958); (6.34375 : 15.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11 : 26.1829941923077); (11.4375 : 26.6204941923077); (11.4375 : 30.4527498372396); (11.75 : 30.4527498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Negocio/Negocio_Contacto" />
       <nodes>
-        <classShapeMoniker Id="636612fe-9dc2-4454-803a-858db0f9a6c1" />
-        <classShapeMoniker Id="52246067-5982-49be-874b-60ecf237c13a" />
+        <classShapeMoniker Id="1d53bb71-cba3-425e-a671-3bd90218470e" />
+        <classShapeMoniker Id="ff5e9f7d-bf2b-4ceb-a9c8-7ccc8ef997fe" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.3965220831831); (3.15625 : 10.8027720831831); (3.15625 : 13.7315991210937); (3.27604166666667 : 13.7315991210937 : JumpStart); (3.44270833333333 : 13.7315991210937 : JumpEnd); (3.5 : 13.7315991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.25 : 24.3916648666366); (8.56607443490112 : 24.7077393015377 : JumpStart); (8.68392556509888 : 24.8255904317355 : JumpEnd); (8.8125 : 24.9541648666366); (8.8125 : 24.060990847506); (9.00150915249399 : 24.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/UsuarioSistema/UsuarioSistema_Negocio" />
       <nodes>
-        <classShapeMoniker Id="65d81e22-376d-4f35-80f9-0ae7109a80b1" />
-        <classShapeMoniker Id="636612fe-9dc2-4454-803a-858db0f9a6c1" />
+        <classShapeMoniker Id="16516606-093a-4264-a056-1e281e2001a0" />
+        <classShapeMoniker Id="1d53bb71-cba3-425e-a671-3bd90218470e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 14.0877958170573); (3.5 : 14.0877958170573)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Negocio" />
+    <associationConnector edgePoints="[(5.5 : 21.5482367741887); (5.69107443490112 : 21.7393112090898 : JumpStart); (5.80892556509888 : 21.8571623392876 : JumpEnd); (6.09375 : 22.1419867741887); (6.09375 : 24.9767976888021); (8.54166666666667 : 24.9767976888021 : JumpStart); (8.70833333333333 : 24.9767976888021 : JumpEnd); (9 : 24.9767976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Negocio" />
       <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="636612fe-9dc2-4454-803a-858db0f9a6c1" />
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="1d53bb71-cba3-425e-a671-3bd90218470e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.5 : 5.31899251302083); (7.5 : 6.75); (8.5 : 6.75); (8.5 : 9.625); (9 : 9.625); (9 : 13.6931469726562); (9.25 : 13.6931469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(14 : 35.2219962565104); (15.75 : 35.2219962565104); (15.75 : 28.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Etiqueta/Etiqueta_NegocioEtiqueta" />
       <nodes>
-        <classShapeMoniker Id="9c173139-0049-4c07-a18b-107d23ab1dbf" />
-        <classShapeMoniker Id="91b3eeea-ec79-434a-bf16-1b2b4afb272c" />
+        <classShapeMoniker Id="89d833a7-4293-4c74-a4af-a440fe9ebdd9" />
+        <classShapeMoniker Id="2c6fd250-b0c4-4450-88c8-36589c5e19b1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.6458993098958); (6.04166666666667 : 14.6458993098958 : JumpStart); (6.20833333333333 : 14.6458993098958 : JumpEnd); (8.66666666666667 : 14.6458993098958 : JumpStart); (8.83333333333333 : 14.6458993098958 : JumpEnd); (10.25 : 14.6458993098958); (10.25 : 14.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11 : 24.8986729388021); (13.8229166666667 : 24.8986729388021 : JumpStart); (13.9895833333333 : 24.8986729388021 : JumpEnd); (14.5 : 24.8986729388021); (14.5 : 26.8381982421875); (15.75 : 26.8381982421875); (15.75 : 27.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Negocio/Negocio_NegocioEtiqueta" />
       <nodes>
-        <classShapeMoniker Id="636612fe-9dc2-4454-803a-858db0f9a6c1" />
-        <classShapeMoniker Id="91b3eeea-ec79-434a-bf16-1b2b4afb272c" />
+        <classShapeMoniker Id="1d53bb71-cba3-425e-a671-3bd90218470e" />
+        <classShapeMoniker Id="2c6fd250-b0c4-4450-88c8-36589c5e19b1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.7116870896935); (5.87651115249399 : 15.0881982421875); (6.04166666666667 : 15.0881982421875 : JumpStart); (6.20833333333333 : 15.0881982421875 : JumpEnd); (6.26041666666667 : 15.0881982421875 : JumpStart); (6.42708333333333 : 15.0881982421875 : JumpEnd); (10.25 : 15.0881982421875); (10.25 : 15.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11 : 26.1799738873197); (11.25 : 26.4299738873197); (11.25 : 25.375); (11.75 : 25.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Negocio/Negocio_Oferta" />
       <nodes>
-        <classShapeMoniker Id="636612fe-9dc2-4454-803a-858db0f9a6c1" />
-        <classShapeMoniker Id="637b76ba-695d-42a2-8846-f4dd844d05ab" />
+        <classShapeMoniker Id="1d53bb71-cba3-425e-a671-3bd90218470e" />
+        <classShapeMoniker Id="18db2fef-1c92-4c40-b779-24e9fa8d757f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 14.3189925130208); (2.2812525 : 15.59375); (3.10416666666667 : 15.59375 : JumpStart); (3.27083333333333 : 15.59375 : JumpEnd); (3.27604166666667 : 15.59375 : JumpStart); (3.44270833333333 : 15.59375 : JumpEnd); (6.04166666666667 : 15.59375 : JumpStart); (6.20833333333333 : 15.59375 : JumpEnd); (6.26041666666667 : 15.59375 : JumpStart); (6.42708333333333 : 15.59375 : JumpEnd); (8.66666666666667 : 15.59375 : JumpStart); (8.83333333333333 : 15.59375 : JumpEnd); (9.25 : 15.59375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Oferta" />
+    <associationConnector edgePoints="[(5.5 : 20.4388104916116); (6.125 : 20.4388104916116); (6.125 : 21.7035953776042); (8.41666666666667 : 21.7035953776042 : JumpStart); (8.86458333333333 : 21.7035953776042 : JumpEnd); (8.875 : 21.7035953776042); (8.875 : 23.2708968098958); (11.125 : 23.2708968098958); (11.125 : 24.5785953776042); (11.4791666666667 : 24.5785953776042 : JumpStart); (11.6458333333333 : 24.5785953776042 : JumpEnd); (12.781252 : 24.5785953776042); (12.781252 : 25.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Oferta" />
       <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="637b76ba-695d-42a2-8846-f4dd844d05ab" />
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="18db2fef-1c92-4c40-b779-24e9fa8d757f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.5 : 26.125); (7.5 : 24.6362939453125); (8.875 : 24.6362939453125); (8.875 : 16.7520275533854); (9.25 : 16.7520275533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 20.2166933930163); (6.25 : 20.2166933930163)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/StatusSistema/StatusSistema_Telefono" />
+      <nodes>
+        <classShapeMoniker Id="22f62da7-45d2-4991-b3f4-ed5031e71b65" />
+        <classShapeMoniker Id="0d43d5a4-df51-43da-9c41-16d5c615584e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 27.8614005533854); (11.75 : 27.8614005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SernaSistemasDataModelDataContext/TipoOferta/TipoOferta_Oferta" />
       <nodes>
-        <classShapeMoniker Id="3d023ff1-0803-4dbe-8a12-5c4a8f8414a0" />
-        <classShapeMoniker Id="637b76ba-695d-42a2-8846-f4dd844d05ab" />
+        <classShapeMoniker Id="e3e1dfde-2dce-4727-8ee6-01aef8f22fb7" />
+        <classShapeMoniker Id="18db2fef-1c92-4c40-b779-24e9fa8d757f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 13.4852683223658); (3 : 13.4852683223658); (3 : 12.5); (7.5 : 12.5); (7.5 : 12.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Status/Status_Telefono" />
-      <nodes>
-        <classShapeMoniker Id="76c7cff5-715f-428b-b206-07c7a4bb1b4b" />
-        <classShapeMoniker Id="b4fbdf14-c96f-48ee-b8c8-67862ea73083" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="2013dece-7d81-44ce-a44f-c5c4b6ed1946" absoluteBounds="3.75, 26.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Direccion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a59aed49-c2d7-4e48-b43c-4b1ad12949cb" absoluteBounds="3.765, 27.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="93a3445d-19b1-4e63-b0bb-1655018320c3" absoluteBounds="9.75, 3.75, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/SernaSistemasDataModelDataContext/Foto" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c4bf7225-5837-4e77-8f63-73c41fed3bf9" absoluteBounds="9.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(3.96875 : 28.5208968098958); (3.96875 : 30.7267976888021); (5.02603916666667 : 30.7267976888021 : JumpStart); (5.19270583333333 : 30.7267976888021 : JumpEnd); (5.94791666666667 : 30.7267976888021 : JumpStart); (6.11458333333333 : 30.7267976888021 : JumpEnd); (6.54166666666667 : 30.7267976888021 : JumpStart); (6.70833333333333 : 30.7267976888021 : JumpEnd); (10 : 30.7267976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Direccion/Direccion_ElementoDireccion" />
-      <nodes>
-        <classShapeMoniker Id="2013dece-7d81-44ce-a44f-c5c4b6ed1946" />
-        <classShapeMoniker Id="3fcc6fa5-9909-4bbe-a5d6-fe39a5791318" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.75 : 26.75); (4.75 : 24.7035953776042); (6.125 : 24.7035953776042); (6.125 : 13.6642976888021); (6.5 : 13.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Direccion/Direccion_Telefono" />
-      <nodes>
-        <classShapeMoniker Id="2013dece-7d81-44ce-a44f-c5c4b6ed1946" />
-        <classShapeMoniker Id="b4fbdf14-c96f-48ee-b8c8-67862ea73083" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(6.25 : 34); (6.625 : 33.625); (6.625 : 29.7892976888021); (7 : 29.7892976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/TipoElemento/TipoElemento_Persona_Direccion" />
-      <nodes>
-        <classShapeMoniker Id="f5429b8f-3459-4ef5-9a92-e1b110bece6b" />
-        <classShapeMoniker Id="48cbc760-d803-4c05-9d07-d63de06d09e8" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.1093725 : 30.875); (5.1093725 : 30.2151990332031); (5.94791666666667 : 30.2151990332031 : JumpStart); (6.11458333333333 : 30.2151990332031 : JumpEnd); (6.54166666666667 : 30.2151990332031 : JumpStart); (6.70833333333333 : 30.2151990332031 : JumpEnd); (7 : 30.2151990332031)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Persona_Direccion" />
-      <nodes>
-        <classShapeMoniker Id="2f3047ef-d071-40fe-97f5-92e988499040" />
-        <classShapeMoniker Id="48cbc760-d803-4c05-9d07-d63de06d09e8" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(6.25 : 32.3860452678535); (6.54166666666667 : 32.3860452678535 : JumpStart); (6.70833333333333 : 32.3860452678535 : JumpEnd); (7 : 32.3860452678535)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SernaSistemasDataModelDataContext/Persona/Persona_Persona_Foto" />
-      <nodes>
-        <classShapeMoniker Id="2f3047ef-d071-40fe-97f5-92e988499040" />
-        <classShapeMoniker Id="cc64a22b-ddb4-4ef1-9fa7-6c2f768f8752" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="c736848d-4b80-4419-bb09-f7e578349065" absoluteBounds="0.875, 3.5, 2, 2.1554996744791666">
+    <classShape Id="ce4860c4-060d-4cbd-9e7c-2621c8103743" absoluteBounds="4.375, 0.5, 2, 2.1554996744791666">
       <DataClassMoniker Name="/SernaSistemasDataModelDataContext/vUsuariosSistema" />
       <nestedChildShapes>
-        <elementListCompartment Id="19978bcf-8951-4092-a282-628f5caefe7a" absoluteBounds="0.89, 3.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c4070827-4541-41fd-b647-cbff543664a2" absoluteBounds="4.39, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

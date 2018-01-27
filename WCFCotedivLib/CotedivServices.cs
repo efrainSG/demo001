@@ -34,7 +34,7 @@ namespace WCFCotedivLib {
             };
             try {
                 var Alumno = dtx.Alumnos.First(a => a.UsuarioSistema.IdUsuario.Equals(request.IdAutor));
-                var Status = dtx.Status.First(s => s.Id.Equals(1));
+                var Status = dtx.StatusSistemas.First(s => s.Id.Equals(1));
 
                 if (request.Id.Equals(0)) {
                     _publicacion = new Publicacion() {
@@ -62,7 +62,105 @@ namespace WCFCotedivLib {
         }
 
         public PerfilResponse GuardarPerfil(PerfilRequest request) {
-            throw new NotImplementedException();
+            PerfilResponse response;
+            var perfil = dtx.UsuarioSistemas.FirstOrDefault(u => u.IdUsuario.Equals(request.IdUsuario));
+            var status = dtx.StatusSistemas.FirstOrDefault(s => s.Id.Equals(1));
+
+            switch (perfil.IdRol) {
+                case 2:
+                    Alumno alumno = perfil.Alumnos.FirstOrDefault();
+                    if (alumno == null) {
+                        alumno = new Alumno();
+                        perfil.Alumnos.Add(alumno);
+                    }
+                    if (status != null)
+                        status.Alumnos.Add(alumno);
+                    var institucion = dtx.Institucions.FirstOrDefault();
+                    if (institucion != null)
+                        institucion.Alumnos.Add(alumno);
+                    alumno.Resumen = request.Resumen;
+                    break;
+                case 3:
+                    Experto experto = perfil.Expertos.FirstOrDefault();
+                    if (experto == null) {
+                        experto = new Experto();
+                        perfil.Expertos.Add(experto);
+                    }
+                    if (status != null)
+                        status.Expertos.Add(experto);
+                    experto.Resumen = request.Resumen;
+                    break;
+            }
+
+            Persona persona = perfil.Usuario.Personas.FirstOrDefault();
+            if (persona == null) {
+                persona = new Persona();
+                perfil.Usuario.Personas.Add(persona);
+            }
+            persona.Correo = request.Correo;
+            persona.Nacimiento = request.Nacimiento;
+            persona.Telefono = (request.Telefono != null) ? request.Telefono : string.Empty;
+
+            //foreach (var item in request.Direccion) {
+            //    var elementodireccion = new Persona_Direccion() {
+            //        Valor = item.Valor
+            //    };
+            //    persona.Persona_Direccions.Add(elementodireccion);
+            //    var TipoElemento = dtx.ElementoDireccions.FirstOrDefault(ed=>ed.i)
+            //}
+            dtx.SubmitChanges();
+
+            response = new PerfilResponse() {
+                Nombres = new List<NombreItem>(),
+                Direccion = new List<DireccionItem>(),
+                Correo = (persona != null) ? persona.Correo : string.Empty,
+                Nacimiento = (persona != null) ? (persona.Nacimiento.HasValue ?
+                perfil.Usuario.Personas.First().Nacimiento.Value : DateTime.Today) : DateTime.Today,
+                Telefono = (persona != null) ? persona.Telefono : string.Empty,
+                //Resumen = (alumno != null) ? alumno.Resumen : string.Empty,
+                //IdStatus = (alumno != null) ? alumno.IdStatusSistema : 0
+            };
+            if (persona != null) {
+                var Nombres = (from n in persona.Nombres
+                               select new NombreItem() {
+                                   Id = n.Id,
+                                   IdPersona = n.IdPersona,
+                                   Orden = n.Orden,
+                                   Valor = n.Valor
+                               }).ToList();
+                var Direcciones = (from d in persona.Persona_Direccions
+                                   select new DireccionItem() {
+                                       Id = d.Id,
+                                       IdPersona = d.IdPersona,
+                                       IdTipoElemento = d.IdTipoElemento,
+                                       Valor = d.Valor
+                                   }).ToList();
+                response.Nombres.AddRange(Nombres);
+                response.Direccion.AddRange(Direcciones);
+            }
+
+            return response;
+        }
+
+        public List<TipoElemento> getTipoElementoDireccion() {
+            var response = (from ted in dtx.TipoElementos
+                            select ted).ToList();
+            return response;
+        }
+
+        public List<InstitucionModel> getInstituciones() {
+            var response = (from i in dtx.Institucions
+                            orderby i.Nombre
+                            select new InstitucionModel() {
+                                Id = i.Id,
+                                IdLocacion = i.Locacion.Id,
+                                Lat = i.Locacion.Lat,
+                                Lon = i.Locacion.Lon,
+                                Nombre = i.Nombre
+                            }
+                            ).ToList();
+
+            return response;
         }
 
         public ListaResponse ListarEntradas(object request) {
@@ -87,7 +185,9 @@ namespace WCFCotedivLib {
                             select new ConceptoModel() {
                                 Id = p.Id,
                                 Contenido = p.Contenido,
-                                Titulo = p.Titulo
+                                Titulo = p.Titulo,
+                                Valoracion = ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).HasValue ?
+                                ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).Value : 0
                             }).ToList();
                 response.Success = true;
             } else if (request is string) {
@@ -96,7 +196,9 @@ namespace WCFCotedivLib {
                             select new ConceptoModel() {
                                 Id = p.Id,
                                 Contenido = p.Contenido,
-                                Titulo = p.Titulo
+                                Titulo = p.Titulo,
+                                Evaluacion = (p.Evaluacions.Count > 0) ?
+                                p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().Valor : 0
                             }
                             ).ToList();
             } else {
@@ -172,24 +274,72 @@ namespace WCFCotedivLib {
             return response;
         }
 
+        /// <summary>
+        /// (Por el momento) Recupera el perfil del alumno
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public PerfilResponse VerPerfil(PerfilRequest request) {
-            var response = new PerfilResponse() {
-                Nombres = new List<NombreItem>()
-            };
             var perfil = dtx.UsuarioSistemas.FirstOrDefault(u => u.IdUsuario.Equals(request.IdUsuario));
 
-            var Nombres = (from n in perfil.Usuario.Personas.First(p => p.IdUsuario.Equals(perfil.IdUsuario)).Nombres
-                           select new NombreItem() {
-                               Id = n.Id,
-                               IdPersona = n.IdPersona,
-                               Orden = n.Orden,
-                               Valor = n.Valor
-                           }).ToList();
-            response.Nombres.AddRange(Nombres);
-            response.Correo = perfil.Usuario.Personas.First().Correo;
-            response.Nacimiento = perfil.Usuario.Personas.First().Nacimiento.HasValue ?
-                perfil.Usuario.Personas.First().Nacimiento.Value : DateTime.Today;
-            response.Telefono = perfil.Usuario.Personas.First().Telefono;
+            var persona = perfil.Usuario.Personas.FirstOrDefault();
+            var response = new PerfilResponse() {
+                Nombres = new List<NombreItem>(),
+                Direccion = new List<DireccionItem>(),
+                Correo = (persona != null) ? persona.Correo : string.Empty,
+                Nacimiento = (persona != null) ? (persona.Nacimiento.HasValue ?
+                perfil.Usuario.Personas.First().Nacimiento.Value : DateTime.Today) : DateTime.Today,
+                Telefono = (persona != null) ? persona.Telefono : string.Empty,
+            };
+
+            switch (perfil.IdRol) {
+                case 2:
+                    var alumno = perfil.Alumnos.FirstOrDefault();
+                    response.Resumen = (alumno != null) ? alumno.Resumen : string.Empty;
+                    response.IdStatus = (alumno != null) ? alumno.IdStatusSistema : 0;
+                    response.Institucion = new InstitucionModel() {
+                        Id = alumno.Institucion.Id,
+                        IdLocacion = alumno.Institucion.Locacion.Id,
+                        Lat = alumno.Institucion.Locacion.Lat,
+                        Lon = alumno.Institucion.Locacion.Lon,
+                        Nombre = alumno.Institucion.Nombre
+                    };
+                    break;
+                case 3:
+                    var experto = perfil.Expertos.FirstOrDefault();
+                    response.Resumen = (experto != null) ? experto.Resumen : string.Empty;
+                    response.IdStatus = (experto != null) ? experto.IdStatusSistema : 0;
+                    response.Instituciones = new List<InstitucionModel>();
+                    foreach (var item in experto.ExpertoEscuelas) {
+                        response.Instituciones.Add(new InstitucionModel() {
+                            Id = item.Institucion.Id,
+                            IdLocacion = item.Institucion.Locacion.Id,
+                            Lat = item.Institucion.Locacion.Lat,
+                            Lon = item.Institucion.Locacion.Lon,
+                            Nombre = item.Institucion.Nombre
+                        });
+                    }
+                    break;
+            }
+
+            if (persona != null) {
+                var Nombres = (from n in persona.Nombres
+                               select new NombreItem() {
+                                   Id = n.Id,
+                                   IdPersona = n.IdPersona,
+                                   Orden = n.Orden,
+                                   Valor = n.Valor
+                               }).ToList();
+                var Direcciones = (from d in persona.Persona_Direccions
+                                   select new DireccionItem() {
+                                       Id = d.Id,
+                                       IdPersona = d.IdPersona,
+                                       IdTipoElemento = d.IdTipoElemento,
+                                       Valor = d.Valor
+                                   }).ToList();
+                response.Nombres.AddRange(Nombres);
+                response.Direccion.AddRange(Direcciones);
+            }
             return response;
         }
     }

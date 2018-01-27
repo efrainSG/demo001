@@ -1,0 +1,22 @@
+﻿@model CoTeDiv.Models.ResponseModel
+@{
+    ViewBag.Title = "Listar Conceptos";
+    Layout = "~/Views/Shared/Experto.cshtml";
+}
+
+<h2>ListarConceptos</h2>
+
+@if (Model.Posts.Count > 0) {
+    <dl class="dl-horizontal">
+        @foreach (var item in Model.Posts) {
+            <dt class="well well-sm">
+                @Html.ActionLink(linkText: item.Value.Titulo, actionName: "EvaluarConcepto", routeValues: new {
+                   @id =  item.Key
+                }, htmlAttributes:null)
+            </dt>
+            <dd>
+                @item.Value.Contenido
+            </dd>
+        }
+    </dl>
+}

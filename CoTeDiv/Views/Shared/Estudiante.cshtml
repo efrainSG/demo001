@@ -53,9 +53,9 @@
             }, htmlAttributes: null)
                     </li>
                 </ul>
-                <form class="navbar-form" action="@Url.Action("Buscar")">
+                <form class="navbar-form" action="@Url.Action("Buscar")" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar" />
+                        <input type="text" class="form-control" placeholder="Buscar" name="query" />
                         <div class="input-group-btn">
                             <button class="btn btn-warning" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>

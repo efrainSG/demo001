@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using WCFCotedivLib.Contracts;
 
@@ -28,6 +29,24 @@ namespace CoTeDiv.Models {
         public ResponseModel() {
         }
     }
+    public class InstitucionModel {
+        public int Id {
+            get; set;
+        }
+        public string Nombre {
+            get; set;
+        }
+        public string Lat {
+            get; set;
+        }
+        public string Lon {
+            get; set;
+        }
+        public int IdLocacion {
+            get; set;
+        }
+    }
+
     public class ValoracionModel {
         public int Id {
             get; set;
@@ -78,30 +97,66 @@ namespace CoTeDiv.Models {
             get;
             internal set;
         }
+        public int Evaluacion {
+            get;set;
+        }
     }
     public class PerfilModel {
         public int Id {
             get; set;
         }
-        public List<NombreItem> Nombres {
+        public string Usuario {
             get; set;
         }
-        public Dictionary<int, String> Apellidos {
-            get; set;
-        }
-        public string Resumen {
-            get; set;
-        }
-        public DateTime Nacimiento {
-            get; set;
-        }
-        public List<DireccionItem> Direccion {
+        public string NuevoPassword {
             get; set;
         }
         public string Correo {
             get; set;
         }
         public string Telefono {
+            get; set;
+        }
+        public DateTime Nacimiento {
+            get; set;
+        }
+        public string Resumen {
+            get; set;
+        }
+        public int IdStatus {
+            get; set;
+        }
+        public int IdInstitucion {
+            get; set;
+        }
+        public InstitucionModel Institucion {
+            get; set;
+        }
+        public List<NombreItem> Nombres {
+            get; set;
+        }
+        public string NombreCompleto {
+            get {
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in Nombres.OrderBy(n=>n.Orden)) {
+                    sb.Append(item.Valor + " ");
+                }
+                return sb.ToString().Trim();
+            }
+        }
+        public List<DireccionItem> Direccion {
+            get; set;
+        }
+        public string DireccionCompleta {
+            get {
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in Direccion.OrderBy(n => n.IdTipoElemento)) {
+                    sb.Append(item.Valor + " ");
+                }
+                return sb.ToString().Trim();
+            }
+        }
+        public List<InstitucionModel> Instituciones {
             get; set;
         }
     }

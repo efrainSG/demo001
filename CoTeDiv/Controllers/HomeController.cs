@@ -49,7 +49,9 @@ namespace CoTeDiv.Controllers {
                     Permisos = response.Modelo.Permisos,
                     UltimoLogin = response.Modelo.UltimoLogin
                 });
-                return RedirectToAction("Index", "Estudiante", response.Modelo.Hash);
+                string controlador = (response.Modelo.IdRol.Equals(2)) ? "Estudiante" :
+                    ((response.Modelo.IdRol.Equals(3)) ? "Experto" : "Administrador");
+                return RedirectToAction("Index", controlador, response.Modelo.Hash);
             }
             return RedirectToAction("Index");
         }

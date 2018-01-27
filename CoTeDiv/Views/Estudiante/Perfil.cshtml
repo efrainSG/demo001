@@ -16,63 +16,66 @@
 </style>
 <h2>Perfil</h2>
 <div class="container well well-sm">
-    <div class="row">
-        <div class="col-md-2">
-            Tu nombre
-        </div>
-        <div class="col-md-9">
-            @foreach (var item in Model.Perfil.Nombres) {
-                <span id="input">
-                    @item.Valor
-                </span>
-                <span>&nbsp;</span>
-            }
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            Tu correo electrónico
-        </div>
-        <div class="col-md-10">
-            <span id="input">
-                @Model.Perfil.Correo
-            </span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            Tu fecha de nacimiento
-        </div>
-        <div class="col-md-10">
-            <span id="input">
-                @Model.Perfil.Nacimiento.ToShortDateString()
-            </span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            Tu teléfono de contacto
-        </div>
-        <div class="col-md-10">
-            <span id="input">
-                @Model.Perfil.Telefono
-            </span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            Cómo te describes
-        </div>
-        <div class="col-md-10">
-            <span id="input">
-                @Model.Perfil.Resumen
-            </span>
-        </div>
-    </div>
+    <dl class="dl-horizontal">
+        <dt>Nombre completo:</dt>
+        <dd>
+            @Model.Perfil.NombreCompleto
+        </dd>
+        <dt>Domicilio:</dt>
+        <dd>
+            @Model.Perfil.DireccionCompleta
+        </dd>
+        <dt>Correo electrónico:</dt>
+        <dd>
+            @Model.Perfil.Correo
+        </dd>
+        <dt>Id:</dt>
+        <dd>
+            @Model.Perfil.Id
+        </dd>
+        <dt>Id de status:</dt>
+        <dd>
+            @Model.Perfil.IdStatus
+        </dd>
+        <dt>Fecha de nacimiento:</dt>
+        <dd>
+            @Model.Perfil.Nacimiento.ToShortDateString()
+        </dd>
+        <dt>Resumen:</dt>
+        <dd>
+            @Model.Perfil.Resumen
+        </dd>
+        <dt>Teléfono:</dt>
+        <dd>
+            @Model.Perfil.Telefono
+        </dd>
+        <dt>Id de institución:</dt>
+        <dd>
+            @Model.Perfil.Institucion.Id
+        </dd>
+        <dt>Id de locación de Inst.:</dt>
+        <dd>
+            @Model.Perfil.Institucion.IdLocacion
+        </dd>
+        <dt>Latitud de Institución:</dt>
+        <dd>
+            @Model.Perfil.Institucion.Lat
+        </dd>
+        <dt>Longitud de institución: </dt>
+        <dd>
+            @Model.Perfil.Institucion.Lon
+        </dd>
+        <dt>Institución:</dt>
+        <dd>
+            @Model.Perfil.Institucion.Nombre
+        </dd>
+    </dl>
 </div>
 <div class="row">
     <div class="col-md-offset-2 col-md-10">
-        @Html.ActionLink(linkText: "Modificar", actionName: "EditarPerfil", routeValues: null, htmlAttributes: new {
+        @Html.ActionLink(linkText: "Modificar", actionName: "editarPerfil", routeValues: new {
+            @id = Model.LoginData.IdUsuario, @hash = Model.LoginData.Hash
+        }, htmlAttributes: new {
             @class = "btn btn-lg btn-primary"
         })
     </div>

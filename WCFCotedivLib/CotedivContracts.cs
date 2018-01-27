@@ -103,15 +103,25 @@ namespace WCFCotedivLib.Contracts {
         public DateTime Nacimiento {
             get; set;
         }
+        public List<NombreItem> Nombres {
+            get; set;
+        }
         public List<DireccionItem> Direccion {
             get; set;
         }
-        public List<NombreItem> Nombre {
+        public string Usuario {
             get; set;
         }
+        public string NuevoPassword {
+            get; set;
+        }
+        public InstitucionModel Institucion {
+            get; set;
+        }
+
         public PerfilRequest() {
             Direccion = new List<DireccionItem>();
-            Nombre = new List<NombreItem>();
+            Nombres = new List<NombreItem>();
         }
     }
 
@@ -151,19 +161,37 @@ namespace WCFCotedivLib.Contracts {
         public int Id {
             get; set;
         }
-        public List<NombreItem> Nombres {
+        public string Usuario {
             get; set;
         }
-        public string Resumen {
+        public string NuevoPassword {
             get; set;
         }
         public string Correo {
             get; set;
         }
+        public string Telefono {
+            get; set;
+        }
         public DateTime Nacimiento {
             get; set;
         }
-        public string Telefono {
+        public string Resumen {
+            get; set;
+        }
+        public int IdStatus {
+            get; set;
+        }
+        public InstitucionModel Institucion {
+            get; set;
+        }
+        public List<NombreItem> Nombres {
+            get; set;
+        }
+        public List<DireccionItem> Direccion {
+            get; set;
+        }
+        public List<InstitucionModel> Instituciones {
             get; set;
         }
     }
@@ -228,6 +256,44 @@ namespace WCFCotedivLib.Contracts {
         public int Valoracion {
             get; set;
         }
+        public int? Evaluacion {
+            get; set;
+        }
     }
 
+    [DataContract]
+    public class InstitucionModel {
+        public int Id {
+            get; set;
+        }
+        public string Nombre {
+            get; set;
+        }
+        public string Lat {
+            get; set;
+        }
+        public string Lon {
+            get; set;
+        }
+        public int IdLocacion {
+            get; set;
+        }
+    }
+
+    [DataContract]
+    public class BusquedaResponse : BaseResponse {
+        public List<ConceptoModel> Resultados {
+            get; set;
+        }
+        public BusquedaResponse() {
+            Resultados = new List<ConceptoModel>();
+        }
+    }
+
+    [DataContract]
+    public class BusquedaRequest:BaseRequest {
+        public string Query {
+            get; set;
+        }
+    }
 }

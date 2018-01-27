@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<div class="jumbotron">
+    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+    <h1 class="text-capitalize">
+        <span class="text-primary">Serna Sistemas</span><br />
+        <small>Sistemas cortados a la medida de tus necesidades</small>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            @Html.Partial("FormContacto", new SernaSistemas.Core.Models.ContactoModel())
+        </p>
+    </div>
+    <div class="col-md-4">
+        <p>
+            Desarrollo sistemas a la medida de tu negocio en un plan hecho al tamaño de tu presupuesto.
+        </p>
+        <p>
+            Sigo una forma de trabajo ágil para que puedas tener un producto funcional en corto tiempo.
+        </p>
+        <p>
+            Puedo crear sistemas para escritorio Windows o sistemas para navegadores, para uno o para muchos usuarios con diferentes niveles de permisos.
+        </p>
+        <p>
+            He construido sistemas para escuelas cubriendo las partes académicas, administrativas y financieras. También he desarrollado sistemas para la administración de historiales clínicos. He integrado sistemas de pagos para tiendas en línea, y también logré la comunicación entre sistemas de relaciones con clientes, tiendas en línea y sistemas de cotización.
+        </p>
+    </div>
+    <div class="col-md-4">
+        @Html.Partial("../Blogger/feedBlogger")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <a
+           class="twitter-timeline" 
+           href="https://twitter.com/Maverick_XXI?ref_src=twsrc%5Etfw"
+           data-theme="dark"
+           data-chrome="nofooter noborders"
+           data-tweet-limit="3">Tweets by Maverick_XXI</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="col-md-4">
+        <p>
+            <iframe width="100%" src="https://www.youtube.com/embed/oFVsoXNkFB8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <p>
+        </p>
+    </div>
+</div>

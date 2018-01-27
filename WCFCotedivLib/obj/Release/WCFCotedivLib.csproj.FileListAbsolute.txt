@@ -1,0 +1,16 @@
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.csprojResolveAssemblyReference.cache
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.csproj.CoreCompileInputs.cache
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.dll.config
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\EntityFramework.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\SernaSistemas.Core.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\SernaSistemas.Core.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.dll.config
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\EntityFramework.xml
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.dll
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.pdb
