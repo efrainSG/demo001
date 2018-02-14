@@ -17,6 +17,26 @@ namespace CoTeDiv {
                     controller = "Home", action = "Index", id = UrlParameter.Optional
                 }
             );
+            routes.MapRoute(
+                name: "listarConceptoEstudiante",
+                url: "Valorar/{id}/{valor}",
+                defaults: new {
+                    controller = "Estudiante",
+                    action = "Valorar",
+                    id = UrlParameter.Optional,
+                    valor = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+                name: "listarConceptoExperto",
+                url: "EvaluarConcepto/{id}/{valor}",
+                defaults: new {
+                    controller = "Estudiante",
+                    action = "EvaluarConcepto",
+                    id = UrlParameter.Optional,
+                    valor = UrlParameter.Optional
+                }
+                );
         }
     }
 }

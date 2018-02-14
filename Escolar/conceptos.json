@@ -1,0 +1,67 @@
+{
+  "conceptos": [
+    {
+      "id": "1",
+      "titulo": "Algoritmo",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "1",
+      "valor": "-2"
+    },
+    {
+      "id": "2",
+      "titulo": "Ecuación diferencial",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "2",
+      "valor": "-1"
+    },
+    {
+      "id": "3",
+      "titulo": "Integración por partes",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "3",
+      "valor": "0"
+    },
+    {
+      "id": "4",
+      "titulo": "Concurrencia",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "4",
+      "valor": "1"
+    },
+    {
+      "id": "5",
+      "titulo": "<i>time slice</i>",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "3",
+      "valor": "2"
+    },
+    {
+      "id": "6",
+      "titulo": "Sistema monolítico",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "1",
+      "valor": "1"
+    },
+    {
+      "id": "7",
+      "titulo": "Desarrollo ágil",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "2",
+      "valor": "0"
+    },
+    {
+      "id": "8",
+      "titulo": "Base de datos",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "4",
+      "valor": "-1"
+    },
+    {
+      "id": "9",
+      "titulo": "Concepto 1",
+      "contenido": "Contenido de prueba para el listado cargado por archivo de JSON (Requiere obtener por BD la información del concepto). 1",
+      "evaluadoPor": "2",
+      "valor": "-2"
+    }
+  ]
+}

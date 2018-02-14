@@ -21,36 +21,42 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Cotediv", "Inicio", "Estudiante", new {
-               hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash
-           }, new {
-               @class = "navbar-brand"
-           })
+                    hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash
+                }, new {
+                    @class = "navbar-brand"
+                })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
                         @Html.ActionLink(linkText: "Publicar", actionName: "Conceptuar", controllerName: "Estudiante", routeValues: new {
-                hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
-                id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
-            }, htmlAttributes: null)
+                            hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
+                            id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
+                        }, htmlAttributes: null)
                     </li>
                     <li>
                         @Html.ActionLink(linkText: "Ver publicaciones", actionName: "ListarConceptos", controllerName: "Estudiante", routeValues: new {
-                hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
-                id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
-            }, htmlAttributes: null)
+                            hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
+                            id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
+                        }, htmlAttributes: null)
                     </li>
                     <li>
                         @Html.ActionLink(linkText: "Perfil", actionName: "Perfil", controllerName: "Estudiante", routeValues: new {
-                hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
-                id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
-            }, htmlAttributes: null)
+                            hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
+                            id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
+                        }, htmlAttributes: null)
                     </li>
                     <li>
                         @Html.ActionLink(linkText: "Acerca del proyecto", actionName: "About", controllerName: "Estudiante", routeValues: new {
-                hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
-                id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
-            }, htmlAttributes: null)
+                            hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
+                            id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
+                        }, htmlAttributes: null)
+                    </li>
+                    <li>
+                        @Html.ActionLink(linkText: "Cerrar sesión", actionName: "Logout", controllerName: "Estudiante", routeValues: new {
+                            hash = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).Hash,
+                            id = (Session["Usuario"] as SernaSistemas.Core.Models.LoginModel).IdUsuario
+                        }, htmlAttributes: null)
                     </li>
                 </ul>
                 <form class="navbar-form" action="@Url.Action("Buscar")" method="get">

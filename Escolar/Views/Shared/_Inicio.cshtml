@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dominando JQuery y JS</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+    <script type="text/javascript">
+        var add_Btn = function (id, clase, texto, destino) {
+            $('<button class="btn" id="' + id + '">').addClass(clase).html(texto).appendTo(destino);
+        }
+
+        var add_btnGroup = function (id, destino) {
+            var $gp = $('<div class="btn-group" id="' + id + '">');
+            $gp.appendTo(destino);
+            return $gp;
+        }
+
+        var addRow = function (id, destino) {
+            var $fila = $('<div class="row" id="' + id + '">');
+            $fila.appendTo(destino);
+            return $fila;
+        }
+
+        var addCell = function (id, clase, texto, destino) {
+            $celda = $('<div id="' + id + '" class="' + clase + '">');
+            $celda.html(texto).appendTo(destino);
+            return $celda;
+        }
+
+        $(document).ready(function () {
+
+            $.getJSON("conceptos.json", function (datos) {
+                var idusuario = 3;
+                for (i = 0; i < datos.conceptos.length; i++) {
+                    $f = addRow("fila_concepto_" + i, "body");
+                    $c_i = addCell("div_col_izq_" + i, "col-md-3", datos.conceptos[i].titulo, $f);
+                    $c_d = addCell("div_col_der_" + i, "col-md-9", datos.conceptos[i].contenido, $f);
+                    $("<br/>").appendTo($c_i);
+                    $g = add_btnGroup($f.attr("id") + "_group", $c_i);
+                    var clase0 = (datos.conceptos[i].valor == -2 || datos.conceptos[i].evaluadoPor != idusuario) ? " disabled" : "";
+                    var clase1 = (datos.conceptos[i].valor == -1 || datos.conceptos[i].evaluadoPor != idusuario) ? " disabled" : "";
+                    var clase2 = (datos.conceptos[i].valor == 0 || datos.conceptos[i].evaluadoPor != idusuario) ? " disabled" : "";
+                    var clase3 = (datos.conceptos[i].valor == 1 || datos.conceptos[i].evaluadoPor != idusuario) ? " disabled" : "";
+                    var clase4 = (datos.conceptos[i].valor == 2 || datos.conceptos[i].evaluadoPor != idusuario) ? " disabled" : "";
+
+                    add_Btn("btn_evaluacion", "btn-danger" + clase0, "", $g);
+                    add_Btn("btn_evaluacion", "btn-warning" + clase1, "", $g);
+                    add_Btn("btn_evaluacion", "btn-default" + clase2, "", $g);
+                    add_Btn("btn_evaluacion", "btn-info" + clase3, "", $g);
+                    add_Btn("btn_evaluacion", "btn-success" + clase4, "", $g);
+                }
+            });
+
+            $("body").on("click", "#btn_evaluacion", function () {
+                $(this).siblings().removeClass("disabled");
+                if ($(this).attr("class") == "btn btn-danger") {
+                    $(this).addClass("disabled");
+                }
+                if ($(this).attr("class") == "btn btn-warning") {
+                    $(this).addClass("disabled");
+                }
+                if ($(this).attr("class") == "btn btn-default") {
+                    $(this).addClass("disabled");
+                }
+                if ($(this).attr("class") == "btn btn-info") {
+                    $(this).addClass("disabled");
+                }
+                if ($(this).attr("class") == "btn btn-success") {
+                    $(this).addClass("disabled");
+                }
+            });
+        });
+    </script>
+</head>
+<body class="container">
+    <div id="divJumbotron" class="jumbotron">
+        <h1>Efraín Serna</h1>
+    </div>
+    @RenderBody()
+
+</body>
+</html>

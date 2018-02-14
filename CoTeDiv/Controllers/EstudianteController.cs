@@ -24,7 +24,7 @@ namespace CoTeDiv.Controllers {
                     IdStatus = response.IdStatus,
                     Usuario = response.Usuario,
                     Direccion = response.Direccion,
-                    Institucion = new Models.InstitucionModel(){ 
+                    Institucion = new Models.InstitucionModel() {
                         Id = response.Institucion.Id,
                         IdLocacion = response.Institucion.IdLocacion,
                         Lat = response.Institucion.Lat,
@@ -44,11 +44,15 @@ namespace CoTeDiv.Controllers {
 
             return model;
         }
-        // GET: Estudiante
 
         public ActionResult Index(string hash) {
+            if (Session.Count == 0 && !TempData.Keys.Contains("login")) {
+                return RedirectToAction("Index", "Home");
+            }
             Session.Add("Usuario", (TempData["login"] as LoginModel));
+            TempData.Clear();
             return RedirectToAction("Inicio", hash);
+            
         }
 
         public ActionResult Nuevo() {
@@ -56,6 +60,9 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult Inicio(string hash) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var resultados = cs.ListarEntradas(10);
 
             ResponseModel model = new ResponseModel() {
@@ -79,10 +86,16 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult About(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         public ActionResult Perfil(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var model = getPerfil(id);
             model.LoginData = new LoginModel() {
                 Hash = hash,
@@ -92,6 +105,9 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult editarPerfil(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var model = getPerfil(id);
             model.LoginData = new LoginModel() {
                 Hash = hash,
@@ -116,6 +132,9 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult Conceptuar(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             ResponseModel model = new ResponseModel() {
                 Concepto = new Models.ConceptoModel()
             };
@@ -123,6 +142,9 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult EditarPost(int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             ResponseModel model = new ResponseModel();
             var response = cs.VerEntrada(new EntradaRequest() {
                 Id = id
@@ -137,12 +159,16 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult ListarConceptos(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             ResponseModel model = new ResponseModel() {
                 Posts = new Dictionary<int, Models.ConceptoModel>()
             };
             var response = cs.ListarEntradas(new LoginModel() {
                 IdUsuario = id,
                 Hash = hash,
+                IdRol = (int)Roles.Alumno,
                 NombreUsuario = (Session["Usuario"] as LoginModel).NombreUsuario,
                 UltimoLogin = (Session["Usuario"] as LoginModel).UltimoLogin
             });
@@ -156,6 +182,11 @@ namespace CoTeDiv.Controllers {
             return View(model);
         }
 
+        public ActionResult Logout(string hash, int id) {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost, ActionName("Registrar")]
         public ActionResult NuevaCuenta(ResponseModel model) {
             return RedirectToAction("Index", "Home");
@@ -163,6 +194,9 @@ namespace CoTeDiv.Controllers {
 
         [HttpPost, ActionName("Perfil")]
         public ActionResult GuardarPerfil(ResponseModel model) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var perfil = new PerfilRequest() {
                 Id = model.Perfil.Id,
                 IdInstitucion = model.Perfil.IdInstitucion,
@@ -193,6 +227,9 @@ namespace CoTeDiv.Controllers {
 
         [HttpPost, ActionName("Conceptuar")]
         public ActionResult GuardarConcepto(ResponseModel model) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var response = cs.GuardarEntrada(new EntradaRequest() {
                 Id = model.Concepto.Id,
                 Contenido = model.Concepto.Contenido,
@@ -207,7 +244,11 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult Buscar(string query) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             ViewData.Add("Layout", "~/Views/Shared/Estudiante.cshtml");
+            ViewData.Add("Accion", "Valorar");
             ResponseModel model = new ResponseModel() {
                 Posts = new Dictionary<int, Models.ConceptoModel>()
             };
@@ -222,17 +263,23 @@ namespace CoTeDiv.Controllers {
             return View("HazBusqueda", model);
         }
 
-        [HttpPost]
-        public ActionResult Valorar(ResponseModel model) {
-            var response = cs.ValorarEntrada(new EntradaRequest() {
-                Contenido = model.Concepto.Contenido,
-                Fecha = model.Concepto.Fecha,
-                Id = model.Concepto.Id,
-                IdAutor = model.LoginData.IdUsuario,
-                Titulo = model.Concepto.Titulo,
-                Valor = model.Concepto.Valor
+        public ActionResult Valorar(int id, int valor) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
+            if ((Session["Usuario"] as LoginModel) != null) {
+                if ((Session["Usuario"] as LoginModel).IdRol == (int)Roles.Alumno) {
+                    var response = cs.ValorarEntrada(new EntradaRequest() {
+                        Fecha = DateTime.Today,
+                        Id = id,
+                        IdAutor = (Session["Usuario"] as LoginModel).IdUsuario,
+                        Valor = valor
+                    });
+                }
+            }
+            return RedirectToAction("Buscar", new {
+                query = string.Empty
             });
-            return View(model);
         }
     }
 }

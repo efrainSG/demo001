@@ -9,6 +9,7 @@ using WCFCotedivLib.Contracts;
 
 namespace CoTeDiv.Controllers {
     public class ExpertoController : Controller {
+
         WCFCotedivLib.CotedivServices cs = new WCFCotedivLib.CotedivServices();
         private ResponseModel GetPerfil(int id) {
             PerfilResponse response = cs.VerPerfil(new PerfilRequest() { IdUsuario = id });
@@ -41,15 +42,20 @@ namespace CoTeDiv.Controllers {
 
             return model;
         }
-        // GET: Experto
+
         public ActionResult Index(string hash) {
-            Session.Add("Usuario", (TempData["login"] as LoginModel));
-            return RedirectToAction("Inicio", hash);
+            if (TempData.Keys.Contains("login")) {
+                Session.Add("Usuario", (TempData["login"] as LoginModel));
+                TempData.Clear();
+                return RedirectToAction("Inicio", hash);
+            } else
+                return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Inicio(string hash) {
-            //var resultados = cs.ListarEntradas(10);
-
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             ResponseModel model = new ResponseModel() {
                 Posts = new Dictionary<int, Models.ConceptoModel>(),
                 LoginData = new LoginModel() {
@@ -58,23 +64,20 @@ namespace CoTeDiv.Controllers {
                     UltimoLogin = (Session["Usuario"] as LoginModel).UltimoLogin
                 }
             };
-
-            //foreach (var item in resultados.Resultados) {
-            //    model.Posts.Add(item.Key, new Models.ConceptoModel() {
-            //        Contenido = item.Value.Contenido,
-            //        Id = item.Value.Id,
-            //        Titulo = item.Value.Titulo
-            //    });
-            //}
-
             return View(model);
         }
 
         public ActionResult About(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         public ActionResult Perfil(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var model = GetPerfil(id);
             model.LoginData = new LoginModel() {
                 Hash = hash,
@@ -84,6 +87,9 @@ namespace CoTeDiv.Controllers {
         }
 
         public ActionResult EditarPerfil(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var model = GetPerfil(id);
             model.LoginData = new LoginModel() {
                 Hash = hash,
@@ -107,10 +113,65 @@ namespace CoTeDiv.Controllers {
             return View(model);
         }
 
-        [HttpPost,
-            ActionName("Perfil")
-            ]
+        public ActionResult Buscar(string query) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewData.Add("Layout", "~/Views/Shared/Experto.cshtml");
+            ViewData.Add("Accion", "EvaluarConcepto");
+            ResponseModel model = new ResponseModel() {
+                Posts = new Dictionary<int, Models.ConceptoModel>()
+            };
+            var response = cs.ListarEntradas(query);
+            foreach (var item in response.Resultados) {
+                var concepto = new Models.ConceptoModel() {
+                    Id = item.Value.Id,
+                    Contenido = item.Value.Contenido,
+                    Titulo = item.Value.Titulo
+                };
+                concepto.Evaluacion = (item.Value.Evaluacion.HasValue) ? item.Value.Evaluacion.Value : (int)Calificaciones.Nulo;
+                concepto.Valor = (item.Value.Valoracion);
+                concepto.EvalValorPor = (item.Value.Evaluacion.HasValue) ? item.Value.EvalValorPor.Value : (int)Calificaciones.Nulo;
+                model.Posts.Add(item.Key, concepto);
+            }
+            return View("HazBusqueda", model);
+        }
+
+        public ActionResult ListarConceptos(string hash, int id) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
+            ResponseModel model = new ResponseModel() {
+                Posts = new Dictionary<int, Models.ConceptoModel>()
+            };
+            var response = cs.ListarEntradas(new LoginModel() {
+                IdUsuario = id,
+                Hash = hash,
+                IdRol = (int)Roles.Experto,
+                NombreUsuario = (Session["Usuario"] as LoginModel).NombreUsuario,
+                UltimoLogin = (Session["Usuario"] as LoginModel).UltimoLogin
+            });
+            foreach (var item in response.Resultados) {
+                model.Posts.Add(item.Key, new Models.ConceptoModel() {
+                    Id = item.Value.Id,
+                    Contenido = item.Value.Contenido,
+                    Titulo = item.Value.Titulo,
+                    Evaluacion = item.Value.Evaluacion.Value
+                });
+            }
+            return View(model);
+        }
+
+        public ActionResult Logout(string hash, int id) {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost, ActionName("Perfil")]
         public ActionResult GuardarPerfil(ResponseModel model) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
+            }
             var perfil = new PerfilRequest() {
                 Id = model.Perfil.Id,
                 IdInstitucion = model.Perfil.IdInstitucion,
@@ -122,13 +183,6 @@ namespace CoTeDiv.Controllers {
                 Nombres = model.Perfil.Nombres,
                 Resumen = model.Perfil.Resumen,
                 Telefono = model.Perfil.Telefono,
-                //Institucion = new WCFCotedivLib.Contracts.InstitucionModel() {
-                //    Id = model.Perfil.IdInstitucion,
-                //    IdLocacion = 0,
-                //    Lat = string.Empty,
-                //    Lon = string.Empty,
-                //    Nombre = string.Empty
-                //}
             };
             var respose = cs.GuardarPerfil(perfil);
             var model_1 = GetPerfil((Session["Usuario"] as LoginModel).IdUsuario);
@@ -139,25 +193,23 @@ namespace CoTeDiv.Controllers {
             return View(viewName: "Perfil", model: model_1);
         }
 
-        public ActionResult BuscarConceptos(string query) {
-            ViewData.Add("Layout", "~/Views/Shared/Estudiante.cshtml");
-            ResponseModel model = new ResponseModel() {
-                Posts = new Dictionary<int, Models.ConceptoModel>()
-            };
-            var response = cs.ListarEntradas(query);
-            foreach (var item in response.Resultados) {
-                model.Posts.Add(item.Key, new Models.ConceptoModel() {
-                    Id = item.Value.Id,
-                    Contenido = item.Value.Contenido,
-                    Titulo = item.Value.Titulo
-                });
+        public ActionResult EvaluarConcepto(int id, int valor) {
+            if (Session.Count == 0) {
+                return RedirectToAction("Index", "Home");
             }
-            return View("HazBusqueda", model);
-        }
-
-        [HttpPost]
-        public ActionResult EvaluarConcepto(int idConcepto, int evaluacion) {
-            return View();
+            if ((Session["Usuario"] as LoginModel) != null) {
+                if ((Session["Usuario"] as LoginModel).IdRol == (int)Roles.Experto) {
+                    var response = cs.EvaluarEntrada(new EntradaRequest() {
+                        Fecha = DateTime.Today,
+                        Id = id,
+                        IdAutor = (Session["Usuario"] as LoginModel).IdUsuario,
+                        Valor = valor
+                    });
+                }
+            }
+            return RedirectToAction("Buscar", new {
+                query = string.Empty
+            });
         }
     }
 }

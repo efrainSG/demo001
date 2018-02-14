@@ -11,8 +11,11 @@
         @foreach (var item in Model.Posts) {
             <dt class="well well-sm">
                 @Html.ActionLink(linkText: item.Value.Titulo, actionName: "EvaluarConcepto", routeValues: new {
-                   @id =  item.Key
-                }, htmlAttributes:null)
+               @id =  item.Key
+           }, htmlAttributes:null)
+                <span class="warning">
+                    @item.Value.Evaluacion
+                </span>
             </dt>
             <dd>
                 @item.Value.Contenido

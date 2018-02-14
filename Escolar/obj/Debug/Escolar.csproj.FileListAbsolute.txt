@@ -39,3 +39,4 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Escolar\bin\Mi
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Escolar\obj\Debug\Escolar.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Escolar\obj\Debug\Escolar.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Escolar\obj\Debug\Escolar.pdb
+C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Escolar\obj\Debug\Escolar.csprojResolveAssemblyReference.cache

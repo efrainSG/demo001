@@ -93,12 +93,15 @@ namespace CoTeDiv.Models {
             get;
             internal set;
         }
-        public int Valor {
+        public int? Valor {
             get;
             internal set;
         }
         public int Evaluacion {
             get;set;
+        }
+        public int EvalValorPor {
+            get; set;
         }
     }
     public class PerfilModel {

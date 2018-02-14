@@ -1,4 +1,5 @@
-﻿using SernaSistemas.Core.Models;
+﻿using CoTeDiv.Models;
+using SernaSistemas.Core.Models;
 using System.Web.Mvc;
 using WCFCotedivLib;
 using WCFCotedivLib.Contracts;
@@ -40,6 +41,7 @@ namespace CoTeDiv.Controllers {
         public ActionResult HazLogin(LoginModel model) {
             var response = cs.Login(new LoginRequest() { UserId = model.NombreUsuario, Password = model.LoginPass });
             if (response.Success) {
+                TempData.Clear();
                 TempData.Add("login", new LoginModel() {
                     Hash = response.Modelo.Hash,
                     IdNivel = response.Modelo.IdNivel,
@@ -49,8 +51,8 @@ namespace CoTeDiv.Controllers {
                     Permisos = response.Modelo.Permisos,
                     UltimoLogin = response.Modelo.UltimoLogin
                 });
-                string controlador = (response.Modelo.IdRol.Equals(2)) ? "Estudiante" :
-                    ((response.Modelo.IdRol.Equals(3)) ? "Experto" : "Administrador");
+                string controlador = (response.Modelo.IdRol.Equals((int)Roles.Alumno)) ? "Estudiante" :
+                    ((response.Modelo.IdRol.Equals((int)Roles.Experto)) ? "Experto" : "Administrador");
                 return RedirectToAction("Index", controlador, response.Modelo.Hash);
             }
             return RedirectToAction("Index");

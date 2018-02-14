@@ -23,7 +23,25 @@ namespace WCFCotedivLib {
         }
 
         public EntradaResponse EvaluarEntrada(EntradaRequest request) {
-            throw new NotImplementedException();
+            EntradaResponse response = new EntradaResponse();
+            Publicacion _publicacion = dtx.Publicacions.FirstOrDefault(p => p.Id.Equals(request.Id));
+            Experto _experto = dtx.Usuarios.FirstOrDefault(e => e.Id.Equals(request.IdAutor)).UsuarioSistemas.FirstOrDefault(u => u.IdRol.Equals(3)).Expertos.FirstOrDefault();
+            Evaluacion _evaluacion = _publicacion.Evaluacions.FirstOrDefault(e => e.IdExperto.Equals(_experto.Id));
+            if (_evaluacion == null) {
+                _evaluacion = new Evaluacion() {
+                    Valor = request.Valor,
+                    Fecha = DateTime.Today
+                };
+                _experto.Evaluacions.Add(_evaluacion);
+                _publicacion.Evaluacions.Add(_evaluacion);
+            } else {
+                _evaluacion.Valor = request.Valor;
+                _evaluacion.Fecha = DateTime.Today;
+            }
+            dtx.SubmitChanges();
+            response.Success = true;
+            response.ErrorMsg = string.Empty;
+            return response;
         }
 
         public EntradaResponse GuardarEntrada(EntradaRequest request) {
@@ -165,11 +183,13 @@ namespace WCFCotedivLib {
 
         public ListaResponse ListarEntradas(object request) {
             var response = new ListaResponse();
-            List<ConceptoModel> entradas;
+            List<ConceptoModel> entradas = new List<ConceptoModel>();
             if (request == null) {
-                entradas = new List<ConceptoModel>();
+                // Sin petición de datos
                 response.Success = false;
+
             } else if (request is int) {
+                // Petición del concepto con Id especificado
                 entradas = (from p in dtx.Publicacions
                             orderby p.Fecha
                             select new ConceptoModel() {
@@ -178,19 +198,44 @@ namespace WCFCotedivLib {
                                 Titulo = p.Titulo
                             }).Take((int)request).ToList();
                 response.Success = true;
+
             } else if (request is LoginModel) {
-                entradas = (from p in dtx.Publicacions
-                            where p.Alumno.UsuarioSistema.IdUsuario.Equals((request as LoginModel).IdUsuario)
-                            orderby p.Fecha
-                            select new ConceptoModel() {
-                                Id = p.Id,
-                                Contenido = p.Contenido,
-                                Titulo = p.Titulo,
-                                Valoracion = ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).HasValue ?
-                                ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).Value : 0
-                            }).ToList();
+                // Petición de publicaciones hechas por usuario proporcionado
+                switch ((request as LoginModel).IdRol) {
+                    case 2:
+                        entradas = (from p in dtx.Publicacions
+                                    where p.Alumno.UsuarioSistema.IdUsuario.Equals((request as LoginModel).IdUsuario)
+                                    orderby p.Fecha
+                                    select new ConceptoModel() {
+                                        Id = p.Id,
+                                        Contenido = p.Contenido,
+                                        Titulo = p.Titulo,
+                                        EvalValorPor = (p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault() != null) ?
+                                        p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().IdExperto : 0,
+                                        Valoracion = ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).HasValue ?
+                                        ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).Value : 0,
+                                        //Evaluacion = p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().Valor
+                                    }).ToList();
+                        break;
+                    case 3:
+                        entradas = (from p in dtx.Publicacions
+                                    where p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().Experto.UsuarioSistema.IdUsuario.Equals((request as LoginModel).IdUsuario)
+                                    orderby p.Fecha
+                                    select new ConceptoModel() {
+                                        Id = p.Id,
+                                        Contenido = p.Contenido,
+                                        Titulo = p.Titulo,
+                                        EvalValorPor = p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().IdExperto,
+                                        Valoracion = ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).HasValue ?
+                                        ((int?)(p.Valoracions.Average(i => i.IdPublicacion))).Value : 0,
+                                        Evaluacion = p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().Valor
+                                    }).ToList();
+                        break;
+                }
                 response.Success = true;
+
             } else if (request is string) {
+                // Petición de publicaciones según consulta
                 entradas = (from p in dtx.Publicacions
                             where p.Contenido.Contains(request as string) || p.Titulo.Contains(request as string)
                             select new ConceptoModel() {
@@ -201,9 +246,12 @@ namespace WCFCotedivLib {
                                 p.Evaluacions.OrderByDescending(e => e.Fecha).FirstOrDefault().Valor : 0
                             }
                             ).ToList();
+
             } else {
+
                 entradas = new List<ConceptoModel>();
                 response.Success = false;
+
             }
             foreach (var item in entradas) {
                 response.Resultados.Add(item.Id, item);

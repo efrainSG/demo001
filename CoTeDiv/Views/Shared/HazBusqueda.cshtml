@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Resultados de búsqueda";
     Layout = ViewBag.Layout; // "~/Views/Shared/Estudiante.cshtml";
+    string accion = ViewBag.Accion;
 }
 <h1>@ViewBag.Title</h1>
 
@@ -10,21 +11,40 @@
         @foreach (var item in Model.Posts) {
             <dt class="well well-sm">
                 @Html.ActionLink(linkText: item.Value.Titulo, actionName: "VerPost", routeValues: new {
-                    @id = item.Key
+                    id = item.Key
                 }, htmlAttributes: null)
-                @if (item.Value.Evaluacion == 0) {
-                    <br />
-                    @Html.ActionLink(linkText: " ", actionName: "Valorar", routeValues: new {
-                        @id = item.Key, @valor = 1
+
+                <br />
+                <div class="btn-group">
+                    @Html.ActionLink(linkText: " ", actionName: accion, routeValues: new {
+                        id = item.Key, valor = (int)CoTeDiv.Models.Calificaciones.TotalDesacuerdo
                     }, htmlAttributes: new {
-                        @class = "btn btn-sm btn-success"
+                        @class = "btn btn-danger"
                     })
-                    @Html.ActionLink(linkText: " ", actionName: "Valorar", routeValues: new {
-                        @id = item.Key, @valor = -1
+                    @if (ViewBag.Layout.Contains("Experto")) {
+                        @Html.ActionLink(linkText: " ", actionName: accion, routeValues: new {
+                            @id = item.Key, @valor = (int)CoTeDiv.Models.Calificaciones.Desacuerdo
+                        }, htmlAttributes: new {
+                            @class = "btn btn-warning"
+                        })
+                        @Html.ActionLink(linkText: " ", actionName: accion, routeValues: new {
+                            @id = item.Key, @valor = (int)CoTeDiv.Models.Calificaciones.Nulo
+                        }, htmlAttributes: new {
+                            @class = "btn btn-default"
+                        })
+                        @Html.ActionLink(linkText: " ", actionName: accion, routeValues: new {
+                            @id = item.Key, @valor = (int)CoTeDiv.Models.Calificaciones.DeAcuerdo
+                        }, htmlAttributes: new {
+                            @class = "btn btn-info"
+                        })
+                    }
+
+                    @Html.ActionLink(linkText: " ", actionName: accion, routeValues: new {
+                        @id = item.Key, @valor = (int)CoTeDiv.Models.Calificaciones.TotalAcuerdo
                     }, htmlAttributes: new {
-                        @class = "btn btn-sm btn-danger"
+                        @class = "btn btn-success"
                     })
-                }
+                </div>
             </dt>
             <dd>
                 @item.Value.Contenido

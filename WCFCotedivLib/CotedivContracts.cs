@@ -253,10 +253,13 @@ namespace WCFCotedivLib.Contracts {
         public string Contenido {
             get; set;
         }
-        public int Valoracion {
+        public int? Valoracion {
             get; set;
         }
         public int? Evaluacion {
+            get; set;
+        }
+        public int? EvalValorPor {
             get; set;
         }
     }
