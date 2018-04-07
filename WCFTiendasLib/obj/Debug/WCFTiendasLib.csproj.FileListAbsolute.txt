@@ -7,3 +7,18 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFTiendasLib\
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\WCFTiendasLib.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\WCFTiendasLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\WCFTiendasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\SernaSistemas.Core.dll
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\SernaSistemas.Core.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.csprojResolveAssemblyReference.cache
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.csproj.CoreCompileInputs.cache
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.csproj.CopyComplete
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\obj\Debug\WCFTiendasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\SernaSistemas.Core.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\efrai\Documents\repos\demo001\WCFTiendasLib\bin\Debug\System.Diagnostics.DiagnosticSource.xml

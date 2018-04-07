@@ -346,6 +346,27 @@
             Telemetry module tracking requests using http module.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.EnableChildRequestTrackingSuppression">
+            <summary>
+            Gets or sets a value indicating whether child request suppression is enabled or disabled. 
+            True by default.
+            This value is evaluated in Initialize().
+            </summary>
+            <remarks>
+            See also <see cref="T:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule" />.
+            Child requests caused by <see cref="T:System.Web.Handlers.TransferRequestHandler" />.
+            Unit tests should disable this.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingInternalDictionarySize">
+            <summary>
+            Gets or sets a value indicating the size of internal tracking dictionary.
+            Must be a positive integer.
+            </summary>
+            <remarks>
+            See also <see cref="T:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule" />.
+            </remarks>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.Handlers">
             <summary>
             Gets the list of handler types for which requests telemetry will not be collected
@@ -402,6 +423,77 @@
             </summary>
             <param name="handler">An instance of handler to validate.</param>
             <returns>True if handler is a transfer handler, otherwise - False.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule">
+            <summary>
+            <see cref="T:System.Web.Handlers.TransferRequestHandler"/> can create a Child request to route extension-less requests to a controller.
+            (ex: site/home -> site/HomeController.cs)
+            We do not want duplicate telemetry logged for both the Parent and Child requests, so the activeRequests will be created OnBeginRequest.
+            When the child request OnEndRequest, the id will be removed from this dictionary and telemetry will not be logged for the parent.
+            </summary>
+            <remarks>
+            Unit tests should disable the ChildRequestTrackingSuppressionModule.
+            Unit test projects cannot create an [internal] IIS7WorkerRequest object.
+            Without this object, we cannot modify the Request.Headers without throwing a PlatformNotSupportedException.
+            Unit tests will have to initialize the RequestIdHeader.
+            The second IF will ensure the id is added to the activeRequests.
+            </remarks>
+            <remarks>
+            IIS Classic Pipeline should disable the ChildRequestTrackingSuppressionModule.
+            Classic does not create IIS7WorkerRequest object and Headers will be read-only.
+            (Exception System.PlatformNotSupportedException: This operation requires IIS integrated pipeline mode.)
+            </remarks>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.activeRequestsA">
+            <summary>
+            Using this as a hash-set of current active requests. The value of the Dictionary is not used.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule" /> class.
+            </summary>
+            <param name="maxRequestsTracked">The maximum number of active requests to be tracked before resetting the dictionary.</param>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.MAXSIZE">
+            <summary>
+            Gets the Max number of request ids to cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.OnBeginRequest_IdRequest(System.Web.HttpContext)">
+            <summary>
+            Request will be tagged with an id to identify if it should be logged later.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.OnEndRequest_ShouldLog(System.Web.HttpContext)">
+            <summary>
+            OnEndRequest - Should this request be logged?
+            Will compare a request id against a hash-set of known requests.
+            If this request is not known, add it to hash-set and return true (safe to log).
+            If this request is known, return false (do not log twice).
+            Additional requests with the same id will return false.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.TagRequest(System.Web.HttpContext)">
+            <summary>
+            Tag new requests.
+            Transfer Ids to parent requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.IsRequestKnown(System.String)">
+            <summary>
+            Has this request been tracked.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule.ChildRequestTrackingSuppressionModule.AddRequestToDictionary(System.String)">
+            <summary>
+            Track this requestId.
+            </summary>
+            <remarks>
+            Dictionary A will be read/write.
+            When dictionary A is full, move to B and create new A.
+            Dictionary B will be read-only.
+            </remarks>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Web.SessionTelemetryInitializer">
             <summary>
@@ -492,6 +584,127 @@
             Key word for diagnostics events.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.ConditionalWeakTableExtensions">
+            <summary>
+            Extension methods for the ConditionalWeakTable class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.ConditionalWeakTableExtensions.AddIfNotExists``2(System.Runtime.CompilerServices.ConditionalWeakTable{``0,``1},``0,``1)">
+            <summary>
+            Check if a key exists before adding the key/value pair.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper">
+            <summary>
+            A store for instrumentation App Ids. This makes sure we don't query the public endpoint to find an app Id for the same instrumentation key more than once.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.MAXSIZE">
+            <summary>
+            Max number of app ids to cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Func{System.String,System.Threading.Tasks.Task{System.String}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to provide an override for fetching appId logic.
+            </summary>
+            <param name="appIdProviderMethod">The delegate to be called to fetch the appId.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to seed the instrumentation key -> app Id relationship.
+            </summary>
+            <param name="mapSeed">A dictionary that contains known instrumentation key - app id relationship.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class.
+            </summary>
+            <param name="endpointAddress">Endpoint that is to be used to fetch appId.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.TryGetXComponentCorrelationId(System.String,System.String@)">
+            <summary>
+            Retrieves the correlation id corresponding to a given instrumentation key.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key string.</param>
+            <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
+            <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.IsFetchAppInProgress(System.String)">
+            <summary>
+            This method is purely a test helper at this point. It checks whether the task to get app ID is still running.
+            </summary>
+            <returns>True if fetch task is still in progress, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.GenerateCorrelationIdAndAddToDictionary(System.String,System.String)">
+            <summary>
+            Format and store an iKey and appId pair into the dictionary of known correlation ids.
+            </summary>
+            <param name="ikey">Instrumentation Key is expected to be a Guid string.</param>
+            <param name="appId">Application Id is expected to be a Guid string. App Id needs to be Http Header safe, and all non-ASCII characters will be removed.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FetchAppIdFromService(System.String)">
+            <summary>
+            Retrieves the app id given the instrumentation key.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key for which app id is to be retrieved.</param>
+            <returns>App id.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.GetAppIdEndPointUri(System.String)">
+            <summary>
+            Strips off any relative path at the end of the base URI and then appends the known relative path to get the app id uri.
+            </summary>
+            <param name="instrumentationKey">AI resource's instrumentation key.</param>
+            <returns>Computed Uri.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.RegisterFailure(System.String,System.Exception)">
+            <summary>
+            Registers failure for further action in future.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key for which the failure occurred.</param>
+            <param name="ex">Exception indicating failure.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.RegisterFetchFailure(System.String,System.Net.HttpStatusCode)">
+            <summary>
+            FetchAppIdFromService failed.
+            Registers failure for further action in future.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key for which the failure occurred.</param>
+            <param name="httpStatusCode">Response code from AppId Endpoint.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult">
+            <summary>
+            Structure that represents a failed fetch app Id call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.#ctor(System.DateTime,System.Net.HttpStatusCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult" /> class.
+            </summary>
+            <param name="failureTime">Time when the failure occurred.</param>
+            <param name="failureCode">Failure response code.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult" /> class.
+            </summary>
+            <param name="failureTime">Time when the failure occurred.</param>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.FailureTime">
+            <summary>
+            Gets the time of failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.FailureCode">
+            <summary>
+            Gets the integer value for response code representing the type of failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.ShouldRetry">
+            <summary>
+            Gets a value indicating whether the failure is likely to go away when a retry happens.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Common.ExceptionUtilities">
             <summary>
             Utility functions for dealing with exceptions.
@@ -529,6 +742,12 @@
             <param name="keyName">The name of the key to add.</param>
             <param name="keyValue">The value of the key to add.</param>
             <returns>The result of setting the provided key name/value pair into the provided headerValues.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.HeadersUtilities.SanitizeString(System.String)">
+            <summary>
+            Http Headers only allow Printable US-ASCII characters.
+            Remove all other characters.
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.ICorrelationIdLookupHelper">
             <summary>
@@ -591,102 +810,6 @@
         <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.CorrelationContextHeader">
             <summary>
             Standard Correlation-Context header.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper">
-            <summary>
-            A store for instrumentation App Ids. This makes sure we don't query the public endpoint to find an app Id for the same instrumentation key more than once.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.MAXSIZE">
-            <summary>
-            Max number of app ids to cache.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Func{System.String,System.Threading.Tasks.Task{System.String}})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to provide an override for fetching appId logic.
-            </summary>
-            <param name="appIdProviderMethod">The delegate to be called to fetch the appId.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to seed the instrumentation key -> app Id relationship.
-            </summary>
-            <param name="mapSeed">A dictionary that contains known instrumentation key - app id relationship.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class.
-            </summary>
-            <param name="endpointAddress">Endpoint that is to be used to fetch appId.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.TryGetXComponentCorrelationId(System.String,System.String@)">
-            <summary>
-            Retrieves the correlation id corresponding to a given instrumentation key.
-            </summary>
-            <param name="instrumentationKey">Instrumentation key string.</param>
-            <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
-            <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.IsFetchAppInProgress(System.String)">
-            <summary>
-            This method is purely a test helper at this point. It checks whether the task to get app ID is still running.
-            </summary>
-            <returns>True if fetch task is still in progress, false otherwise.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FetchAppIdFromService(System.String)">
-            <summary>
-            Retrieves the app id given the instrumentation key.
-            </summary>
-            <param name="instrumentationKey">Instrumentation key for which app id is to be retrieved.</param>
-            <returns>App id.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.GetAppIdEndPointUri(System.String)">
-            <summary>
-            Strips off any relative path at the end of the base URI and then appends the known relative path to get the app id uri.
-            </summary>
-            <param name="instrumentationKey">AI resource's instrumentation key.</param>
-            <returns>Computed Uri.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.RegisterFailure(System.String,System.Exception)">
-            <summary>
-            Registers failure for further action in future.
-            </summary>
-            <param name="instrumentationKey">Instrumentation key for which the failure occurred.</param>
-            <param name="ex">Exception indicating failure.</param>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult">
-            <summary>
-            Structure that represents a failed fetch app Id call.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.#ctor(System.DateTime,System.Net.HttpStatusCode)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult" /> class.
-            </summary>
-            <param name="failureTime">Time when the failure occurred.</param>
-            <param name="failureCode">Failure response code.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.#ctor(System.DateTime)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult" /> class.
-            </summary>
-            <param name="failureTime">Time when the failure occurred.</param>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.FailureTime">
-            <summary>
-            Gets the time of failure.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.FailureCode">
-            <summary>
-            Gets the integer value for response code representing the type of failure.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FailedResult.ShouldRetry">
-            <summary>
-            Gets a value indicating whether the failure is likely to go away when a retry happens.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions">

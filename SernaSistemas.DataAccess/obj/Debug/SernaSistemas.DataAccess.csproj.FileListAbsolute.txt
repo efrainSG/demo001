@@ -5,3 +5,15 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.pdb
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll.config
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.pdb
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.dll
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.pdb
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CopyComplete

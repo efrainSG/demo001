@@ -6,3 +6,18 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistem
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\WCFSernaSistemasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\SernaSistemas.Core.dll
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\SernaSistemas.Core.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.csprojResolveAssemblyReference.cache
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.csproj.CoreCompileInputs.cache
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.csproj.CopyComplete
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Debug\WCFSernaSistemasLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\SernaSistemas.Core.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Debug\System.Diagnostics.DiagnosticSource.xml

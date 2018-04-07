@@ -33,3 +33,46 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Bibliotecas.Te
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.pdb
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.Tests.dll.config
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.Tests.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.Tests.pdb
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.dll.config
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.csprojResolveAssemblyReference.cache
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.csproj.CoreCompileInputs.cache
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.csproj.CopyComplete
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\obj\Debug\Bibliotecas.Tests.pdb
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Bibliotecas.pdb
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\efrai\Documents\repos\demo001\Bibliotecas.Tests\bin\Debug\System.Diagnostics.DiagnosticSource.xml
