@@ -1,56 +1,85 @@
 ﻿@{
     ViewBag.Title = "Inicio";
 }
-
-<div class="jumbotron">
-    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
-    <h1 class="text-capitalize">
-        <span class="text-primary">Serna Sistemas</span><br />
-        <small>Sistemas cortados a la medida de tus necesidades</small>
-    </h1>
-</div>
+<script>
+    $(document).ready(function () {
+        initContacto($("#divContacto"));
+    });
+</script>
+<p>
+    <div class="well well-lg">
+        <br />
+        <h1 class="text-capitalize">
+            <span class="text-primary">Serna Sistemas</span><br />
+            <small>Sistemas cortados a la medida de tus necesidades</small>
+        </h1>
+    </div>
+</p>
 
 <div class="row">
     <div class="col-md-4">
-        <p>
-            @Html.Partial("FormContacto", new SernaSistemas.Core.Models.ContactoModel())
-        </p>
+        <div class="row">
+            <div class="col-md-12" id="divContacto">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a class="twitter-timeline"
+                   href="https://twitter.com/Maverick_XXI?ref_src=twsrc%5Etfw"
+                   data-theme="dark"
+                   data-chrome="nofooter noborders"
+                   data-tweet-limit="3">Tweets by Maverick_XXI</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    Desarrollo sistemas a la medida de tu negocio en un plan hecho al tamaño de tu presupuesto.
+                </p>
+                <p>
+                    Sigo una forma de trabajo ágil para que puedas tener un producto funcional en corto tiempo.
+                </p>
+                <p>
+                    Puedo crear sistemas para escritorio Windows o sistemas para navegadores, para uno o para muchos usuarios con diferentes niveles de permisos.
+                </p>
+                <p>
+                    He construido sistemas para escuelas cubriendo las partes académicas, administrativas y financieras. También he desarrollado sistemas para la administración de historiales clínicos. He integrado sistemas de pagos para tiendas en línea, y también logré la comunicación entre sistemas de relaciones con clientes, tiendas en línea y sistemas de cotización.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <iframe width="100%" src="https://www.youtube.com/embed/oFVsoXNkFB8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                </p>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <p>
-            Desarrollo sistemas a la medida de tu negocio en un plan hecho al tamaño de tu presupuesto.
-        </p>
-        <p>
-            Sigo una forma de trabajo ágil para que puedas tener un producto funcional en corto tiempo.
-        </p>
-        <p>
-            Puedo crear sistemas para escritorio Windows o sistemas para navegadores, para uno o para muchos usuarios con diferentes niveles de permisos.
-        </p>
-        <p>
-            He construido sistemas para escuelas cubriendo las partes académicas, administrativas y financieras. También he desarrollado sistemas para la administración de historiales clínicos. He integrado sistemas de pagos para tiendas en línea, y también logré la comunicación entre sistemas de relaciones con clientes, tiendas en línea y sistemas de cotización.
-        </p>
-    </div>
-    <div class="col-md-4">
-        @Html.Partial("../Blogger/feedBlogger")
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <a
-           class="twitter-timeline" 
-           href="https://twitter.com/Maverick_XXI?ref_src=twsrc%5Etfw"
-           data-theme="dark"
-           data-chrome="nofooter noborders"
-           data-tweet-limit="3">Tweets by Maverick_XXI</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div class="col-md-4">
-        <p>
-            <iframe width="100%" src="https://www.youtube.com/embed/oFVsoXNkFB8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <p>
-        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
+                        Desarrollo de software de escritorio<br />
+                        <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.prolancer.com.mx/MaverickXXI/1020/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
+                        Sitios web económicos<br />
+                        <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("../Blogger/feedBlogger")
+            </div>
+        </div>
     </div>
 </div>
