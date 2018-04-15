@@ -8,8 +8,8 @@ namespace WCFSernaSistemasLib {
         public ContactoResponse registrarContacto(ContactoRequest request) {
             var response = new ContactoResponse();
             NetworkCredential credenciales = new NetworkCredential() {
-                UserName = "efrain_serna@hotmail.com",
-                Password = "Joshua2005"
+                UserName = "",
+                Password = ""
             };
             SmtpClient cliente = new SmtpClient() {
                 Host = "smtp-mail.outlook.com",
@@ -52,6 +52,21 @@ namespace WCFSernaSistemasLib {
                 response.Mensaje = ex.Message;
                 response.tieneError = true;
             }
+            return response;
+        }
+
+        public ConsultaProyectoResponse consultaProyecto(ConsultaProyectoRequest consultaProyectoRequest) {
+            var response = new ConsultaProyectoResponse() {
+                ActividadesRestantes = 1,
+                Descripcion = "desarrollo de proyecto demo en sitio web propio",
+                Error = 0,
+                FechaTermino = DateTime.Today,
+                Mensaje = string.Empty,
+                NombreProyecto = "Serna Sistemas Web",
+                Plataforma = "Serna Sistemas Web",
+                Sprint = 1,
+                tieneError = false
+            };
             return response;
         }
     }

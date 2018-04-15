@@ -3,15 +3,20 @@ using System;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace WCFSernaSistemasLib {
+namespace WCFSernaSistemasLib
+{
     [ServiceContract]
-    public interface ISernaSistemasServices {
+    public interface ISernaSistemasServices
+    {
         [OperationContract]
         ContactoResponse registrarContacto(ContactoRequest request);
+        [OperationContract]
+        ConsultaProyectoResponse consultaProyecto(ConsultaProyectoRequest consultaProyectoRequest);
     }
 
     [DataContract]
-    public class ContactoRequest {
+    public class ContactoRequest
+    {
         [DataMember]
         public string Nombre {
             get; set;
@@ -34,7 +39,31 @@ namespace WCFSernaSistemasLib {
         }
     }
     [DataContract]
-    public class ContactoResponse : ResponseBase {
+    public class ContactoResponse : ResponseBase
+    {
 
+    }
+
+    [DataContract]
+    public class ConsultaProyectoRequest
+    {
+        [DataMember]
+        public int Folio { get; set; }
+    }
+    [DataContract]
+    public class ConsultaProyectoResponse : ResponseBase
+    {
+        [DataMember]
+        public string NombreProyecto { get; set; }
+        [DataMember]
+        public string Plataforma { get; set; }
+        [DataMember]
+        public byte Sprint { get; set; }
+        [DataMember]
+        public byte ActividadesRestantes { get; set; }
+        [DataMember]
+        public DateTime FechaTermino { get; set; }
+        [DataMember]
+        public string Descripcion { get; set; }
     }
 }

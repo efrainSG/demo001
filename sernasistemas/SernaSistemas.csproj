@@ -254,6 +254,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Serna\contactoWidget.js" />
+    <None Include="Scripts\Serna\dummy.json" />
+    <Content Include="Scripts\Serna\SeguidorDeProyectoWidget.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />

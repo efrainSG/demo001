@@ -1,0 +1,37 @@
+﻿{
+  "0001": {
+    "proyecto": "Sincronizador AcMax",
+    "sprint": "2",
+    "detalles": "En desarrollo el ajuste visual para la presentación de resultados. No se ha especificado, por lo que se procede a diseñar a mejor consideración dle equipo de Desarrollo respetando los esquemas de colores y estructura visual de la aplicación.",
+    "Fecha de entrega": "17/04/2018",
+    "Actividades restantes": "0"
+  },
+  "0002": {
+    "proyecto": "Ajuste de ticket para Hispana Serdán",
+    "sprint": "1",
+    "detalles": "Se realiza un nuevo diseño de ticket debido a que el anterior presenta problemas de reporteador, por lo que ahora se utilizará RDLC para este único elemento.",
+    "Fecha de entrega": "20/04/2018",
+    "Actividades restantes": "0"
+  },
+  "0003": {
+    "proyecto": "Historias clínicas",
+    "sprint": "0",
+    "detalles": "Se realiza análisis del sistema para plantear backlog y luego sprintlog.",
+    "Fecha de entrega": "20/04/2018",
+    "Actividades restantes": "3"
+  },
+  "0004": {
+    "proyecto": "CoTeDiv",
+    "sprint": "0",
+    "detalles": "Se realiza análisis del sistema para plantear backlog y luego sprintlog.",
+    "Fecha de entrega": "20/04/2018",
+    "Actividades restantes": "3"
+  },
+  "0005": {
+    "proyecto": "Sistema de hotelería",
+    "sprint": "0",
+    "detalles": "Se realiza análisis del sistema para plantear backlog y luego sprintlog.",
+    "Fecha de entrega": "20/04/2018",
+    "Actividades restantes": "3"
+  }
+}

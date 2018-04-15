@@ -52,6 +52,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemas.DataAccess", "SernaSistemas.DataAccess\SernaSistemas.DataAccess.csproj", "{3801434F-88C9-446A-B111-A13A334968FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF25C702-89E6-4415-9193-1841C90D2153}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\AdmonProyectos.sql = SQLScripts\AdmonProyectos.sql
+		AdmonProyectos_Data.sql = AdmonProyectos_Data.sql
+		SQLScripts\contactos.sql = SQLScripts\contactos.sql
+		SQLScripts\data.sql = SQLScripts\data.sql
+		SQLScripts\schema1.sql = SQLScripts\schema1.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

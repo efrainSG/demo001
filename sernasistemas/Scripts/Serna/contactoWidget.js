@@ -1,5 +1,4 @@
 ﻿var initContacto = function (element) {
-    console.log(element);
     var $form, $filaNombre, $filaTelefono, $filaCorreo, $filaComentario, $filaBoton;
     var $txtNombre, $txtTelefono, $txtCorreo, $txtComentario, $btnEnviar;
     var $addonNombre, $addonTelefono, $addonCorreo, $addonComentario;
@@ -64,7 +63,7 @@
         .append($filaBoton);
     element
         .append($form);
-}
+};
 
 var enviarComentario_click = function () {
     var $form = $("#frmContacto"),
@@ -74,34 +73,28 @@ var enviarComentario_click = function () {
         $txtCorreo = $("#txtCorreo"),
         $txtComentario = $("#txtComentario"),
         $btnEnviar = $("#btnEnviar");
-    var $msgNombre = $("#msgNombre"),
-        $msgTelefono = $("#msgTelefono"),
-        $msgCorreo = $("#msgCorreo"),
-        $msgComentario = $("#msgComentario"),
-        $btnEnviar = $("#btnEnviarComentario");
 
-    if ($txtNombre.val().trim() == "") {
+    if ($txtNombre.val().trim() === "") {
         $msgNombre.show();
         errores++;
     }
-    if ($txtCorreo.val().trim() == "") {
+    if ($txtCorreo.val().trim() === "") {
         $msgCorreo.show();
         errores++;
     }
-    if ($txtComentario.val().trim() == "") {
+    if ($txtComentario.val().trim() === "") {
         $msgComentario.show();
         errores++;
     }
-    if (errores != 0) {
-        if ($txtTelefono.val().trim() == "") {
+    if (errores !== 0) {
+        if ($txtTelefono.val().trim() === "") {
             $msgTelefono.show();
         }
         $('[id^="msg"]').delay(1000).fadeOut();
     } else {
         var clases = $btnEnviar.attr("class");
         var url = window.location;
-        var server = url.protocol + '//' + url.host + (url.host == "localhost" ? url.port : "") + "/Home/SendContacto";
-        debugger;
+        var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Home/SendContacto";
         $btnEnviar.addClass("disabled");
         $.ajax({
             url: server,
@@ -119,7 +112,7 @@ var enviarComentario_click = function () {
                 $("#spanResultado")
                     .empty()
                     .addClass(
-                    (obj.error == "NO") ? "text-info" : "text-error"
+                    (obj.error === "NO") ? "text-info" : "text-error"
                     )
                     .append(obj.msg)
                     .fadeIn()
@@ -133,4 +126,4 @@ var enviarComentario_click = function () {
                 $btnEnviar.removeClass("disabled");
             });
     }
-}
+};
