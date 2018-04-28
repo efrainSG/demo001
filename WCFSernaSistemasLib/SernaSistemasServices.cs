@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 
-namespace WCFSernaSistemasLib {
+namespace WCFSernaSistemasLib
+{
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class SernaSistemasServices : ISernaSistemasServices {
+    public class SernaSistemasServices : ISernaSistemasServices
+    {
         public ContactoResponse registrarContacto(ContactoRequest request) {
             var response = new ContactoResponse();
             NetworkCredential credenciales = new NetworkCredential() {
@@ -56,17 +59,47 @@ namespace WCFSernaSistemasLib {
         }
 
         public ConsultaProyectoResponse consultaProyecto(ConsultaProyectoRequest consultaProyectoRequest) {
-            var response = new ConsultaProyectoResponse() {
-                ActividadesRestantes = 1,
-                Descripcion = "desarrollo de proyecto demo en sitio web propio",
-                Error = 0,
-                FechaTermino = DateTime.Today,
-                Mensaje = string.Empty,
-                NombreProyecto = "Serna Sistemas Web",
-                Plataforma = "Serna Sistemas Web",
-                Sprint = 1,
-                tieneError = false
-            };
+            ConsultaProyectoResponse response = new ConsultaProyectoResponse();
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            SqlDataReader dr;
+            try {
+                using (Conn = new SqlConnection(@"Data Source=DESKTOP-8RJ1OMB\SQLEXPRESS;Initial Catalog=Proyectos;Integrated Security=True;Pooling=False")) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Proyecto.selStatusActual",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int32,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdProyecto",
+                            Value = consultaProyectoRequest.Folio
+                        });
+                        Conn.Open();
+                        dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            while (dr.Read()) {
+                                
+                                response.ActividadesRestantes = 1;
+                                response.Descripcion = dr["Descripcion"].ToString();
+                                response.Error = 0;
+                                response.FechaTermino = DateTime.Today;
+                                response.Mensaje = string.Empty;
+                                response.NombreProyecto = dr["Proyecto"].ToString();
+                                response.Plataforma = dr["Plataforma"].ToString();
+                                response.Sprint = 1;
+                                response.tieneError = false;
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
             return response;
         }
     }

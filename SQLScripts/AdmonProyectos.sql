@@ -61,3 +61,20 @@ CREATE TABLE Configuracion.Log(
 	Fecha DATE NOT NULL,
 	Accion VARCHAR(200) NOT NULL
 );
+GO
+
+CREATE PROCEDURE Proyecto.selStatusActual
+@IdProyecto INT
+AS
+
+SELECT	TOP 1 P.Nombre Proyecto, P.Descripcion, pl.Nombre Plataforma,
+		c.Nombre Cliente,
+		a.Id IdActividad, a.Sprint, a.Descripcion Actividad,
+		s.Nombre Status
+FROM	Proyecto.Proyecto P join Configuracion.Plataforma pl
+ON		P.IdPlataformaContacto = pl.Id join Proyecto.Cliente c
+ON		P.IdCliente = c.Id join Proyecto.Actividad a
+ON		p.Id = a.FolioProyecto join Configuracion.Status s
+ON		a.IdStatus = s.Id
+WHERE	P.Id = @IdProyecto AND a.FechaInicio >= GETDATE()
+ORDER	BY a.FechaInicio

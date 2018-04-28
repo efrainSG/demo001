@@ -66,6 +66,7 @@ namespace SernaSistemas.Controllers
         public ActionResult Servicios() {
             return View();
         }
+
         public ActionResult Productos() {
             return View();
         }
@@ -125,6 +126,26 @@ namespace SernaSistemas.Controllers
                     Plataforma = response.Plataforma,
                     Sprint = response.Sprint
                 }
+            });
+        }
+
+        [HttpPost]
+        public JsonResult Login(string usuario, string password) {
+            Session.Add("token", Guid.NewGuid().ToString());
+            Session.Add("Nombre", usuario);
+            return Json(new {
+                error = "NO",
+                msg = "¡Bienvenido!",
+                token = Guid.NewGuid().ToString()
+            });
+        }
+
+        [HttpPost]
+        public JsonResult getApps() {
+            return Json(new {
+                error = "NO",
+                msg = "",
+                apps = "cotediv,biblioteca"
             });
         }
     }
