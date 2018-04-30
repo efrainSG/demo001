@@ -1,7 +1,7 @@
 ﻿var initSeguidorDeProyecto = function (element) {
     var $contenedor, $form, $filaFolioProyecto, $celFolioProyecto, $addonProyecto, $txtProyecto, $btnProyecto;
     var $divdetalles, $filaProyecto, $filaSprint, $filaFecha, $filaActividades, $filaDescripcion;
-    var $celProyecto, $celSprint, $celFecha, $celActividades, $celDescripcion;
+    var $celProyecto, $celSprint, $celFecha, $celActividades, $celDescripcion, $btnDetalles;
     $contenedor = $('<div id="divContenedorProyecto">').append('<h4>Consulta el avance de tu proyecto</h4>');
     $form = $('<form id="frmProyectos" class="form-group well">').appendTo($contenedor);
     $filaFolioProyecto = $('<div id="divFilaProyecto" class="row">').appendTo($form);
@@ -12,6 +12,9 @@
         .off()
         .on("click", consultarStatusProyecto);
     element.append($contenedor);
+    $btnDetalles = $('<a href="#" id="btnDetalles" class="btn btn-lg btn-info">Detalles</a>')
+        .off()
+        .on("click", detallesProyecto);
 
     $divdetalles = $('<div class="well well-sm" id="divDetalles" style="display:none;">').appendTo($contenedor);
 
@@ -26,6 +29,8 @@
     $celFecha = $('<div class="col-md-12" id="celFecha">').appendTo($filaFecha);
     $celActividades = $('<div class="col-md-12" id="celActividades">').appendTo($filaActividades);
     $celDescripcion = $('<div class="col-md-12" id="celDescripcion">').appendTo($filaDescripcion);
+
+    $btnDetalles.appendTo($divdetalles);
 };
 
 var consultarStatusProyecto = function () {
@@ -47,7 +52,7 @@ var consultarStatusProyecto = function () {
     })
         .done(function (obj) {
             var $celProyecto, $celSprint, $celFecha, $celActividades, $celDescripcion;
-            var $divdetalles;
+            var $divdetalles, $btnDetalles;
             $celProyecto = $("#celProyecto");
             $celSprint = $("#celSprint");
             $celFecha = $("#celFecha");
@@ -67,3 +72,8 @@ var consultarStatusProyecto = function () {
             $btnConsultar.removeClass("disabled");
         });
 };
+
+var detallesProyecto = function () {
+    var $btnDetalles;
+    alert("en Modal pedirá usuario y contraseña entregados al momento de iniciar el proyecto, y redirigirá a página de seguimiento de proyectos.");
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -71,29 +72,6 @@ namespace SernaSistemas.Controllers
             return View();
         }
 
-        //public ActionResult FormContacto() {
-        //    return PartialView();
-        //}
-
-        //[HttpPost]
-        //[ActionName("FormContacto")]
-        //public ActionResult PostContacto(ContactoModel model) {
-        //    model.Registrado = DateTime.Today;
-        //    SernaSistemasServices servicio = new SernaSistemasServices();
-        //    var response =
-        //    servicio.registrarContacto(new ContactoRequest() {
-        //        Nombre = model.Nombre,
-        //        Telefono = model.Telefono,
-        //        eMail = model.Email,
-        //        Comentario = model.Comentario,
-        //        FechaContacto = model.Registrado
-        //    });
-        //    ViewData.Add("mensaje", response.Mensaje);
-        //    if (response.tieneError)
-        //        return View("Error", response);
-        //    return Redirect(Request.UrlReferrer.ToString());
-        //}
-
         public JsonResult SendContacto(string nombre, string telefono, string correo, string comentario) {
             SernaSistemasServices servicio = new SernaSistemasServices();
             var response = servicio.registrarContacto(new ContactoRequest() {
@@ -108,8 +86,10 @@ namespace SernaSistemas.Controllers
             return Json(new { error = "NO", msg = "Pronto me pondré en contacto contigo." });
         }
 
+        [HttpPost]
         public JsonResult ConsultaProyecto(int Folio) {
             SernaSistemasServices servicio = new SernaSistemasServices();
+            servicio.ConnString = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
             var response = servicio.consultaProyecto(new ConsultaProyectoRequest() {
                 Folio = Folio
             });

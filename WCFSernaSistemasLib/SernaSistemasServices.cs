@@ -8,6 +8,7 @@ namespace WCFSernaSistemasLib
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class SernaSistemasServices : ISernaSistemasServices
     {
+        public string ConnString { get; set; }
         public ContactoResponse registrarContacto(ContactoRequest request) {
             var response = new ContactoResponse();
             NetworkCredential credenciales = new NetworkCredential() {
@@ -64,7 +65,7 @@ namespace WCFSernaSistemasLib
             SqlConnection Conn;
             SqlDataReader dr;
             try {
-                using (Conn = new SqlConnection(@"Data Source=DESKTOP-8RJ1OMB\SQLEXPRESS;Initial Catalog=Proyectos;Integrated Security=True;Pooling=False")) {
+                using (Conn = new SqlConnection(ConnString)) {
                     using (Cmd = new SqlCommand() {
                         Connection = Conn,
                         CommandText = "Proyecto.selStatusActual",
