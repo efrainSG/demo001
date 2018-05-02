@@ -2,7 +2,7 @@
     var $contenedor, $form, $filaFolioProyecto, $celFolioProyecto, $addonProyecto, $txtProyecto, $btnProyecto;
     var $divdetalles, $filaProyecto, $filaSprint, $filaFecha, $filaActividades, $filaDescripcion;
     var $celProyecto, $celSprint, $celFecha, $celActividades, $celDescripcion, $btnDetalles;
-    $contenedor = $('<div id="divContenedorProyecto">').append('<h4>Consulta el avance de tu proyecto</h4>');
+    $contenedor = $('<div id="divContenedorProyecto">').append('<h4><span class="glyphicon glyphicon-chevron-down"></span>Consulta el avance de tu proyecto<span class="glyphicon glyphicon-chevron-down"></span></h4>');
     $form = $('<form id="frmProyectos" class="form-group well">').appendTo($contenedor);
     $filaFolioProyecto = $('<div id="divFilaProyecto" class="row">').appendTo($form);
     $celFolioProyecto = $('<div id="celFilaProyecto" class="col-md-12 input-group">').appendTo($filaFolioProyecto);
@@ -59,12 +59,11 @@ var consultarStatusProyecto = function () {
             $celActividades = $("#celActividades");
             $celDescripcion = $("#celDescripcion");
             $divdetalles = $("#divDetalles");
-            debugger;
-            $celProyecto.append('<span class="text-info">Proyecto: </span>' + '<span class="text-primary">' + obj.data.Proyecto + '</span><br /><span class="text-primary">' + obj.data.Plataforma + '</span>');
-            $celSprint.append('<span class="text-info">Sprint actual: </span>' + '<span class="text-primary">' + obj.data.Sprint + '</span>');
-            $celFecha.append('<span class="text-info">Fecha de término: </span>' + '<span class="text-primary">' + obj.data.FechaTermino + '</span>');
-            $celActividades.append('<span class="text-info">Actividades restantes: </span>' + '<span class="text-primary">' + obj.data.Actividades + '</span>');
-            $celDescripcion.append('<span class="text-info">Descrpición: </span>' + '<span class="text-primary">' + obj.data.Descripcion + '</span>');
+            $celProyecto.empty().append('<span class="text-info">Proyecto: </span>' + '<span class="text-primary">' + obj.data.Proyecto + '</span><br /><span class="text-primary">' + obj.data.Plataforma + '</span>');
+            $celSprint.empty().append('<span class="text-info">Sprint actual: </span>' + '<span class="text-primary">' + obj.data.Sprint + '</span>');
+            $celFecha.empty().append('<span class="text-info">Fecha de término: </span>' + '<span class="text-primary">' + obj.data.FechaTermino + '</span>');
+            $celActividades.empty().append('<span class="text-info">Actividades restantes: </span>' + '<span class="text-primary">' + obj.data.Actividades + '</span>');
+            $celDescripcion.empty().append('<span class="text-info">Descrpición: </span>' + '<span class="text-primary">' + obj.data.Descripcion + '</span>');
             $divdetalles.show("slow");
         })
         .fail(function (obj) {
@@ -74,6 +73,49 @@ var consultarStatusProyecto = function () {
 };
 
 var detallesProyecto = function () {
-    var $btnDetalles;
-    alert("en Modal pedirá usuario y contraseña entregados al momento de iniciar el proyecto, y redirigirá a página de seguimiento de proyectos.");
+    var url = window.location;
+    var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Seguimientos/Index";
+    var $modalBody, $modalFooter, $btnDetalles,
+        $filaUsuario, $celUsuario, $txtUsuario, $addonUsuario,
+        $filaPassword, $celPassword, $txtPassword, $addonPassword,
+        $btnCancelar, $btnAceptar;
+    $modalBody = $("#modalBody");
+    $modalFooter = $("#modalFooter");
+
+    $modalBody.empty();
+    $modalFooter.empty();
+
+    $filaUsuario = $('<div id="modalFilaUsuario" class="row">').appendTo($modalBody);
+    $filaPassword = $('<div id="modalFilaPassword" class="row">').appendTo($modalBody);
+
+    $celUsuario = $('<div id="modalCelUsuario" class="col-md-12 input-group">').appendTo($filaUsuario);
+    $celPassword = $('<div id="modalCelPassword" class="col-md-12 input-group">').appendTo($filaPassword);
+
+    $addonUsuario = $('<span class="input-group-addon" id="modalAddonUsuario"><i class="glyphicon glyphicon-user"></i></span>').appendTo($celUsuario);
+    $txtUsuario = $('<input type="text" id="txtModalUsuario" class="form-control" name="txtModalUsuario" placeholder="Nombre de usuario" required>').appendTo($celUsuario);
+
+    $addonPassword = $('<span class="input-group-addon" id="modalAddonPassword"><i class="glyphicon glyphicon-user"></i></span>').appendTo($celPassword);
+    $txtPassword = $('<input type="password" id="txtModalPassword" class="form-control" name="txtModalPassword" placeholder="Escribe tu contraseña" required>').appendTo($celPassword);
+
+    $btnAceptar = $('<a href="#" id="btnModalAceptar", class="btn btn-primary btn-lg">Iniciar sesión</a>')
+        .off()
+        .on("click", function () {
+            IniciarSesion(server);
+        })
+        .appendTo($modalFooter);
+    $btnCancelar = $('<a href="#" id="btnModalCancelar", class="btn btn-warning btn-lg">Cancelar</a>')
+        .off()
+        .on("click", cerrarModal)
+        .appendTo($modalFooter);
+
+    jQuery.noConflict();
+    $("#myModal").modal('toggle');
+}
+    //debugger;
+var IniciarSesion = function (server) {   
+    window.location.href = server;
+}
+var cerrarModal = function () {
+    jQuery.noConflict();
+    $("#myModal").modal('toggle');
 }
