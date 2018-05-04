@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Bibliotecas;
-using Bibliotecas.Controllers;
+//using Bibliotecas.Controllers;
 
 namespace Bibliotecas.Tests.Controllers {
     [TestClass]

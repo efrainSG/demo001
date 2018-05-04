@@ -111,13 +111,21 @@ namespace SernaSistemas.Controllers
 
         [HttpPost]
         public JsonResult Login(string usuario, string password) {
-            Session.Add("token", Guid.NewGuid().ToString());
-            Session.Add("Nombre", usuario);
-            return Json(new {
-                error = "NO",
-                msg = "¡Bienvenido!",
-                token = Guid.NewGuid().ToString()
-            });
+            if(usuario == "efrain") {
+                Session.Add("token", Guid.NewGuid().ToString());
+                Session.Add("Nombre", usuario);
+                return Json(new {
+                    error = "NO",
+                    msg = "¡Bienvenido!",
+                    token = Guid.NewGuid().ToString()
+                });
+            }else {
+                return Json(new {
+                    error = "SI",
+                    msg = "Datos incorrectos",
+                    token = string.Empty
+                });
+            }
         }
 
         [HttpPost]

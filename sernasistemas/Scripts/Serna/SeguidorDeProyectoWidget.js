@@ -74,7 +74,7 @@ var consultarStatusProyecto = function () {
 
 var detallesProyecto = function () {
     var url = window.location;
-    var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Seguimientos/Index";
+    var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
     var $modalBody, $modalFooter, $btnDetalles,
         $filaUsuario, $celUsuario, $txtUsuario, $addonUsuario,
         $filaPassword, $celPassword, $txtPassword, $addonPassword,
@@ -100,7 +100,7 @@ var detallesProyecto = function () {
     $btnAceptar = $('<a href="#" id="btnModalAceptar", class="btn btn-primary btn-lg">Iniciar sesión</a>')
         .off()
         .on("click", function () {
-            IniciarSesion(server);
+            IniciarSesion(server, $txtUsuario.val(), $txtPassword.val());
         })
         .appendTo($modalFooter);
     $btnCancelar = $('<a href="#" id="btnModalCancelar", class="btn btn-warning btn-lg">Cancelar</a>')
@@ -111,9 +111,31 @@ var detallesProyecto = function () {
     jQuery.noConflict();
     $("#myModal").modal('toggle');
 }
-    //debugger;
-var IniciarSesion = function (server) {   
-    window.location.href = server;
+//debugger;
+var IniciarSesion = function (server, usuario, password) {
+    $.ajax({
+        async: false,
+        dataType: "json",
+        url: server + "/Home/Login",
+        type: "post",
+        data: {
+            usuario: usuario,
+            password: password
+        }
+    })
+        .done(function (obj) {
+            debugger;
+            if (obj.error === "NO") {
+                window.location.href = server + "/Seguimientos/Index";
+            } else {
+                alert(obj.msg);
+            }            
+        })
+        .fail(function (obj) {
+
+        }).always(function (obj) {
+
+        });
 }
 var cerrarModal = function () {
     jQuery.noConflict();
