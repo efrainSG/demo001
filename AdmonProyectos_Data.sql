@@ -60,21 +60,32 @@ SET IDENTITY_INSERT Proyecto.Proyecto OFF;
 GO
 
 SET IDENTITY_INSERT Proyecto.Actividad ON;
-INSERT INTO Proyecto.Actividad(Id, Nombre, Descripcion, Tiempo, IdPrincipal, IdProyecto, IdStatus, Orden, Sprint, Inicio, Fin)
-VALUES (1, 'Ajuste de UI', 'Ajuste visual en presentación de resultados', 2, 1, 4, 11, 1, 2, '2018-04-16', '2018-04-16');
+INSERT	INTO Proyecto.Actividad(Id, IdProyecto, IdPrincipal, Sprint, Orden, Nombre, Descripcion, Tiempo, IdStatus, Inicio, Fin, EsActiva)
+VALUES	( 1, 1,  1, 1, 1, 'ANÁLISIS', 'ANÁLISIS DE BASE DE DATOS Y PLATAFORMA ACMAX-PROSA', 4, 11, '2017-11-20', '2017-11-20', 0),
+		( 2, 1,  2, 1, 2, 'INTEGRACIÓN EN PLATAFORMA', 'INTEGRACIÓN EN CÓDIGO NOP-COMMERCE', 4, 11, '2017-11-21', '2017-11-25', 0),
+		( 3, 1,  3, 1, 3, 'INTEGRACIÓN PROSA', 'COMUNICACIÓN SERVLET DE PROSA', 4, 11, '2017-11-27', '2017-12-04', 0),
+		( 4, 1,  4, 1, 4, 'MODIFICACIÓN HACIA "MODAL"', 'COMUNICACIÓN CROSS-DOMAIN ACMAX-PROSA', 4, 11, '2017-12-05', '2017-12-15', 1),
+		( 5, 4,  5, 1, 1, 'ANÁLISIS', 'ANÁLISIS DE REQUERIMIENTOS Y BASES DE DATOS', 4, 11, '2018-04-16', '2018-04-16', 0),
+		( 6, 4,  6, 1, 2, 'CONSTRUCCIÓN UI', 'DISEÑO VISUAL Y DEFINICIÓN DE PALETA DE COLORES', 4, 11, '2018-04-16', '2018-04-16', 0),
+		( 7, 4,  7, 2, 3, 'CONSTRUCCIÓN DE LÓGICA DE FUNCIONAMIENTO', 'IMPLEMENTACIÓN DE COMPORTAMIENTO', 4, 11, '2018-04-16', '2018-04-16', 1),
+		( 8, 4,  8, 2, 4, 'DOCUMENTACIÓN', 'MANUAL DE USUARIO', 4, 11, '2018-04-16', '2018-04-16', 0),
+		( 9, 3,  9, 1, 1, 'ANÁLISIS', '', 4, 11, '2018-05-09', '2018-05-09', 1),
+		(10, 3, 10, 1, 2, 'DISEÑO DE BASE DE DATOS', '', 4, 11, '2018-05-09', '2018-05-09', 0),
+		(11, 3, 11, 2, 3, 'DISEÑO DE INTERFACES', '', 4, 11, '2018-05-09', '2018-05-09', 0),
+		(12, 3, 12, 2, 4, 'CONSTRUCCIÓN DE COMPONENTES', '', 4, 11, '2018-05-09', '2018-05-09', 0);
 SET IDENTITY_INSERT Proyecto.Actividad OFF;
 GO
 
-SELECT 'Plataforma', COUNT(*) FROM Configuracion.Plataforma
+SELECT '01. Plataforma', COUNT(*) FROM Configuracion.Plataforma
 UNION
-SELECT 'Tipo de Status', COUNT(*) FROM Configuracion.TipoStatus
+SELECT '02. Tipo de Status', COUNT(*) FROM Configuracion.TipoStatus
 UNION
-SELECT 'Status', COUNT(*) FROM Configuracion.Status
+SELECT '03. Status', COUNT(*) FROM Configuracion.Status
 UNION
-SELECT 'Clientes', COUNT(*) FROM Proyecto.Cliente
+SELECT '04. Clientes', COUNT(*) FROM Proyecto.Cliente
 UNION
-SELECT 'Contactos', COUNT(*) FROM Proyecto.Contacto
+SELECT '05. Contactos', COUNT(*) FROM Proyecto.Contacto
 UNION
-SELECT 'Proyectos', COUNT(*) FROM Proyecto.Proyecto
+SELECT '06. Proyectos', COUNT(*) FROM Proyecto.Proyecto
 UNION
-SELECT 'Actividades', COUNT(*) FROM Proyecto.Actividad;
+SELECT '07. Actividades', COUNT(*) FROM Proyecto.Actividad;

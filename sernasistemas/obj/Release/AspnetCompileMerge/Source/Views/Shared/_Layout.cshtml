@@ -4,15 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/Serna/contactoWidget.js"></script>
+    <script src="~/Scripts/Serna/SeguidorDeProyectoWidget.js"></script>
+    <script src="~/Scripts/Serna/LoginWidget.js"></script>
+
+    <style>
+        .btn-gray {
+            background-color: #808080;
+            color: #000000;
+        }
+    </style>
+    <script>
+        var viewmodel;
+    </script>
 </head>
 <body style="background-color:#00001b; color:#ffffff;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,7 +46,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Servicios", "Servicios", "Home")</li>
                     @*<li>@Html.ActionLink("Productos", "Productos", "Home")</li>*@
                     <li>@Html.ActionLink("Acerca de mí", "About", "Home")</li>
@@ -37,13 +55,14 @@
         </div>
     </div>
     <div class="container body-content text-justify">
+
         @RenderBody()
         <hr />
         <footer>
-            <div>
+            <div class="row">
                 <div class="col-md-6">
                     <small class="">
-                        <p>&copy; @DateTime.Now.Year - Serna Sistemas</p>
+                        <p>&copy; @DateTime.Now.Year - Serna Sistemas - v. 1.0.1</p>
                         <ul>
                             <li><a href="https://www.freelancer.com/u/efrainserna" target="_blank">Freelancer</a></li>
                             <li><a href="https://www.prolancer.com.mx/MaverickXXI/" target="_blank">Prolancer</a></li>
@@ -59,9 +78,9 @@
                 <div class="col-md-6">
                     <small>
                         <ul>
-                            <li>@Html.ActionLink("CoTeDiv", "cotediv", "Home")</li>
+                            @*<li>@Html.ActionLink("CoTeDiv", "cotediv", "Home")</li>*@
                             @*<li>@Html.ActionLink("Tiendas", "Index", "Home")</li>
-                                
+
                                 <li>@Html.ActionLink("Historias clínicas", "Index", "Home")</li>*@
                             <li><a href="https://www.prolancer.com.mx/MaverickXXI/998/" class="btn-link" target="_blank">Revisión de tesis</a></li>
                             <li><a href="https://www.prolancer.com.mx/MaverickXXI/1020/" class="btn-link" target="_blank">Desarrollo de sistios económicos</a></li>
@@ -72,7 +91,21 @@
             </div>
         </footer>
     </div>
-
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="modalHeader">Modal Header</h4>
+                </div>
+                <div class="modal-body" id="modalBody">
+                </div>
+                <div class="modal-footer" id="modalFooter">
+                </div>
+            </div>
+        </div>
+    </div> 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")

@@ -99,7 +99,7 @@ namespace WCFSernaSistemasLib
             } catch (Exception ex) {
                 response.Error = 1;
                 response.tieneError = true;
-                response.Mensaje = ex.Message;
+                response.Mensaje = ex.Source;
             }
             return response;
         }

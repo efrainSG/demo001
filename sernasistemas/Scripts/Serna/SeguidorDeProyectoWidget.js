@@ -8,13 +8,13 @@
     $celFolioProyecto = $('<div id="celFilaProyecto" class="col-md-12 input-group">').appendTo($filaFolioProyecto);
     $addonProyecto = $('<span class="input-group-addon" id="addonProyecto"><i class="glyphicon glyphicon-user"></i></span>').appendTo($celFolioProyecto);
     $txtProyecto = $('<input type="text" id="txtTicket" class="form-control" name="txtTicket" placeholder="Escribe tu número de proyecto" required>').appendTo($celFolioProyecto);
-    $btnProyecto = $('<a href="#" id="btnConsultarProyecto" class="btn btn-lg btn-primary">Consultar</a>').appendTo($form)
+    $btnProyecto = $('<a href="#divContenedorProyecto" id="btnConsultarProyecto" class="btn btn-lg btn-primary">Consultar</a>').appendTo($form)
         .off()
         .on("click", consultarStatusProyecto);
     element.append($contenedor);
-    $btnDetalles = $('<a href="#" id="btnDetalles" class="btn btn-lg btn-info">Detalles</a>')
-        .off()
-        .on("click", detallesProyecto);
+    //$btnDetalles = $('<a href="#" id="btnDetalles" class="btn btn-lg btn-info">Detalles</a>')
+    //    .off()
+    //    .on("click", detallesProyecto);
 
     $divdetalles = $('<div class="well well-sm" id="divDetalles" style="display:none;">').appendTo($contenedor);
 
@@ -30,7 +30,7 @@
     $celActividades = $('<div class="col-md-12" id="celActividades">').appendTo($filaActividades);
     $celDescripcion = $('<div class="col-md-12" id="celDescripcion">').appendTo($filaDescripcion);
 
-    $btnDetalles.appendTo($divdetalles);
+    //$btnDetalles.appendTo($divdetalles);
 };
 
 var consultarStatusProyecto = function () {
