@@ -2,3 +2,8 @@
 *.exe
 *.tmp
 TemporaryGeneratedFile*.*
+WCFSernaSistemasLib/bin/
+sernasistemas/obj/Release/
+SernaSistemas.Core/bin/
+SernaSistemas.Core/obj/
+*.force
