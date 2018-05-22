@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Negocios";
+}
+<script>
+    var fcallback_buscador = function ($arg) {
+        console.log($arg);
+        $("#divResultados").empty();
+        initListarResultados($("#divResultados"), $arg);
+    };
+
+    $(document).ready(function () {
+        $("#divBuscador").empty();
+        initBuscadorNegocio($("#divBuscador"), fcallback_buscador);
+
+        initLogin($("#divLogin"));
+    });
+</script>
+<h2>Index</h2>
+
+<div class="well text-primary" id="divBuscador">Buscador de negocios</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well text-primary" id="divResultados">
+                    @Html.ActionLink("Listado de resultados", "verNegocio")
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="well text-primary" id="divMapa">
+                    Mapa general
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well text-primary" id="divLogin">
+                    @Html.ActionLink("Iniciar sesión", "Login")
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="well text-primary" id="divAbout">
+                    Acerca de...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

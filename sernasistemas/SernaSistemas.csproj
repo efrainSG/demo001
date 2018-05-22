@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BloggerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NegociosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +251,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Negocios\ProdServWidget.js" />
+    <Content Include="Scripts\Negocios\ListarCatalogoWidget.js" />
+    <Content Include="Scripts\Negocios\MenuWidget.js" />
+    <Content Include="Scripts\Negocios\ListarResultadosWidget.js" />
     <Content Include="Scripts\Negocios\BuscarWidget.js" />
     <Content Include="Scripts\Negocios\PerfilWidget.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -297,6 +302,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Negocios\Index.cshtml" />
+    <Content Include="Views\Negocios\Negocio.cshtml" />
+    <Content Include="Views\Negocios\adminNegocio.cshtml" />
+    <Content Include="Views\Shared\_LayoutNegocio.cshtml" />
+    <Content Include="Views\Negocios\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

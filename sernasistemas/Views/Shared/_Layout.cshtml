@@ -18,6 +18,12 @@
     <script src="~/Scripts/Serna/contactoWidget.js"></script>
     <script src="~/Scripts/Serna/SeguidorDeProyectoWidget.js"></script>
     <script src="~/Scripts/Serna/LoginWidget.js"></script>
+    <script src="~/Scripts/Negocios/BuscarWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarCatalogoWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarResultadosWidget.js"></script>
+    <script src="~/Scripts/Negocios/MenuWidget.js"></script>
+    <script src="~/Scripts/Negocios/PerfilWidget.js"></script>
+    <script src="~/Scripts/Negocios/ProdServWidget.js"></script>
 
     <style>
         .btn-gray {
@@ -30,7 +36,7 @@
     </script>
 </head>
 <body style="background-color:#00001b; color:#ffffff;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -50,7 +56,7 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Servicios", "Servicios", "Home")</li>
-                    @*<li>@Html.ActionLink("Productos", "Productos", "Home")</li>*@
+                    <li>@Html.ActionLink("Negocios", "Index", "Negocios")</li>
                     <li>@Html.ActionLink("Acerca de mí", "About", "Home")</li>
                 </ul>
             </div>

@@ -1,0 +1,298 @@
+﻿
+@{
+    ViewBag.Title = "Negocio";
+    Layout = "~/Views/Shared/_LayoutNegocio.cshtml";
+}
+<style>
+    .well {
+        color: midnightblue;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        var $navbar = $("#negocioNavBar");
+        var $lnkInicio, $lnkProductos, $lnkServicios, $lnkAcercaDe, $lnkComentarios, $lnkGaleria;
+        var $divcontacto;
+        $divcontacto = $("#divNegocioInicioContacto");
+        initContacto($divcontacto);
+        $lnkInicio = $('<li><a href="#" id="lnkInicio">Inicio</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionInicio").delay(500).slideDown();
+                });
+            });
+        $lnkProductos = $('<li><a href="#" id="lnkProductos">Productos</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionProductos").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divprod']").each(function (ndx) {
+                            initProducto($(this), "producto", ndx);
+                        });
+                    });
+                });
+            });
+        $lnkServicios = $('<li><a href="#" id="lnkServicios">Servicios</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionServicios").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divserv']").each(function (ndx) {
+                            initProducto($(this), "servicio", ndx);
+                        });
+                    });
+                });
+            });
+        $lnkGaleria = $('<li><a href="#" id="lnkGaleria">Galería</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionGaleria").delay(500).slideDown();
+                });
+            });
+        $lnkComentarios = $('<li><a href="#" id="lnkComentarios">Comentarios</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionComentarios").delay(500).slideDown();
+                });
+            });
+        $lnkAcercaDe = $('<li><a href="#" id="lnkAcercaDe">Acerca de...</a></li>')
+            .off().on("click", function () {
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionAcercaDe").delay(500).slideDown();
+                });          
+            });
+        $navbar.append($lnkInicio);
+        $navbar.append($lnkProductos);
+        $navbar.append($lnkServicios);
+        $navbar.append($lnkGaleria);
+        $navbar.append($lnkComentarios);
+        $navbar.append($lnkAcercaDe);
+
+        //initProducto($("#divprod1"), 1);
+    });
+</script>
+<div class="well">
+    <h1>
+        Nombre del negocio
+    </h1>
+    <p>
+        Reseña inicial
+    </p>
+</div>
+<div class="well well-sm" id="seccionInicio">
+    <h2>Inicio</h2>
+    <div class="well">
+        Carrousel principal con intro al negocio
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            Productos y servicios de novedad enforma de lista con foto en miniatura del objeto anunciado
+        </div>
+        <div class="col-md-4" id="divNegocioInicioContacto">
+            Formulario de contacto con el negocio
+        </div>
+    </div>
+    <div class="well">
+        Mapa de sucursales del negocio
+    </div>
+</div>
+<div class="well well-sm" style="display:none;" id="seccionProductos">
+    <h2>
+        Productos
+        <small>
+            <p>
+                Intro a la sección
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-3">
+            Categorías y clasificación de productos/servicios
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4" id="divprod1">
+                </div>
+                <div class="col-md-4" id="divprod2">
+                </div>
+                <div class="col-md-4" id="divprod3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="divprod4">
+                </div>
+                <div class="col-md-4" id="divprod5">
+                </div>
+                <div class="col-md-4" id="divprod6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="divprod7">
+                </div>
+                <div class="col-md-4" id="divprod8">
+                </div>
+                <div class="col-md-4" id="divprod9">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="well well-sm" style="display:none;" id="seccionServicios">
+    <h2>
+        Servicios
+        <small>
+            <p>
+                Intro a la sección
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4" id="divserv1">
+                </div>
+                <div class="col-md-4" id="divserv2">
+                </div>
+                <div class="col-md-4" id="divserv3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="divserv4">
+                </div>
+                <div class="col-md-4" id="divserv5">
+                </div>
+                <div class="col-md-4" id="divserv6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="divserv7">
+                </div>
+                <div class="col-md-4" id="divserv8">
+                </div>
+                <div class="col-md-4" id="divserv9">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            Categorías y clasificación de productos/servicios
+        </div>
+    </div>
+</div>
+<div class="well well-sm" style="display:none;" id="seccionGaleria">
+    <h2>
+        Galería
+        <small>
+            <p>
+                Intro a la sección
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="well well-sm">
+                Foto 1
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 2
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 3
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="well well-sm">
+                Foto 1
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 2
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 3
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="well well-sm">
+                Foto 1
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 2
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-sm">
+                Foto 3
+            </div>
+        </div>
+    </div>
+</div>
+<div class="well well-sm" style="display:none;" id="seccionComentarios">
+    <h2>
+        Comentarios
+        <small>
+            <p>
+                Intro a la sección
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                        <div class="col-md-offset-1">
+                            <span class="text-info">Respuesta 1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            Contacto
+        </div>
+    </div>
+
+</div>
+<div class="well well-sm" style="display:none;" id="seccionAcercaDe">
+    <h2>Acerca del negocio</h2>
+</div>

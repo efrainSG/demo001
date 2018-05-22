@@ -1,0 +1,16 @@
+WCFTiendasLib/obj/Release/
+WCFSernaSistemasLib/obj/Release/
+WCFSernaSistemasLib/bin/
+WCFCotedivLib/obj/Release/
+Tiendas/obj/Release/
+Tiendas.Tests/obj/Release/
+sernasistemas/obj/Release/
+SernaSistemas.DataAccess/obj/Release/
+SernaSistemas.Core/bin/Release/
+SernaSistemas.Core/obj/Release/
+Hoteles.Tests/obj/Release/
+HistoriasClinicas.Tests/obj/Release/
+Bibliotecas.Tests/obj/Release/
+CoTeDiv.Tests/obj/Release/
+Escolar.Tests/obj/Release/
+*.txt
