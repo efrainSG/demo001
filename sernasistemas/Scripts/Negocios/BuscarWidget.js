@@ -24,26 +24,72 @@ var initBuscadorNegocio = function (element, fcallback) {
 };
 
 var buscar = function () {
+    var url = window.location;
+    $btnBuscar = $("#btnBuscar");
+    $txtBuscador = $("#txtBuscador");
+    $selGiro = $("#selGiros");
+    $btnBuscar.addClass("disabled");
+
+    var server = url.protocol + '//' + url.host +
+        (url.host === "localhost" ? url.port : "") + "/Negocios/BuscarNegocio";
     var $r = [];
-    for (i = 0; i < 10; i++) {
-        $r.push({
-            id: i,
-            nombre: "Negocio " + i,
-            direccion: "Dirección " + i,
-            telefono: "Teléfono " + i,
-            latitud: "Latitud " + i,
-            longitud: "Longitud " + i
+    $.ajax({
+        async: false,
+        dataType: "json",
+        url: server,
+        type: "post",
+        data: {
+            consulta: $txtBuscador.val(),
+            giro: $selGiro.val()
+        }
+    })
+        .done(function (obj) {
+            $.each(obj.resultados, function (i) {
+                $this = $(this)[0];
+                $r.push({
+                    id: $this.Id,
+                    nombre: $this.Nombre,
+                    direccion: $this.Direccion,
+                    telefono: $this.Telefono,
+                    latitud: $this.Latitud,
+                    longitud: $this.Longitud
+                });
+            });
+        })
+        .fail(function (obj) {
+            console.log(a);
+        }).always(function (obj) {
+            $btnBuscar.removeClass("disabled");
         });
+
+
+    for (i = 0; i < 10; i++) {
     }
     return $r;
 };
 
 var cargarGiros = function (element) {
-    element.append($('<option>', {
-        value: 0,
-        text: "--selecciona el giro de tu interés--"
-    })).append($('<option>', {
-        value: 1,
-        text: "Arte y manualidades"
-    }));
+    var url = window.location;
+    var $selGiros = $("#selGiros");
+    var server = url.protocol + '//' + url.host +
+        (url.host === "localhost" ? url.port : "") + "/Negocios/listarGiros";
+    var $r = [];
+    $.ajax({
+        async: false,
+        dataType: "json",
+        url: server,
+        type: "post"
+    })
+        .done(function (obj) {
+            if (obj.resultados.length > 0)
+                $selGiros.append('<option value="" selected>-- Elige un giro para filtrar (opcional)--</option>');
+            $.each(obj.resultados, function (i) {
+                $this = $(this)[0];
+                $selGiros.append('<option value="' + $this.Key + '">' + $this.Value + '</option>');
+            });
+        })
+        .fail(function (obj) {
+            console.log(a);
+        }).always(function (obj) {
+        });
 };

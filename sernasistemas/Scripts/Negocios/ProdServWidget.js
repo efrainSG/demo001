@@ -1,21 +1,29 @@
-﻿var initProducto = function (element, tipo, index) {
-    var $divContenedor, $fila, $titulo, $precio, $descripcion, $foto, $valoracion;
+﻿var initProducto = function (element, tipo, index, opciones) {
+    var $divContenedor, $fila, $titulo, $precio, $descripcion, $foto, $valoracion, $btnInfo;
     var $columna1, $columna2;
-    $divContenedor = $('<div id="div' + tipo + index + '">').addClass("well well-sm");
+    
+    $divContenedor = $('<div id="div' + tipo + index + '">').addClass("well well-sm col-md-4");
     $fila = $('<div class="row">');
     $columna1 = $('<div class="col-md-4">');
     $columna2 = $('<div class="col-md-8">');
 
-    $titulo = $('<h3 id="titulo' + index + '">'+ tipo + ' #' + index + '</h3>');
-    $precio = $('<h3 id="precio' + index + '">Precio</h3>');
-    $descripcion = $('<p id="descripcion' + index + '">Descripción breve</p>');
-    $foto = $('<div class="img-thumbnail"><span class="glyphicon glyphicon-picture"></span></div>');
-    $valoracion = $('<p>Aceptación en estrellas</p >');
+    $titulo = $('<h3 id="titulo' + opciones.Id + '">'+ opciones.Nombre + '</h3>');
+    $precio = $('<h3 id="precio' + opciones.Id + '">' + opciones.Precio + '</h3>');
+    $descripcion = $('<p id="descripcion' + opciones.Id + '">' + opciones.DescripcionBreve + '</p>');
+    $foto = $('<div class="img-thumbnail"><img src="' + opciones.Ruta + opciones.Foto + '" style="width:150px;"></div>');
+    $valoracion = $('<p>' + opciones.Aceptacion + '</p >');
+    $btnInfo = $('<a href="#" id="lnkInfo' + opciones.Id + '">Info</a>').addClass("btn btn-sm btn-info");
+    $btnInfo
+        .off()
+        .on("click", function () {
+            jQuery.noConflict();
+            $("#myModal").modal();
+        });
 
     $divContenedor.append($titulo).append($fila);
     $fila.append($columna1).append($columna2);
-    $columna1.append($descripcion).append($precio).append($valoracion);
+    $columna1.append($descripcion).append($precio).append($valoracion).append($btnInfo);
     $columna2.append($foto);
     element.append($divContenedor);
 };
-//<a href="#divProducto1">Info</a>
+//

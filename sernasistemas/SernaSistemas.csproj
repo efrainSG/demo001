@@ -251,6 +251,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Negocios\FotoWidget.js" />
     <Content Include="Scripts\Negocios\ProdServWidget.js" />
     <Content Include="Scripts\Negocios\ListarCatalogoWidget.js" />
     <Content Include="Scripts\Negocios\MenuWidget.js" />
@@ -310,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\negociosimgs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -322,6 +324,10 @@
     <ProjectReference Include="..\WCFSernaSistemasLib\WCFSernaSistemasLib.csproj">
       <Project>{CCE974C2-7583-43E3-AC15-E276B68BBE95}</Project>
       <Name>WCFSernaSistemasLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFTiendasLib\WCFTiendasLib.csproj">
+      <Project>{5C810FF8-D147-4797-94F5-B24DA8D41BBC}</Project>
+      <Name>WCFTiendasLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

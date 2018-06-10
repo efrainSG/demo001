@@ -24,6 +24,13 @@
     @*<script src="~/Scripts/Negocios/MenuWidget.js"></script>*@
     @*<script src="~/Scripts/Negocios/PerfilWidget.js"></script>*@
     <script src="~/Scripts/Negocios/ProdServWidget.js"></script>
+    <script src="~/Scripts/Negocios/FotoWidget.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
 
     <style>
         .btn-gray {
@@ -43,7 +50,7 @@
                     Opciones
                     <span class="glyphicon glyphicon-menu-hamburger"></span>
                     @*<span class="icon-bar"></span>
-                    <span class="icon-bar"></span>*@
+                        <span class="icon-bar"></span>*@
                 </button>
                 <a href="@Url.Action("Index","Home")" target="_blank">
                     <center>
@@ -84,14 +91,29 @@
                 </div>
             </div>
         </footer>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="modalHdr">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="divModalBody">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer" id="divModalFooter">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/jquery.validate.min.js")
-    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
-    @Scripts.Render("~/bundles/bootstrap")
-
-    @RenderSection("scripts", required: false)
 </body>
 
 

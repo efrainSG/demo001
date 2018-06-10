@@ -76,3 +76,4 @@ C:\Users\efrai\Documents\repos\demo001\HistoriasClinicas.Tests\bin\Debug\System.
 C:\Users\efrai\Documents\repos\demo001\HistoriasClinicas.Tests\bin\Debug\HistoriasClinicas.pdb
 C:\Users\efrai\Documents\repos\demo001\HistoriasClinicas.Tests\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\efrai\Documents\repos\demo001\HistoriasClinicas.Tests\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\efrai\Documents\repos\demo001\HistoriasClinicas.Tests\obj\Debug\HistoriasClinicas.Tests.csprojAssemblyReference.cache

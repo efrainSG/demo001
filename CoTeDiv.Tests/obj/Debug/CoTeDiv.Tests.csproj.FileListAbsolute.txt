@@ -93,3 +93,4 @@ C:\Users\efrai\Documents\repos\demo001\CoTeDiv.Tests\bin\Debug\SernaSistemas.Cor
 C:\Users\efrai\Documents\repos\demo001\CoTeDiv.Tests\bin\Debug\SernaSistemas.Core.dll.config
 C:\Users\efrai\Documents\repos\demo001\CoTeDiv.Tests\bin\Debug\WCFCotedivLib.pdb
 C:\Users\efrai\Documents\repos\demo001\CoTeDiv.Tests\bin\Debug\SernaSistemas.DataAccess.pdb
+C:\Users\efrai\Documents\repos\demo001\CoTeDiv.Tests\obj\Debug\CoTeDiv.Tests.csprojAssemblyReference.cache

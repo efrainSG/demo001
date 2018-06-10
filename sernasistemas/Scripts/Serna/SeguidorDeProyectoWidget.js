@@ -54,7 +54,7 @@ var consultarStatusProyecto = function () {
             $celActividades = $("#celActividades");
             $celDescripcion = $("#celDescripcion");
             $divdetalles = $("#divDetalles");
-            debugger;
+            
             $celProyecto.append('<span class="text-info">Proyecto: </span>' + '<span class="text-primary">' + obj.data.Proyecto + '</span><br /><span class="text-primary">' + obj.data.Plataforma + '</span>');
             $celSprint.append('<span class="text-info">Sprint actual: </span>' + '<span class="text-primary">' + obj.data.Sprint + '</span>');
             $celFecha.append('<span class="text-info">Fecha de término: </span>' + '<span class="text-primary">' + obj.data.FechaTermino + '</span>');

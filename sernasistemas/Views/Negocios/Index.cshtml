@@ -16,7 +16,7 @@
         initLogin($("#divLogin"));
     });
 </script>
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <div class="well text-primary" id="divBuscador">Buscador de negocios</div>
 <div class="row">
@@ -24,12 +24,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well text-primary" id="divResultados">
-                    @Html.ActionLink("Listado de resultados", "verNegocio")
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="well text-primary" id="divMapa">
-                    Mapa general
                 </div>
             </div>
         </div>

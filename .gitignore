@@ -14,3 +14,16 @@ Bibliotecas.Tests/obj/Release/
 CoTeDiv.Tests/obj/Release/
 Escolar.Tests/obj/Release/
 *.txt
+/sernasistemas/bin/roslyn
+/sernasistemas/bin
+/sernasistemas/Content/images/negociosimgs
+WCFTiendasLib/obj/Debug/
+WCFTiendasLib/bin/Release/WCFTiendasLib.dll.config
+WCFTiendasLib/bin/
+WCFSernaSistemasLib/obj/Debug/
+WCFCotedivLib/bin/
+Tiendas/bin/
+Tiendas.Tests/bin/Release/Tiendas.Tests.dll.config
+Tiendas.Tests/bin/
+SernaSistemas.DataAccess/bin/
+SernaSistemas.Core/bin/

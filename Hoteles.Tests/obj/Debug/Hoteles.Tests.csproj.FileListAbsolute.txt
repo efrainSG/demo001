@@ -76,3 +76,4 @@ C:\Users\efrai\Documents\repos\demo001\Hoteles.Tests\bin\Debug\System.Diagnostic
 C:\Users\efrai\Documents\repos\demo001\Hoteles.Tests\bin\Debug\Hoteles.pdb
 C:\Users\efrai\Documents\repos\demo001\Hoteles.Tests\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\efrai\Documents\repos\demo001\Hoteles.Tests\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\efrai\Documents\repos\demo001\Hoteles.Tests\obj\Debug\Hoteles.Tests.csprojAssemblyReference.cache
