@@ -11,18 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    @RenderSection("estilos", false)
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
     <script src="~/Scripts/Serna/contactoWidget.js"></script>
     @*    <script src="~/Scripts/Serna/SeguidorDeProyectoWidget.js"></script>*@
-    @*  <script src="~/Scripts/Serna/LoginWidget.js"></script>*@
-    @*<script src="~/Scripts/Negocios/BuscarWidget.js"></script>*@
+    <script src="~/Scripts/Serna/LoginWidget.js"></script>
+    <script src="~/Scripts/Negocios/BuscarWidget.js"></script>
     <script src="~/Scripts/Negocios/ListarCatalogoWidget.js"></script>
-    @*<script src="~/Scripts/Negocios/ListarResultadosWidget.js"></script>*@
+    <script src="~/Scripts/Negocios/ListarResultadosWidget.js"></script>
+
+
+
     @*<script src="~/Scripts/Negocios/MenuWidget.js"></script>*@
     @*<script src="~/Scripts/Negocios/PerfilWidget.js"></script>*@
+    <script src="~/Scripts/Negocios/Mapa.js"></script>
     <script src="~/Scripts/Negocios/ProdServWidget.js"></script>
     <script src="~/Scripts/Negocios/FotoWidget.js"></script>
     @Scripts.Render("~/bundles/jquery")
@@ -38,11 +43,8 @@
             color: #000000;
         }
     </style>
-    <script>
-        var viewmodel;
-    </script>
 </head>
-<body style="background-color:#00001b; color:#ffffff;">
+<body>
     <div class="navbar">
         <div class="container">
             <div class="navbar-header">
@@ -59,12 +61,17 @@
                     </center>
                 </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse serna-navbar">
                 <ul class="nav navbar-nav" id="negocioNavBar"></ul>
+                @if (Session["token"] == null) {
+                <ul class="nav nabar-nav navbar-right">
+                    <li><a href="#" id="lnklogin"><span class="glyphicon glyphicon-log-in"></span>Ingresar</a></li>
+                </ul>
+                }
             </div>
         </div>
     </div>
-    <div class="container body-content text-justify">
+    <div class="container body-content text-justify" id="main">
 
         @RenderBody()
         <hr />
@@ -105,7 +112,7 @@
                         <p>Some text in the modal.</p>
                     </div>
                     <div class="modal-footer" id="divModalFooter">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
 

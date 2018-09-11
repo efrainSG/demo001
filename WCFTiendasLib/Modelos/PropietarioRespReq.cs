@@ -9,6 +9,8 @@ namespace WCFTiendasLib.Contracts {
 
     [DataContract]
     public class VerPropietarioRequest : RequestBase {
+        [DataMember]
+        public int Id { get; set; }
     }
 
     [DataContract]
@@ -17,5 +19,7 @@ namespace WCFTiendasLib.Contracts {
 
     [DataContract]
     public class VerPropietarioResponse : ResponseBase {
+        [DataMember]
+        public Propietario Propietario { get; set; }
     }
 }

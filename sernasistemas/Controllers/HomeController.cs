@@ -101,7 +101,8 @@ namespace SernaSistemas.Controllers
                 Telefono = telefono,
                 eMail = correo,
                 Comentario = comentario,
-                FechaContacto = DateTime.Today
+                FechaContacto = DateTime.Today,
+                Id = 0
             });
             if (response.tieneError)
                 return Json(new { error = "SI", msg = response.Mensaje });
@@ -130,13 +131,14 @@ namespace SernaSistemas.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(string usuario, string password) {
-            Session.Add("token", Guid.NewGuid().ToString());
+        public JsonResult Login(string usuario, string password, string  controller) {
+            string token = Guid.NewGuid().ToString();
+            Session.Add("token", token);
             Session.Add("Nombre", usuario);
             return Json(new {
                 error = "NO",
                 msg = "¡Bienvenido!",
-                token = Guid.NewGuid().ToString()
+                token = token
             });
         }
 

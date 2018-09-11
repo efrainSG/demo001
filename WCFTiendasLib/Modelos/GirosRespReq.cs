@@ -36,4 +36,19 @@ namespace WCFTiendasLib.Contracts
         [DataMember]
         public Dictionary<int,string> Giros { get; set; }
     }
+    [DataContract]
+    public class EliminarObjetoRequest : RequestBase
+    {
+        [DataMember]
+        public eEntidad Objeto { get; set; }
+        [DataMember]
+        public int Id { get; set; }
+    }
+    [DataContract]
+    public class EliminarObjetoResponse : ResponseBase
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+    }
 }

@@ -204,6 +204,13 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\NegociosStyle\Estructura.css" />
+    <Content Include="Content\NegociosStyle\arte.css" />
+    <Content Include="Content\NegociosStyle\impresion.css" />
+    <Content Include="Content\NegociosStyle\nutricion.css" />
+    <Content Include="Content\NegociosStyle\mascotas.css" />
+    <Content Include="Content\NegociosStyle\mantenimiento.css" />
+    <Content Include="Content\NegociosStyle\manualidades.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -217,7 +224,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,6 +245,7 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -252,12 +259,19 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Negocios\FotoWidget.js" />
+    <Content Include="Scripts\Negocios\Mapa.js" />
+    <Content Include="Scripts\Negocios\adminServicios.js" />
+    <Content Include="Scripts\Negocios\adminFotos.js" />
+    <Content Include="Scripts\Negocios\adminInfoTienda.js" />
+    <Content Include="Scripts\Negocios\AyudaAdmin.js" />
+    <Content Include="Scripts\Negocios\adminProductos.js" />
     <Content Include="Scripts\Negocios\ProdServWidget.js" />
     <Content Include="Scripts\Negocios\ListarCatalogoWidget.js" />
     <Content Include="Scripts\Negocios\MenuWidget.js" />
     <Content Include="Scripts\Negocios\ListarResultadosWidget.js" />
     <Content Include="Scripts\Negocios\BuscarWidget.js" />
     <Content Include="Scripts\Negocios\PerfilWidget.js" />
+    <Content Include="Scripts\pagination.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -308,10 +322,15 @@
     <Content Include="Views\Negocios\adminNegocio.cshtml" />
     <Content Include="Views\Shared\_LayoutNegocio.cshtml" />
     <Content Include="Views\Negocios\View.cshtml" />
+    <Content Include="Views\Negocios\perfilUsuario.cshtml" />
+    <Content Include="Views\Negocios\InfoTienda.cshtml" />
+    <Content Include="Views\Negocios\Productos.cshtml" />
+    <Content Include="Views\Negocios\Servicios.cshtml" />
+    <Content Include="Views\Negocios\Ayuda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\negociosimgs\" />
+    <Folder Include="Content\images\negociosimgs\fotos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -351,11 +370,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59890</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59890/</IISUrl>
+          <IISUrl>http://localhost:59890</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

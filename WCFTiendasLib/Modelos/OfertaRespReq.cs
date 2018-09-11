@@ -8,17 +8,17 @@ namespace WCFTiendasLib.Contracts
     [DataContract]
     public class OfertaResponse : ResponseBase
     {
-        public object Producto { get; set; }
-        public object Servicio { get; set; }
+        public Oferta Producto { get; set; }
+        public Oferta Servicio { get; set; }
     }
 
     [DataContract]
     public class OfertaRequest : RequestBase
     {
         [DataMember]
-        public int IdProducto { get; set; }
+        public int Id { get; set; }
         [DataMember]
-        public int IdServicio { get; set; }
+        public Oferta Oferta { get; set; }
     }
 
     [DataContract]
@@ -38,5 +38,19 @@ namespace WCFTiendasLib.Contracts
 
         [DataMember]
         public List<OfertaBreve> Servicios { get; set; }
+    }
+
+    [DataContract]
+    public class ListarNovedadesRequest : RequestBase
+    {
+        [DataMember]
+        public int IdNegocio { get; set; }
+    }
+
+    [DataContract]
+    public class ListarNovedadesResponse : ResponseBase
+    {
+        [DataMember]
+        public List<OfertaBreve> Novedades { get; set; }
     }
 }

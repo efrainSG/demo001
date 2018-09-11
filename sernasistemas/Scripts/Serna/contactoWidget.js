@@ -1,4 +1,6 @@
-﻿var initContacto = function (element) {
+﻿var ContactoOpciones = { id: 0 };
+
+var initContacto = function (element) {
     var $form, $filaNombre, $filaTelefono, $filaCorreo, $filaComentario, $filaBoton;
     var $txtNombre, $txtTelefono, $txtCorreo, $txtComentario, $btnEnviar;
     var $addonNombre, $addonTelefono, $addonCorreo, $addonComentario;
@@ -94,7 +96,7 @@ var enviarComentario_click = function () {
     } else {
         var clases = $btnEnviar.attr("class");
         var url = window.location;
-        var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Home/SendContacto";
+        var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Negocios/SendContacto";
         $btnEnviar.addClass("disabled");
         $.ajax({
             url: server,
@@ -102,7 +104,8 @@ var enviarComentario_click = function () {
                 nombre: $txtNombre.val(),
                 telefono: $txtTelefono.val(),
                 correo: $txtCorreo.val(),
-                comentario: $txtComentario.val()
+                comentario: $txtComentario.val(),
+                IdNegocio: ContactoOpciones.id
             },
             type: "post",
             dataType: "json"

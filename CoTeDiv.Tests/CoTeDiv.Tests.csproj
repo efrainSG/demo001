@@ -98,6 +98,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SernaSistemas.Core\SernaSistemas.Core.csproj">
+      <Project>{3F8959AF-0CC4-489B-B7E7-B4299B6C4024}</Project>
+      <Name>SernaSistemas.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SernaSistemas\SernaSistemas.csproj">
+      <Project>{5209042A-E74B-4BB3-AE05-83CC57120007}</Project>
+      <Name>SernaSistemas</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

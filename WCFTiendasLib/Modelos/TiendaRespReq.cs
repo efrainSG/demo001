@@ -12,7 +12,11 @@ namespace WCFTiendasLib.Contracts
     public class TiendaRequest : RequestBase
     {
         [DataMember]
-        public int IdNegocio { get; set; }
+        public int Id { get; set; }
+        [DataMember]
+        public int IdSeccion { get; set; }
+        [DataMember]
+        public InfoTienda Tienda { get; set; }
     }
     /// <summary>
     /// Obtiene la información de una tienda en específico. Si se pasaron parámetros de sesión y coinciden con propietario, se entrega resultado para edición
@@ -30,6 +34,12 @@ namespace WCFTiendasLib.Contracts
         public string Correo { get; internal set; }
         [DataMember]
         public string Horario { get; internal set; }
+        [DataMember]
+        public string Titulo { get; set; }
+        [DataMember]
+        public string Seccion { get; set; }
+        [DataMember]
+        public int IdGiro { get; set; }
     }
     /// <summary>
     /// Solicita una consulta de tiendas según parámetros. Se usa para listar tiendas de un propietario o de consulta general
@@ -64,5 +74,27 @@ namespace WCFTiendasLib.Contracts
     [DataContract]
     public class VerEtiquetasResponse : ResponseBase
     {
+    }
+    [DataContract]
+    public class InfoTiendaRequest : RequestBase
+    {
+        [DataMember]
+        public string Usuario { get; set; }
+        [DataMember]
+        public string Token { get; set; }
+        [DataMember]
+        public int IdTienda { get; set; }
+
+        public InfoTiendaRequest(string usuario, string token, int id) {
+            Usuario = usuario;
+            Token = token;
+            IdTienda = id;
+        }
+    }
+    [DataContract]
+    public class InfoTiendaResponse : ResponseBase
+    {
+        [DataMember]
+        public InfoTienda Resultado { get; set; }
     }
 }

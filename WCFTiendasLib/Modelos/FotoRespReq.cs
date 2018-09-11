@@ -1,4 +1,5 @@
 ﻿using SernaSistemas.Core.Bases;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace WCFTiendasLib.Contracts
@@ -29,6 +30,6 @@ namespace WCFTiendasLib.Contracts
     public class ListarFotoResponse : ResponseBase
     {
         [DataMember]
-        public object Fotos { get; set; }
+        public Dictionary<int, string> Fotos { get; set; }
     }
 }

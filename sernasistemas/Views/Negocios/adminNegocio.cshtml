@@ -1,14 +1,88 @@
-﻿
+﻿@model SernaSistemas.Models.sesionModel
 @{
     ViewBag.Title = "Administrador del negocio";
+    Layout = "~/Views/Shared/_LayoutNegocio.cshtml";
+    ViewBag.font = "Ubuntu+Mono";
+
 }
 
-<h2>@ViewBag.Title</h2>
+@section estilos{
+    <link rel="stylesheet" type="text/css" href="~/Content/NegociosStyle/Estructura.css">
+    @*<link rel="stylesheet" type="text/css" href="~/Content/NegociosStyle/@ViewBag.css">*@
+    <link href="https://fonts.googleapis.com/css?family=@ViewBag.font" rel="stylesheet">
+}
+
+
+<script src="~/Scripts/Negocios/adminFotos.js"></script>
+<script src="~/Scripts/Negocios/adminProductos.js"></script>
+<script src="~/Scripts/Negocios/adminServicios.js"></script>
+<script src="~/Scripts/Negocios/adminInfoTienda.js"></script>
+<script src="~/Scripts/Negocios/AyudaAdmin.js"></script>
+
+<script>
+    var viewmodel = {
+    IdUsuario=@Model.IdUsuario,
+    Usuario = @Model.Usuario,
+    UltimoLogin = @Model.UltimoLogin,
+    IdTienda = @Model.IdTienda
+    };
+    $(document).ready(function () {
+        var $lnkInfo = $("#lnkInicial"), $lnkTienda = $("#lnkInfoTienda"), $lnkProductos = $("#lnkAdminProductos"),
+            $lnkServicios = $("#lnkAdminServicios"), $lnkAyuda = $("#lnkAdminAyuda"), $divContenido = $("#divContenido"),
+            $lnkFotos = $("#lnkAdminFotos"), $btnCloseMenu = $("#btnCloseMenu"), $btnOpen = $("#btnOpen"),
+            $menuLateral = $("#menuLateral"), $main = $("#main");
+        $btnCloseMenu.off("click").on("click", function () {
+            $menuLateral.width(0);
+            $main.css("margin-left", 0);
+            $btnOpen.show();
+        });
+        $btnOpen.off("click").on("click", function () {
+            $menuLateral.width(250);
+            $main.css("margin-left", 250);
+            $(this).hide();
+        });
+        $lnkInfo.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminInfoTienda($divContenido);
+        });
+        $lnkTienda.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminTienda($divContenido);
+        });
+        $lnkProductos.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminProductos($divContenido);
+        });
+        $lnkServicios.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminServicios($divContenido);
+        });
+        $lnkAyuda.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminAyuda($divContenido);
+        });
+        $lnkFotos.off("click").on("click", function () {
+            $divContenido.empty();
+            initAdminFotos($divContenido);
+        });
+    });
+</script>
+<h3>
+    <span style="font-size:30px;cursor:pointer" id="btnOpen" class="btn btn-sm btn-info">&#9776;</span>
+    @ViewBag.Title
+</h3>
+<div class="sidenav" id="menuLateral">
+    <a href="#" class="closebtn" id="btnCloseMenu">&times;</a>
+    <a href="#" id="lnkInicial" class="btn btn-group-vertical"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;Información inicial</a>
+    <a href="#" id="lnkInfoTienda" class="btn btn-group-vertical"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;Información de la tienda</a>
+    <a href="#" id="lnkAdminProductos" class="btn btn-group-vertical"><span class="glyphicon glyphicon-apple"></span>&nbsp;Productos</a>
+    <a href="#" id="lnkAdminServicios" class="btn btn-group-vertical"><span class="glyphicon glyphicon-road"></span>&nbsp;Servicios</a>
+    <a href="#" id="lnkAdminFotos" class="btn btn-group-vertical"><span class="glyphicon glyphicon-picture"></span>&nbsp;Fotos</a>
+    <a href="#" id="lnkAdminAyuda" class="btn btn-group-vertical"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Ayuda</a>
+</div>
+
+
 <div class="row">
-    <div class="col-md-4 text-primary" id="divMenu">
-        Menú
-    </div>
-    <div class="col-md-8 text-primary" id="divContenido">
-        Contenido
+    <div class="col-sm-12 col-md-12 text-primary" id="divContenido">
     </div>
 </div>

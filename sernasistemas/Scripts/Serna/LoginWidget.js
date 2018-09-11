@@ -1,17 +1,23 @@
-﻿var initLogin = function (element) {
+﻿var opcioneslogin;
+
+var initLogin = function (element, controller, metodo) {
     var $form, $filaUsuario, $filaPassword, $celUsuario, $celPassword, $filaBotones, $celBotones;
     var $addonUsuario, $addonPassword, $txtUsuario, $txtPassword, $btnInicio;
     var $msgUsuario, $msgPassword, $msg;
+    if (controller != undefined && metodo != undefined)
+        opcioneslogin = { controller: controller, metodo: metodo };
 
     $form = $('<form id="frmLogin">').addClass("form-group well");
+
+    $form.append('<input type="hidden" id="hidCtrl" value="' + (!controller ? opcioneslogin.controller : controller ) + '">');
 
     $filaUsuario = $('<div id="divFilaUsuario">').addClass("row").appendTo($form);
     $filaPassword = $('<div id="divFilaPassword">').addClass("row").appendTo($form);
     $filaBotones = $('<div id="divFilaBotones">').addClass("row").appendTo($form);
 
-    $celUsuario = $('<div id="divCelUsuario">').addClass("col-md-12 input-group").appendTo($filaUsuario);
-    $celPassword = $('<div id="divCelPassword">').addClass("col-md-12 input-group").appendTo($filaPassword);
-    $celBotones = $('<div id="divCelBotones">').addClass("col-md-12 input-group").appendTo($filaBotones);
+    $celUsuario = $('<div id="divCelUsuario">').addClass("col-md-12 col-sm-12 input-group").appendTo($filaUsuario);
+    $celPassword = $('<div id="divCelPassword">').addClass("col-md-12 col-sm-12 input-group").appendTo($filaPassword);
+    $celBotones = $('<div id="divCelBotones">').addClass("col-md-12 col-sm-12 input-group").appendTo($filaBotones);
 
     $addonUsuario = $('<span class="input-group-addon" id="addonUsuario"><i class="glyphicon glyphicon-user"></i></span>')
         .appendTo($celUsuario);
@@ -28,19 +34,21 @@
         .appendTo($filaPassword);
 
     $btnInicio = $('<a href="#" id="btnLogin">Iniciar sesión</a>').addClass("btn btn-primary").appendTo($celBotones);
-    $btnInicio.off().on("click",btnLogin_click);
+    $btnInicio.off().on("click", btnLogin_click);
+    $form.append('<span id="spanResultadoLogin">');
     $form.appendTo(element);
 }
 
 var btnLogin_click = function () {
     var $form, $txtUsuario, $txtPassword, errores = 0;
-    var $msgUsuario, $msgPassword, $msg;
+    var $msgUsuario, $msgPassword, $msg, $controller;
     $btnInicio = $("#btnLogin");
     $form = $("#frmLogin");
     $txtPassword = $("#txtPassword");
     $txtUsuario = $("#txtUsuario");
     $msgUsuario = $("#msgLoginUsuario");
     $msgPassword = $("#msgLoginPassword");
+    $controller = $("#hidCtrl");
 
     if ($txtUsuario.val().trim() === "") {
         errores++;
@@ -57,37 +65,42 @@ var btnLogin_click = function () {
     } else {
         var clases = $btnInicio.attr("class");
         var url = window.location;
-        var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/Home/Login";
+        var server = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "") + "/" + opcioneslogin.controller + "/Login";
         $btnInicio.addClass("disabled");
         $.ajax({
             url: server,
             data: {
-                nombre: $txtUsuario.val(),
-                password: $txtPassword.val()
+                usuario: $txtUsuario.val(),
+                password: $txtPassword.val(),
+                controller: ($controller != undefined) ? $controller.val() : ""
             },
             type: "post",
-            dataType: "json"
+            dataType: "json",
+            async: false
         })
             .done(function (obj) {
-                if (obj.error === "NO") {
-                    $("#spanResultado")
-                        .empty()
-                        .addClass("text-info")
+                console.log(obj);
+                if (!obj.tieneError) {
+                    if (opcioneslogin.callback != undefined)
+                        opcioneslogin.callback();
+                    else {
+                        $("#spanResultadoLogin")
+                            .empty()
+                            .addClass("text-info")
                             .append(obj.msg)
                             .fadeIn()
                             .delay(3500)
                             .fadeOut("slow");
-                    $form.delay(5000).hide("slow");
-                    viewmodel.attr("token", obj.token);
-                    console.log(viewmodel);
+                        $form.delay(5000).hide("slow");
+                    }
                 } else {
-                    $("#spanResultado")
+                    $("#spanResultadoLogin")
                         .empty()
                         .addClass("text-error")
-                            .append(obj.msg)
-                            .fadeIn()
-                            .delay(3500)
-                            .fadeOut("slow");
+                        .append(obj.Mensaje)
+                        .fadeIn()
+                        .delay(3500)
+                        .fadeOut("slow");
                 }
             })
             .fail(function (a) {
