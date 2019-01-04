@@ -14,3 +14,21 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\WCFCotedivLib.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.Core.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\System.Diagnostics.DiagnosticSource.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.Core.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.Core.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.pdb
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\SernaSistemas.DataAccess.dll.config
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.csprojAssemblyReference.cache
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.csproj.CoreCompileInputs.cache
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.csproj.CopyComplete
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.dll
+C:\Users\efrai\Documents\repos\demo001\WCFCotedivLib\obj\Release\WCFCotedivLib.pdb

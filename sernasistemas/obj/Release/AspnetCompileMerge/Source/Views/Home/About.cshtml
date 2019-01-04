@@ -1,12 +1,17 @@
 ﻿@{
     ViewBag.Title = "Acerca de mí";
 }
+<script>
+    $(document).ready(function () {
+        initContacto($("#divContacto"));
+    });
+</script>
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 <div class="row">
     <div class="col-md-8">
         <div class="row">
-            <dl>
+            <dl class="dl-horizontal">
                 <dt>
                     ¿Qué soy?
                 </dt>
@@ -40,8 +45,7 @@
             <div class="col-md-6">
                 <ul>
                     <li><span class="glyphicon glyphicon-phone"></span> Celular: 22-25-29-9764</li>
-                    <li><span class="glyphicon glyphicon-envelope"></span> E-mail 1: <a href="mailto:efrain_serna@hotmail.com" target="_blank">efrain_serna@hotmail.com</a></li>
-                    <li><small><span class="glyphicon glyphicon-envelope"></span> E-mail 2: <a href="mailto:lcc_efrain_s@yahoo.com.mx" target="_blank">lcc_efrain_s@yahoo.com.mx</a></small></li>
+                    <li><span class="glyphicon glyphicon-envelope"></span> E-mail: <a href="mailto:efrain@sernasis.com" target="_blank">efrain@sernasis.com</a></li>
                 </ul>
             </div>
             <div class="col-md-6">
@@ -56,8 +60,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        @Html.Partial("FormContacto", new SernaSistemas.Core.Models.ContactoModel())
+    <div class="col-md-4" id="divContacto">
     </div>
 </div>
 

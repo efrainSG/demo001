@@ -41,6 +41,9 @@ namespace WCFTiendasLib
         public string Unidad { get; set; }
         public int IdTienda { get; set; }
         public int IdTipo { get; set; }
+        public int IdSucursal { get; set; }
+        public int IdOS { get; set; }
+        public bool Visible { get; set; }
     }
     public class OfertaBreve
     {
@@ -52,6 +55,7 @@ namespace WCFTiendasLib
         public int Aceptacion { get; set; }
         public string Foto { get; set; }
         public string Tipo { get; set; }
+        public bool Visible { get; set; }
     }
     public class ResultadoTienda
     {
@@ -95,6 +99,8 @@ namespace WCFTiendasLib
         public int IdTienda { get; set; }
         public int IdTipo { get; set; }
         public string Tipo { get; set; }
+        public int Status { get; set; }
+        public bool Visible { get; set; }
     }
 
     public class Propietario

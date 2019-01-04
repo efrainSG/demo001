@@ -77,7 +77,8 @@
                         $.ajax({
                             url: server,
                             data: {
-                                Id: @ViewBag.Id
+                                Id: @ViewBag.Id,
+                                visible: true
                             },
                             type: "post",
                             dataType: "json"
@@ -118,7 +119,8 @@
                         $.ajax({
                             url: server,
                             data: {
-                                Id: @ViewBag.Id
+                                Id: @ViewBag.Id,
+                                    visible: true
                             },
                             type: "post",
                             dataType: "json"
@@ -226,25 +228,24 @@
         $lnkLogin.off("click").on("click", function () {
             var $hrd = $("#modalHdr"), $body = $("#divModalBody"), $modal = $("#myModal");
             $body.empty();
-            
+
             opcioneslogin = {
                 controller: "Negocios",
                 metodo: "Login",
                 callback: function () {
-                    
                     var newUrl = window.location.protocol.toString() + "//" + window.location.host.toString() + "/Negocios/LoginGet";
                     top.location.assign(newUrl);
                     //return false;
                 }
             };
             initLogin($body);
-
+            $hrd.removeClass().addClass("modal-title text-center text-info bg-info").html("Inicio de sesión");
             $modal.modal();
         });
         $navbar.append($lnkInicio);
         $navbar.append($lnkProductos);
         $navbar.append($lnkServicios);
-        $navbar.append($lnkGaleria);
+        //$navbar.append($lnkGaleria);
         //$navbar.append($lnkComentarios);
         $navbar.append($lnkAcercaDe);
 

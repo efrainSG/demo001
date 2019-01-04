@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2451fef7c7c4e8882f099cf1dccf5a7" Name="Diagram1" >
+        <EntityTypeShape EntityType="HistoriaClinicaModel.Medico" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="HistoriaClinicaModel.Persona" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="HistoriaClinicaModel.Telefono" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="HistoriaClinicaModel.FK_Persona_Medico" />
+        <AssociationConnector Association="HistoriaClinicaModel.FK_Persona_Telefonos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

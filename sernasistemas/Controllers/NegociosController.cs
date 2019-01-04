@@ -7,14 +7,11 @@ using System.Web.Mvc;
 using WCFTiendasLib;
 using WCFTiendasLib.Contracts;
 
-namespace SernaSistemas.Controllers
-{
-    public class NegociosController : Controller
-    {
+namespace SernaSistemas.Controllers {
+    public class NegociosController : Controller {
         TiendasServices servicios = new TiendasServices();
         // GET: Negocios
         public ActionResult Index() {
-
             return View();
         }
 
@@ -48,6 +45,20 @@ namespace SernaSistemas.Controllers
             return Json(new { resultados = response.Giros.ToArray() }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult listarSecciones(int? idTienda) {
+            ListarSeccionesRequest request = new ListarSeccionesRequest() {
+                Id = idTienda.HasValue ? idTienda.Value : 0
+            };
+            ListarSeccionesResponse response = servicios.ListarSecciones(request);
+            return Json(new { resultados = response.Secciones.ToArray() }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult listarTiposSucursales() {
+            var request = new ListarGirosRequest();
+            ListarTiposSucursalesResponse response = servicios.ListarTiposSucursales(request);
+            return Json(new { resultados = response.TiposSucursales.ToArray() }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public JsonResult Login(string usuario, string password) {
 
@@ -62,25 +73,27 @@ namespace SernaSistemas.Controllers
                 Session.Add("IdUsuario", response.loginModel.IdUsuario);
                 Session.Add("token", response.loginModel.Hash);
                 Session.Add("login", response.loginModel.UltimoLogin);
-                Session.Add("IdTienda", response.Mensaje.Substring(5)); 
+                Session.Add("IdTienda", response.Mensaje.Substring(5));
             }
             return Json(new { response.Mensaje, response.tieneError, response.loginModel });
         }
+
         [HttpGet]
         public ActionResult LoginGet() {
             if (Session["usuario"] != null && Session["token"] != null) {
-                 
-                return View("adminNegocio", new sesionModel() {
+                var model = new sesionModel() {
                     IdUsuario = (int)Session["IdUsuario"],
                     Usuario = Session["usuario"].ToString(),
                     UltimoLogin = Session["login"].ToString(),
-                    IdTienda = (int)Session["IdTienda"]
-                });
+                    IdTienda = int.Parse(Session["IdTienda"].ToString())
+                };
+                return View("adminNegocio", model);
             } else {
                 Session.Clear();
                 return View("Index");
             }
         }
+
         #region métodos de controlador que son utilizados desde JS para las secciones en el front de cliente
         public ActionResult verNegocio(int Id) {
             TiendaRequest request = new TiendaRequest() {
@@ -128,10 +141,11 @@ namespace SernaSistemas.Controllers
             return View("Negocio");
         }
 
-        public ActionResult obtenerProductos(int Id) {
+        public ActionResult obtenerProductos(int Id, bool? visible) {
             ListarOfertasRequest request = new ListarOfertasRequest() {
                 IdNegocio = Id,
-                TipoOferta = "PRODUCTO"
+                TipoOferta = "PRODUCTO",
+                Visible = visible
             };
             ListarOfertasResponse response = servicios.ListarOfertas(request);
             var seccionresponse = servicios.VerSeccion(new TiendaRequest() {
@@ -153,10 +167,11 @@ namespace SernaSistemas.Controllers
             return Json(new { producto = response.Producto });
         }
 
-        public ActionResult obtenerServicios(int Id) {
+        public ActionResult obtenerServicios(int Id, bool? visible) {
             ListarOfertasRequest request = new ListarOfertasRequest() {
                 IdNegocio = Id,
-                TipoOferta = "SERVICIO"
+                TipoOferta = "SERVICIO",
+                Visible = visible
             };
             ListarOfertasResponse response = servicios.ListarOfertas(request);
             var seccionresponse = servicios.VerSeccion(new TiendaRequest() {
@@ -244,6 +259,13 @@ namespace SernaSistemas.Controllers
         public ActionResult obtenerComentarios(int Id) {
             return Json(new { Comentarios = Id });
         }
+
+        public ActionResult listarSucursales(int IdTienda) {
+            var response = servicios.ListarLocales(new ListarLocalesRequest() {
+                IdTienda = IdTienda
+            });
+            return Json(response);
+        }
         #endregion
 
         #region métodos relacionados con vistas para el front de usuario
@@ -257,8 +279,24 @@ namespace SernaSistemas.Controllers
                 return null;
         }
 
-        public ActionResult guardarInfoNegocio() {
-            return null;
+        public ActionResult guardarInfoNegocio(int id, string nombre, string direccion, string telefono, string razonsocial, string latitud, string longitud, string correo, int giro) {
+            RegistroTiendaRequest request = new RegistroTiendaRequest() {
+                Usuario = Session["usuario"].ToString(),
+                Token = Session["token"].ToString(),
+                Datos = new InfoTienda() {
+                    Id = id,
+                    Nombre = nombre,
+                    Direccion = direccion,
+                    Telefono = telefono,
+                    RazonSocial = razonsocial,
+                    Latitud = latitud,
+                    Longitud = longitud,
+                    CorreoElectronico = correo,
+                    Giro = giro
+                }
+            };
+            var response = servicios.guardarDatosTienda(request);
+            return Json(new { respuesta = response });
         }
 
         public ActionResult obtenerInfoPerfil(int Id) {
@@ -267,15 +305,52 @@ namespace SernaSistemas.Controllers
             });
             if (!response.tieneError) {
                 return Json(new {
-                    response.Propietario
+                    Propietario = new {
+                        response.Propietario.Id,
+                        response.Propietario.Nombre,
+                        response.Propietario.Telefono,
+                        response.Propietario.Correo,
+                        response.Propietario.Usuario
+                    },
+                    tieneError = !response.tieneError
                 });
             } else {
-                return null;
+                return Json(new {
+                    Propietario = new {
+                        Nombre = "",
+                        Telefono = "",
+                        Correo = "",
+                        Usuario = "",
+                        Id = 0
+                    },
+                    tieneError = true
+                });
             }
         }
 
-        public ActionResult guardarInfoPerfil() {
-            return null;
+        public ActionResult guardarInfoPerfil(int Id, string nombre, string correo, string telefono, string password = "") {
+            var request = new RegistrarPropietarioRequest() {
+                Id = Id,
+                Usuario = Session["usuario"].ToString(),
+                Token = Session["token"].ToString(),
+                Nombre = nombre,
+                Correo = correo,
+                Telefono = telefono,
+                Password = password
+            };
+            var response = servicios.GuardarDatos(request);
+            return Json(new { response });
+        }
+
+        public ActionResult guardarSeccion(int IdSeccion, int IdTienda, string Descripcion, string Titulo) {
+            SeccionRequest request = new SeccionRequest() {
+                idSeccion = IdSeccion,
+                idTienda = IdTienda,
+                descripcion = Descripcion,
+                titulo = Titulo
+            };
+            SeccionResponse response = servicios.guardarSeccion(request);
+            return Json(new { IdSeccion, IdTienda, Descripcion });
         }
 
         public ActionResult obtenerOfertas(int Id, int Tipo) {
@@ -299,12 +374,43 @@ namespace SernaSistemas.Controllers
                 return null;
         }
 
-        public ActionResult guardarOferta() {
-            return null;
+        public ActionResult obtenerSucursal(int idSucursal) {
+            var response = servicios.verSucursal(new SucursalRequest() {
+                Id = idSucursal
+            });
+            if (!response.tieneError) {
+                return Json(new { response.Sucursal });
+            } else
+                return null;
+        }
+        public ActionResult guardarOferta(int idTienda, int id, string nombre, string DescripcionBreve,
+            string Descripcion, float Precio, string Unidad, int Tipo, int IdSucursal, int IdOS) {
+            var response = servicios.RegistrarOferta(new OfertaRequest() {
+                Oferta = new Oferta() {
+                    Id = id,
+                    Descripcion = Descripcion,
+                    DescripcionBreve = DescripcionBreve,
+                    IdTienda = idTienda,
+                    IdTipo = Tipo,
+                    Nombre = nombre,
+                    Precio = Precio,
+                    Unidad = Unidad,
+                    IdSucursal = IdSucursal,
+                    IdOS = IdOS
+                }
+            });
+            return Json(new { response.Producto, response.Servicio });
         }
 
-        public ActionResult borrarOferta() {
-            return null;
+        public ActionResult invertirOferta(int id, int idTipo) {
+            var response = servicios.cambiarVisibilidadOferta(new OfertaRequest() {
+                Id = id,
+                Oferta = new Oferta() {
+                    Id = id,
+                    IdTipo = idTipo
+                }
+            });
+            return Json(new { response });
         }
 
         public ActionResult obtenerFotosAdmin(int Id) {
@@ -335,6 +441,25 @@ namespace SernaSistemas.Controllers
             return null;
         }
 
+        public ActionResult guardarSucursal(int Id, int IdTienda, int Status, int IdTipo, string Direccion, string Telefono, string Correo) {
+            SucursalResponse response = servicios.guardarSucursal(new SucursalRequest() {
+                Id = Id,
+                IdTienda = IdTienda,
+                Status = Status,
+                IdTipo = IdTipo,
+                Direccion = Direccion,
+                Telefono = Telefono,
+                Correo = Correo
+            });
+            return Json(new { response.Sucursal });
+        }
+
+        public ActionResult invertirSucursal(int id) {
+            var response = servicios.cambiarVisibilidadSucursal(new SucursalRequest() {
+                Id = id
+            });
+            return Json(new { response });
+        }
         #endregion
     }
 }

@@ -84,6 +84,8 @@ namespace WCFTiendasLib {
         ListarOfertasResponse ListarOfertas(ListarOfertasRequest request);
         [OperationContract]
         OfertaResponse RegistrarOferta(OfertaRequest request);
+        [OperationContract]
+        OfertaResponse cambiarVisibilidadOferta(OfertaRequest request);
         /// <summary>
         /// Muestra los datos de una oferta especificada por el Id de la misma.
         /// </summary>
@@ -137,7 +139,25 @@ namespace WCFTiendasLib {
         ListarGirosResponse ListarGiros(ListarGirosRequest request);
 
         [OperationContract]
-        EliminarObjetoResponse eliminarRegistro(EliminarObjetoRequest request);
-        }
+        ListarSeccionesResponse ListarSecciones(ListarSeccionesRequest request);
 
+        [OperationContract]
+        EliminarObjetoResponse eliminarRegistro(EliminarObjetoRequest request);
+
+        [OperationContract]
+        SeccionResponse guardarSeccion(SeccionRequest request);
+
+        [OperationContract]
+        ListarTiposSucursalesResponse ListarTiposSucursales(ListarGirosRequest request);
+
+        [OperationContract]
+        SucursalResponse guardarSucursal(SucursalRequest request);
+
+        [OperationContract]
+        SucursalResponse cambiarVisibilidadSucursal(SucursalRequest request);
+
+        [OperationContract]
+        SucursalResponse verSucursal(SucursalRequest request);
     }
+
+}

@@ -1,7 +1,9 @@
 ﻿.serna-titulo {
     background-color: #F49CE3;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQoU2OM/O/vu8xyMQMhwDhUFC5n3LgZ5Jm6Gf990T3VlMG4GeQPsGcWM7wk5GkG0hQSbTUxCgFgFDY1C6hWlwAAAABJRU5ErkJggg==)repeat;
+    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQoU2OM/O/vu8xyMQMhwDhUFC5n3LgZ5Jm6Gf990T3VlMG4GeQPsGcWM7wk5GkG0hQSbTUxCgFgFDY1C6hWlwAAAABJRU5ErkJggg==)repeat;*/
+    background: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4686140.jpg);
     border: #D34CBA 2px solid;
+    text-shadow: 0px 0px 12px #fff;
 }
 
 body {

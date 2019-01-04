@@ -97,4 +97,17 @@ namespace WCFTiendasLib.Contracts
         [DataMember]
         public InfoTienda Resultado { get; set; }
     }
+    [DataContract]
+    public class RegistroTiendaRequest : RequestBase
+    {
+        [DataMember]
+        public string Usuario { get; set; }
+        [DataMember]
+        public string Token { get; set; }
+        [DataMember]
+        public int IdTienda { get; set; }
+
+        [DataMember]
+        public InfoTienda Datos { get; set; }
+    }
 }

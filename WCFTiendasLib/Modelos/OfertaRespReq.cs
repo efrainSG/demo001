@@ -28,6 +28,8 @@ namespace WCFTiendasLib.Contracts
         public int IdNegocio { get; set; }
         [DataMember]
         public string TipoOferta { get; set; }
+        [DataMember]
+        public bool? Visible { get; set; }
     }
 
     [DataContract]

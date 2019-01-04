@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HistoriaClinicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HistoriaClinicaEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="registraTelefono">
+      <Parameter Name="IdPersona" Mode="In" Type="Int32" />
+      <Parameter Name="IdTipoTelefono" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroTelefono" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="registraPaciente" ReturnType="Collection(HistoriaClinicaModel.registraPaciente_Result)">
+      <Parameter Name="IdSexo" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="IdTipoSangre" Mode="In" Type="Int32" />
+      <Parameter Name="Rh" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="IdLugarNacimiento" Mode="In" Type="Int32" />
+      <Parameter Name="CiudadNacimiento" Mode="In" Type="String" />
+      <Parameter Name="IdLugarResidencia" Mode="In" Type="Int32" />
+      <Parameter Name="Domicilio" Mode="In" Type="String" />
+      <Parameter Name="Tabaco" Mode="In" Type="Boolean" />
+      <Parameter Name="Alcohol" Mode="In" Type="Boolean" />
+      <Parameter Name="CiudadResidencia" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="selPaciente" ReturnType="Collection(HistoriaClinicaModel.selPaciente_Result)">
+      <Parameter Name="IdPaciente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spCatalogo" ReturnType="Collection(HistoriaClinicaModel.spCatalogo_Result)">
+      <Parameter Name="Catalogo" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Medicos" EntityType="HistoriaClinicaModel.Medico" />
+    <EntitySet Name="Personas" EntityType="HistoriaClinicaModel.Persona" />
+    <EntitySet Name="Telefonos" EntityType="HistoriaClinicaModel.Telefono" />
+    <AssociationSet Name="FK_Persona_Medico" Association="HistoriaClinicaModel.FK_Persona_Medico">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Medico" EntitySet="Medicos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Telefonos" Association="HistoriaClinicaModel.FK_Persona_Telefonos">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Telefono" EntitySet="Telefonos" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="registraPaciente_Result">
+    <Property Type="Int32" Name="IdPersona" Nullable="false" />
+    <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+    <Property Type="String" Name="LugarResidencia" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Domicilio" Nullable="false" MaxLength="255" />
+    <Property Type="Boolean" Name="Tabaco" Nullable="false" />
+    <Property Type="Boolean" Name="Alcohol" Nullable="false" />
+    <Property Type="String" Name="CiudadResidencia" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="selPaciente_Result">
+    <Property Type="Int32" Name="IdPersona" Nullable="false" />
+    <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+    <Property Type="String" Name="LugarResidencia" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Domicilio" Nullable="false" MaxLength="255" />
+    <Property Type="Boolean" Name="Tabaco" Nullable="false" />
+    <Property Type="Boolean" Name="Alcohol" Nullable="false" />
+    <Property Type="String" Name="CiudadResidencia" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Id" Nullable="true" />
+    <Property Type="Int32" Name="IdPersona1" Nullable="true" />
+    <Property Type="String" Name="TipoTelefono" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NumeroTelefono" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="spCatalogo_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Catalogo" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contrasenia" Type="Binary" Nullable="false" MaxLength="128" FixedLength="false" />
+    <NavigationProperty Name="Persona" Relationship="HistoriaClinicaModel.FK_Persona_Medico" FromRole="Medico" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSexo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipoSangre" Type="Int32" Nullable="false" />
+    <Property Name="Rh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdLugarNacimiento" Type="Int32" Nullable="false" />
+    <Property Name="CiudadNacimiento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Medicos" Relationship="HistoriaClinicaModel.FK_Persona_Medico" FromRole="Persona" ToRole="Medico" />
+    <NavigationProperty Name="Telefonos" Relationship="HistoriaClinicaModel.FK_Persona_Telefonos" FromRole="Persona" ToRole="Telefono" />
+  </EntityType>
+  <EntityType Name="Telefono">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoTelefono" Type="Int32" Nullable="false" />
+    <Property Name="NumeroTelefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="HistoriaClinicaModel.FK_Persona_Telefonos" FromRole="Telefono" ToRole="Persona" />
+  </EntityType>
+  <Association Name="FK_Persona_Medico">
+    <End Type="HistoriaClinicaModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="HistoriaClinicaModel.Medico" Role="Medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Medico">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Telefonos">
+    <End Type="HistoriaClinicaModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="HistoriaClinicaModel.Telefono" Role="Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telefono">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

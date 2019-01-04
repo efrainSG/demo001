@@ -8,25 +8,96 @@ using System.Text;
 using System.Threading.Tasks;
 using WCFTiendasLib.Contracts;
 
-namespace WCFTiendasLib
-{
+namespace WCFTiendasLib {
 
-    public class TiendasServices : ITiendasServices
-    {
+    public class TiendasServices : ITiendasServices {
         public const string K_CONTACTO_REGISTRADO = "EL CONTACTO FUE REGISTRADO";
         public const string K_NOMBRE_CONTACTO_REGISTRADO = "EL NOMBRE DE CONTACTO YA EXISTE";
         public const string K_TELEFONO_CONTACTO_REGISTRADO = "EL TELÉFONO DE CONTACTO YA EXISTE";
         public const string K_CORREO_CONTACTO_REGISTRADO = "EL CORREO ELECTRÓNICO DE CONTACTO YA EXISTE";
         public const string K_REGISTRO_NO_ENCONTRADO = "El registro no fue encontrado. Verifica tus datos";
 
-        public string connstring { get; set; }  = ConfigurationManager.ConnectionStrings["WCFTiendasLib.Properties.Settings.SernaConnStr"].ConnectionString;
+        public string connstring { get; set; } = ConfigurationManager.ConnectionStrings["WCFTiendasLib.Properties.Settings.SernaConnStr"].ConnectionString;
 
         public PropietarioResponse CrearCuenta(RegistrarPropietarioRequest request) {
             throw new NotImplementedException();
         }
 
         public PropietarioResponse GuardarDatos(RegistrarPropietarioRequest request) {
-            throw new NotImplementedException();
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            int r;
+
+            var response = new PropietarioResponse() {
+                tieneError = false,
+                Error = 0,
+                Mensaje = string.Empty
+            };
+
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.UpdAdministrador",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Id
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Usuario",
+                            Value = request.Usuario
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Password",
+                            Value = request.Password
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Nombre",
+                            Value = request.Nombre
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Telefono",
+                            Value = request.Telefono
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Correo",
+                            Value = request.Correo
+                        });
+
+                        Conn.Open();
+                        r = Cmd.ExecuteNonQuery();
+                    }
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+            } catch (Exception ex) {
+                response.Error = ex.HResult;
+                response.Mensaje = ex.Message;
+                response.tieneError = true;
+            }
+            response.Datos = new Propietario() {
+                Id = request.Id,
+                Correo = request.Correo,
+                Nombre = request.Nombre,
+                Telefono = request.Telefono,
+                Usuario = request.Usuario
+            };
+            return response;
         }
         /// <summary>
         /// Inicia sesión en la plataforma de negocios
@@ -84,13 +155,13 @@ namespace WCFTiendasLib
                                         IdUsuario = (int)dr["IdUsuario"],
                                         NombreUsuario = request.loginModel.NombreUsuario
                                     };
-                                    response.Mensaje = dr["Resultado"].ToString();
+                                    response.Mensaje = dr["Resultado"].ToString() + dr["IdTienda"].ToString();
                                 } else {
                                     throw new Exception(dr["Resultado"].ToString());
                                 }
                     }
                 }
-            }catch(Exception ex) {
+            } catch (Exception ex) {
                 response.Error = 1;
                 response.Mensaje = ex.Message;
                 response.tieneError = true;
@@ -219,7 +290,9 @@ namespace WCFTiendasLib
                                     Latitud = dr["Latitud"].ToString(),
                                     Longitud = dr["Longitud"].ToString(),
                                     IdTipo = (int)dr["IdTipo"],
-                                    Tipo = dr["Tipo"].ToString()
+                                    Tipo = dr["Tipo"].ToString(),
+                                    Status = (int)dr["Status"],
+                                    Visible = (bool)dr["Visible"]
                                 });
                     }
                 }
@@ -230,6 +303,67 @@ namespace WCFTiendasLib
             }
             return response;
         }
+
+        public SeccionResponse guardarSeccion(SeccionRequest request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            int r;
+
+            var response = new SeccionResponse() {
+                tieneError = false,
+                Error = 0,
+                Mensaje = string.Empty
+            };
+
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.UpdSeccionTienda",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdTienda",
+                            Value = request.idTienda
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdSeccion",
+                            Value = request.idSeccion
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Titulo",
+                            Value = request.titulo
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Contenido",
+                            Value = request.descripcion
+                        });
+                        Conn.Open();
+                        r = Cmd.ExecuteNonQuery();
+                    }
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+                response.idTienda = request.idTienda;
+                response.idSeccion = request.idSeccion;
+                response.descripcion = request.descripcion;
+            } catch (Exception ex) {
+                response.Error = ex.HResult;
+                response.Mensaje = ex.Message;
+                response.tieneError = true;
+            }
+            return response;
+        }
+
         /// <summary>
         /// Despliega un listado de productos/servicios con base en la tienda a la que pertenecen y el tipo
         /// del que se trata (producto o servicio)
@@ -262,6 +396,13 @@ namespace WCFTiendasLib
                             ParameterName = "IdTipo",
                             Value = request.TipoOferta.Equals("PRODUCTO") ? 4 : 5
                         });
+                        if (request.Visible.HasValue)
+                            Cmd.Parameters.Add(new SqlParameter() {
+                                DbType = System.Data.DbType.Boolean,
+                                Direction = System.Data.ParameterDirection.Input,
+                                ParameterName = "Visible",
+                                Value = request.Visible.Value
+                            });
 
                         Conn.Open();
                         dr = Cmd.ExecuteReader();
@@ -276,7 +417,8 @@ namespace WCFTiendasLib
                                     Descripcion = dr["Descripcion"].ToString(),
                                     Aceptacion = 0,
                                     Foto = dr["Foto"].ToString(),
-                                    Tipo = dr["Tipo"].ToString()
+                                    Tipo = dr["Tipo"].ToString(),
+                                    Visible = (bool)dr["Visible"]
                                 });
                             }
                     }
@@ -297,6 +439,100 @@ namespace WCFTiendasLib
             }
             return response;
         }
+
+        public TiendaResponse guardarDatosTienda(RegistroTiendaRequest request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            int r;
+
+            var response = new TiendaResponse() {
+                tieneError = false,
+                Error = 0,
+                Mensaje = string.Empty
+            };
+
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.UpdTienda",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Datos.Id
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Correo",
+                            Value = request.Datos.CorreoElectronico
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Direccion",
+                            Value = request.Datos.Direccion
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdGiro",
+                            Value = request.Datos.Giro
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Latitud",
+                            Value = request.Datos.Latitud
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Longitud",
+                            Value = request.Datos.Longitud
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Nombre",
+                            Value = request.Datos.Nombre
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "RazonSocial",
+                            Value = request.Datos.RazonSocial
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Telefono",
+                            Value = request.Datos.Telefono
+                        });
+
+                        Conn.Open();
+                        r = Cmd.ExecuteNonQuery();
+                    }
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+            } catch (Exception ex) {
+                response.Error = ex.HResult;
+                response.Mensaje = ex.Message;
+                response.tieneError = true;
+            }
+            response.Correo = request.Datos.CorreoElectronico;
+            response.Direccion = request.Datos.Direccion;
+            response.IdGiro = request.Datos.Giro;
+            response.Nombre = request.Datos.Nombre;
+            response.Telefono = request.Datos.Telefono;
+            return response;
+        }
+
         /// <summary>
         /// Despliega un listado de novedades (ofertas recien registradas) con base en el Id de la tienda a la
         /// que pertenecen
@@ -650,9 +886,9 @@ namespace WCFTiendasLib
                             DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
                             ParameterName = "Id",
-                            Value = request.Id
+                            Value = request.Oferta.Id
                         };
-                        if (request.Id.Equals(0)) {
+                        if (request.Oferta.Id.Equals(0)) {
                             Cmd.CommandText = "Negocio.InsOferta";
                         } else {
                             Cmd.CommandText = "Negocio.UpdOferta";
@@ -701,9 +937,91 @@ namespace WCFTiendasLib
                             Value = request.Oferta.Precio
                         });
                         Conn.Open();
-
                         Cmd.ExecuteNonQuery();
                         Conn.Close();
+                        if (request.Oferta.IdOS.Equals(0))
+                            Cmd.CommandText = "Negocio.InsOfertaSucursal";
+                        else {
+                            Cmd.CommandText = "Negocio.UpdOfertaSucursal";
+                        }
+                        Cmd.Parameters.Clear();
+                        paramId.Value = request.Oferta.IdOS;
+                        Cmd.Parameters.Add(paramId);
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdSucursal",
+                            Value = request.Oferta.IdSucursal
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdOferta",
+                            Value = request.Oferta.Id
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Boolean,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Activa",
+                            Value = true
+                        });
+                        Conn.Open();
+                        Cmd.ExecuteNonQuery();
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        public OfertaResponse cambiarVisibilidadOferta(OfertaRequest request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            string Msg = string.Empty;
+            OfertaResponse response = new OfertaResponse() {
+                Error = 0,
+                Mensaje = string.Empty,
+                tieneError = false
+            };
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        bool visible = true;
+                        SqlParameter paramId = new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Oferta.Id
+                        };
+                        SqlParameter paramVisible = new SqlParameter() {
+                            DbType = System.Data.DbType.Boolean,
+                            Direction = System.Data.ParameterDirection.Output,
+                            ParameterName = "rVisible",
+                            Value = visible
+                        };
+                        Cmd.CommandText = "Negocio.updOfertaVisible";
+                        Cmd.Parameters.Add(paramId);
+                        Cmd.Parameters.Add(paramVisible);
+                        Conn.Open();
+                        Cmd.ExecuteNonQuery();
+                        visible = (bool)paramVisible.Value;
+                        Conn.Close();
+                        if (request.Oferta.IdTipo.Equals(4))
+                            response.Producto = new Oferta() {
+                                Id = request.Oferta.Id,
+                                Visible = visible
+                            };
+                        else
+                            response.Servicio = new Oferta() {
+                                Id = request.Oferta.Id,
+                                Visible = visible
+                            };
                     }
                 }
             } catch (Exception ex) {
@@ -880,7 +1198,9 @@ namespace WCFTiendasLib
                                         IdTienda = (int)dr["IdTienda"],
                                         IdTipo = (int)dr["IdTipo"],
                                         Id = request.Id,
-                                        Precio = double.Parse(dr["Precio"].ToString())
+                                        Precio = double.Parse(dr["Precio"].ToString()),
+                                        IdSucursal = (int)dr["IdSucursal"],
+                                        IdOS = (int)dr["IdOS"]
                                     };
                                 else
                                     response.Servicio = new Oferta() {
@@ -891,7 +1211,9 @@ namespace WCFTiendasLib
                                         IdTienda = (int)dr["IdTienda"],
                                         IdTipo = (int)dr["IdTipo"],
                                         Id = request.Id,
-                                        Precio = double.Parse(dr["Precio"].ToString())
+                                        Precio = double.Parse(dr["Precio"].ToString()),
+                                        IdSucursal = (int)dr["IdSucursal"],
+                                        IdOS = (int)dr["IdOS"]
                                     };
 
                             }
@@ -1075,7 +1397,53 @@ namespace WCFTiendasLib
         }
 
         public InfoTiendaResponse obtenerInfoNegocio(InfoTiendaRequest request) {
-            throw new NotImplementedException();
+            InfoTiendaResponse response = new InfoTiendaResponse();
+
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            SqlDataReader dr;
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.obtenerDatosTienda",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.IdTienda
+                        });
+                        Conn.Open();
+                        dr = Cmd.ExecuteReader();
+                        string dia = string.Empty, horario = string.Empty;
+                        if (dr.HasRows)
+                            while (dr.Read()) {
+                                response.Resultado = new InfoTienda() {
+                                    Id = (int)dr["Id"],
+                                    Nombre = dr["Nombre"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    Telefono = dr["Telefono"].ToString(),
+                                    CorreoElectronico = dr["Correo"].ToString(),
+                                    Latitud = dr["Latitud"].ToString(),
+                                    Longitud = dr["Longitud"].ToString(),
+                                    RazonSocial = dr["RazonSocial"].ToString(),
+                                    Giro = (int)dr["IdGiro"]
+                                };
+                            }
+                        Conn.Close();
+                    }
+                    response.Error = 0;
+                    response.Mensaje = string.Empty;
+                    response.tieneError = false;
+                }
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
         }
 
         #endregion
@@ -1106,72 +1474,73 @@ namespace WCFTiendasLib
                         });
                         switch (request.Objeto) {
                             case eEntidad.Configuracion_TipoStatus:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delTipoStatus";
                                 break;
                             case eEntidad.Configuracion_Status:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delStatus";
                                 break;
                             case eEntidad.Proyecto_Cliente:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Proyecto.delCliente";
                                 break;
                             case eEntidad.Proyecto_Contacto:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Proyecto.delContacto";
                                 break;
                             case eEntidad.Proyecto_Proyecto:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Proyecto.delProyecto";
                                 break;
                             case eEntidad.Proyecto_Actividad:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Proyecto.delActividad";
                                 break;
                             case eEntidad.Configuracion_Plataforma:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delPlataforma";
                                 break;
                             case eEntidad.Configuracion_Giro:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delGiro";
                                 break;
                             case eEntidad.Negocio_Sesiones:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "";
                                 break;
                             case eEntidad.Configuracion_Clasificacion:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delClasificacion";
                                 break;
                             case eEntidad.Configuracion_Tipo:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delTipo";
                                 break;
                             case eEntidad.Configuracion_Seccion:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Configuracion.delSeccion";
                                 break;
                             case eEntidad.Negocio_Administrador:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delAdministrador";
                                 break;
                             case eEntidad.Negocio_Tienda:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delTienda";
                                 break;
                             case eEntidad.Negocio_Sucursal:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delSucursal";
                                 break;
                             case eEntidad.Negocio_Horario:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delHorario";
                                 break;
                             case eEntidad.Negocio_Oferta:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delOferta";
                                 break;
                             case eEntidad.Negocio_OfertaSucursal:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delOfertaSucursal";
                                 break;
                             case eEntidad.Negocio_Foto:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delFoto";
                                 break;
                             case eEntidad.Negocio_FotoOferta:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delFotoOferta";
                                 break;
                             case eEntidad.Negocio_DescripcionTienda:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delDescripcionTienda";
                                 break;
                             case eEntidad.Negocio_Contacto:
-                                Cmd.CommandText = ("Configuracion_TipoStatus").Replace("_", ".");
+                                Cmd.CommandText = "Negocio.delContacto";
                                 break;
                             default:
+                                throw new Exception("Opcion incorrecta");
                                 break;
                         }
                         Conn.Open();
@@ -1190,6 +1559,265 @@ namespace WCFTiendasLib
             }
             return response;
         }
+
+        public ListarSeccionesResponse ListarSecciones(ListarSeccionesRequest request) {
+            ListarSeccionesResponse response = new ListarSeccionesResponse() {
+                Secciones = new Dictionary<int, string>()
+            };
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            SqlDataReader dr;
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "SELECT Id IdSeccion, Nombre, '' Titulo, '' Contenido, Id FROM Configuracion.Seccion",
+                        CommandType = System.Data.CommandType.Text
+                    }) {
+                        if (request.Id != 0)
+                            Cmd.CommandText = "SELECT DT.Id, DT.Titulo, DT.Contenido, S.Id IdSeccion, S.Nombre FROM Negocio.DescripcionTienda DT JOIN Configuracion.Seccion S ON DT.IdSeccion = S.Id WHERE DT.IdTienda = " + request.Id.ToString();
+                        Conn.Open();
+                        dr = Cmd.ExecuteReader();
+                        if (dr.HasRows)
+                            while (dr.Read())
+                                response.Secciones.Add((int)dr["IdSeccion"],
+                                    string.Format("{0}|{1}|{2}|{3}",
+                                    dr["Id"].ToString(),
+                                    dr["Nombre"].ToString(),
+                                    dr["Titulo"].ToString(),
+                                    dr["Contenido"].ToString()));
+                    }
+                    Conn.Close();
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+
+        public ListarTiposSucursalesResponse ListarTiposSucursales(ListarGirosRequest request) {
+            ListarTiposSucursalesResponse response = new ListarTiposSucursalesResponse();
+            response.TiposSucursales = new Dictionary<int, string>();
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            SqlDataReader dr;
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "select Id, Nombre from Configuracion.Tipo where IdClasificacion = 1",
+                        CommandType = System.Data.CommandType.Text
+                    }) {
+                        Conn.Open();
+                        dr = Cmd.ExecuteReader();
+                        if (dr.HasRows)
+                            while (dr.Read())
+                                response.TiposSucursales.Add((int)dr["Id"], dr["Nombre"].ToString());
+                    }
+                    Conn.Close();
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+
+        }
+
+        public SucursalResponse guardarSucursal(SucursalRequest request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+
+            var response = new SucursalResponse() {
+                tieneError = false,
+                Error = 0,
+                Mensaje = string.Empty
+            };
+
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.UpdSucursal",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Id
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdTienda",
+                            Value = request.IdTienda
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "IdTipo",
+                            Value = request.IdTipo
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Status",
+                            Value = request.Status
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Direccion",
+                            Value = request.Direccion
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Correo",
+                            Value = request.Correo
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Telefono",
+                            Value = request.Telefono
+                        });
+                        Conn.Open();
+                        Cmd.ExecuteNonQuery();
+                    }
+                }
+                response.Error = 0;
+                response.Mensaje = string.Empty;
+                response.tieneError = false;
+                response.Sucursal = new Sucursal() {
+                    Id = request.Id,
+                    IdTienda = request.IdTienda,
+                    IdTipo = request.IdTipo,
+                    Status = request.Status,
+                    Direccion = request.Direccion,
+                    Telefono = request.Telefono,
+                    Correo = request.Correo,
+                    Latitud = string.Empty,
+                    Longitud = string.Empty
+                };
+            } catch (Exception ex) {
+                response.Error = ex.HResult;
+                response.Mensaje = ex.Message;
+                response.tieneError = true;
+            }
+            return response;
+        }
+
+        public SucursalResponse cambiarVisibilidadSucursal(SucursalRequest request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            string Msg = string.Empty;
+            SucursalResponse response = new SucursalResponse() {
+                Error = 0,
+                Mensaje = string.Empty,
+                tieneError = false
+            };
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        bool visible = true;
+                        SqlParameter paramId = new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Id
+                        };
+                        SqlParameter paramVisible = new SqlParameter() {
+                            DbType = System.Data.DbType.Boolean,
+                            Direction = System.Data.ParameterDirection.Output,
+                            ParameterName = "rVisible",
+                            Value = visible
+                        };
+                        Cmd.CommandText = "Negocio.updSucursalVisible";
+                        Cmd.Parameters.Add(paramId);
+                        Cmd.Parameters.Add(paramVisible);
+                        Conn.Open();
+                        Cmd.ExecuteNonQuery();
+                        visible = (bool)paramVisible.Value;
+                        Conn.Close();
+                        response.Sucursal = new Sucursal() {
+                            Id = request.Id,
+                            Visible = visible
+                        };
+                    }
+                }
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+
+        public SucursalResponse verSucursal(SucursalRequest request) {
+            SucursalResponse response = new SucursalResponse() {
+                Error = 0,
+                tieneError = false,
+                Sucursal = new Sucursal()
+            };
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            SqlDataReader dr;
+            try {
+                using (Conn = new SqlConnection(connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandText = "Negocio.obtenerDatosSucursal",
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            ParameterName = "Id",
+                            Value = request.Id
+                        });
+                        Conn.Open();
+                        dr = Cmd.ExecuteReader();
+                        string dia = string.Empty, horario = string.Empty;
+                        if (dr.HasRows)
+                            dr.Read();
+                        response.Sucursal = new Sucursal() {
+                            Direccion = dr["Direccion"].ToString(),
+                            Telefono = dr["Telefono"].ToString(),
+                            Correo = dr["Correo"].ToString(),
+                            IdTienda = (int)dr["IdTienda"],
+                            IdTipo = (int)dr["IdTipo"],
+                            Status = (int)dr["Status"],
+                            Tipo = dr["Tipo"].ToString(),
+                            Visible = (bool)dr["Visible"]
+                        };
+                        Conn.Close();
+                    }
+                    response.Error = 0;
+                    response.Mensaje = string.Empty;
+                    response.tieneError = false;
+                }
+            } catch (Exception ex) {
+                response.Error = 1;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+
         #endregion
     }
 }
