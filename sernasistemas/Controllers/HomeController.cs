@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ namespace SernaSistemas.Controllers
     public class HomeController : Controller
     {
         const string URL_BLOGGER = "https://itcoffeecups.blogspot.com/";
+        const string path = "Descargas/";
 
         private BloggerFeedModel GetPosts(string APIKey, string BlogID) {
             BloggerFeedModel model = new BloggerFeedModel();
@@ -69,6 +71,17 @@ namespace SernaSistemas.Controllers
 
         public ActionResult Productos() {
             return View();
+        }
+
+        public ActionResult Descargas() {
+            return View();
+        }
+
+        public ActionResult Descargar(string archivo) {
+            string ruta = AppDomain.CurrentDomain.BaseDirectory + path;
+            byte[] fileBytes = System.IO.File.ReadAllBytes(ruta + archivo);
+
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, archivo);
         }
 
         //public ActionResult FormContacto() {

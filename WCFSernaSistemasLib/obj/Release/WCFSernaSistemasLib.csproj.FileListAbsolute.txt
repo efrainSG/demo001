@@ -6,18 +6,3 @@ C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistem
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.csproj.CoreCompileInputs.cache
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.dll
 C:\Users\EFSERN\Documents\Visual Studio 2015\Projects\git\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.pdb
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\WCFSernaSistemasLib.dll.config
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\WCFSernaSistemasLib.dll
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\WCFSernaSistemasLib.pdb
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\Microsoft.AspNet.TelemetryCorrelation.dll
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\SernaSistemas.Core.dll
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\System.Diagnostics.DiagnosticSource.dll
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\SernaSistemas.Core.pdb
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\SernaSistemas.Core.dll.config
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\Microsoft.AspNet.TelemetryCorrelation.xml
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\bin\Release\System.Diagnostics.DiagnosticSource.xml
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.csprojAssemblyReference.cache
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.csproj.CoreCompileInputs.cache
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.csproj.CopyComplete
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.dll
-C:\Users\efrai\Documents\repos\demo001\WCFSernaSistemasLib\obj\Release\WCFSernaSistemasLib.pdb

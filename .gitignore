@@ -40,3 +40,5 @@ HistoriasClinicas.Tests/bin/Release/
 Escolar.Tests/bin/Release/
 CoTeDiv.Tests/bin/
 Bibliotecas.Tests/bin/
+WCFClinica/obj/
+packages/
