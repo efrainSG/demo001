@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Serna Sistemas</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <style>
+        .btn-gray {
+            background-color: #808080;
+            color: #000000;
+        }
+        body.serna {
+            background-color: #cab497;
+            color: #1b180f;
+        }
+        div.containerClinica{
+            padding:1em;
+            background-color:#fff8e8;
+            color:#11141a;
+            box-shadow:#040215 0px 10px 15px;
+        }
+        div.row{
+            padding-top:0.25em;
+            padding-bottom:0.25em;
+        }
+        table>thead>tr{
+            background-color:#5a6723;
+            color:#f3ffb7;
+            padding-top:0.125em;
+            padding-bottom:0.125em;
+        }
+    </style>
+    <script>
+        var viewmodel;
+    </script>
+</head>
+<body class="serna">
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Serna Sistemas", "Index", "Home", new
+                {
+                    area = ""
+                }, new
+                {
+                    @class = "navbar-brand"
+                })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Iniciar sesión", "Login", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Ver perfil", "Medico", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Nuevo paciente", "Paciente", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Nueva historia", "Historia", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Buscar historias", "ListadoHistorias", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Buscar pacientes", "ListadoPacientes", "HistoriaClinica")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content text-justify">
+
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/pagination.min.js"></script>
+
+</body>
+
+
+</html>

@@ -29,11 +29,9 @@ namespace WCFClinica {
         [OperationContract]
         listaHistoriasPacienteReqResp ListarHistoriasPaciente(selPacienteReqResp request);
         [OperationContract]
-        selHistoriaReqResp ObtenerHistoria(selHistoriaReqResp request);
+        RegistraHistoriaReqResp ObtenerHistoria(RegistraHistoriaReqResp request);
         [OperationContract]
         selAntHeredReqResp GuardaAntHered(RegistraAntHeredReqResp request);
-        [OperationContract]
-        RegistraAntPersonalNoPatReqResp GuardaAntPersonalNoPatologico(RegistraAntPersonalNoPatReqResp request);
         [OperationContract]
         RegistraAntPersonalPat GuardaAntPersonalPatologico(RegistraAntPersonalPat request);
         [OperationContract]
@@ -49,8 +47,6 @@ namespace WCFClinica {
         [OperationContract]
         selAntHeredReqResp ObtenerAntHered(selAntHeredReqResp request);
         [OperationContract]
-        selAntPersonalNoPatReqResp ObtenerAntPersonalNoPatologico(selAntPersonalNoPatReqResp request);
-        [OperationContract]
         selAntPersonalPatReqResp ObtenerAntPersonalPatologico(selAntPersonalPatReqResp request);
         [OperationContract]
         RegistaAntGinecoReqResp ObtenerAntGineco(RegistaAntGinecoReqResp request);
@@ -61,8 +57,8 @@ namespace WCFClinica {
         [OperationContract]
         RegistraExploraFisicaReqResp ObtenerExploracionFisica(RegistraExploraFisicaReqResp request);
         [OperationContract]
-        RegistraHistoriaReqResp ObtenerHistoriaClinica(RegistraHistoriaReqResp request);
+        buscarHistoriaResponse buscarHistorias(buscarHistoriasRequest request);
         [OperationContract]
-        selHistoriaReqResp buscarHistorias(selHistoriaReqResp request);
+        EstadosReqResp obtenerEstados(EstadosReqResp request);
     }
 }

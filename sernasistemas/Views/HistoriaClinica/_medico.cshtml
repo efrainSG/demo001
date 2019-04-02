@@ -1,0 +1,101 @@
+﻿@model SernaSistemas.Models.MedicoModel
+
+@{
+    ViewBag.Title = "Información del médico";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("postMedico", "HistoriaClinica")) {
+    <div class="container containerClinica">
+        @Html.HiddenFor(m => m.Perfil.Id, Model.Perfil.Id.ToString())
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.Nombre)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Perfil.Nombre, Model.Perfil.Nombre, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.Usuario)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Perfil.Usuario, Model.Perfil.Usuario, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.Constrasenia)
+            </div>
+            <div class="col-md-4">
+                @Html.PasswordFor(m => m.Perfil.Constrasenia, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.FechaNacimiento)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Perfil.FechaNacimiento, Model.Perfil.FechaNacimiento.ToShortDateString(), new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.IdLugarNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(m => m.Perfil.IdLugarNacimiento, Model.dicLugar, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.CiudadNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Perfil.CiudadNacimiento, Model.Perfil.CiudadNacimiento, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.Sexo)
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(m => m.Perfil.Sexo, Model.dicSexo.First().Text.Substring(0, 3))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.Perfil.Sexo, Model.dicSexo.First().Value, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(m => m.Perfil.IdSexo, Model.dicSexo.Last().Text.Substring(0, 3))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.Perfil.IdSexo, Model.dicSexo.Last().Value, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.IdTipoSangre)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.Perfil.IdTipoSangre, Model.dicTipoSangre, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Perfil.Rh)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Perfil.Rh, Model.Perfil.Rh.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Guardar" class="btn btn-success btn-lg" style="box-shadow:#203016 0px 5px 5px;"  />
+            </div>
+        </div>
+    </div>
+}

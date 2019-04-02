@@ -7,10 +7,10 @@ using WCFClinica.Modelos;
 namespace WCFClinica {
     public class ClinicaService : IClinica {
 
-        public string Connstring { get; set; } = ConfigurationManager.ConnectionStrings["WCFTiendasLib.Properties.Settings.SernaConnStr"].ConnectionString;
+        public string Connstring { get; set; } = ConfigurationManager.ConnectionStrings["WCFClinica.Properties.Settings.SernaConnStr"].ConnectionString;
 
         /// <summary>
-        /// Clinica.buscarPaciente
+        /// Clinica.buscarPaciente: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -91,12 +91,13 @@ namespace WCFClinica {
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Alcohol
                         });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "FechaNacimiento",
-                            DbType = System.Data.DbType.Date,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.FechaNacimiento
-                        });
+                        if (request.FechaNacimiento >= new DateTime(1850, 01, 01))
+                            Cmd.Parameters.Add(new SqlParameter() {
+                                ParameterName = "FechaNacimiento",
+                                DbType = System.Data.DbType.Date,
+                                Direction = System.Data.ParameterDirection.Input,
+                                Value = request.FechaNacimiento
+                            });
                         Conn.Open();
                         var dr = Cmd.ExecuteReader();
                         if (dr.HasRows) {
@@ -106,7 +107,8 @@ namespace WCFClinica {
                                     IdPaciente = (int)dr["IdPaciente"],
                                     TipoSangre = dr["TipoSangre"].ToString(),
                                     Nombre = dr["Nombre"].ToString(),
-                                    Sexo = dr["Sexo"].ToString()
+                                    Sexo = dr["Sexo"].ToString(),
+                                    NumeroTelefono = dr["NumeroTelefono"].ToString()
                                 });
                             }
                         }
@@ -121,7 +123,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Administacion.loginMedico
+        /// Administacion.loginMedico: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -154,6 +156,7 @@ namespace WCFClinica {
                             dr.Read();
                             response.Resultado = (int)dr["Resultado"];
                             response.Mensaje = dr["Mensaje"].ToString();
+                            response.Id = (int)dr["Id"];
                         }
                         Conn.Close();
 
@@ -167,7 +170,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Administracion.registraMedico
+        /// Administracion.registraMedico: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -182,6 +185,12 @@ namespace WCFClinica {
                         CommandType = System.Data.CommandType.StoredProcedure,
                         CommandText = "Administracion.registraMedico"
                     }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Id
+                        });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "IdSexo",
                             DbType = System.Data.DbType.Int16,
@@ -261,7 +270,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// clinica.registraPaciente
+        /// clinica.registraPaciente: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -276,6 +285,12 @@ namespace WCFClinica {
                         CommandType = System.Data.CommandType.StoredProcedure,
                         CommandText = "Clinica.registraPaciente"
                     }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdPaciente
+                        });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "IdSexo",
                             DbType = System.Data.DbType.Int16,
@@ -348,24 +363,44 @@ namespace WCFClinica {
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.CiudadResidencia
                         });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdTipoNumero",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdTipoNumero
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Numero",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Numero
+                        });
                         Conn.Open();
                         var dr = Cmd.ExecuteReader();
                         if (dr.HasRows) {
                             dr.Read();
-                            response.IdPersona = (int)dr["IdPersona"];
-                            response.Sexo = dr["Sexo"].ToString();
-                            response.Nombre = dr["Nombre"].ToString();
-                            response.TipoSangre = dr["TipoSangre"].ToString();
-                            response.Rh = dr["Rh"].ToString()[0];
-                            response.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
-                            response.LugarNacimiento = dr["LugarNacimiento"].ToString();
-                            response.CiudadNacimiento = dr["CiudadNacimiento"].ToString();
-                            response.IdPaciente = (int)dr["IdPaciente"];
-                            response.LugarResidencia = dr["LugarResidencia"].ToString();
-                            response.Domicilio = dr["Domicilio"].ToString();
-                            response.Tabaco = (bool)dr["Tabaco"];
-                            response.Alcohol = (bool)dr["Alcohol"];
-                            response.CiudadResidencia = dr["CiudadResidencia"].ToString();
+                            response = new RegistraPacienteReqResp() {
+                                IdPersona = (int)dr["IdPersona"],
+                                Sexo = dr["Sexo"].ToString(),
+                                Nombre = dr["Nombre"].ToString(),
+                                TipoSangre = dr["TipoSangre"].ToString(),
+                                Rh = dr["Rh"].ToString()[0],
+                                FechaNacimiento = (DateTime)dr["FechaNacimiento"],
+                                LugarNacimiento = dr["LugarNacimiento"].ToString(),
+                                CiudadNacimiento = dr["CiudadNacimiento"].ToString(),
+                                IdPaciente = (int)dr["IdPaciente"],
+                                LugarResidencia = dr["LugarResidencia"].ToString(),
+                                Domicilio = dr["Domicilio"].ToString(),
+                                Tabaco = (bool)dr["Tabaco"],
+                                Alcohol = (bool)dr["Alcohol"],
+                                CiudadResidencia = dr["CiudadResidencia"].ToString(),
+                                IdLugarNacimiento = (int)dr["IdLugarNacimiento"],
+                                IdLugarResidencia = (int)dr["IdLugarResidencia"],
+                                IdSexo = (int)dr["IdSexo"],
+                                IdTipoNumero = (int)dr["IdTipoTelefono"],
+                                IdTipoSangre = (int)dr["IdTipoSangre"],
+                                Numero = dr["Numero"].ToString()
+                            };
                         }
                         Conn.Close();
                     }
@@ -378,7 +413,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Administracion.registraTelefono
+        /// Administracion.registraTelefono: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -430,423 +465,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Clinica.selPaciente
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public RegistraPacienteReqResp selPaciente(selPacienteReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            RegistraPacienteReqResp response = new RegistraPacienteReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.selPaciente"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            dr.Read();
-                            response.Alcohol = (bool)dr["Alcohol"];
-                            response.CiudadNacimiento = dr["CiudadNacimiento"].ToString();
-                            response.CiudadResidencia = dr["CiudadResidencia"].ToString();
-                            response.Domicilio = dr["Domicilio"].ToString();
-                            response.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
-                            response.IdLugarNacimiento = (int)dr["IdLugarNacimiento"];
-                            response.IdLugarResidencia = (int)dr["IdLugarResidencia"];
-                            response.IdPaciente = (int)dr["IdPaciente"];
-                            response.IdPersona = (int)dr["IdPersona"];
-                            response.IdSexo = (int)dr["IdSexo"];
-                            response.IdTipoSangre = (int)dr["IdTipoSangre"];
-                            response.LugarNacimiento = dr["LugarNacimiento"].ToString();
-                            response.LugarResidencia = dr["LugarResidencia"].ToString();
-                            response.Nombre = dr["Nombre"].ToString();
-                            response.Rh = dr["Rh"].ToString().ToCharArray()[0];
-                            response.Sexo = dr["Sexo"].ToString();
-                            response.Tabaco = (bool)dr["Tabaco"];
-                            response.TipoSangre = dr["TipoSangre"].ToString();
-                        }
-                        Conn.Close();
-
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public RegistaAntGinecoReqResp ObtenerAntGineco(RegistaAntGinecoReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new RegistaAntGinecoReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarAntGineco"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "A",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.A
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "C",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.C
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "FUR",
-                            DbType = System.Data.DbType.Date,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.FUR
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "G",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.G
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "Id",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.Id
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdAnticonceptivo",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdAnticonceptivo
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "Mastografia",
-                            DbType = System.Data.DbType.Date,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.Mastografia
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "Menarca",
-                            DbType = System.Data.DbType.Date,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.Menarca
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "P",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.P
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "Papanicolaou",
-                            DbType = System.Data.DbType.Date,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.Papanicolaou
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            dr.Read();
-                            response.A = (int)dr["A"];
-                            response.C = (int)dr["C"];
-                            response.FUR = (DateTime)dr["FUR"];
-                            response.G = (int)dr["G"];
-                            response.Id = (int)dr["Id"];
-                            response.IdAnticonceptivo = (int)dr["IdAnticonceptivo"];
-                            response.IdPaciente = (int)dr["IdPaciente"];
-                            response.Mastografia = (DateTime)dr["Mastografia"];
-                            response.Menarca = (DateTime)dr["Menarca"];
-                            response.P = (int)dr["P"];
-                            response.Papanicolaou = (DateTime)dr["Papanicolaou"];
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selAntHeredReqResp ObtenerAntHered(selAntHeredReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selAntHeredReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarAntHered"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            response.Items = new List<AntHeredItem>();
-                            while (dr.Read()) {
-                                response.Items.Add(new AntHeredItem() {
-                                    Id = (int)dr["Id"],
-                                    IdFamiliar = (int)dr["IdFamiliar"],
-                                    Padecimiento = dr["Padecimiento"].ToString()
-                                });
-                            }
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selAntPersonalNoPatReqResp ObtenerAntPersonalNoPatologico(selAntPersonalNoPatReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selAntPersonalNoPatReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarAntPersonalNoPatologico"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            dr.Read();
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selAntPersonalPatReqResp ObtenerAntPersonalPatologico(selAntPersonalPatReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selAntPersonalPatReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarAntPersonalPatologico"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            response.Items = new List<AntPersonalPatItem>();
-                            while (dr.Read()) {
-                                response.Items.Add(new AntPersonalPatItem() {
-                                    Enfermedad = dr["Enfermedad"].ToString(),
-                                    FechaInicio = (DateTime)dr["FechaInicio"],
-                                    Id = (int)dr["Id"],
-                                    IdStatus = (int)dr["IdStatus"]
-                                });
-                            }
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public RegistraExploraFisicaReqResp ObtenerExploracionFisica(RegistraExploraFisicaReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new RegistraExploraFisicaReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarExploracionFisica"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdHistoria",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdHistoria
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            dr.Read();
-                            response.Descripcion = dr["Descripcion"].ToString();
-                            response.Estatura = dr["Estatura"].ToString();
-                            response.FC = dr["FC"].ToString();
-                            response.FR = dr["FR"].ToString();
-                            response.Id = (int)dr["Id"];
-                            response.IdHistoria = (int)dr["IdHistoria"];
-                            response.Peso = dr["Peso"].ToString();
-                            response.Pulso = dr["Pulso"].ToString();
-                            response.TA = dr["TA"].ToString();
-                            response.Temperatura = dr["Temperatura"].ToString();
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selExploraSistemaReqResp ObtenerExploracionSistema(selExploraSistemaReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selExploraSistemaReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarExploracionSistema"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdHistoria",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdHistoria
-                        });
-                        Conn.Open();
-                        var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows) {
-                            response.Items = new List<ExploraSistemaItem>();
-                            while (dr.Read()) {
-                                response.Items.Add(new ExploraSistemaItem {
-                                    Descripcion = dr["Descripcion"].ToString(),
-                                    Id = (int)dr["Id"],
-                                    IdSistema = (int)dr["IdSistema"]
-                                });
-                            }
-                        }
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public RegistraHistoriaReqResp ObtenerHistoriaClinica(RegistraHistoriaReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new RegistraHistoriaReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarHistoriaClinica"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Conn.Open();
-
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selMedicacionActualReqResp ObtenerMedicacionActual(selMedicacionActualReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selMedicacionActualReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spCargarMedicacionActual"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdHistoria",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdHistoria
-                        });
-                        Conn.Open();
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-        /// <summary>
-        /// Clinica.spGuardaAntGineco
+        /// Clinica.spGuardaAntGineco: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -953,7 +572,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Clinica.spGuardaAntHered
+        /// Clinica.spGuardaAntHered: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -997,37 +616,8 @@ namespace WCFClinica {
             }
             return response;
         }
-
-        public RegistraAntPersonalNoPatReqResp GuardaAntPersonalNoPatologico(RegistraAntPersonalNoPatReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new RegistraAntPersonalNoPatReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spGuardaAntPersonalNoPatologico"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = 0
-                        });
-                        Conn.Open();
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
         /// <summary>
-        /// Clinica.spGuardaAntPersonalPatologico
+        /// Clinica.spGuardaAntPersonalPatologico: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -1087,7 +677,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Clinica.spGuardaEsploracionFisica
+        /// Clinica.spGuardaEsploracionFisica: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -1116,31 +706,31 @@ namespace WCFClinica {
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Estatura",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Estatura
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "FC",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Byte,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.FC
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "FR",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Byte,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.FR
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Peso",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Decimal,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Peso
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Pulso",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Byte,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Pulso
                         });
@@ -1152,7 +742,7 @@ namespace WCFClinica {
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Temperatura",
-                            DbType = System.Data.DbType.String,
+                            DbType = System.Data.DbType.Decimal,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Temperatura
                         });
@@ -1161,13 +751,13 @@ namespace WCFClinica {
                         if (dr.HasRows) {
                             dr.Read();
                             response.Descripcion = dr["Descripcion"].ToString();
-                            response.Estatura = dr["Estatura"].ToString();
-                            response.FC = dr["FC"].ToString();
-                            response.FR = dr["FR"].ToString();
-                            response.Peso = dr["Peso"].ToString();
-                            response.Pulso = dr["Pulso"].ToString();
+                            response.Estatura = (int)dr["Estatura"];
+                            response.FC = (byte)dr["FC"];
+                            response.FR = (byte)dr["FR"];
+                            response.Peso = (decimal)dr["Peso"];
+                            response.Pulso = (byte)dr["Pulso"];
                             response.TA = dr["TA"].ToString();
-                            response.Temperatura = dr["Temperatura"].ToString();
+                            response.Temperatura = (decimal)dr["Temperatura"];
                             response.Id = (int)dr["Id"];
                             response.IdHistoria = (int)dr["IdHistoria"];
                         }
@@ -1182,7 +772,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Clinica.spGuardaExploracionSistema
+        /// Clinica.spGuardaExploracionSistema: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -1233,7 +823,11 @@ namespace WCFClinica {
             }
             return response;
         }
-
+        /// <summary>
+        /// Clinica.spGuardaHistoriaClinica: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public selHistoriaReqResp GuardaHistoriaClinica(RegistraHistoriaReqResp request) {
             SqlCommand Cmd;
             SqlConnection Conn;
@@ -1246,13 +840,7 @@ namespace WCFClinica {
                         CommandText = "Clinica.spGuardaHistoriaClinica"
                     }) {
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdPaciente
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
+                            ParameterName = "Id",
                             DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.IdHistoria
@@ -1261,33 +849,57 @@ namespace WCFClinica {
                             ParameterName = "IdPaciente",
                             DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
-                            Value = request.IdMedico
-                        });
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
                             Value = request.IdPaciente
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
+                            ParameterName = "IdMedico",
                             DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
-                            Value = request.ImpresionDiagnostica
+                            Value = request.IdMedico
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
+                            ParameterName = "FechaHistoria",
+                            DbType = System.Data.DbType.Date,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.FechaHistoria
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "MotivoConsulta",
+                            DbType = System.Data.DbType.String,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.MotivoConsulta
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
+                            ParameterName = "ImpresionDiagnostica",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.ImpresionDiagnostica
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "ImpresionDiagnostica",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.ImpresionDiagnostica
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "PlanTerapeutico",
+                            DbType = System.Data.DbType.String,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.PlanTerapeutico
                         });
                         Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.Id = (int)dr["Id"];
+                            response.IdMedico = (int)dr["IdMedico"];
+                            response.IdPaciente = (int)dr["IdPaciente"];
+                            response.FechaHistoria = (DateTime)dr["FechaHistoria"];
+                            response.Analisis = dr["Analisis"].ToString();
+                            response.MotivoConsulta = dr["MotivoConsulta"].ToString();
+                            response.PlanTerapeutico = dr["PlanTerapeutico"].ToString();
+                            response.ImpresionDiagnostica = dr["ImpresionDiagnostica"].ToString();
+                        }
                         Conn.Close();
                     }
                 }
@@ -1298,7 +910,11 @@ namespace WCFClinica {
             }
             return response;
         }
-
+        /// <summary>
+        /// Clinica.spGuardaMedicacionActual: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public RegistraMedicacionActualReqResp GuardaMedicacionActual(RegistraMedicacionActualReqResp request) {
             SqlCommand Cmd;
             SqlConnection Conn;
@@ -1316,7 +932,34 @@ namespace WCFClinica {
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.IdHistoria
                         });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Dosis",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Dosis
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "FechaInicio",
+                            DbType = System.Data.DbType.Date,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.FechaInicio
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Medicamento",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Medicamento
+                        });
                         Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.Dosis = dr["Dosis"].ToString();
+                            response.FechaInicio = (DateTime)dr["FechaInicio"];
+                            response.Id = (int)dr["Id"];
+                            response.IdHistoria = (int)dr["IdHistoria"];
+                            response.Medicamento = dr["Medicamento"].ToString();
+                        }
                         Conn.Close();
                     }
                 }
@@ -1327,7 +970,425 @@ namespace WCFClinica {
             }
             return response;
         }
+        /// <summary>
+        /// Clinica.selPaciente: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RegistraPacienteReqResp selPaciente(selPacienteReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            RegistraPacienteReqResp response = new RegistraPacienteReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.selPaciente"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdPaciente",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdPaciente
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.Alcohol = (bool)dr["Alcohol"];
+                            response.CiudadNacimiento = dr["CiudadNacimiento"].ToString();
+                            response.CiudadResidencia = dr["CiudadResidencia"].ToString();
+                            response.Domicilio = dr["Domicilio"].ToString();
+                            response.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
+                            response.IdLugarNacimiento = (int)dr["IdLugarNacimiento"];
+                            response.IdLugarResidencia = (int)dr["IdLugarResidencia"];
+                            response.IdPaciente = (int)dr["IdPaciente"];
+                            response.IdPersona = (int)dr["IdPersona"];
+                            response.IdSexo = (int)dr["IdSexo"];
+                            response.IdTipoSangre = (int)dr["IdTipoSangre"];
+                            response.TipoSangre = dr["TipoSangre"].ToString();
+                            response.LugarNacimiento = dr["LugarNacimiento"].ToString();
+                            response.LugarResidencia = dr["LugarResidencia"].ToString();
+                            response.Nombre = dr["Nombre"].ToString();
+                            response.Rh = dr["Rh"].ToString().ToCharArray()[0];
+                            response.Sexo = dr["Sexo"].ToString();
+                            response.Tabaco = (bool)dr["Tabaco"];
+                            response.IdTipoNumero = (int)dr["IdTipoTelefono"];
+                            response.Numero = dr["NumeroTelefono"].ToString();
+                        }
+                        Conn.Close();
 
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarAntGineco: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RegistaAntGinecoReqResp ObtenerAntGineco(RegistaAntGinecoReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new RegistaAntGinecoReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarAntGineco"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Id
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.A = (int)dr["A"];
+                            response.C = (int)dr["C"];
+                            response.FUR = (DateTime)dr["FUR"];
+                            response.G = (int)dr["G"];
+                            response.Id = (int)dr["Id"];
+                            response.IdAnticonceptivo = (int)dr["IdAnticonceptivo"];
+                            response.IdPaciente = (int)dr["IdPaciente"];
+                            response.Mastografia = (DateTime)dr["Mastografia"];
+                            response.Menarca = (DateTime)dr["Menarca"];
+                            response.P = (int)dr["P"];
+                            response.Papanicolaou = (DateTime)dr["Papanicolaou"];
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarAntHered: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public selAntHeredReqResp ObtenerAntHered(selAntHeredReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new selAntHeredReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarAntHered"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdPaciente",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdPaciente
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.Items = new List<AntHeredItem>();
+                            while (dr.Read()) {
+                                response.Items.Add(new AntHeredItem() {
+                                    Id = (int)dr["Id"],
+                                    IdFamiliar = (int)dr["IdFamiliar"],
+                                    Padecimiento = dr["Padecimiento"].ToString()
+                                });
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spGuardaAntPersonalNoPatologico: Por construir tabla y SP, y actualizar método
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public selAntPersonalNoPatReqResp ObtenerAntPersonalNoPatologico(selAntPersonalNoPatReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new selAntPersonalNoPatReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarAntPersonalNoPatologico"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdPaciente",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdPaciente
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarAntPersonalPatologico: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public selAntPersonalPatReqResp ObtenerAntPersonalPatologico(selAntPersonalPatReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new selAntPersonalPatReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarAntPersonalPatologico"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdPaciente",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdPaciente
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.Items = new List<AntPersonalPatItem>();
+                            while (dr.Read()) {
+                                response.Items.Add(new AntPersonalPatItem() {
+                                    Enfermedad = dr["Enfermedad"].ToString(),
+                                    FechaInicio = (DateTime)dr["FechaInicio"],
+                                    Id = (int)dr["Id"],
+                                    IdStatus = (int)dr["IdStatus"]
+                                });
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarExploracionFisica: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RegistraExploraFisicaReqResp ObtenerExploracionFisica(RegistraExploraFisicaReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new RegistraExploraFisicaReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarExploracionFisica"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdHistoria",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdHistoria
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.Descripcion = dr["Descripcion"].ToString();
+                            response.Estatura = (byte)dr["Estatura"];
+                            response.FC = (byte)dr["FC"];
+                            response.FR = (byte)dr["FR"];
+                            response.Id = (int)dr["Id"];
+                            response.IdHistoria = (int)dr["IdHistoria"];
+                            response.Peso = (decimal)dr["Peso"];
+                            response.Pulso = (byte)dr["Pulso"];
+                            response.TA = dr["TA"].ToString();
+                            response.Temperatura = (decimal)dr["Temperatura"];
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarExploracionSistema: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public selExploraSistemaReqResp ObtenerExploracionSistema(selExploraSistemaReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new selExploraSistemaReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarExploracionSistema"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdHistoria",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdHistoria
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.Items = new List<ExploraSistemaItem>();
+                            while (dr.Read()) {
+                                response.Items.Add(new ExploraSistemaItem {
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                    Id = (int)dr["Id"],
+                                    IdSistema = (int)dr["IdSistema"]
+                                });
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarHistoriaClinica: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RegistraHistoriaReqResp ObtenerHistoria(RegistraHistoriaReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new RegistraHistoriaReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarHistoriaClinica"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdHistoria
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            dr.Read();
+                            response.Analisis = dr["Analisis"].ToString();
+                            response.FechaHistoria = (DateTime)dr["FechaHistoria"];
+                            response.Id = (int)dr["Id"];
+                            response.IdMedico = (int)dr["IdMedico"];
+                            response.IdPaciente = (int)dr["IdPaciente"];
+                            response.ImpresionDiagnostica = dr["ImpresionDiagnostica"].ToString();
+                            response.MotivoConsulta = dr["MotivoConsulta"].ToString();
+                            response.PlanTerapeutico = dr["PlanTerapeutico"].ToString();
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spCargarMedicacionActual: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public selMedicacionActualReqResp ObtenerMedicacionActual(selMedicacionActualReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new selMedicacionActualReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Clinica.spCargarMedicacionActual"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdHistoria",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdHistoria
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.IdHistoria = request.IdHistoria;
+                            response.Items = new List<MedicacionActualItem>();
+                            while (dr.Read()) {
+                                response.Items.Add(new MedicacionActualItem() {
+                                    Dosis = dr["Dosis"].ToString(),
+                                    FechaInicio = (DateTime)dr["FechaInicio"],
+                                    Id = (int)dr["Id"],
+                                    Medicamento = dr["Medicamento"].ToString()
+                                });
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+        /// <summary>
+        /// Clinica.spListarHistoriasPaciente: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public listaHistoriasPacienteReqResp ListarHistoriasPaciente(selPacienteReqResp request) {
             SqlCommand Cmd;
             SqlConnection Conn;
@@ -1346,35 +1407,24 @@ namespace WCFClinica {
                             Value = request.IdPaciente
                         });
                         Conn.Open();
-                        Conn.Close();
-                    }
-                }
-            } catch (Exception ex) {
-                response.ErrNum = ex.HResult;
-                response.tieneError = true;
-                response.Mensaje = ex.Message;
-            }
-            return response;
-        }
-
-        public selHistoriaReqResp ObtenerHistoria(selHistoriaReqResp request) {
-            SqlCommand Cmd;
-            SqlConnection Conn;
-            var response = new selHistoriaReqResp();
-            try {
-                using (Conn = new SqlConnection(Connstring)) {
-                    using (Cmd = new SqlCommand() {
-                        Connection = Conn,
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spObtenerHistoria"
-                    }) {
-                        Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdPaciente",
-                            DbType = System.Data.DbType.Int16,
-                            Direction = System.Data.ParameterDirection.Input,
-                            Value = 0
-                        });
-                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.Items = new List<RegistraHistoriaReqResp>();
+                            response.IdPaciente = response.IdPaciente;
+                            while (dr.Read()) {
+                                response.Items.Add(new RegistraHistoriaReqResp() {
+                                    Analisis = dr["Analisis"].ToString(),
+                                    ImpresionDiagnostica = dr["ImpresionDiagnostica"].ToString(),
+                                    MotivoConsulta = dr["MotivoConsulta"].ToString(),
+                                    PlanTerapeutico = dr["PlanTerapeutico"].ToString(),
+                                    Id = (int)dr["Id"],
+                                    IdHistoria = (int)dr["IdHistoria"],
+                                    IdMedico = (int)dr["IdMedico"],
+                                    IdPaciente = (int)dr["IdPaciente"],
+                                    FechaHistoria = (DateTime)dr["FechaHistoria"]
+                                });
+                            }
+                        }
                         Conn.Close();
                     }
                 }
@@ -1386,7 +1436,7 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Administracion.verMedico
+        /// Administracion.verMedico: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -1412,12 +1462,15 @@ namespace WCFClinica {
                         if (dr.HasRows) {
                             dr.Read();
                             response.Id = (int)dr["Id"];
+                            response.IdLugarNacimiento = (int)dr["IdLugarNacimiento"];
                             response.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
                             response.CiudadNacimiento = dr["CiudadNacimiento"].ToString();
                             response.Nombre = dr["Nombre"].ToString();
                             response.Rh = dr["Rh"].ToString()[0];
                             response.Sexo = dr["Sexo"].ToString();
+                            response.IdSexo = (int)dr["IdSexo"];
                             response.TipoSangre = dr["TipoSangre"].ToString();
+                            response.IdTipoSangre = (int)dr["IdTipoSangre"];
                             response.LugarNacimiento = dr["LugarNacimiento"].ToString();
                             response.Usuario = dr["Usuario"].ToString();
                         }
@@ -1431,18 +1484,56 @@ namespace WCFClinica {
             }
             return response;
         }
-
+        /// <summary>
+        /// Configuracion.spCatalogo: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public CatalogoReqResp obtenerCatalogo(CatalogoReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
             CatalogoReqResp response = new CatalogoReqResp() {
                 items = new Dictionary<int, string>()
             };
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Configuracion.spCatalogo"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Catalogo",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Catalogo
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            while (dr.Read()) {
+                                response.items.Add((int)dr["Id"], dr["Nombre"].ToString());
+                            }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
             return response;
         }
-
-        public selHistoriaReqResp buscarHistorias(selHistoriaReqResp request) {
+        /// <summary>
+        /// Clinica.buscarHistorias: hecho
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public buscarHistoriaResponse buscarHistorias(buscarHistoriasRequest request) {
             SqlCommand Cmd;
             SqlConnection Conn;
-            var response = new selHistoriaReqResp();
+            var response = new buscarHistoriaResponse();
             try {
                 using (Conn = new SqlConnection(Connstring)) {
                     using (Cmd = new SqlCommand() {
@@ -1470,10 +1561,64 @@ namespace WCFClinica {
                         });
                         Conn.Open();
                         var dr = Cmd.ExecuteReader();
-                        if (dr.HasRows)
+                        if (dr.HasRows) {
+                            response.Items = new List<buscarHistoriasItem>();
                             while (dr.Read()) {
-
+                                response.Items.Add(new buscarHistoriasItem() {
+                                    Id = (int)dr["Id"],
+                                    IdPaciente = (int)dr["IdPaciente"],
+                                    Medico = dr["Medico"].ToString(),
+                                    MotivoConsulta = dr["MotivoConsulta"].ToString(),
+                                    Paciente = dr["Paciente"].ToString(),
+                                    FechaHistoria = (DateTime)dr["FechaHistoria"]
+                                });
                             }
+                        }
+                        Conn.Close();
+                    }
+                }
+            } catch (Exception ex) {
+                response.ErrNum = ex.HResult;
+                response.tieneError = true;
+                response.Mensaje = ex.Message;
+            }
+            return response;
+        }
+
+        public EstadosReqResp obtenerEstados(EstadosReqResp request) {
+            SqlCommand Cmd;
+            SqlConnection Conn;
+            var response = new EstadosReqResp();
+            try {
+                using (Conn = new SqlConnection(Connstring)) {
+                    using (Cmd = new SqlCommand() {
+                        Connection = Conn,
+                        CommandType = System.Data.CommandType.StoredProcedure,
+                        CommandText = "Configuracion.obtenerEstados"
+                    }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Datos.Id
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "nombre",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Datos.Nombre
+                        });
+                        Conn.Open();
+                        var dr = Cmd.ExecuteReader();
+                        if (dr.HasRows) {
+                            response.Items = new List<EstadosReqRespItem>();
+                            while (dr.Read()) {
+                                response.Items.Add(new EstadosReqRespItem() {
+                                    Id = (int)dr["Id"],
+                                    Nombre = dr["Nombre"].ToString()
+                                });
+                            }
+                        }
                         Conn.Close();
                     }
                 }

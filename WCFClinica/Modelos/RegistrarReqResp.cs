@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,29 +12,29 @@ namespace WCFClinica.Modelos {
     public class RegistraMedicoReqResp : ReqRespBase {
         [DataMember]
         public int Id { get; set; }
-        [DataMember]
+        [DataMember, Display(Name="Sexo")]
         public int IdSexo { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Sexo")]
         public string Sexo { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Tipo de sangre")]
         public int IdTipoSangre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Tipo de sangre")]
         public string TipoSangre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de nacimiento")]
         public int IdLugarNacimiento { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de nacimiento")]
         public string LugarNacimiento { get; set; }
         [DataMember]
         public string Nombre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Ciudad de nacimiento")]
         public string CiudadNacimiento { get; set; }
         [DataMember]
         public string Usuario { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Contraseña")]
         public string Constrasenia { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "R. h.")]
         public char Rh { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
     }
 
@@ -43,9 +44,9 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdPersona { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Tipo de teléfono")]
         public int IdTipoTelefono { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Número telefónico")]
         public string Numero { get; set; }
     }
 
@@ -55,29 +56,29 @@ namespace WCFClinica.Modelos {
         public int IdPaciente { get; set; }
         [DataMember]
         public int IdPersona { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Sexo")]
         public int IdSexo { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Sexo")]
         public string Sexo { get; set; }
         [DataMember]
         public string Nombre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Tipo de sangre")]
         public int IdTipoSangre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Tipo de sangre")]
         public string TipoSangre { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "R. h.")]
         public char Rh { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de nacimiento")]
         public int IdLugarNacimiento { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de nacimiento")]
         public string LugarNacimiento { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Ciudad de nacimiento")]
         public string CiudadNacimiento { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de residencia")]
         public int IdLugarResidencia { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Lugar de residencia")]
         public string LugarResidencia { get; set; }
         [DataMember]
         public string Domicilio { get; set; }
@@ -85,8 +86,12 @@ namespace WCFClinica.Modelos {
         public bool Tabaco { get; set; }
         [DataMember]
         public bool Alcohol { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Ciudad de residencia")]
         public string CiudadResidencia { get; set; }
+        [DataMember, Display(Name = "Tipo de teléfono")]
+        public int IdTipoNumero { get; set; }
+        [DataMember]
+        public string Numero{ get; set; }
     }
 
     [DataContract]
@@ -95,19 +100,19 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdPaciente { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Médico")]
         public int IdMedico { get; set; }
         [DataMember]
         public int IdHistoria { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Fecha de la Historia")]
         public DateTime FechaHistoria { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Motivo de consulta")]
         public string MotivoConsulta { get; set; }
         [DataMember]
         public string Analisis { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Impresión diagnóstica")]
         public string ImpresionDiagnostica { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Plan terapeutico")]
         public string PlanTerapeutico { get; set; }
     }
 
@@ -121,11 +126,11 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdPaciente { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Status")]
         public int IdStatus { get; set; }
         [DataMember]
         public string Enfermedad { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Fecha de inicio")]
         public DateTime FechaInicio { get; set; }
     }
     [DataContract]
@@ -134,7 +139,7 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdPaciente { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Método anticonceptivo")]
         public int IdAnticonceptivo { get; set; }
         [DataMember]
         public DateTime Menarca { get; set; }
@@ -159,9 +164,9 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdHistoria { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Fecha de inicio")]
         public DateTime FechaInicio { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Dósis")]
         public string Dosis { get; set; }
         [DataMember]
         public string Medicamento { get; set; }
@@ -173,7 +178,7 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdHistoria { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Sistema")]
         public int IdSistema { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
@@ -190,17 +195,17 @@ namespace WCFClinica.Modelos {
         [DataMember]
         public string TA { get; set; }
         [DataMember]
-        public string Pulso { get; set; }
+        public byte Pulso { get; set; }
         [DataMember]
-        public string FR { get; set; }
+        public byte FR { get; set; }
         [DataMember]
-        public string FC { get; set; }
+        public byte FC { get; set; }
         [DataMember]
-        public string Temperatura { get; set; }
-        [DataMember]
-        public string Peso { get; set; }
-        [DataMember]
-        public string Estatura { get; set; }
+        public decimal Temperatura { get; set; }
+        [DataMember, Display(Name = "Peso (Kg)")]
+        public decimal Peso { get; set; }
+        [DataMember, Display(Name = "Estatura (cm)")]
+        public int Estatura { get; set; }
     }
     [DataContract]
     public class RegistraAntHeredReqResp : ReqRespBase {
@@ -208,7 +213,7 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdPaciente { get; set; }
-        [DataMember]
+        [DataMember, Display(Name = "Familiar")]
         public int IdFamiliar { get; set; }
         [DataMember]
         public string Padecimiento { get; set; }

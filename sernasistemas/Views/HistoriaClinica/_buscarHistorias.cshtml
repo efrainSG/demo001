@@ -1,0 +1,39 @@
+﻿@model SernaSistemas.Models.buscarHistoriasModel
+
+@{
+    ViewBag.Title = "Buscar historias";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>IdPaciente</th>
+            <th>Paciente</th>
+            <th>Motivo de consulta</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Historias) {
+        <tr class="d-sm-table-row">
+            <td class="d-sm-table-cell">
+                @item.Id
+            </td>
+            <td class="d-sm-table-cell">
+                @item.IdPaciente
+            </td>
+            <td>
+                @item.Paciente
+            </td>
+            <td class="d-sm-table-cell">
+                @item.MotivoConsulta.Substring(0, 200)
+            </td>
+            <td>
+                @item.FechaHistoria
+            </td>
+        </tr>
+    }
+</table>

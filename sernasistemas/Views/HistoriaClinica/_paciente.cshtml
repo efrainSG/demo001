@@ -1,0 +1,156 @@
+﻿@model SernaSistemas.Models.PacienteModel
+
+@{
+    ViewBag.Title = "Información del paciente";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("postPaciente", "HistoriaClinica", FormMethod.Post)) {
+    @Html.HiddenFor(m => m.IdPaciente, Model.IdPaciente.ToString())
+    @Html.HiddenFor(m => m.IdPersona, Model.IdPersona.ToString())
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Nombre)
+            </div>
+            <div class="col-md-5">
+                @Html.TextBoxFor(m => m.Nombre, Model.Nombre, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Edad)
+            </div>
+            <div class="col-md-1">
+                @Model.Edad años
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Sexo)
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(m => m.Sexo, Model.dicSexo.First().Text.Substring(0, 1))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.IdSexo, Model.dicSexo.First().Value, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(m => m.Sexo, Model.dicSexo.Last().Text.Substring(0, 1))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.IdSexo, Model.dicSexo.Last().Value, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Domicilio)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Domicilio, Model.Domicilio, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.FechaNacimiento)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.FechaNacimiento, Model.FechaNacimiento.ToShortDateString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.IdTipoSangre)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.IdTipoSangre, Model.dicTipoSangre, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Rh)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.Rh, Model.Rh.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Numero)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Numero, Model.Numero, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.IdTipoNumero)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.IdTipoNumero, Model.dicTipoTelefono, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <a href="#" class="btn btn-block, btn-info"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+    </div>
+    <h3>&nbsp;</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.CiudadNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.CiudadNacimiento, Model.CiudadNacimiento, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.LugarNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(m => m.IdLugarNacimiento, Model.dicLugarResidencia, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.CiudadResidencia)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.CiudadResidencia, Model.CiudadResidencia, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.IdLugarResidencia)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(m => m.IdLugarResidencia, Model.dicLugarResidencia, new { @class = "form-control" })
+            </div>
+            @*<div class="col-md-1">
+                Año
+            </div>
+            <div class="col-md-1">
+                <input type="text" class="form-control" />
+            </div>*@
+        </div>
+        <div class="row">
+            @*<div class="col-md-2">
+                Ocupación
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" />
+            </div>*@
+        </div>
+    </div>
+    <h3>&nbsp;</h3>
+    <div class="row">
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-lg btn-success" style="box-shadow:#203016 0px 5px 5px;" value="Guardar" />
+        </div>
+    </div>
+}
+

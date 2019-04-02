@@ -1,0 +1,55 @@
+﻿@model SernaSistemas.Models.ListaPacientesModel
+
+@{
+    ViewBag.Title = "Buscar pacientes";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("ListadoPacientes", "HistoriaClinica")) {
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Paciente
+            </div>
+            <div class="col-md-10">
+                @Html.TextBox(name: "txtBuscar", value: null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <input type="submit" class="btn btn-warning" value="Buscar" />
+            </div>
+        </div>
+    </div>
+}
+<h3>&nbsp;</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Paciente</th>
+            <th>Sexo</th>
+            <th>Tipo de sangre</th>
+            <th>Teléfono</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Pacientes.Items) {
+        <tr class="d-sm-table-row">
+            <td class="d-sm-table-cell">
+                @Html.ActionLink("ver", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info btn-block", style = "box-shadow:#203016 0px 5px 5px;" })
+                @Html.ActionLink("Nva. H.C.", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info btn-block", style = "box-shadow:#203016 0px 5px 5px;" })
+            </td>
+            <td class="d-sm-table-cell">
+                @item.Nombre
+            </td>
+            <td class="d-sm-table-cell">
+                @item.Sexo
+            </td>
+            <td class="d-sm-table-cell">
+                @item.TipoSangre
+            </td>
+            <td class="d-sm-table-cell">
+                @item.NumeroTelefono
+            </td>
+        </tr>
+    }
+</table>
