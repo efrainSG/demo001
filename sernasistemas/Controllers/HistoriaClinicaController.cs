@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using WCFClinica.Clases;
 
 namespace SernaSistemas.Controllers {
     public class HistoriaClinicaController : Controller {
@@ -46,6 +48,7 @@ namespace SernaSistemas.Controllers {
                 return RedirectToAction("Login");
             }
         }
+
         public ActionResult verPaciente(int IdPaciente) {
             if (Session["UsrHC"] == null)
                 return RedirectToAction("Login");
@@ -166,6 +169,8 @@ namespace SernaSistemas.Controllers {
                 return RedirectToAction("Login");
             }
 
+            WCFClinica.ClinicaService servicio = new WCFClinica.ClinicaService();
+            var Estados = servicio.obtenerEstados(new WCFClinica.Modelos.EstadosReqResp() { Datos = new WCFClinica.Modelos.EstadosReqRespItem() { Nombre = string.Empty, Id = 0 } });
             var model = new HistoriaModel() {
                 AntecedentesGinecoObstetricios = new WCFClinica.Modelos.RegistaAntGinecoReqResp(),
                 AntecedentesHereditarios = new WCFClinica.Modelos.selAntHeredReqResp() {
@@ -174,14 +179,17 @@ namespace SernaSistemas.Controllers {
                 AntecedentesPatologicos = new WCFClinica.Modelos.selAntPersonalPatReqResp() {
                     Items = new List<WCFClinica.Modelos.AntPersonalPatItem>()
                 },
-                HistoriaClinica = new WCFClinica.Modelos.selHistoriaReqResp(),
+                HistoriaClinica = new WCFClinica.Modelos.selHistoriaReqResp() {
+                    FechaHistoria = DateTime.Today
+                },
                 MedicacionActual = new WCFClinica.Modelos.selMedicacionActualReqResp() {
                     Items = new List<WCFClinica.Modelos.MedicacionActualItem>()
                 },
                 Paciente = new PacienteModel() {
                     dicSexo = obtenerCatalogo("Sexo").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
                     dicTipoSangre = obtenerCatalogo("TipoSangre").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
-                    dicTipoTelefono = obtenerCatalogo("TipoTelefono").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() })
+                    dicTipoTelefono = obtenerCatalogo("TipoTelefono").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
+                    dicLugarResidencia = Estados.Items.Select(i => new SelectListItem { Text = i.Nombre, Value = i.Id.ToString() })
                 },
                 ExploracionSistemas = new WCFClinica.Modelos.selExploraSistemaReqResp() {
                     Items = new List<WCFClinica.Modelos.ExploraSistemaItem>()
@@ -193,10 +201,158 @@ namespace SernaSistemas.Controllers {
                 Medicacion = new WCFClinica.Modelos.MedicacionActualItem(),
                 dicAnticonceptivos = obtenerCatalogo("Anticonceptivo").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
                 dicFamiliar = obtenerCatalogo("Familiar").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
-                dicMedicos = obtenerCatalogo("Familiar").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
+                dicMedicos = obtenerCatalogo("Medico").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() }),
                 dicSistemas = obtenerCatalogo("Sistema").items.Select(i => new SelectListItem { Text = i.Value, Value = i.Key.ToString() })
             };
+            if (idPaciente.HasValue && idPaciente != 0) {
+                var response = servicio.selPaciente(new WCFClinica.Modelos.selPacienteReqResp() {
+                    IdPaciente = idPaciente.Value
+                });
+                model.Paciente.Alcohol = response.Alcohol;
+                model.Paciente.CiudadNacimiento = response.CiudadNacimiento;
+                model.Paciente.CiudadResidencia = response.CiudadResidencia;
+                model.Paciente.Domicilio = response.Domicilio;
+                model.Paciente.FechaNacimiento = response.FechaNacimiento;
+                model.Paciente.IdLugarNacimiento = response.IdLugarNacimiento;
+                model.Paciente.IdLugarResidencia = response.IdLugarResidencia;
+                model.Paciente.IdPaciente = response.IdPaciente;
+                model.Paciente.IdPersona = response.IdPersona;
+                model.Paciente.IdSexo = response.IdSexo;
+                model.Paciente.IdTipoNumero = response.IdTipoNumero;
+                model.Paciente.IdTipoSangre = response.IdTipoSangre;
+                model.Paciente.LugarNacimiento = response.LugarNacimiento;
+                model.Paciente.LugarResidencia = response.LugarResidencia;
+                model.Paciente.Nombre = response.Nombre;
+                model.Paciente.Numero = response.Numero;
+                model.Paciente.Rh = response.Rh;
+                model.Paciente.Sexo = response.Sexo;
+                model.Paciente.Tabaco = response.Tabaco;
+                model.Paciente.TipoSangre = response.TipoSangre;
+            }
+
             return View("_historiaClinica", model);
+        }
+        [HttpPost]
+        public ActionResult postHistoria(HistoriaModel modelo, object hidData) {
+            if (Session["UsrHC"] == null)
+                return RedirectToAction("Login");
+            if (string.IsNullOrEmpty(Session["UsrHC"].ToString())) {
+                return RedirectToAction("Login");
+            }
+
+            WCFClinica.ClinicaService servicio = new WCFClinica.ClinicaService();
+            var colecciones = (new JavaScriptSerializer()).Deserialize
+                <List<Dictionary<string, List<Dictionary<string, string>>>>>(
+                ((string[])modelo.colecciones)[0]
+                );
+
+            List<ReqRespBase> reqResp = new List<ReqRespBase>();
+            var paciente = servicio.registraPaciente(new WCFClinica.Modelos.RegistraPacienteReqResp() {
+                Alcohol = modelo.Paciente.Alcohol,
+                CiudadNacimiento = modelo.Paciente.CiudadNacimiento,
+                CiudadResidencia = modelo.Paciente.CiudadResidencia,
+                Domicilio = modelo.Paciente.Domicilio,
+                FechaNacimiento = modelo.Paciente.FechaNacimiento,
+                IdLugarNacimiento = modelo.Paciente.IdLugarNacimiento,
+                IdLugarResidencia = modelo.Paciente.IdLugarResidencia,
+                IdPaciente = modelo.Paciente.IdPaciente,
+                IdPersona = modelo.Paciente.IdPersona,
+                IdSexo = modelo.Paciente.IdSexo,
+                IdTipoNumero = modelo.Paciente.IdTipoNumero,
+                IdTipoSangre = modelo.Paciente.IdTipoSangre,
+                Nombre = modelo.Paciente.Nombre,
+                Numero = modelo.Paciente.Numero,
+                Rh = modelo.Paciente.Rh,
+                Tabaco = modelo.Paciente.Tabaco,
+                TipoSangre = modelo.Paciente.TipoSangre
+            });
+            var historia = servicio.GuardaHistoriaClinica(new WCFClinica.Modelos.RegistraHistoriaReqResp() {
+                Analisis = modelo.HistoriaClinica.Analisis,
+                FechaHistoria = modelo.HistoriaClinica.FechaHistoria,
+                Id = modelo.HistoriaClinica.Id,
+                IdHistoria = modelo.HistoriaClinica.Id,
+                IdMedico = modelo.HistoriaClinica.IdMedico,
+                IdPaciente = paciente.IdPaciente,
+                ImpresionDiagnostica = modelo.HistoriaClinica.ImpresionDiagnostica,
+                MotivoConsulta = modelo.HistoriaClinica.MotivoConsulta,
+                PlanTerapeutico = modelo.HistoriaClinica.PlanTerapeutico
+            });
+            reqResp.Add(paciente);
+            reqResp.Add(historia);
+            reqResp.Add(servicio.GuardaExploracionFisica(new WCFClinica.Modelos.RegistraExploraFisicaReqResp() {
+                Descripcion = modelo.ExploracionFisica.Descripcion,
+                Estatura = modelo.ExploracionFisica.Estatura,
+                FC = modelo.ExploracionFisica.FC,
+                FR = modelo.ExploracionFisica.FR,
+                Id = modelo.ExploracionFisica.Id,
+                IdHistoria = historia.Id,
+                Peso = modelo.ExploracionFisica.Peso,
+                Pulso = modelo.ExploracionFisica.Pulso,
+                TA = modelo.ExploracionFisica.TA,
+                Temperatura = modelo.ExploracionFisica.Temperatura
+            }));
+
+            if (paciente.Sexo.Equals("Femenino")) {
+                reqResp.Add(servicio.GuardaAntGineco(new WCFClinica.Modelos.RegistaAntGinecoReqResp() {
+                    A = modelo.AntecedentesGinecoObstetricios.A,
+                    C = modelo.AntecedentesGinecoObstetricios.C,
+                    FUR = modelo.AntecedentesGinecoObstetricios.FUR,
+                    G = modelo.AntecedentesGinecoObstetricios.G,
+                    Id = modelo.AntecedentesGinecoObstetricios.Id,
+                    IdAnticonceptivo = modelo.AntecedentesGinecoObstetricios.IdAnticonceptivo,
+                    IdPaciente = paciente.IdPaciente,
+                    Mastografia = modelo.AntecedentesGinecoObstetricios.Mastografia,
+                    Menarca = modelo.AntecedentesGinecoObstetricios.Menarca,
+                    P = modelo.AntecedentesGinecoObstetricios.P,
+                    Papanicolaou = modelo.AntecedentesGinecoObstetricios.Papanicolaou
+                }));
+            }
+
+            for (int i = 0; i < colecciones.Count(); i++) {
+                var arreglo = (colecciones[i] as Dictionary<string, List<Dictionary<string, string>>>);
+                if (arreglo.ContainsKey("Antecedentes")) {
+                    foreach (var item in arreglo["Antecedentes"]) {
+                        servicio.GuardaAntHered(new WCFClinica.Modelos.RegistraAntHeredReqResp() {
+                            IdFamiliar = int.Parse(item["IdFamiliar"]),
+                            IdPaciente = paciente.IdPaciente,
+                            Padecimiento = item["Padecimiento"],
+                            Id = 0
+                        });
+                    }
+                } else if (arreglo.ContainsKey("Enfermedades")) {
+                    foreach (var item in arreglo["Enfermedades"]) {
+                        reqResp.Add(servicio.GuardaAntPersonalPatologico(new WCFClinica.Modelos.RegistraAntPersonalPat() {
+                            Enfermedad = item["Enfermedad"],
+                            FechaInicio = DateTime.Parse(item["FechaInicio"]),
+                            IdStatus = int.Parse(item["IdStatus"]),
+                            IdPaciente = paciente.IdPaciente,
+                            Id = 0
+                        }));
+                    }
+                } else if (arreglo.ContainsKey("Sistemas")) {
+                    foreach (var item in arreglo["Sistemas"]) {
+                        reqResp.Add(servicio.GuardaExploracionSistema(new WCFClinica.Modelos.RegistraExploraSistemaReqResp() {
+                            IdHistoria = historia.Id,
+                            IdSistema = int.Parse(item["IdSistema"]),
+                            Descripcion = item["Descripcion"],
+                            Id = 0
+                        }));
+                    }
+                } else if (arreglo.ContainsKey("Medicacion")) {
+                    foreach (var item in arreglo["Medicacion"]) {
+                        reqResp.Add(servicio.GuardaMedicacionActual(new WCFClinica.Modelos.RegistraMedicacionActualReqResp() {
+                            IdHistoria = historia.Id,
+                            Dosis = item["Dosis"],
+                            FechaInicio = DateTime.Parse(item["FechaInicio"]),
+                            Medicamento = item["Medicacion"],
+                            Id = 0
+                        }));
+                    }
+                }
+            }
+            var mensajes = reqResp.Select(r => new { r.ErrNum, r.Mensaje, r.tieneError }).ToList();
+
+            return RedirectToAction("Historia", new { IdHistoria = modelo.HistoriaClinica.Id });
         }
 
         public ActionResult BuscarHistorias() {

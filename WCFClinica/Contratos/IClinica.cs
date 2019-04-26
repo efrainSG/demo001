@@ -41,7 +41,7 @@ namespace WCFClinica {
         [OperationContract]
         RegistraExploraSistemaReqResp GuardaExploracionSistema(RegistraExploraSistemaReqResp request);
         [OperationContract]
-        RegistraExploraFisicaReqResp GuardaEsploracionFisica(RegistraExploraFisicaReqResp request);
+        RegistraExploraFisicaReqResp GuardaExploracionFisica(RegistraExploraFisicaReqResp request);
         [OperationContract]
         selHistoriaReqResp GuardaHistoriaClinica(RegistraHistoriaReqResp request);
         [OperationContract]

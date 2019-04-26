@@ -35,8 +35,10 @@
     @foreach (var item in Model.Pacientes.Items) {
         <tr class="d-sm-table-row">
             <td class="d-sm-table-cell">
-                @Html.ActionLink("ver", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info btn-block", style = "box-shadow:#203016 0px 5px 5px;" })
-                @Html.ActionLink("Nva. H.C.", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info btn-block", style = "box-shadow:#203016 0px 5px 5px;" })
+                <div class="btn-group" style="box-shadow:#203016 0px 5px 5px;">
+                    @Html.ActionLink("ver", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Nva. H.C.", "Historia", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-success" })
+                </div>
             </td>
             <td class="d-sm-table-cell">
                 @item.Nombre

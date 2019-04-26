@@ -595,6 +595,18 @@ namespace WCFClinica {
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.IdPaciente
                         });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "IdFamiliar",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.IdFamiliar
+                        });
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Padecimiento",
+                            DbType = System.Data.DbType.String,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Padecimiento
+                        });
                         Conn.Open();
                         var dr = Cmd.ExecuteReader();
                         if (dr.HasRows) {
@@ -640,13 +652,13 @@ namespace WCFClinica {
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Enfermedad",
-                            DbType = System.Data.DbType.Int16,
+                            DbType = System.Data.DbType.String,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Enfermedad
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "FechaInicio",
-                            DbType = System.Data.DbType.Int16,
+                            DbType = System.Data.DbType.Date,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.FechaInicio
                         });
@@ -677,11 +689,11 @@ namespace WCFClinica {
             return response;
         }
         /// <summary>
-        /// Clinica.spGuardaEsploracionFisica: hecho
+        /// Clinica.spGuardaExploracionFisica: hecho
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public RegistraExploraFisicaReqResp GuardaEsploracionFisica(RegistraExploraFisicaReqResp request) {
+        public RegistraExploraFisicaReqResp GuardaExploracionFisica(RegistraExploraFisicaReqResp request) {
             SqlCommand Cmd;
             SqlConnection Conn;
             var response = new RegistraExploraFisicaReqResp();
@@ -690,10 +702,10 @@ namespace WCFClinica {
                     using (Cmd = new SqlCommand() {
                         Connection = Conn,
                         CommandType = System.Data.CommandType.StoredProcedure,
-                        CommandText = "Clinica.spGuardaEsploracionFisica"
+                        CommandText = "Clinica.spGuardaExploracionFisica"
                     }) {
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "IdHistoria",
+                            ParameterName = "IdHistoriaClinica",
                             DbType = System.Data.DbType.Int16,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.IdHistoria
@@ -795,7 +807,7 @@ namespace WCFClinica {
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "Descripcion",
-                            DbType = System.Data.DbType.Int16,
+                            DbType = System.Data.DbType.String,
                             Direction = System.Data.ParameterDirection.Input,
                             Value = request.Descripcion
                         });
@@ -808,10 +820,10 @@ namespace WCFClinica {
                         Conn.Open();
                         var dr = Cmd.ExecuteReader();
                         if (dr.HasRows) {
-                            response.Descripcion = dr["Descripcion"].ToString();
                             response.Id = (int)dr["Id"];
                             response.IdHistoria = (int)dr["IdHistoria"];
                             response.IdSistema = (int)dr["IdSistema"];
+                            response.Descripcion = dr["Descripcion"].ToString();
                         }
                         Conn.Close();
                     }
@@ -870,10 +882,10 @@ namespace WCFClinica {
                             Value = request.MotivoConsulta
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
-                            ParameterName = "ImpresionDiagnostica",
+                            ParameterName = "Analisis",
                             DbType = System.Data.DbType.String,
                             Direction = System.Data.ParameterDirection.Input,
-                            Value = request.ImpresionDiagnostica
+                            Value = request.Analisis
                         });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "ImpresionDiagnostica",
@@ -926,6 +938,12 @@ namespace WCFClinica {
                         CommandType = System.Data.CommandType.StoredProcedure,
                         CommandText = "Clinica.spGuardaMedicacionActual"
                     }) {
+                        Cmd.Parameters.Add(new SqlParameter() {
+                            ParameterName = "Id",
+                            DbType = System.Data.DbType.Int16,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = request.Id
+                        });
                         Cmd.Parameters.Add(new SqlParameter() {
                             ParameterName = "IdHistoria",
                             DbType = System.Data.DbType.Int16,

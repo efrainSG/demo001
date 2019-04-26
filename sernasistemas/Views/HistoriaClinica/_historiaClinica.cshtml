@@ -6,556 +6,602 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.HiddenFor(m => m.HistoriaClinica.IdPaciente, Model.HistoriaClinica.IdPaciente)
-@Html.HiddenFor(m => m.Paciente.IdPaciente, Model.Paciente.IdPaciente)
-@Html.HiddenFor(m => m.Paciente.IdPersona, Model.Paciente.IdPersona)
-@Html.HiddenFor(m => m.AntecedentesHereditarios.IdPaciente, Model.AntecedentesHereditarios.IdPaciente)
-@Html.HiddenFor(m => m.AntecedentesPatologicos.IdPaciente, Model.AntecedentesPatologicos.IdPaciente.ToString())
-@Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.IdPaciente, Model.AntecedentesGinecoObstetricios.IdPaciente.ToString())
-@Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.Id, Model.AntecedentesGinecoObstetricios.Id.ToString())
-@Html.HiddenFor(m => m.MedicacionActual.IdHistoria, Model.MedicacionActual.IdHistoria.ToString())
-@Html.HiddenFor(m => m.HistoriaClinica.Id, Model.HistoriaClinica.Id.ToString())
-@Html.HiddenFor(m => m.HistoriaClinica.IdPaciente, Model.HistoriaClinica.IdPaciente.ToString())
-@Html.HiddenFor(m => m.ExploracionFisica.Id)
-@Html.HiddenFor(m => m.ExploracionFisica.IdHistoria)
+@using (Html.BeginForm("postHistoria", "HistoriaClinica", FormMethod.Post)) {
+    @Html.HiddenFor(m => m.HistoriaClinica.IdPaciente, Model.HistoriaClinica.IdPaciente)
+    @Html.HiddenFor(m => m.Paciente.IdPaciente, Model.Paciente.IdPaciente)
+    @Html.HiddenFor(m => m.Paciente.IdPersona, Model.Paciente.IdPersona)
+    @Html.HiddenFor(m => m.AntecedentesHereditarios.IdPaciente, Model.AntecedentesHereditarios.IdPaciente)
+    @Html.HiddenFor(m => m.AntecedentesPatologicos.IdPaciente, Model.AntecedentesPatologicos.IdPaciente.ToString())
+    @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.IdPaciente, Model.AntecedentesGinecoObstetricios.IdPaciente.ToString())
+    @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.Id, Model.AntecedentesGinecoObstetricios.Id.ToString())
+    @Html.HiddenFor(m => m.MedicacionActual.IdHistoria, Model.MedicacionActual.IdHistoria.ToString())
+    @Html.HiddenFor(m => m.HistoriaClinica.Id, Model.HistoriaClinica.Id.ToString())
+    @Html.HiddenFor(m => m.HistoriaClinica.IdPaciente, Model.HistoriaClinica.IdPaciente.ToString())
+    @Html.HiddenFor(m => m.ExploracionFisica.Id)
+    @Html.HiddenFor(m => m.ExploracionFisica.IdHistoria)
+    @Html.HiddenFor(m => m.colecciones, Model.colecciones);
 
-<div class="container containerClinica">
-    <div class="row" style="align-items:center">
-        <div class="col-md-2">
+    <div class="container containerClinica">
+        <div class="row" style="align-items:center">
+            <div class="col-md-2">
                 @Html.DisplayNameFor(m => m.HistoriaClinica.IdMedico)
-        </div>
-        <div class="col-md-6">
-            @Html.DropDownListFor(m => m.HistoriaClinica.IdMedico, Model.dicMedicos, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.HistoriaClinica.FechaHistoria)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.HistoriaClinica.FechaHistoria, Model.HistoriaClinica.FechaHistoria.ToString(), new { @class = "form-control" })
-        </div>
-    </div>
-</div>
-
-<h3>Datos de paciente</h3>
-<div class="container containerClinica" id="divPaciente">
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.Nombre)
-        </div>
-        <div class="col-md-5">
-            @Html.TextBoxFor(m => m.Paciente.Nombre, Model.Paciente.Nombre, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.Paciente.Edad)
-        </div>
-        <div class="col-md-1">
-            @Model.Paciente.Edad.ToString() años
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.Paciente.Sexo)
-        </div>
-        <div class="col-md-2">
-            <div class="row">
-                <div class="col-md-3">
-                    @Html.LabelFor(m => m.Paciente.Sexo, Model.Paciente.dicSexo.First().Text.Substring(0, 3))
-                </div>
-                <div class="col-md-3">
-                    @Html.RadioButtonFor(m => m.Paciente.Sexo, Model.Paciente.dicSexo.First().Value, new { @class = "form-control" })
-                </div>
-                <div class="col-md-3">
-                    @Html.LabelFor(m => m.Paciente.Sexo, Model.Paciente.dicSexo.Last().Text.Substring(0, 3))
-                </div>
-                <div class="col-md-3">
-                    @Html.RadioButtonFor(m => m.Paciente.Sexo, Model.Paciente.dicSexo.Last().Value, new { @class = "form-control" })
-                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.Domicilio)
-        </div>
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Paciente.Domicilio, Model.Paciente.Domicilio, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.FechaNacimiento)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.Paciente.FechaNacimiento, Model.Paciente.FechaNacimiento.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.NumeroTelefono)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.Paciente.NumeroTelefono, Model.Paciente.NumeroTelefono, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.Paciente.TipoTelefono)
-        </div>
-        <div class="col-md-2">
-            @Html.DropDownListFor(m => m.Paciente.TipoTelefono, Model.Paciente.dicTipoTelefono, new { @class = "form-control" })
-        </div>
-    </div>
-</div>
-
-<h3>Antecedentes hereditarios</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.AntecedenteHereditario.IdFamiliar)
-        </div>
-        <div class="col-md-3">
-            @Html.DropDownListFor(m => m.AntecedenteHereditario.IdFamiliar, Model.dicFamiliar, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.AntecedenteHereditario.Padecimiento)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedenteHereditario.Padecimiento, Model.AntecedenteHereditario.Padecimiento, new { @class = "form-control" })
-        </div>
-        <div class="offset-md-1 col-md-1">
-            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered table-responsive table-responsive-md">
-                <thead>
-                    <tr>
-                        <th>Núm</th>
-                        <th>Familiar</th>
-                        <th>Padecimiento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.AntecedentesHereditarios.Items.Count; i++) {
-                        <tr>
-                            <td>
-                                @Html.HiddenFor(m => m.AntecedentesHereditarios.Items[i].Id.ToString(), Model.AntecedentesHereditarios.Items[i].ToString())
-                                @i
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.AntecedentesHereditarios.Items[i].IdFamiliar.ToString())
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.AntecedentesHereditarios.Items[i].Padecimiento)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<h3>Antecedentes personales no patológicos</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.LugarNacimiento)
-        </div>
-        <div class="col-md-4">
-            @Html.TextBoxFor(m => m.Paciente.LugarNacimiento, Model.Paciente.LugarNacimiento, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.CiudadNacimiento)
-        </div>
-        <div class="col-md-4">
-            @Html.TextBoxFor(m => m.Paciente.CiudadNacimiento, Model.Paciente.CiudadNacimiento, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.LugarResidencia)
-        </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(m => m.Paciente.LugarResidencia, Model.Paciente.LugarResidencia, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.CiudadResidencia)
-        </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(m => m.Paciente.CiudadResidencia, Model.Paciente.CiudadResidencia, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            <em>Falta fecha</em>
-        </div>
-        <div class="col-md-1">
-            <input type="text" placeholder="Falta fecha" class="form-control" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.Tabaco)
-        </div>
-        <div class="col-md-3">
-            @Html.CheckBoxFor(m => m.Paciente.Tabaco, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            <em>Ocupación actual</em>
-        </div>
-        <div class="col-md-5">
-            <input type="text" placeholder="Falta ocupación" class="form-control" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.Alcohol)
-        </div>
-        <div class="col-md-3">
-            @Html.CheckBoxFor(m => m.Paciente.Alcohol, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.TipoSangre)
-        </div>
-        <div class="col-md-2">
-            @Html.DropDownListFor(m => m.Paciente.TipoSangre, Model.Paciente.dicTipoSangre, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.Paciente.Rh)
-        </div>
-        <div class="col-md-1">
-            @Html.TextBoxFor(m => m.Paciente.Rh, Model.Paciente.Rh, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <em>Falta Adicciones</em>
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <em>Falta Alergias</em>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-</div>
-
-<h3>Antecedentes Patológicos</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-2">
-            Enfermedad
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentePatologico.Enfermedad, Model.AntecedentePatologico.Enfermedad, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            Fecha de inicio
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentePatologico.FechaInicio, Model.AntecedentePatologico.FechaInicio.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            Status
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentePatologico.IdStatus, Model.AntecedentePatologico.IdStatus.ToString(), new { @class = "form-control" })
-        </div>
-        <div class="offset-md-1 col-md-1">
-            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered table-responsive table-responsive-md">
-                <thead>
-                    <tr>
-                        <th>Núm</th>
-                        <th>Enfermedad</th>
-                        <th>Fecha de inicio</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.AntecedentesPatologicos.Items.Count; i++) {
-                        <tr>
-                            <td>
-                                @Html.HiddenFor(m => m.AntecedentesPatologicos.Items[i].Id.ToString(), Model.AntecedentesPatologicos.Items[i].Id.ToString())
-                                @i
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].Enfermedad)
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].FechaInicio.ToShortDateString())
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].IdStatus)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<h3>Antecedentes Gineco-obstetricios</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Menarca)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.Menarca, Model.AntecedentesGinecoObstetricios.Menarca.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.FUR)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.FUR, Model.AntecedentesGinecoObstetricios.FUR.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.IdAnticonceptivo)
-        </div>
-        <div class="col-md-2">
-            @Html.DropDownListFor(m => m.AntecedentesGinecoObstetricios.IdAnticonceptivo, Model.dicAnticonceptivos, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="col-md-1">
-                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.G)
+            <div class="col-md-6">
+                @Html.DropDownListFor(m => m.HistoriaClinica.IdMedico, Model.dicMedicos, new { @class = "form-control" })
             </div>
             <div class="col-md-2">
-                @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.G, Model.AntecedentesGinecoObstetricios.G.ToString(), new { @class = "form-control" })
-            </div>
-            <div class="col-md-1">
-                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.P)
+                @Html.DisplayNameFor(m => m.HistoriaClinica.FechaHistoria)
             </div>
             <div class="col-md-2">
-                @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.P, Model.AntecedentesGinecoObstetricios.P.ToString(), new { @class = "form-control" })
+                @Html.HiddenFor(m => m.HistoriaClinica.FechaHistoria, Model.HistoriaClinica.FechaHistoria.ToShortDateString())
+                <input type="date" id="dpHistoriaClinica_FechaHistoria" class="form-control" />
             </div>
-            <div class="col-md-1">
-                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.C)
-            </div>
-            <div class="col-md-2">
-                @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.C, Model.AntecedentesGinecoObstetricios.C.ToString(), new { @class = "form-control" })
-            </div>
-            <div class="col-md-1">
-                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.A)
-            </div>
-            <div class="col-md-2">
-                @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.A, Model.AntecedentesGinecoObstetricios.A.ToString(), new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Papanicolaou)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.Papanicolaou, Model.AntecedentesGinecoObstetricios.Papanicolaou.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Mastografia)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.Mastografia, Model.AntecedentesGinecoObstetricios.Mastografia.ToShortDateString(), new { @class = "form-control" })
         </div>
     </div>
-</div>
 
-<h3>Medicación actual</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-1">
-            Medicamento
+    <h3>Datos de paciente</h3>
+    <div class="container containerClinica" id="divPaciente">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Nombre)
+            </div>
+            <div class="col-md-5">
+                @Html.TextBoxFor(m => m.Paciente.Nombre, Model.Paciente.Nombre, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Paciente.Edad)
+            </div>
+            <div class="col-md-1">
+                @Model.Paciente.Edad.ToString() años
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Paciente.Sexo)
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(m => m.Paciente.IdSexo, Model.Paciente.dicSexo.First().Text.Substring(0, 3))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.Paciente.IdSexo, Model.Paciente.dicSexo.First().Value, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(m => m.Paciente.IdSexo, Model.Paciente.dicSexo.Last().Text.Substring(0, 3))
+                    </div>
+                    <div class="col-md-3">
+                        @Html.RadioButtonFor(m => m.Paciente.IdSexo, Model.Paciente.dicSexo.Last().Value, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m=>m.Medicacion.Medicamento, Model.Medicacion.Medicamento, new { @class="form-control" })
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Domicilio)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Paciente.Domicilio, Model.Paciente.Domicilio, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="col-md-1">
-            Dósis
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.Medicacion.Dosis, Model.Medicacion.Dosis, new { @class = "form-control" })
-        </div>
-        <div class="col-md-2">
-            Fecha de inicio
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.Medicacion.FechaInicio, Model.Medicacion.FechaInicio.ToShortDateString(), new { @class = "form-control" })
-        </div>
-        <div class="offset-md-1 col-md-1">
-            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.FechaNacimiento)
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.Paciente.FechaNacimiento, Model.Paciente.FechaNacimiento.ToShortDateString())
+                <input type="date" id="dpPaciente_FechaNacimiento" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Numero)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Paciente.Numero, Model.Paciente.Numero, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.Paciente.IdTipoNumero)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.Paciente.IdTipoNumero, Model.Paciente.dicTipoTelefono, new { @class = "form-control" })
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered table-responsive table-responsive-md">
-                <thead>
-                    <tr>
-                        <th>Núm</th>
-                        <th>Medicameno</th>
-                        <th>Dósis</th>
-                        <th>Fecha de inicio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.MedicacionActual.Items.Count; i++) {
+
+    <h3 id="#AntecedentesHereditarios">Antecedentes hereditarios</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.AntecedenteHereditario.IdFamiliar)
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.AntecedenteHereditario.IdFamiliar, Model.dicFamiliar, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.AntecedenteHereditario.Padecimiento)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.AntecedenteHereditario.Padecimiento, Model.AntecedenteHereditario.Padecimiento, new { @class = "form-control" })
+            </div>
+            <div class="offset-md-1 col-md-1">
+                <a href="#AntecedentesHereditarios" class="btn btn-info" id="btnAgregarAntecedente"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-responsive table-responsive-md" id="tblAntecedentes">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Id.ToString())
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Medicamento)
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Dosis)
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].FechaInicio.ToShortDateString())
-                            </td>
+                            <th>Núm</th>
+                            <th>Familiar</th>
+                            <th>Padecimiento</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.AntecedentesHereditarios.Items.Count; i++) {
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(m => m.AntecedentesHereditarios.Items[i].Id.ToString(), Model.AntecedentesHereditarios.Items[i].ToString())
+                                    @i
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.AntecedentesHereditarios.Items[i].IdFamiliar.ToString())
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.AntecedentesHereditarios.Items[i].Padecimiento)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<h3>Padecimiento actual</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-12">
-            @Html.DisplayNameFor(m => m.HistoriaClinica.MotivoConsulta)
+    <h3>Antecedentes personales no patológicos</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.LugarNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(m => m.Paciente.IdLugarNacimiento, Model.Paciente.dicLugarResidencia, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.CiudadNacimiento)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Paciente.CiudadNacimiento, Model.Paciente.CiudadNacimiento, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.LugarResidencia)
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.Paciente.IdLugarResidencia, Model.Paciente.dicLugarResidencia, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.CiudadResidencia)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.Paciente.CiudadResidencia, Model.Paciente.CiudadResidencia, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <em>Falta fecha</em>
+            </div>
+            <div class="col-md-1">
+                <input type="text" placeholder="Falta fecha" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Tabaco)
+            </div>
+            <div class="col-md-3">
+                @Html.CheckBoxFor(m => m.Paciente.Tabaco, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <em>Ocupación actual</em>
+            </div>
+            <div class="col-md-5">
+                <input type="text" placeholder="Falta ocupación" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Alcohol)
+            </div>
+            <div class="col-md-3">
+                @Html.CheckBoxFor(m => m.Paciente.Alcohol, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.TipoSangre)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.Paciente.IdTipoSangre, Model.Paciente.dicTipoSangre, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Paciente.Rh)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.Paciente.Rh, Model.Paciente.Rh.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Adicciones
+            </div>
+            <div class="col-md-3">
+                <textarea id="txtAdicciones" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="col-md-3">
+                Alergias
+            </div>
+            <div class="col-md-3">
+                <textarea id="txtAlergias" rows="3" class="form-control"></textarea>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            @Html.TextAreaFor(m => m.HistoriaClinica.MotivoConsulta, 5, 80, new { @class = "form-control" })
-        </div>
-    </div>
-</div>
 
-<h3>Interrogatorio por aparatos y sistemas</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-1">
-            Sistema
+    <h3 id="AntecedentePatologicos">Antecedentes Patológicos</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                Enfermedad
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.AntecedentePatologico.Enfermedad, Model.AntecedentePatologico.Enfermedad, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                Fecha de inicio
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentePatologico.FechaInicio, Model.AntecedentePatologico.FechaInicio.ToShortDateString())
+                <input type="date" id="dpAntecedentePatologico_FechaInicio" class="form-control" />
+            </div>
+            <div class="col-md-1">
+                Status
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentePatologico.IdStatus, Model.AntecedentePatologico.IdStatus.ToString())
+                <input type="checkbox" id="chkAntecedentePatologico_IdStatus" />
+            </div>
+            <div class="offset-md-1 col-md-1">
+                <a href="#AntecedentePatologicos" class="btn btn-info" id="btnAgregarEnfermedad"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
         </div>
-        <div class="col-md-3">
-            @Html.DropDownListFor(m => m.Sistema.IdSistema, Model.dicSistemas, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            Descripción
-        </div>
-        <div class="col-md-5">
-            @Html.TextAreaFor(m=>m.Sistema.Descripcion, 5, 80, new { @class = "form-control" })
-        </div>
-        <div class="offset-md-1 col-md-1">
-            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered table-responsive table-responsive-md">
-                <thead>
-                    <tr>
-                        <th>Núm</th>
-                        <th>Sistema</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.ExploracionSistemas.Items.Count; i++) {
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-responsive table-responsive-md" id="tblAntecedentesPatologicos">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].Id.ToString())
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].IdSistema)
-                            </td>
-                            <td>
-                                @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].Descripcion)
-                            </td>
+                            <th>Núm</th>
+                            <th>Enfermedad</th>
+                            <th>Fecha de inicio</th>
+                            <th>Status</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.AntecedentesPatologicos.Items.Count; i++) {
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(m => m.AntecedentesPatologicos.Items[i].Id.ToString(), Model.AntecedentesPatologicos.Items[i].Id.ToString())
+                                    @i
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].Enfermedad)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].FechaInicio.ToShortDateString())
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.AntecedentesPatologicos.Items[i].IdStatus)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<h3>Exploración física</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.TA)
+    <h3>Antecedentes Gineco-obstetricios</h3>
+    <div class="container containerClinica" id="divGineco">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Menarca)
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.Menarca, Model.AntecedentesGinecoObstetricios.Menarca.ToShortDateString())
+                <input type="date" id="dpAntecedentesGinecoObstetricios_Menarca" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.FUR)
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.FUR, Model.AntecedentesGinecoObstetricios.FUR.ToShortDateString())
+                <input type="date" id="dpAntecedentesGinecoObstetricios_FUR" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.IdAnticonceptivo)
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.AntecedentesGinecoObstetricios.IdAnticonceptivo, Model.dicAnticonceptivos, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.ExploracionFisica.TA, Model.ExploracionFisica.TA, new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.Pulso)
-        </div>
-        <div class="col-md-1">
-            @Html.TextBoxFor(m => m.ExploracionFisica.Pulso, Model.ExploracionFisica.Pulso.ToString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.FR)
-        </div>
-        <div class="col-md-1">
-            @Html.TextBoxFor(m => m.ExploracionFisica.FR, Model.ExploracionFisica.FR.ToString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.FC)
-        </div>
-        <div class="col-md-1">
-            @Html.TextBoxFor(m => m.ExploracionFisica.FC, Model.ExploracionFisica.FC.ToString(), new { @class = "form-control" })
-        </div>
-        <div class="col-md-1">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.Temperatura)
-        </div>
-        <div class="col-md-2">
-            @Html.TextBoxFor(m => m.ExploracionFisica.Temperatura, Model.ExploracionFisica.Temperatura.ToString(), new { @class = "form-control" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-1">
+                    @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.G)
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.G, Model.AntecedentesGinecoObstetricios.G.ToString(), new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.P)
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.P, Model.AntecedentesGinecoObstetricios.P.ToString(), new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.C)
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.C, Model.AntecedentesGinecoObstetricios.C.ToString(), new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.A)
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.AntecedentesGinecoObstetricios.A, Model.AntecedentesGinecoObstetricios.A.ToString(), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Papanicolaou)
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.Papanicolaou, Model.AntecedentesGinecoObstetricios.Papanicolaou.ToShortDateString())
+                <input type="date" id="dpAntecedentesGinecoObstetricios_Papanicolaou" class="form-control" />
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.AntecedentesGinecoObstetricios.Mastografia)
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.AntecedentesGinecoObstetricios.Mastografia, Model.AntecedentesGinecoObstetricios.Mastografia.ToShortDateString())
+                <input type="date" id="dpAntecedentesGinecoObstetricios_Mastografia" class="form-control" />
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            @Html.DisplayNameFor(m => m.ExploracionFisica.Descripcion)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            @Html.TextAreaFor(m => m.ExploracionFisica.Descripcion, 5, 80, new { @class = "form-control" })
-        </div>
-    </div>
-</div>
 
-<h3>@Html.DisplayNameFor(m => m.HistoriaClinica.Analisis)</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-12">
-            @Html.TextAreaFor(m => m.HistoriaClinica.Analisis, 5, 80, new { @class = "form-control" })
+    <h3 id="MedicacionActual">Medicación actual</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Medicamento
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Medicacion.Medicamento, Model.Medicacion.Medicamento, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                Dósis
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Medicacion.Dosis, Model.Medicacion.Dosis, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                Fecha de inicio
+            </div>
+            <div class="col-md-2">
+                @Html.HiddenFor(m => m.Medicacion.FechaInicio, Model.Medicacion.FechaInicio.ToShortDateString())
+                <input type="date" id="dpMedicacion_FechaInicio" class="form-control" />
+            </div>
+            <div class="offset-md-1 col-md-1">
+                <a href="#MedicacionActual" class="btn btn-info" id="btnAgregarMedicacion"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-responsive table-responsive-md" id="tblMedicacion">
+                    <thead>
+                        <tr>
+                            <th>Núm</th>
+                            <th>Medicameno</th>
+                            <th>Dósis</th>
+                            <th>Fecha de inicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.MedicacionActual.Items.Count; i++) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Id.ToString())
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Medicamento)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].Dosis)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.MedicacionActual.Items[i].FechaInicio.ToShortDateString())
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<h3>@Html.DisplayNameFor(m => m.HistoriaClinica.ImpresionDiagnostica)</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-12">
-            @Html.TextAreaFor(m => m.HistoriaClinica.ImpresionDiagnostica, 5, 80, new { @class = "form-control" })
+
+    <h3>Padecimiento actual</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DisplayNameFor(m => m.HistoriaClinica.MotivoConsulta)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextAreaFor(m => m.HistoriaClinica.MotivoConsulta, 5, 80, new { @class = "form-control" })
+            </div>
         </div>
     </div>
-</div>
-<h3>@Html.DisplayNameFor(m => m.HistoriaClinica.PlanTerapeutico)</h3>
-<div class="container containerClinica">
-    <div class="row">
-        <div class="col-md-12">
-            @Html.TextAreaFor(m => m.HistoriaClinica.PlanTerapeutico, 5, 80, new { @class = "form-control" })
+
+    <h3>Interrogatorio por aparatos y sistemas</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Sistema
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.Sistema.IdSistema, Model.dicSistemas, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                Descripción
+            </div>
+            <div class="col-md-5">
+                @Html.TextAreaFor(m => m.Sistema.Descripcion, 5, 80, new { @class = "form-control" })
+            </div>
+            <div class="offset-md-1 col-md-1">
+                <a href="#" class="btn btn-info" id="btnAgregarSistema"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-responsive table-responsive-md" id="tblSistemas">
+                    <thead>
+                        <tr>
+                            <th>Núm</th>
+                            <th>Sistema</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ExploracionSistemas.Items.Count; i++) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].Id.ToString())
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].IdSistema)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => m.ExploracionSistemas.Items[i].Descripcion)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<div class="container" style="padding:2em;">
-    <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-            <a href="#" class="btn btn-lg btn-success" style="box-shadow:#0a230b 0px 5px 5px">Guardar</a>
+
+    <h3>Exploración física</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.TA)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.TA, Model.ExploracionFisica.TA, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Pulso)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Pulso, Model.ExploracionFisica.Pulso.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FR)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.FR, Model.ExploracionFisica.FR.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FC)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.FC, Model.ExploracionFisica.FC.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Temperatura)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Temperatura, Model.ExploracionFisica.Temperatura.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Descripcion)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextAreaFor(m => m.ExploracionFisica.Descripcion, 5, 80, new { @class = "form-control" })
+            </div>
         </div>
     </div>
-</div>
+
+    <h3>@Html.DisplayNameFor(m => m.HistoriaClinica.Analisis)</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextAreaFor(m => m.HistoriaClinica.Analisis, 5, 80, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <h3>@Html.DisplayNameFor(m => m.HistoriaClinica.ImpresionDiagnostica)</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextAreaFor(m => m.HistoriaClinica.ImpresionDiagnostica, 5, 80, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <h3>@Html.DisplayNameFor(m => m.HistoriaClinica.PlanTerapeutico)</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextAreaFor(m => m.HistoriaClinica.PlanTerapeutico, 5, 80, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding:2em;">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-lg btn-success" style="box-shadow:#0a230b 0px 5px 5px" id="btnGuardarHC" value="Guardar" id="btnGuardar" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $.each($("[id*='_Fecha']"), function (n, i) {
+            var partes = $(i).val().split(' ')[0].split('/');
+            var id = $(i).attr('id');
+            try {
+                var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+                $("#dp" + id).val(fecha);
+            } catch (e) {
+            }
+        });
+
+        var partes = $("#AntecedentesGinecoObstetricios_Menarca").val().split(' ')[0].split('/');
+        var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+        $("#dpAntecedentesGinecoObstetricios_Menarca").val(fecha);
+
+        partes = $("#AntecedentesGinecoObstetricios_FUR").val().split(' ')[0].split('/');
+        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+        $("#dpAntecedentesGinecoObstetricios_FUR").val(fecha);
+
+        partes = $("#AntecedentesGinecoObstetricios_Papanicolaou").val().split(' ')[0].split('/');
+        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+        $("#dpAntecedentesGinecoObstetricios_Papanicolaou").val(fecha);
+
+        partes = $("#AntecedentesGinecoObstetricios_Mastografia").val().split(' ')[0].split('/');
+        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+        $("#dpAntecedentesGinecoObstetricios_Mastografia").val(fecha);
+
+    });
+</script>

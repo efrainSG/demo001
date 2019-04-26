@@ -248,6 +248,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Clinica\HistoriaClinica.js" />
     <Content Include="Scripts\CoTeDiv\BuscarWidget.js" />
     <Content Include="Scripts\CoTeDiv\ConceptoResultadoWidget.js" />
     <Content Include="Scripts\CoTeDiv\PerfilWidget.js" />

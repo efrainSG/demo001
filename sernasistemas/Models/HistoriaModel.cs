@@ -25,5 +25,7 @@ namespace SernaSistemas.Models {
         public IEnumerable<SelectListItem> dicFamiliar { get; set; }
         public IEnumerable<SelectListItem> dicAnticonceptivos { get; set; }
         public IEnumerable<SelectListItem> dicSistemas { get; set; }
+
+        public object colecciones { get; set; }
     }
 }

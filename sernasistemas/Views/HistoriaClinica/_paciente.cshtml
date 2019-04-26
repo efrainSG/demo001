@@ -66,7 +66,8 @@
                 @Html.DisplayNameFor(m => m.FechaNacimiento)
             </div>
             <div class="col-md-3">
-                @Html.TextBoxFor(m => m.FechaNacimiento, Model.FechaNacimiento.ToShortDateString(), new { @class = "form-control" })
+                @Html.HiddenFor(m => m.FechaNacimiento, Model.FechaNacimiento.ToShortDateString())
+                <input type="date" id="dpFechaNacimiento" class="form-control" />
             </div>
             <div class="col-md-2">
                 @Html.DisplayNameFor(m => m.IdTipoSangre)
@@ -129,19 +130,19 @@
                 @Html.DropDownListFor(m => m.IdLugarResidencia, Model.dicLugarResidencia, new { @class = "form-control" })
             </div>
             @*<div class="col-md-1">
-                Año
-            </div>
-            <div class="col-md-1">
-                <input type="text" class="form-control" />
-            </div>*@
+                    Año
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control" />
+                </div>*@
         </div>
         <div class="row">
             @*<div class="col-md-2">
-                Ocupación
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" />
-            </div>*@
+                    Ocupación
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>*@
         </div>
     </div>
     <h3>&nbsp;</h3>
@@ -154,3 +155,16 @@
     </div>
 }
 
+<script>
+    $(document).ready(function () {
+        debugger;
+        var partes = $("#FechaNacimiento").val().split(' ')[0].split('/');
+        $("#dpFechaNacimiento").val(new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0]);
+
+        $("#dpFechaNacimiento")
+            .off()
+            .on("change", function () {
+                $("#FechaNacimiento").val($(this).val());
+            });
+    });
+</script>
