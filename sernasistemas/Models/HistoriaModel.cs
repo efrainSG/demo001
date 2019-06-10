@@ -27,5 +27,6 @@ namespace SernaSistemas.Models {
         public IEnumerable<SelectListItem> dicSistemas { get; set; }
 
         public object colecciones { get; set; }
+        public List<NotaEvolutivaModel> Notas { get; set; }
     }
 }

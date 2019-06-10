@@ -11,7 +11,8 @@ namespace SernaSistemas.Models {
         [Display(Name="Edad")]
         public int Edad {
             get {
-                return new DateTime(DateTime.Today.Subtract(FechaNacimiento).Ticks).Year;
+                int edad = new DateTime(DateTime.Today.Subtract(FechaNacimiento).Ticks).Year;
+                return edad > 150 ? -1 : edad;
             }
         }
         public IEnumerable<SelectListItem> dicSexo { get; set; }

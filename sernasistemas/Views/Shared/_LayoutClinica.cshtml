@@ -13,40 +13,72 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-    
+
     <script src="~/Scripts/Clinica/HistoriaClinica.js"></script>
 
     <style>
+
         .btn-gray {
             background-color: #808080;
             color: #000000;
         }
+
         body.serna {
             background-color: #cab497;
             color: #1b180f;
         }
-        div.containerClinica{
-            padding:1em;
-            background-color:#fff8e8;
-            color:#11141a;
-            box-shadow:#040215 0px 10px 15px;
+
+        div.containerClinica {
+            padding: 1em;
+            background-color: #fff8e8;
+            color: #11141a;
+            box-shadow: #040215 0px 10px 15px;
         }
-        div.row{
-            padding-top:0.25em;
-            padding-bottom:0.25em;
+
+        div.row {
+            padding-top: 0.25em;
+            padding-bottom: 0.25em;
         }
-        table>thead>tr{
-            background-color:#5a6723;
-            color:#f3ffb7;
-            padding-top:0.125em;
-            padding-bottom:0.125em;
+
+        table > thead > tr {
+            background-color: #5a6723;
+            color: #f3ffb7;
+            padding-top: 0.125em;
+            padding-bottom: 0.125em;
+        }
+
+        /*.nav-tabs {
+            background-color: #C8D3DB;
+        }*/
+
+        .nav-tabs > li > a {
+            border: #fff solid 1px;
+            border-bottom-color: transparent;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 25px;
+            background-color: #c7b295 !important;
+            color: #000;
+        }
+
+            .nav-tabs > li > a:hover {
+                background-color: #3D515F !important;
+                color: #fff;
+                border: 1px solid;
+                border-color: transparent;
+            }
+
+        .nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:focus,
+        .nav-tabs > li.active > a:hover {
+            background-color: #fff8e8 !important;
+            color: #412e13;
+            font-weight: bold;
+            border: 2px solid;
+            border-color: transparent;
         }
     </style>
     <script>
         var viewmodel;
-        //$(function () {
-        //    $("#dpFechaNacimiento").datepicker();
-        //});
     </script>
 </head>
 <body class="serna">
@@ -68,13 +100,27 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Iniciar sesión", "Login", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Ver perfil", "Medico", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Nuevo paciente", "Paciente", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Nueva historia", "Historia", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Buscar historias", "ListadoHistorias", "HistoriaClinica")</li>
-                    <li>@Html.ActionLink("Buscar pacientes", "ListadoPacientes", "HistoriaClinica")</li>
+                    @if (ViewBag.vista != "Index") {
+                        <li>@Html.ActionLink("Inicio", "Index", "HistoriaClinica")</li>
+                    }
+                    @if (Session["UsrHc"] == null) {
+                        <li>@Html.ActionLink("Iniciar sesión", "Login", "HistoriaClinica")</li>
+                    } else {
+                        if (ViewBag.vista != "_medico") {
+                            <li>@Html.ActionLink("Ver perfil", "Medico", "HistoriaClinica")</li>
+                        }
+                        if (ViewBag.vista == "_historiaClinica") {
+                            <li>@Html.ActionLink("Nota evolutiva","NotaEvolutiva", "HistoriaClinica", new { IdHistoria = ViewBag.IdHistoria }, new { style="background-image:linear-gradient(rgba(0,0,0,0),rgba(24,48,160,0.65));"})</li>
+                        }
+                        <li>@Html.ActionLink("Nuevo paciente", "Paciente", "HistoriaClinica")</li>
+                        <li>@Html.ActionLink("Nueva historia", "Historia", "HistoriaClinica")</li>
+                        if (ViewBag.vista != "_buscarHistorias") {
+                            <li>@Html.ActionLink("Buscar historias", "BuscarHistorias", "HistoriaClinica")</li>
+                        }
+                        if (ViewBag.vista != "_listaPacientes") {
+                            <li>@Html.ActionLink("Buscar pacientes", "ListadoPacientes", "HistoriaClinica")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

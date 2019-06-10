@@ -1,8 +1,76 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    ViewBag.vista = "Index";
     Layout = "~/Views/Shared/_LayoutClinica.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Historias cl&iacute;nicas</h2>
 
+<div class="row">
+    <div class="col-md-5">
+        <ul>
+            <li>Inicia sesi&oacute;n desde cualquier dispositivo.</li>
+            <li>Registra tus pacientes y b&uacute;scalos.</li>
+            <li>Registra las historias cl&iacute;nicas para pacientes ya registrados o nuevos.</li>
+            <li>Busca las historias que hayas registrado y rev&iacute;asalas o actual&iacute;zalas.</li>
+            <li>Consulta y actualiza la informaci&oacute;n de tu perfil.</li>
+            <li>Agrega notas evolutivas a cada historia y consúltalas cuando necesites.</li>
+            <li>Exporta las historias y notas que hayas registrado como PDF.</li>
+        </ul>
+        @if (Session["UsrHc"] == null)
+        {
+            <div style="text-align:center;">
+                @Html.ActionLink("Iniciar sesión", "Login", "HistoriaClinica", new { @class = "btn btn-lg btn-success", style = "box-shadow:#203016 0px 5px 5px;" })
+            </div>
+            <div class="card bg-info text-center">
+                <h3 class="text-primary">Usuario y contraseña demo:</h3>
+                <h4 class="text-primary"><strong>admin</strong></h4>
+            </div>
+        }
+        &nbsp;
+    </div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-5">
+        @if (Session["UsrHc"] == null)
+        {
+            <div class="w-10 containerClinica">
+                <p>
+                    No requieres cuenta. Y en todo caso, PayPal te permite crear una sin necesidad que tengas saldo en ella y pagar con tu tarjeta. <br />
+                    Es totalmente seguro. Se te redirige a la plataforma de PayPal (en la barra de direcciones en tu navegador ver&aacute;s el <em>https</em> y un candado).
+                </p>
+                <p>
+                    <ol>
+                        <li>Escribe tu nombre como referencia y registra tu pago.</li>
+                        <li>En el formulario de Paypal que se abrirá, en el campo de descripción escribe tu correo electrónico.</li>
+                        <li>Continúa registrando la información requerida para el pago y crea tu cuenta. No necesitas agregar saldo y Paypal no te aplicará cargos extra.</li>
+                    </ol>
+                </p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="form-group">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="J5K4JNGG2955S">
+                    <table class="table">
+                        <tr><td><input type="hidden" name="on0" value="Vigencias">Vigencias</td></tr>
+                        <tr>
+                            <td>
+                                <select name="os0" class="form-control">
+                                    <option value="3 meses">3 meses $100.00 MXN</option>
+                                    <option value="6 meses">6 meses $190.00 MXN</option>
+                                    <option value="12 meses">12 meses $360.00 MXN</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td><input type="hidden" name="on1" value="Nombre (referencia)">Tu nombre (referencia)</td></tr>
+                        <tr><td><input type="text" name="os1" maxlength="200" class="form-control form-text"></td></tr>
+                    </table>
+                    <input type="hidden" name="currency_code" value="MXN">
+                    <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+            </div>
+        }
+    </div>
+</div>

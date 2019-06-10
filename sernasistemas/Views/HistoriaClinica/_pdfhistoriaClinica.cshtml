@@ -1,0 +1,447 @@
+﻿@model WCFClinica.Modelos.HistoriaClinicaPDFModel
+
+@{ Layout = null; }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+</head>
+<body>
+    <h1 class="text-center">
+        Historia clínica<br />
+        <small>
+            Acorde con la NOM vigente 168-SSA1-1998
+        </small>
+    </h1>
+    <table class="table">
+        <tr>
+            <td>
+                M&eacute;dico
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Medico, Model.Medico)
+            </td>
+            <td>
+                Fecha
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.FechaHistoria, Model.FechaHistoria.ToShortDateString())
+            </td>
+        </tr>
+    </table>
+
+    <h3>Datos de paciente</h3>
+    <table class="table">
+        <tr>
+            <td>
+                Nombre
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Paciente, Model.Paciente)
+            </td>
+            <td>
+                @if (Model.Edad != -1)
+                {
+                    <span>Edad</span>
+                }
+            </td>
+            <td class="text-primary">
+                @if (Model.Edad != -1)
+                {
+                    @Model.Edad.ToString() <span>años</span>
+                }
+            </td>
+            <td>
+                Sexo
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Sexo, Model.Sexo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Domicilio
+            </td>
+            <td colspan="5" class="text-primary">
+                @Html.DisplayFor(m => m.Domicilio, Model.Domicilio)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fecha de nacimiento
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.FechaNacimiento, Model.FechaNacimiento.ToShortDateString())
+            </td>
+            <td>
+                Tel&eacute;fono
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Telefono, Model.Telefono)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.TipoTelefono, Model.TipoTelefono)
+            </td>
+        </tr>
+    </table>
+
+    <h3 id="#AntecedentesHereditarios">Antecedentes hereditarios</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Familiar</th>
+                <th>Padecimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AntecedentesHereditarios)
+            {
+                <tr>
+                    <td class="text-primary">
+                        @item.Familiar
+                    </td>
+                    <td class="text-primary">
+                        @item.Padecimiento
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Antecedentes personales no patológicos</h3>
+    <table class="table">
+        <tr>
+            <td>
+                Lugar de nacimiento
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.LugarNacimiento, Model.LugarNacimiento)
+            </td>
+            <td>
+                Ciudad de nacimiento
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.CiudadNacimiento, Model.CiudadNacimiento)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Lugar de residencia
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.LugarResidencia, Model.LugarResidencia)
+            </td>
+            <td>
+                Ciudad de residencia
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.CiudadResidencia, Model.CiudadResidencia)
+            </td>
+            <td>
+                A&ntilde;o de residencia
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.AnioResidencia, Model.AnioResidencia.ToString())
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Hábito tabaqu&iacute;tico
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Tabaco, Model.Tabaco)
+            </td>
+            <td>
+                Ocupación
+            </td>
+            <td colspan="3" class="text-primary">
+                @Html.DisplayFor(m => m.Ocupacion, Model.Ocupacion)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Alcohol
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Alcohol, Model.Alcohol)
+            </td>
+            <td>
+                Tipo de sangre
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.TipoSangre, Model.TipoSangre)
+            </td>
+            <td>
+                Factor Rh
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Rh, Model.Rh)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Adicciones
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.Adicciones)
+            </td>
+            <td>
+                Alergias
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.Alergias)
+            </td>
+        </tr>
+    </table>
+
+    <h3 id="AntecedentePatologicos">Antecedentes Patológicos</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Enfermedad</th>
+                <th>Fecha de inicio</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AntecedentesPatologicos)
+            {
+                <tr>
+                    <td class="text-primary">
+                        @item.Enfermedad
+                    </td>
+                    <td class="text-primary">
+                        @item.FechaInicio.ToShortDateString()
+                    </td>
+                    <td class="text-primary">
+                        @item.Status
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.Sexo == "Femenino")
+    {
+        <h3>Antecedentes Gineco-obstetricios</h3>
+        <table class="table">
+            <tr>
+                <td colspan="3">
+                    Menarca
+                </td>
+                <td colspan="5" class="text-primary">
+                    @Html.DisplayFor(m => m.Menarca, Model.Menarca.ToShortDateString())
+                </td>
+                <td>
+                    F. U. R.
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.FUR, Model.FUR.ToShortDateString())
+                </td>
+                <td>
+                    Método anticonceptivo
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.Anticonceptivo, Model.Anticonceptivo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    G
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.G, Model.G.ToString())
+                </td>
+                <td>
+                    P
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.P, Model.P.ToString())
+                </td>
+                <td>
+                    C
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.C, Model.C.ToString())
+                </td>
+                <td>
+                    A
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.A, Model.A.ToString())
+                </td>
+                <td>
+                    Papanicolaou
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.Papanicolaou, Model.Papanicolaou.ToShortDateString())
+                </td>
+                <td>
+                    Mastograf&iacute;a
+                </td>
+                <td class="text-primary">
+                    @Html.DisplayFor(m => m.Mastografia, Model.Mastografia.ToShortDateString())
+                </td>
+            </tr>
+        </table>
+    }
+    <h3 id="MedicacionActual">Medicación actual</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Medicameno</th>
+                <th>Dósis</th>
+                <th>Fecha de inicio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Medicacion)
+            {
+                <tr>
+                    <td class="text-primary">
+                        @item.Medicamento
+                    </td>
+                    <td class="text-primary">
+                        @item.Dosis
+                    </td>
+                    <td class="text-primary">
+                        @item.FechaInicio.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Padecimiento actual</h3>
+    <table class="table">
+        <tr>
+            <td style="font-weight:bold;">
+                Motivo de consulta
+            </td>
+            <td class="text-justify text-primary">
+                @Html.DisplayFor(m => m.MotivoConsulta)
+            </td>
+        </tr>
+    </table>
+
+    <h3>Interrogatorio por aparatos y sistemas</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sistema</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ExploracionSistemas)
+            {
+                <tr>
+                    <td class="text-primary">
+                        @item.Sistema
+                    </td>
+                    <td class="text-primary">
+                        @item.Descripcion
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Exploración física</h3>
+    <table class="table">
+        <tr>
+            <td>
+                T. A.
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.TA, Model.TA)
+            </td>
+            <td>
+                Pulso
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Pulso, Model.Pulso.ToString())
+            </td>
+            <td>
+                F. R.
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.FR, Model.FR.ToString())
+            </td>
+            <td>
+                F. C.
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.FC, Model.FC.ToString())
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Temperatura
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Temperatura, Model.Temperatura.ToString())
+            </td>
+            <td>
+                Peso
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Peso, Model.Peso.ToString())
+            </td>
+            <td>
+                Estatura
+            </td>
+            <td class="text-primary">
+                @Html.DisplayFor(m => m.Estatura, Model.Estatura.ToString())
+            </td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>
+                Descripci&oacute;n
+            </td>
+            <td colspan="7" class="text-primary text-justify">
+                @Html.DisplayFor(m => m.DescripcionExpFisica)
+            </td>
+        </tr>
+    </table>
+
+    <h3>Anal&iacute;sis</h3>
+    <table class="table">
+        <tr>
+            <td class="text-justify text-primary">
+                @Html.DisplayFor(m => m.Analisis)
+            </td>
+        </tr>
+    </table>
+
+    <h3>Impresi&oacute;n Diagnostica</h3>
+    <table class="table">
+        <tr>
+            <td class="text-justify text-primary">
+                @Html.DisplayFor(m => m.ImpresionDiagnostica)
+            </td>
+        </tr>
+    </table>
+
+    <h3>Plan Terapeutico</h3>
+    <table class="table">
+        <tr>
+            <td class="text-justify text-primary">
+                @Html.DisplayFor(m => m.PlanTerapeutico)
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

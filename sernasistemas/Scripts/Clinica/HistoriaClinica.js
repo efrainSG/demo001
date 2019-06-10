@@ -22,28 +22,32 @@
         fila.append(celFamiliar)
         fila.append(celEnfermedad);
         $tblAntecedentes.find("tbody").append(fila);
+
+        $Padecimiento.val("");
     });
 
     $btnAgregarEnfermedad.off().on("click", function () {
         var $FechaInicio = $("#AntecedentePatologico_FechaInicio"), $Enfermedad = $("#AntecedentePatologico_Enfermedad"),
-            $IdStatus = $("#AntecedentePatologico_IdStatus");
+            $IdStatus = $("#chkAntecedentePatologico_IdStatus");
         var $tblAntecedentes = $("#tblAntecedentesPatologicos");
         var fila = $("<tr>"), celEnfermedad = $("<td>"), celInicio = $("<td>"), celStatus = $("<td>"), celAcciones = $("<td>");
 
         $objEnfermedades.push({
             Enfermedad: $Enfermedad.val(),
             FechaInicio: $FechaInicio.val(),
-            IdStatus: $IdStatus.val()
+            IdStatus: $IdStatus.prop('checked') ? 25 : 26
         });
 
         celEnfermedad.append($Enfermedad.val());
         celInicio.append($FechaInicio.val());
-        celStatus.append($IdStatus.val());
+        celStatus.append($IdStatus.prop('checked') ? 'Activo' : 'Inactivo');
         fila.append(celAcciones);
         fila.append(celEnfermedad)
         fila.append(celInicio);
         fila.append(celStatus);
         $tblAntecedentes.find("tbody").append(fila);
+
+        $Enfermedad.val("");
     });
 
     $btnAgregarMedicacion.off().on("click", function () {
@@ -65,6 +69,9 @@
         fila.append(celDosis);
         fila.append(celInicio);
         $tblMedicacion.find("tbody").append(fila);
+
+        $Medicamento.val("");
+        $Dosis.val("");
     });
 
     $btnAgregarSistema.off().on("click", function () {
@@ -83,6 +90,8 @@
         $fila.append(celSistema);
         $fila.append(celDescripcion);
         $tblSistema.find("tbody").append($fila);
+
+        $Descripcion.val("");
     });
 
     $('input[type=radio][name="Paciente.IdSexo"]').change(function () {
@@ -92,7 +101,7 @@
             $("#divGineco").show();
     });
 
-    $("#dpHistoriaClinica_FechaHistoria, #dpPaciente_FechaNacimiento, #dpAntecedentePatologico_FechaInicio, #dpAntecedentesGinecoObstetricios_FUR, #dpAntecedentesGinecoObstetricios_Papanicolaou, #dpAntecedentesGinecoObstetricios_Mastografia, #dpMedicacion_FechaInicio")
+    $("#dpHistoriaClinica_FechaHistoria, #dpPaciente_FechaNacimiento, #dpAntecedentePatologico_FechaInicio, #dpAntecedentesGinecoObstetricios_FUR, #dpAntecedentesGinecoObstetricios_Papanicolaou, #dpAntecedentesGinecoObstetricios_Mastografia, #dpMedicacion_FechaInicio, #dpAntecedentesGinecoObstetricios_Menarca")
         .off()
         .on("change", function () {
             var id = $(this).attr('id').split('dp')[1];

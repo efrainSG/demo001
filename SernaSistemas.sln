@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemas", "SernaSistemas\SernaSistemas.csproj", "{5209042A-E74B-4BB3-AE05-83CC57120007}"
 EndProject
@@ -55,6 +55,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemasTests1", "SernaSistemasTests1\SernaSistemasTests1.csproj", "{D3475E98-4AEB-461A-92CB-62811943F489}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFClinica", "WCFClinica\WCFClinica.csproj", "{369E3388-95AC-452D-9B25-5C4D937819D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemas.Reportes", "SernaSistemas.Reportes\SernaSistemas.Reportes.csproj", "{A19746D9-C224-4D7C-B759-571E8A787488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +126,10 @@ Global
 		{369E3388-95AC-452D-9B25-5C4D937819D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{369E3388-95AC-452D-9B25-5C4D937819D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{369E3388-95AC-452D-9B25-5C4D937819D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19746D9-C224-4D7C-B759-571E8A787488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19746D9-C224-4D7C-B759-571E8A787488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19746D9-C224-4D7C-B759-571E8A787488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19746D9-C224-4D7C-B759-571E8A787488}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{CCE974C2-7583-43E3-AC15-E276B68BBE95} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
 		{3801434F-88C9-446A-B111-A13A334968FD} = {90BF2C47-746C-4428-B70E-5F0CAA68C537}
 		{369E3388-95AC-452D-9B25-5C4D937819D4} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
+		{A19746D9-C224-4D7C-B759-571E8A787488} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4CC0C561-B9B9-4218-B561-7599DEFCF3BE}
