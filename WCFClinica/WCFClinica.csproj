@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="Clases\ReqRespBase.cs" />
     <Compile Include="Contratos\IClinica.cs" />
+    <Compile Include="Modelos\HistoriaClinicaPDFModel.cs" />
     <Compile Include="Modelos\LoginReqResp.cs" />
+    <Compile Include="Modelos\NotaEvolutivaReqResp.cs" />
     <Compile Include="Modelos\RegistrarReqResp.cs" />
     <Compile Include="Modelos\selRegistrosReqResp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

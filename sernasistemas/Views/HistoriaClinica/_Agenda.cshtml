@@ -1,0 +1,29 @@
+﻿@model SernaSistemas.Models.agendaViewModel
+
+@{
+    ViewBag.Title = "Agenda";
+    ViewBag.vista = "_Agenda";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>
+    @ViewBag.Title
+</h2>
+@using (Html.BeginForm("postAgenda", "HistoriaClinica", FormMethod.Post))
+{
+    <div class="container containerClinica">
+        <div class="row">
+        </div>
+    </div>
+
+    <h3>&nbsp;</h3>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center;">
+            <button type="submit" class="btn btn-lg btn-success" style="box-shadow:#203016 0px 5px 5px;" data-toggle="tooltip"
+                    data-placement="bottom" title="Guarda Nota evolutiva">
+                <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+            </button>
+        </div>
+    </div>
+}
+

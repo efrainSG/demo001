@@ -216,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\agendaViewModel.cs" />
     <Compile Include="Models\Assemblers\HistoriaClinicaAssembler.cs" />
     <Compile Include="Models\BloggerFeedModel.cs" />
     <Compile Include="Models\HistoriaClinica.cs">
@@ -451,6 +452,7 @@
     <Content Include="Views\HistoriaClinica\_pdfNota.cshtml" />
     <Content Include="Views\HistoriaClinica\_pdfhistoriaClinica.cshtml" />
     <Content Include="Views\HistoriaClinica\postPago.cshtml" />
+    <Content Include="Views\HistoriaClinica\_Agenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

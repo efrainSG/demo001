@@ -7,17 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using WCFClinica.Clases;
 
-namespace WCFClinica.Modelos {
+namespace WCFClinica.Modelos
+{
     [DataContract]
-    public class LoginRequest : ReqRespBase {
-        [DataMember, Display(Name = "Nombre de usuario")]
+    public class LoginRequest : ReqRespBase
+    {
+        [DataMember,
+            Display(Name = "Nombre de usuario"),
+            Required(ErrorMessage = "Se requiere nombre de usuario")]
         public string Usuario { get; set; }
-        [DataMember, Display(Name = "Contraseña")]
+
+        [DataMember, 
+            Display(Name = "Contraseña"),
+            Required(ErrorMessage ="Se requiere contraseña")]
         public string Password { get; set; }
     }
 
     [DataContract]
-    public class LoginResponse : ReqRespBase {
+    public class LoginResponse : ReqRespBase
+    {
         [DataMember]
         public int Resultado { get; set; }
         [DataMember]

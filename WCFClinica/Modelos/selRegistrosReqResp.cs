@@ -16,6 +16,8 @@ namespace WCFClinica.Modelos {
         public int IdMedico { get; set; }
         [DataMember, Display(Name ="Fecha de la Historia")]
         public DateTime FechaHistoria { get; set; }
+        [DataMember]
+        public string Paciente { get; set; }
     }
 
     [DataContract]
@@ -141,6 +143,8 @@ namespace WCFClinica.Modelos {
         [DataMember, Display(Name = "Familiar")]
         public int IdFamiliar { get; set; }
         [DataMember]
+        public string Familiar { get; set; }
+        [DataMember]
         public string Padecimiento { get; set; }
     }
 
@@ -164,6 +168,8 @@ namespace WCFClinica.Modelos {
         public int Id { get; set; }
         [DataMember]
         public int IdStatus { get; set; }
+        [DataMember]
+        public string Status { get; set; }
         [DataMember]
         public string Enfermedad { get; set; }
         [DataMember]
@@ -206,6 +212,8 @@ namespace WCFClinica.Modelos {
         public int IdSistema { get; set; }
         [DataMember, Display(Name = "Descripción")]
         public string Descripcion { get; set; }
+        [DataMember]
+        public string Sistema { get; set; }
     }
 
     [DataContract]

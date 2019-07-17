@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c894f7e547a641519eac2b831011670b" Name="Diagram1">
+        <EntityTypeShape EntityType="cotedivModel.Alumno" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Escuela" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.EscuelaUbicacion" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Experto" Width="1.5" PointX="10.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.ExpertoGrados" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Persona" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.PersonaDetalle" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Catalogo" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.TipoCatalogo" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.EvaluacionPublicaciones" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Publicaciones" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cotedivModel.Opiniones" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="cotedivModel.fk_Alumno_Opiniones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Alumno_Publiaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Persona_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Catalogo_Escuela" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Escuela_EscuelaUbicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Ciudad_EscuelaUbicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Estado_EscuelaUbicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Experto_EvaluacionPublicaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Experto_ExpertoGrados" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Persona_Experto" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Persona_PersonaDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Ciudad_PersonaDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Estado_PersonaDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Pais_PersonaDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Sexo_PersonaDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Area_Publiaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Status_Publiaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_TipoCatalogo_Catalogo" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Valor_EvaluacionPublicaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Valor_Opiniones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Publicaciones_EvaluacionPublicaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.fk_Publicaciones_Opiniones" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.AlumnoEscuela" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.ExpertoAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="cotedivModel.ExpertoEscuelas" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

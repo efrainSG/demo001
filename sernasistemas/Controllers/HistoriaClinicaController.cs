@@ -1040,5 +1040,14 @@ namespace SernaSistemas.Controllers
 
         }
 
+        public ActionResult Agenda()
+        {
+            return View("_Agenda");
+        }
+        [HttpPost]
+        public ActionResult postAgenda(agendaViewModel model)
+        {
+            return View("_Agenda");
+        }
     }
 }

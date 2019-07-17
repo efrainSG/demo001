@@ -60,5 +60,9 @@ namespace WCFClinica {
         buscarHistoriaResponse buscarHistorias(buscarHistoriasRequest request);
         [OperationContract]
         EstadosReqResp obtenerEstados(EstadosReqResp request);
+        [OperationContract]
+        NotaEvolutivaReqResp guardarNotaEvolutiva(NotaEvolutivaReqResp notaEvolutivaReqResp);
+        [OperationContract]
+        ListaNotasEvolutivasResponse ListaNotasEvolutivas(NotaEvolutivaReqResp notaEvolutivaReq);
     }
 }

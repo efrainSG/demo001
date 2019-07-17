@@ -3,23 +3,51 @@
 }
 
 <h2>Productos</h2>
+            No requieres cuenta. Y en todo caso, PayPal te permite crear una sin necesidad que tengas saldo en ella y pagar con tu tarjeta. <br />
+            Es totalmente seguro. Se te redirige a la plataforma de PayPal (en la barra de direcciones en tu navegador verás el <em>https</em> y un candado).
 <div class="row">
-    @*<div class="col-md-4">
+    <div class="col-md-4">
         <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
             Gestión de Historias Clínicas<br />
             <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
         </a>
         <p>
-            Regístrate y comiensa a llevar control sobre las historias clínicas de tus pacientes.
-            Comparte el enlace a tu consultorio virtual y permite que tus pacientes consulten cuándo tienen cita agendada, así como sus últimas recetas para recordar la medicación que llevan, y avisos que desees comunicarles.
+            Inicia sesión desde cualquier dispositivo.
+            Registra nuevos pacientes.
+            Busca a quienes ya registraste para crearles o consultar sus historias clínicas.
+            Registra nuevas historias para pacientes aún no registrados.
         </p>
+        <div class="w-100 text-primary">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <table class="table table-info">
+                    <tr>
+                        <td><input type="hidden" name="on0" value="Vigencias">Vigencias</td>
+                        <td>
+                            <select name="os0" class="form-control">
+                                <option value="3 meses">3 meses $100.00 MXN</option>
+                                <option value="6 meses">6 meses $190.00 MXN</option>
+                                <option value="12 meses">12 meses $360.00 MXN</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="on1" value="Nombre (para referencia)">Tu nombre (para referencia)</td>
+                        <td><input type="text" name="os1" maxlength="200" class="form-control"></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div>
         <p>
             Si requieres un sistema más grande o especializado, no dudes en @Html.ActionLink("contactarme para un presupuesto", "Index")
             @Html.ActionLink(linkText: " ", actionName: "Index", routeValues: null, htmlAttributes: new {
                 @class = "glyphicon glyphicon-play-circle"
             }).
         </p>
-    </div>*@
+    </div>
     <div class="col-md-4">
         <a href="@Url.Action("","Negocios")" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
             Centro comercial virtual<br />
@@ -60,31 +88,31 @@
         </div>
     </div>
     @*<div class="col-md-4">
-        <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
-            CoTeDiv<br />
-            <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
-        </a>
-        <p>
-            Encuentra definiciones y conceptos en este buscador, ve cómo se relaciona la información en los mapas que genera.
-        </p>
-        <p>
-            Regístrate para comenzar a compartir tus conocimientos y opinar sobre otros conceptos.<br />
-            Como experto puedes evaluar y otorgar puntos.
-        </p>
-        <p>Es un sistema diseñado como apoyo educativo en una mecánica de puntuación y posicionamiento</p>
+                <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
+                    CoTeDiv<br />
+                    <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
+                </a>
+                <p>
+                    Encuentra definiciones y conceptos en este buscador, ve cómo se relaciona la información en los mapas que genera.
+                </p>
+                <p>
+                    Regístrate para comenzar a compartir tus conocimientos y opinar sobre otros conceptos.<br />
+                    Como experto puedes evaluar y otorgar puntos.
+                </p>
+                <p>Es un sistema diseñado como apoyo educativo en una mecánica de puntuación y posicionamiento</p>
+            </div>
+        </div>*@
+    <div class="row">
+        @*<div class="col-md-4">
+                <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
+                    Gestión Escolar<br />
+                    <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
+                    Sistema Escolar<br />
+                    <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
+                </a>
+            </div>*@
     </div>
-</div>*@
-<div class="row">
-    @*<div class="col-md-4">
-        <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
-            Gestión Escolar<br />
-            <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn btn-lg btn-primary" target="_blank" style="width:100%">
-            Sistema Escolar<br />
-            <small>Ir <span class="glyphicon glyphicon-new-window"></span></small>
-        </a>
-    </div>*@
-</div>

@@ -120,6 +120,10 @@
                         if (ViewBag.vista != "_listaPacientes") {
                             <li>@Html.ActionLink("Buscar pacientes", "ListadoPacientes", "HistoriaClinica")</li>
                         }
+                        if (ViewBag.vista != "_Agenda")
+                        {
+                        <li>@Html.ActionLink("Agenda", "Agenda", "HistoriaClinica")</li>
+                        }
                     }
                 </ul>
             </div>
