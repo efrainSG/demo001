@@ -15,3 +15,15 @@ C:\Users\efrai\Documents\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistema
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.csproj.CopyComplete
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.dll
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.pdb
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\SernaSistemas.Core.dll.config
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\SernaSistemas.Core.dll
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\SernaSistemas.Core.pdb
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\repos\demo001\SernaSistemas.Core\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.csprojAssemblyReference.cache
+C:\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.csproj.CoreCompileInputs.cache
+C:\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.csproj.CopyComplete
+C:\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.dll
+C:\repos\demo001\SernaSistemas.Core\obj\Debug\SernaSistemas.Core.pdb

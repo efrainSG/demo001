@@ -17,3 +17,17 @@ C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaS
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CopyComplete
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.dll
 C:\Users\efrai\Documents\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.pdb
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll.config
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.dll
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\SernaSistemas.DataAccess.pdb
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csprojAssemblyReference.cache
+C:\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CoreCompileInputs.cache
+C:\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.csproj.CopyComplete
+C:\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.dll
+C:\repos\demo001\SernaSistemas.DataAccess\obj\Debug\SernaSistemas.DataAccess.pdb
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\HistoriaClinica.mdf
+C:\repos\demo001\SernaSistemas.DataAccess\bin\Debug\HistoriaClinica_log.ldf

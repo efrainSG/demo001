@@ -12,6 +12,9 @@
     <li class="active">
         <a href="#divHistoria" data-toggle="tab">@ViewBag.Title</a>
     </li>
+    <li>
+        <a href="#divAcuerdo" data-toggle="tab">Consentimiento</a>
+    </li>
     @if (Model.Notas.Count > 0)
     {
         <li>
@@ -624,6 +627,16 @@
                 </div>
             </div>
         }
+    </div>
+    <div id="divAcuerdo" class="tab-pane fade">
+        <div class="container containerClinica">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <canvas style="width:400px; height:200px; border:1px solid #000;"></canvas>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div id="divNotas" class="tab-pane fade">
         <div class="container containerClinica">

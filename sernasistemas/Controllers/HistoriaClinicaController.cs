@@ -788,6 +788,11 @@ namespace SernaSistemas.Controllers
             idNota = response.IdNota;
             return RedirectToAction("NotaEvolutiva", new { IdHistoria = idHistoria, IdNota = idNota });
         }
+        public ActionResult Grafica(int? IdHistoria)
+        {
+            var modelo = new GraficasHistoriaModel();
+            return View("_Grafica", modelo);
+        }
         public ActionResult pdfNota(int? IdHistoria, int? IdNota)
         {
             if (Session["UsrHC"] == null)
