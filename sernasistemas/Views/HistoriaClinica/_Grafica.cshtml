@@ -1,0 +1,307 @@
+﻿@model SernaSistemas.Models.GraficasHistoriaModel
+
+@{
+    ViewBag.Title = "Gráfica";
+    ViewBag.vista = "_Grafica";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>
+    <small>
+        @Html.ActionLink("< Regresar", "Historia", new { IdHistoria = Model.IdHistoria })
+    </small><br />@ViewBag.title
+</h2>
+
+<script>
+    $(function () {
+        initGraf();
+    });
+</script>
+<div class="row" id="divGraficador">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount00" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount01" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical00" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical01" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG0">
+                        <input type="text" class="text-center" id="avg0" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount02" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount03" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical02" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical03" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG1">
+                        <input type="text" class="text-center" id="avg1" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount04" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount05" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical04" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical05" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG2">
+                        <input type="text" class="text-center" id="avg2" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount06" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount07" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical06" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical07" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG3">
+                        <input type="text" class="text-center" id="avg3" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount08" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount09" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical08" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical09" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG4">
+                        <input type="text" class="text-center" id="avg4" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0A" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0B" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical0A" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical0B" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG5">
+                        <input type="text" class="text-center" id="avg5" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0C" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0D" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical0C" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical0D" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG6">
+                        <input type="text" class="text-center" id="avg6" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0E" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount0F" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical0E" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical0F" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG7">
+                        <input type="text" class="text-center" id="avg7" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount10" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount11" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical10" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical11" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG8">
+                        <input type="text" class="text-center" id="avg8" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount12" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount13" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical12" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical13" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVG9">
+                        <input type="text" class="text-center" id="avg9" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount14" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount15" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical14" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical15" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVGA">
+                        <input type="text" class="text-center" id="avgA" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" id="amount16" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="amount17" readonly style="color:#f6931f; font-weight:bold" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="slideVertical16" style="height:200px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="slideVertical17" style="height:200px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="divAVGB">
+                        <input type="text" class="text-center" id="avgB" readonly style="color:#1f72f6;font-weight:bold; width:100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <canvas style="width:400px; height:200px; border:1px solid #000;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
