@@ -1,0 +1,27 @@
+{
+  "name": "sernasistemas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "karma": "karma start"
+  },
+  "author": "ESG",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "3.2.0",
+    "jasmine-ajax": "^3.4.0",
+    "jasmine-core": "3.2.1",
+    "karma": "3.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.2",
+    "karma-html-detailed-reporter": "1.1.21",
+    "karma-jasmine": "1.1.2",
+    "karma-mocha-reporter": "2.2.5",
+    "karma-phantomjs-launcher": "1.0.4",
+    "phantomjs-prebuilt": "2.1.16"
+  }
+}

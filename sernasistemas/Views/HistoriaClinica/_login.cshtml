@@ -1,0 +1,40 @@
+﻿@model SernaSistemas.Models.LoginModel
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+    ViewBag.vista = "_login";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+@using (Html.BeginForm("hazLogin","HistoriaClinica")) {
+<div class="container card containerClinica" style="margin:auto; width:50%; padding-left:1em; padding-right:1em;">
+
+    <div class="row card-header" style="padding-left:1em;">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DisplayNameFor(m => m.Request.Usuario)
+                @Html.TextBoxFor(m => m.Request.Usuario, new { @class = "form-control" })
+                @Html.DisplayNameFor(m => m.Request.Password)
+                @Html.PasswordFor(m => m.Request.Password, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <input type="submit" value="Iniciar sesión" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script>
+    $(document).ready(function () {
+        $("#Request_Usuario").focus();
+    });
+</script>

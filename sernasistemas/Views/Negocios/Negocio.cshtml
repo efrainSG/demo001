@@ -1,0 +1,397 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Nombre;
+    Layout = "~/Views/Shared/_LayoutNegocio.cshtml";
+}
+@section estilos{
+    <link rel="stylesheet" type="text/css" href="~/Content/NegociosStyle/@ViewBag.css">
+    <link href="https://fonts.googleapis.com/css?family=@ViewBag.font" rel="stylesheet">
+}
+<script>
+    $(document).ready(function () {
+        var $navbar = $("#negocioNavBar");
+        var $lnkInicio, $lnkProductos, $lnkServicios, $lnkAcercaDe, $lnkComentarios, $lnkGaleria;
+        var $divcontacto;
+        var $divNegocioAcercaDeContacto = $("#divNegocioAcercaDeContacto");
+        $divcontacto = $("#divNegocioInicioContacto");
+        ContactoOpciones.id = @ViewBag.Id;
+        initContacto($divcontacto);
+        initContacto($divNegocioAcercaDeContacto);
+        //initMapa({ Nombre: "Ubicaciones" }, $("#"))
+        jQuery.noConflict();
+
+        $lnkInicio = $('<li><a href="#" id="lnkInicio" data-toggle="collapse" data-target=".navbar-collapse.show">Inicio</a></li>')
+            .off().on("click", function () {
+                var url = window.location;
+                var serverhome = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
+                var server = serverhome + "/Negocios/obtenerNovedades";
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionInicio").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divfoto']").empty();
+
+                        $.ajax({
+                            url: server,
+                            data: {
+                                Id: @ViewBag.Id
+                            },
+                            type: "post",
+                            dataType: "json"
+                        }).done(function (obj) {
+                            var $divProductos = $("#divNovedades").empty();
+                            //$("#introProductos").html(obj.seccionContenido);
+                            $.each(obj.novedades, function (i) {
+                                $this = $(this)[0];
+                                initProducto($divProductos, $this.Tipo, i, {
+                                    "Id": $this.Id,
+                                    "Nombre": $this.Nombre,
+                                    "Precio": $this.Precio,
+                                    "DescripcionBreve": $this.DescripcionBreve,
+                                    "Descripcion":$this.Descripcion,
+                                    "Aceptacion": $this.Aceptacion,
+                                    "Foto": this.Foto,
+                                    "Ruta": serverhome + "/Content/images/negociosimgs/"
+                                });
+                            });
+                        }).fail(function (a) {
+                            console.log(a);
+                        }).always(function (e) {
+                            console.log(e);
+                        });
+
+                    });
+                });
+            });
+        $lnkProductos = $('<li><a href="#" id="lnkProductos" data-toggle="collapse" data-target=".navbar-collapse.show">Productos</a></li>')
+            .off().on("click", function () {
+                var url = window.location;
+                var serverhome = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
+                var server = serverhome + "/Negocios/obtenerProductos";
+
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionProductos").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divfoto']").empty();
+                        $.ajax({
+                            url: server,
+                            data: {
+                                Id: @ViewBag.Id,
+                                visible: true
+                            },
+                            type: "post",
+                            dataType: "json"
+                        }).done(function (obj) {
+                            var $divProductos = $("#divProductos").empty();
+                            $("#introProductos").html(obj.seccionContenido);
+                            $.each(obj.productos, function (i) {
+                                 $this = $(this)[0];
+                                initProducto($divProductos, "PRODUCTO", i, {
+                                    "Id": $this.Id,
+                                    "Nombre": $this.Nombre,
+                                    "Precio": $this.Precio,
+                                    "DescripcionBreve": $this.DescripcionBreve,
+                                    "Descripcion": $this.Descripcion,
+                                    "Aceptacion": $this.Aceptacion,
+                                    "Foto": this.Foto,
+                                    "Ruta": serverhome + "/Content/images/negociosimgs/"
+                                });
+                            });
+                        }).fail(function (a) {
+                            console.log(a);
+                        }).always(function (e) {
+                        });
+                    });
+                });
+            });
+        $lnkServicios = $('<li><a href="#" id="lnkServicios" data-toggle="collapse" data-target=".navbar-collapse.show">Servicios</a></li>')
+            .off().on("click", function () {
+                var url = window.location;
+                var serverhome = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
+                var server = serverhome + "/Negocios/obtenerServicios";
+
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionServicios").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divfoto']").empty();
+                        $.ajax({
+                            url: server,
+                            data: {
+                                Id: @ViewBag.Id,
+                                    visible: true
+                            },
+                            type: "post",
+                            dataType: "json"
+                        }).done(function (obj) {
+                            $("#introServicios").html(obj.seccionContenido);
+                            var $divServicios = $("#divServicios").empty();
+                            $.each(obj.servicios, function (i) {
+                                $this = $(this)[0];
+                                initProducto($divServicios, "SERVICIO", i, {
+                                    "Id": $this.Id,
+                                    "Nombre": $this.Nombre,
+                                    "Precio": $this.Precio,
+                                    "DescripcionBreve": $this.DescripcionBreve,
+                                    "Descripcion": $this.Descripcion,
+                                    "Aceptacion": $this.Aceptacion,
+                                    "Foto": this.Foto,
+                                    "Ruta": serverhome + "/Content/images/negociosimgs/"
+                                });
+                            });
+                        }).fail(function (a) {
+                            console.log(a);
+                        }).always(function (e) {
+                        });
+                    });
+                });
+            });
+        $lnkGaleria = $('<li><a href="#" id="lnkGaleria" data-toggle="collapse" data-target=".navbar-collapse.show">Galería</a></li>')
+            .off().on("click", function () {
+                var url = window.location;
+                var serverhome = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
+                var server = serverhome + "/Negocios/obtenerFotos";
+
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionGaleria").delay(500).slideDown().ready(function () {
+                        $("[id^='divprod']").empty();
+                        $("[id^='divserv']").empty();
+                        $("[id^='divfoto']").empty();
+                        $.ajax({
+                            url: server,
+                            data: {
+                                Id: @ViewBag.Id
+                            },
+                            type: "post",
+                            dataType: "json"
+                        }).done(function (obj) {
+                            $("#introGaleria").html(obj.seccionContenido);
+                            var $divFotos = $("#divFotos").empty();
+                            $.each(obj.Fotos, function (i) {
+                                $this = $(this)[0];
+                                initFoto($divFotos, i, {
+                                    "Titulo": $this.Value,
+                                    "Id": $this.Key,
+                                    "Ruta": serverhome + "/Content/images/negociosimgs/fotos/"
+                                });
+                            });
+                        }).fail(function (a) {
+                            console.log(a);
+                        }).always(function (e) {
+                        });
+
+                    });
+                });
+            });
+        //$lnkComentarios = $('<li><a href="#" id="lnkComentarios" data-toggle="collapse" data-target=".navbar-collapse.show">Comentarios</a></li>')
+        //    .off().on("click", function () {
+        //        $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+        //            $("#seccionComentarios").delay(500).slideDown();
+        //        });
+        //    });
+        $lnkAcercaDe = $('<li><a href="#" id="lnkAcercaDe" data-toggle="collapse" data-target=".navbar-collapse.show">Acerca de...</a></li>')
+            .off().on("click", function () {
+                var url = window.location;
+                var serverhome = url.protocol + '//' + url.host + (url.host === "localhost" ? url.port : "");
+                var server = serverhome + "/Negocios/AcercaDe";
+
+                $.when($("[id^='seccion']").slideUp("slow")).then(function () {
+                    $("#seccionAcercaDe").delay(500).slideDown().ready(function () {
+                        $.ajax({
+                            url: server,
+                            data: {
+                                Id: @ViewBag.Id
+                            },
+                            type: "post",
+                            dataType: "json"
+                        })
+                            .done(function (obj) {
+                                $("#AcercaDeContenido").html("");
+                                $(obj).each(function (ndx) {
+                                    $("#AcercaDeContenido").append(
+                                        "<h3>" + $(this)[0].Titulo + "</h3><p>" +
+                                        $(this)[0].Seccion + "</p>"
+                                    );
+                                });
+
+                            })
+                            .fail(function (a) {
+                                console.log(a);
+                            })
+                            .always(function (e) {
+                            });
+                    });
+                });
+            });
+        $lnkLogin = $("#lnklogin");
+        $lnkLogin.off("click").on("click", function () {
+            var $hrd = $("#modalHdr"), $body = $("#divModalBody"), $modal = $("#myModal");
+            $body.empty();
+
+            opcioneslogin = {
+                controller: "Negocios",
+                metodo: "Login",
+                callback: function () {
+                    var newUrl = window.location.protocol.toString() + "//" + window.location.host.toString() + "/Negocios/LoginGet";
+                    top.location.assign(newUrl);
+                    //return false;
+                }
+            };
+            initLogin($body);
+            $hrd.removeClass().addClass("modal-title text-center text-info bg-info").html("Inicio de sesión");
+            $modal.modal();
+        });
+        $navbar.append($lnkInicio);
+        $navbar.append($lnkProductos);
+        $navbar.append($lnkServicios);
+        //$navbar.append($lnkGaleria);
+        //$navbar.append($lnkComentarios);
+        $navbar.append($lnkAcercaDe);
+
+        //initProducto($("#divprod1"), 1);
+        $lnkInicio.click();
+    });
+</script>
+<div class="well serna-titulo">
+    <h1>
+        @ViewBag.Nombre
+    </h1>
+    <p>
+        @ViewBag.Direccion<br />
+        @ViewBag.Telefono<br />
+        @ViewBag.Correo<br />
+        <small>@ViewBag.Horario</small>
+    </p>
+</div>
+<div class="well well-sm Seccion" id="seccionInicio">
+    <h2>Inicio</h2>
+    @*<div class="well">
+            Falta desarrollar el Carrousel principal con intro al negocio
+        </div>*@
+    <div class="row">
+        <div class="col-md-8" id="divNovedades">
+
+        </div>
+        <div class="col-md-4" id="divNegocioInicioContacto">
+        </div>
+    </div>
+    @*<div class="well">
+            Falta desarrollar el Mapa de sucursales del negocio
+        </div>*@
+</div>
+<div class="well well-sm Seccion" style="display:none;" id="seccionProductos">
+    <h2>
+        Productos
+        <small>
+            <p id="introProductos">
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-3">
+            @*Falta desarrollar el filtro por Categorías y clasificación de productos/servicios*@
+        </div>
+        <div class="col-md-9" id="divProductos">
+        </div>
+    </div>
+</div>
+<div class="well well-sm Seccion" style="display:none;" id="seccionServicios">
+    <h2>
+        Servicios
+        <small>
+            <p id="introServicios">
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-9" id="divServicios">
+        </div>
+        <div class="col-md-3">
+            @*Falta desarrollar el filtro por Categorías y clasificación de productos/servicios*@
+        </div>
+    </div>
+</div>
+<div class="well well-sm Seccion" style="display:none;" id="seccionGaleria">
+    <h2>
+        Galería
+        <small>
+            <p id="introGaleria">
+                Intro a la sección
+            </p>
+        </small>
+    </h2>
+    <div class="row">
+        <div class="col-md-9" id="divFotos">
+        </div>
+        <div class="col-md-3">
+            @*Falta desarrollar el filtro por Categorías y clasificación de productos/servicios*@
+        </div>
+    </div>
+</div>
+<div class="well well-sm Seccion" style="display:none;" id="seccionComentarios">
+    <h2>
+        Comentarios
+        @*<small>
+                <p id="introComentarios">
+                    Intro a la sección
+                </p>
+                <p>
+                    Se necesita desarrollar el widget que desplegará el comentario y la respuesta
+                </p>
+            </small>*@
+    </h2>
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-primary">Comentario 1</span>
+                    <div class="col-md-offset-1">
+                        <span class="text-info">Respuesta 1</span>
+                        <div class="col-md-offset-1">
+                            <span class="text-info">Respuesta 1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            Contacto
+        </div>
+    </div>
+
+</div>
+<div class="well well-sm Seccion" style="display:none;" id="seccionAcercaDe">
+    <h2>Acerca del negocio</h2>
+    <div class="row">
+        <div class="col-md-8" id="AcercaDeContenido">
+
+        </div>
+        <div class="col-md-4" id="divNegocioAcercaDeContacto">
+
+        </div>
+    </div>
+</div>

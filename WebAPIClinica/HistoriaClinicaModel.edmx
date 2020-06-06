@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HistoriaClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasenia" Type="varbinary" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSexo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdTipoSangre" Type="int" Nullable="false" />
+          <Property Name="Rh" Type="char" MaxLength="1" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="IdLugarNacimiento" Type="int" Nullable="false" />
+          <Property Name="CiudadNacimiento" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Telefonos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdTipoTelefono" Type="int" Nullable="false" />
+          <Property Name="NumeroTelefono" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Persona_Medico">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Telefonos">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Telefonos" Type="Self.Telefonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Telefonos">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="loginMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administracion">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Passwd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="registraMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administracion">
+          <Parameter Name="IdSexo" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdTipoSangre" Type="int" Mode="In" />
+          <Parameter Name="Rh" Type="char" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="IdLugarNacimiento" Type="int" Mode="In" />
+          <Parameter Name="CiudadNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenia" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="registraTelefono" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administracion">
+          <Parameter Name="IdPersona" Type="int" Mode="In" />
+          <Parameter Name="IdTipoTelefono" Type="int" Mode="In" />
+          <Parameter Name="NumeroTelefono" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="verMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administracion">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="registraPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clinica">
+          <Parameter Name="IdSexo" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdTipoSangre" Type="int" Mode="In" />
+          <Parameter Name="Rh" Type="char" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="IdLugarNacimiento" Type="int" Mode="In" />
+          <Parameter Name="CiudadNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="IdLugarResidencia" Type="int" Mode="In" />
+          <Parameter Name="Domicilio" Type="varchar" Mode="In" />
+          <Parameter Name="Tabaco" Type="bit" Mode="In" />
+          <Parameter Name="Alcohol" Type="bit" Mode="In" />
+          <Parameter Name="CiudadResidencia" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="selPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clinica">
+          <Parameter Name="IdPaciente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Configuracion">
+          <Parameter Name="Catalogo" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="HistoriaClinicaModelStoreContainer">
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="Telefonos" EntityType="Self.Telefonos" Schema="Administracion" store:Type="Tables" />
+          <AssociationSet Name="FK_Persona_Medico" Association="Self.FK_Persona_Medico">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Telefonos" Association="Self.FK_Persona_Telefonos">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Telefonos" EntitySet="Telefonos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HistoriaClinicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HistoriaClinicaEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="registraTelefono">
+            <Parameter Name="IdPersona" Mode="In" Type="Int32" />
+            <Parameter Name="IdTipoTelefono" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroTelefono" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="registraPaciente" ReturnType="Collection(HistoriaClinicaModel.registraPaciente_Result)">
+            <Parameter Name="IdSexo" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdTipoSangre" Mode="In" Type="Int32" />
+            <Parameter Name="Rh" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="IdLugarNacimiento" Mode="In" Type="Int32" />
+            <Parameter Name="CiudadNacimiento" Mode="In" Type="String" />
+            <Parameter Name="IdLugarResidencia" Mode="In" Type="Int32" />
+            <Parameter Name="Domicilio" Mode="In" Type="String" />
+            <Parameter Name="Tabaco" Mode="In" Type="Boolean" />
+            <Parameter Name="Alcohol" Mode="In" Type="Boolean" />
+            <Parameter Name="CiudadResidencia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="selPaciente" ReturnType="Collection(HistoriaClinicaModel.selPaciente_Result)">
+          <Parameter Name="IdPaciente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spCatalogo" ReturnType="Collection(HistoriaClinicaModel.spCatalogo_Result)">
+          <Parameter Name="Catalogo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Medicos" EntityType="HistoriaClinicaModel.Medico" />
+          <EntitySet Name="Personas" EntityType="HistoriaClinicaModel.Persona" />
+          <EntitySet Name="Telefonos" EntityType="HistoriaClinicaModel.Telefono" />
+          <AssociationSet Name="FK_Persona_Medico" Association="HistoriaClinicaModel.FK_Persona_Medico">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Medico" EntitySet="Medicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Telefonos" Association="HistoriaClinicaModel.FK_Persona_Telefonos">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Telefono" EntitySet="Telefonos" />
+          </AssociationSet>
+          <FunctionImport Name="loginMedico" ReturnType="Collection(HistoriaClinicaModel.loginMedico_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Passwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="registraMedico" ReturnType="Collection(HistoriaClinicaModel.registraMedico_Result)">
+            <Parameter Name="IdSexo" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdTipoSangre" Mode="In" Type="Int32" />
+            <Parameter Name="Rh" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="IdLugarNacimiento" Mode="In" Type="Int32" />
+            <Parameter Name="CiudadNacimiento" Mode="In" Type="String" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Contrasenia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="verMedico" ReturnType="Collection(HistoriaClinicaModel.verMedico_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="registraPaciente_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+          <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="LugarResidencia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Domicilio" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="Tabaco" Nullable="false" />
+          <Property Type="Boolean" Name="Alcohol" Nullable="false" />
+          <Property Type="String" Name="CiudadResidencia" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="selPaciente_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+          <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="LugarResidencia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Domicilio" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="Tabaco" Nullable="false" />
+          <Property Type="Boolean" Name="Alcohol" Nullable="false" />
+          <Property Type="String" Name="CiudadResidencia" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="IdPersona1" Nullable="true" />
+          <Property Type="String" Name="TipoTelefono" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NumeroTelefono" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="spCatalogo_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Catalogo" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasenia" Type="Binary" Nullable="false" MaxLength="128" FixedLength="false" />
+          <NavigationProperty Name="Persona" Relationship="HistoriaClinicaModel.FK_Persona_Medico" FromRole="Medico" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSexo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoSangre" Type="Int32" Nullable="false" />
+          <Property Name="Rh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdLugarNacimiento" Type="Int32" Nullable="false" />
+          <Property Name="CiudadNacimiento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medicos" Relationship="HistoriaClinicaModel.FK_Persona_Medico" FromRole="Persona" ToRole="Medico" />
+          <NavigationProperty Name="Telefonos" Relationship="HistoriaClinicaModel.FK_Persona_Telefonos" FromRole="Persona" ToRole="Telefono" />
+        </EntityType>
+        <EntityType Name="Telefono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoTelefono" Type="Int32" Nullable="false" />
+          <Property Name="NumeroTelefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="HistoriaClinicaModel.FK_Persona_Telefonos" FromRole="Telefono" ToRole="Persona" />
+        </EntityType>
+        <Association Name="FK_Persona_Medico">
+          <End Type="HistoriaClinicaModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="HistoriaClinicaModel.Medico" Role="Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Telefonos">
+          <End Type="HistoriaClinicaModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="HistoriaClinicaModel.Telefono" Role="Telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Telefono">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="loginMedico_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="Binary" Name="Mensaje" Nullable="true" MaxLength="8000" />
+        </ComplexType>
+        <ComplexType Name="registraMedico_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+          <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="verMedico_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+          <Property Type="String" Name="CiudadNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Rh" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Sexo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipoSangre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LugarNacimiento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HistoriaClinicaModelStoreContainer" CdmEntityContainer="HistoriaClinicaEntities" >
+          <FunctionImportMapping FunctionImportName="registraTelefono" FunctionName="HistoriaClinicaModel.Store.registraTelefono" />
+          <FunctionImportMapping FunctionImportName="registraPaciente" FunctionName="HistoriaClinicaModel.Store.registraPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.registraPaciente_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoSangre" ColumnName="TipoSangre" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+                <ScalarProperty Name="CiudadNacimiento" ColumnName="CiudadNacimiento" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="LugarResidencia" ColumnName="LugarResidencia" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Tabaco" ColumnName="Tabaco" />
+                <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+                <ScalarProperty Name="CiudadResidencia" ColumnName="CiudadResidencia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selPaciente" FunctionName="HistoriaClinicaModel.Store.selPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.selPaciente_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoSangre" ColumnName="TipoSangre" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+                <ScalarProperty Name="CiudadNacimiento" ColumnName="CiudadNacimiento" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="LugarResidencia" ColumnName="LugarResidencia" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Tabaco" ColumnName="Tabaco" />
+                <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+                <ScalarProperty Name="CiudadResidencia" ColumnName="CiudadResidencia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
+                <ScalarProperty Name="TipoTelefono" ColumnName="TipoTelefono" />
+                <ScalarProperty Name="NumeroTelefono" ColumnName="NumeroTelefono" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCatalogo" FunctionName="HistoriaClinicaModel.Store.spCatalogo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.spCatalogo_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Catalogo" ColumnName="Catalogo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="HistoriaClinicaModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="HistoriaClinicaModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="CiudadNacimiento" ColumnName="CiudadNacimiento" />
+                <ScalarProperty Name="IdLugarNacimiento" ColumnName="IdLugarNacimiento" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="IdTipoSangre" ColumnName="IdTipoSangre" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefonos">
+            <EntityTypeMapping TypeName="HistoriaClinicaModel.Telefono">
+              <MappingFragment StoreEntitySet="Telefonos">
+                <ScalarProperty Name="NumeroTelefono" ColumnName="NumeroTelefono" />
+                <ScalarProperty Name="IdTipoTelefono" ColumnName="IdTipoTelefono" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="loginMedico" FunctionName="HistoriaClinicaModel.Store.loginMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.loginMedico_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="registraMedico" FunctionName="HistoriaClinicaModel.Store.registraMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.registraMedico_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="CiudadNacimiento" ColumnName="CiudadNacimiento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="TipoSangre" ColumnName="TipoSangre" />
+                <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="verMedico" FunctionName="HistoriaClinicaModel.Store.verMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HistoriaClinicaModel.verMedico_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="CiudadNacimiento" ColumnName="CiudadNacimiento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="TipoSangre" ColumnName="TipoSangre" />
+                <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

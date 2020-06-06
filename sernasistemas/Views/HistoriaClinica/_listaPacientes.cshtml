@@ -1,0 +1,60 @@
+﻿@model SernaSistemas.Models.ListaPacientesModel
+
+@{
+    ViewBag.Title = "Buscar pacientes";
+    ViewBag.vista = "_listaPacientes";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("ListadoPacientes", "HistoriaClinica")) {
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Paciente
+            </div>
+            <div class="col-md-10">
+                @Html.TextBox(name: "txtBuscar", value: null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-warning" value="Buscar"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </div>
+    </div>
+}
+<h3>&nbsp;</h3>
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Paciente</th>
+            <th>Sexo</th>
+            <th>Tipo de sangre</th>
+            <th>Teléfono</th>
+        </tr>
+    </thead>
+    @if (Model.Pacientes.Items != null) {
+        foreach (var item in Model.Pacientes.Items) {
+            <tr class="d-sm-table-row">
+                <td class="d-sm-table-cell">
+                    <div class="btn-group">
+                        @Html.ActionLink(" ", "verPaciente", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-info glyphicon glyphicon-list-alt", style = "box-shadow:#203016 -2px 5px 5px;" })
+                        @Html.ActionLink(" ", "Historia", new { IdPaciente = item.IdPaciente }, new { @class = "btn btn-success glyphicon glyphicon-check", style = "box-shadow:#203016 2px 5px 5px;" })
+                    </div>
+                </td>
+                <td class="d-sm-table-cell">
+                    @item.Nombre
+                </td>
+                <td class="d-sm-table-cell">
+                    @item.Sexo
+                </td>
+                <td class="d-sm-table-cell">
+                    @item.TipoSangre
+                </td>
+                <td class="d-sm-table-cell">
+                    @item.NumeroTelefono
+                </td>
+            </tr>
+        }
+    }
+</table>

@@ -37,6 +37,8 @@ namespace WCFSernaSistemasLib
         public DateTime FechaContacto {
             get; set;
         }
+        [DataMember]
+        public int Id { get; set; }
     }
     [DataContract]
     public class ContactoResponse : ResponseBase

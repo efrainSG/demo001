@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    @RenderSection("estilos", false)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/Serna/contactoWidget.js"></script>
+    <script src="~/Scripts/Serna/LoginWidget.js"></script>
+    <script src="~/Scripts/Negocios/BuscarWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarCatalogoWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarResultadosWidget.js"></script>
+
+    <script src="~/Scripts/Negocios/Mapa.js"></script>
+    <script src="~/Scripts/Negocios/ProdServWidget.js"></script>
+    <script src="~/Scripts/Negocios/FotoWidget.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    <style>
+        .btn-gray {
+            background-color: #808080;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="width:75%;">
+                    Opciones
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+                <a href="@Url.Action("Index","Home")" target="_blank">
+                    <center>
+                        <span class="glyphicon glyphicon-hand-left"></span><br />
+                        <small>A Serna Sistemas</small>
+                    </center>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse serna-navbar">
+                <ul class="nav navbar-nav" id="negocioNavBar"></ul>
+                <ul class="nav nabar-nav navbar-right">
+                    <li><a href="#" id="lnklogin"><span class="glyphicon glyphicon-log-in"></span>Ingresar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content text-justify" id="main">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-md-4">
+                    <small class="">
+                        <p>&copy; @DateTime.Now.Year - Serna Sistemas - v. 1.0.1</p>
+                    </small>
+                </div>
+                <div class="col-md-4">
+                    <small>
+                        <ul>
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/1020/" class="btn-link" target="_blank">Desarrollo de sistios económicos</a></li>
+                        </ul>
+                    </small>
+                </div>
+                <div class="col-md-4">
+                    <small>
+                        <ul>
+                            <li><a href="https://www.prolancer.com.mx/MaverickXXI/965/" class="btn-link" target="_blank">Desarrollo de sistemas</a></li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+        </footer>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="modalHdr">Modal Header</h3>
+                        @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                    </div>
+                    <div class="modal-body" id="divModalBody">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer" id="divModalFooter">
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>

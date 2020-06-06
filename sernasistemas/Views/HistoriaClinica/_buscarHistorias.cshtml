@@ -1,0 +1,62 @@
+﻿@model SernaSistemas.Models.buscarHistoriasModel
+
+@{
+    ViewBag.Title = "Buscar historias";
+    ViewBag.vista = "_buscarHistorias";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("BuscarHistorias", "HistoriaClinica")) {
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Paciente
+            </div>
+            <div class="col-md-6">
+                @Html.TextBox(name: "txtBuscar", value: null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                Fecha de historia
+            </div>
+            <div class="col-md-2">
+                <input type="date" name="txtFecha" id="txtFecha" class="form-control" value="2000-01-01" />
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </div>
+    </div>
+}
+<h3>&nbsp;</h3>
+
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Paciente</th>
+            <th>Motivo de consulta</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Historias) {
+        <tr class="d-sm-table-row">
+            <td class="d-sm-table-cell">
+                @Html.ActionLink(" ", "Historia", new { IdHistoria = item.Id, IdPaciente = item.IdPaciente }, new { @class = "btn btn-info glyphicon glyphicon-open-file", style = "box-shadow:#203016 0px 5px 5px;" })
+            </td>
+            <td>
+                @item.Paciente
+            </td>
+            <td class="d-sm-table-cell">
+                @if (item.MotivoConsulta.Length > 200) {
+                    <span>@item.MotivoConsulta.Substring(0, 200)</span>
+                } else {
+                    <span>@item.MotivoConsulta </span>
+                }
+            </td>
+            <td>
+                @item.FechaHistoria
+            </td>
+        </tr>
+    }
+</table>

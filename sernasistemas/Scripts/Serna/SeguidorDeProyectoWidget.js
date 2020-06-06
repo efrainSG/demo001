@@ -59,11 +59,12 @@ var consultarStatusProyecto = function () {
             $celActividades = $("#celActividades");
             $celDescripcion = $("#celDescripcion");
             $divdetalles = $("#divDetalles");
-            $celProyecto.empty().append('<span class="text-info">Proyecto: </span>' + '<span class="text-primary">' + obj.data.Proyecto + '</span><br /><span class="text-primary">' + obj.data.Plataforma + '</span>');
-            $celSprint.empty().append('<span class="text-info">Sprint actual: </span>' + '<span class="text-primary">' + obj.data.Sprint + '</span>');
-            $celFecha.empty().append('<span class="text-info">Fecha de término: </span>' + '<span class="text-primary">' + obj.data.FechaTermino + '</span>');
-            $celActividades.empty().append('<span class="text-info">Actividades restantes: </span>' + '<span class="text-primary">' + obj.data.Actividades + '</span>');
-            $celDescripcion.empty().append('<span class="text-info">Descrpición: </span>' + '<span class="text-primary">' + obj.data.Descripcion + '</span>');
+            
+            $celProyecto.append('<span class="text-info">Proyecto: </span>' + '<span class="text-primary">' + obj.data.Proyecto + '</span><br /><span class="text-primary">' + obj.data.Plataforma + '</span>');
+            $celSprint.append('<span class="text-info">Sprint actual: </span>' + '<span class="text-primary">' + obj.data.Sprint + '</span>');
+            $celFecha.append('<span class="text-info">Fecha de término: </span>' + '<span class="text-primary">' + obj.data.FechaTermino + '</span>');
+            $celActividades.append('<span class="text-info">Actividades restantes: </span>' + '<span class="text-primary">' + obj.data.Actividades + '</span>');
+            $celDescripcion.append('<span class="text-info">Descrpición: </span>' + '<span class="text-primary">' + obj.data.Descripcion + '</span>');
             $divdetalles.show("slow");
         })
         .fail(function (obj) {

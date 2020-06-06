@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ namespace SernaSistemas.Controllers
     public class HomeController : Controller
     {
         const string URL_BLOGGER = "https://itcoffeecups.blogspot.com/";
+        const string path = "Descargas/";
 
         private BloggerFeedModel GetPosts(string APIKey, string BlogID) {
             BloggerFeedModel model = new BloggerFeedModel();
@@ -72,6 +74,40 @@ namespace SernaSistemas.Controllers
             return View();
         }
 
+        public ActionResult Descargas() {
+            return View();
+        }
+
+        public ActionResult Descargar(string archivo) {
+            string ruta = AppDomain.CurrentDomain.BaseDirectory + path;
+            byte[] fileBytes = System.IO.File.ReadAllBytes(ruta + archivo);
+
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, archivo);
+        }
+
+        //public ActionResult FormContacto() {
+        //    return PartialView();
+        //}
+
+        //[HttpPost]
+        //[ActionName("FormContacto")]
+        //public ActionResult PostContacto(ContactoModel model) {
+        //    model.Registrado = DateTime.Today;
+        //    SernaSistemasServices servicio = new SernaSistemasServices();
+        //    var response =
+        //    servicio.registrarContacto(new ContactoRequest() {
+        //        Nombre = model.Nombre,
+        //        Telefono = model.Telefono,
+        //        eMail = model.Email,
+        //        Comentario = model.Comentario,
+        //        FechaContacto = model.Registrado
+        //    });
+        //    ViewData.Add("mensaje", response.Mensaje);
+        //    if (response.tieneError)
+        //        return View("Error", response);
+        //    return Redirect(Request.UrlReferrer.ToString());
+        //}
+
         public JsonResult SendContacto(string nombre, string telefono, string correo, string comentario) {
             SernaSistemasServices servicio = new SernaSistemasServices();
             var response = servicio.registrarContacto(new ContactoRequest() {
@@ -79,7 +115,8 @@ namespace SernaSistemas.Controllers
                 Telefono = telefono,
                 eMail = correo,
                 Comentario = comentario,
-                FechaContacto = DateTime.Today
+                FechaContacto = DateTime.Today,
+                Id = 0
             });
             if (response.tieneError)
                 return Json(new { error = "SI", msg = response.Mensaje });
@@ -110,22 +147,15 @@ namespace SernaSistemas.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(string usuario, string password) {
-            if(usuario == "efrain") {
-                Session.Add("token", Guid.NewGuid().ToString());
-                Session.Add("Nombre", usuario);
-                return Json(new {
-                    error = "NO",
-                    msg = "¡Bienvenido!",
-                    token = Guid.NewGuid().ToString()
-                });
-            }else {
-                return Json(new {
-                    error = "SI",
-                    msg = "Datos incorrectos",
-                    token = string.Empty
-                });
-            }
+        public JsonResult Login(string usuario, string password, string  controller) {
+            string token = Guid.NewGuid().ToString();
+            Session.Add("token", token);
+            Session.Add("Nombre", usuario);
+            return Json(new {
+                error = "NO",
+                msg = "¡Bienvenido!",
+                token = token
+            });
         }
 
         [HttpPost]

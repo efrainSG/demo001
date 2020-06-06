@@ -1,0 +1,48 @@
+﻿@model SernaSistemas.Models.ListaHistorias
+
+@{
+    ViewBag.Title = "Lista de historias";
+    ViewBag.vista = "_listaHistorias";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("ListadoHistorias", "HistoriaClinica")) {
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-1">
+                Paciente
+            </div>
+            <div class="col-md-10">
+                @Html.TextBox(name: "txtBuscar", value: null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <input type="submit" class="btn btn-warning" value="Buscar" />
+            </div>
+        </div>
+    </div>
+}
+<h3>&nbsp;</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Paciente</th>
+            <th>Motivo de consulta</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Historias) {
+        <tr class="d-sm-table-row">
+            <td class="d-sm-table-cell">
+                @item.Id
+            </td>
+            <td class="d-sm-table-cell">
+                @item.IdPaciente
+            </td>
+            <td class="d-sm-table-cell">
+                @item.MotivoConsulta
+            </td>
+        </tr>
+    }
+</table>

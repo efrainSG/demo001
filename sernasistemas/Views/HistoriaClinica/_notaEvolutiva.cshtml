@@ -1,0 +1,136 @@
+﻿@model SernaSistemas.Models.NotaEvolutivaModel
+
+@{
+    ViewBag.Title = "Nota de evolución";
+    ViewBag.vista = "_notaEvolutiva";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>
+    <small>
+        @Html.ActionLink("< Regresar", "Historia", new { IdHistoria = Model.IdHistoria, idPaciente = Model.IdPaciente })
+    </small><br />@ViewBag.title
+</h2>
+@Html.ActionLink(" ", "pdfNota", new { IdHistoria = Model.IdHistoria, IdNota = Model.IdNota }, new { @class = "btn btn-info glyphicon glyphicon-print", target = "_blank", style = "box-shadow:#203016 0px 5px 5px;" })
+<p>&nbsp;</p>
+@using (Html.BeginForm("postNotaEvolutiva", "HistoriaClinica", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ExploracionFisica.Id, Model.ExploracionFisica.Id.ToString())
+    @Html.HiddenFor(m => m.ExploracionFisica.IdHistoria, Model.ExploracionFisica.IdHistoria.ToString())
+    @Html.HiddenFor(m => m.IdHistoria, Model.IdHistoria.ToString())
+    @Html.HiddenFor(m => m.IdNota, Model.IdNota.ToString())
+
+
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.Fecha);
+            </div>
+            <div class="col-md-6">
+                @Html.HiddenFor(m => m.Fecha, Model.Fecha.ToShortDateString())
+                <input type="date" id="dpNotaEvolutiva_Fecha" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.TA)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.TA, Model.ExploracionFisica.TA, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Pulso)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Pulso, Model.ExploracionFisica.Pulso.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FR)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.FR, Model.ExploracionFisica.FR.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FC)
+            </div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.ExploracionFisica.FC, Model.ExploracionFisica.FC.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Temperatura)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Temperatura, Model.ExploracionFisica.Temperatura.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Peso)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Peso, Model.ExploracionFisica.Peso.ToString(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Estatura)
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.ExploracionFisica.Estatura, Model.ExploracionFisica.Estatura.ToString(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Descripcion)
+            </div>
+        </div>
+    </div>
+    <h3>&nbsp;</h3>
+    <div class="container containerClinica">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Descripcion)
+            </div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.ExploracionFisica.Descripcion, 5, 80, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Plan de tratamiento
+            </div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.PlanTratamiento, 5, 80, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <h3>&nbsp;</h3>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center;">
+            <button type="submit" class="btn btn-lg btn-success" style="box-shadow:#203016 0px 5px 5px;" data-toggle="tooltip"
+                    data-placement="bottom" title="Guarda Nota evolutiva">
+                <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+            </button>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $.each($("[id*='_Fecha']"), function (n, i) {
+            var partes = $(i).val().split(' ')[0].split('/');
+            var id = $(i).attr('id');
+            try {
+                var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+                $("#dp" + id).val(fecha);
+            } catch (e) {
+            }
+        });
+
+        debugger;
+
+        partes = $("#Fecha").val().split(' ')[0].split('/');
+        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+        $("#dpNotaEvolutiva_Fecha").val(fecha);
+
+    });
+</script>

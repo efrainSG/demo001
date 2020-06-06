@@ -1,0 +1,127 @@
+﻿@model SernaSistemas.Models.NotaEvolutivaModel
+@{Layout = null;}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+</head>
+<body>
+    <h2>Nota de evolución</h2>
+    <h3>Resumen de la historia</h3>
+    <table class="table table-borderless">
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.Fecha)
+            </td>
+            <td colspan="3" class="text-primary">
+                @Html.DisplayFor(m => m.Fecha, Model.Fecha.ToShortDateString())
+            </td>
+            <td colspan="8"></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                Nombre del paciente
+            </td>
+            <td colspan="11" class="text-success text-justify">
+                @Html.DisplayFor(m => m.NombrePaciente, Model.NombrePaciente)
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                Motivo de consulta
+            </td>
+            <td class="text-success text-justify">
+                @Html.DisplayFor(m => m.MotivoConsulta)
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.Plan)
+            </td>
+            <td class="text-success text-justify">
+                @Html.DisplayFor(m => m.Plan)
+            </td>
+        </tr>
+    </table>
+    <h3>Detalles de la nota</h3>
+    <table class="table table-borderless">
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.TA)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.TA, Model.ExploracionFisica.TA)
+            </td>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Pulso)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.Pulso, Model.ExploracionFisica.Pulso.ToString())
+            </td>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FR)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.FR, Model.ExploracionFisica.FR.ToString())
+            </td>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.FC)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.FC, Model.ExploracionFisica.FC.ToString())
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Temperatura)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.Temperatura, Model.ExploracionFisica.Temperatura.ToString())
+            </td>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Peso)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.Peso, Model.ExploracionFisica.Peso.ToString())
+            </td>
+            <td style="font-weight:bold;" colspan="2">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Estatura)
+            </td>
+            <td colspan="2" class="text-primary">
+                @Html.DisplayFor(m => m.ExploracionFisica.Estatura, Model.ExploracionFisica.Estatura.ToString())
+            </td>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+    <h3>&nbsp;</h3>
+    <table class="table table-borderless">
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                @Html.DisplayNameFor(m => m.ExploracionFisica.Descripcion)
+            </td>
+            <td class="text-info text-primary text-justify">
+                @Html.DisplayFor(m => m.ExploracionFisica.Descripcion)
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; width:100px;">
+                Plan de tratamiento
+            </td>
+            <td class="text-info text-primary text-justify">
+                @Html.DisplayFor(m => m.PlanTratamiento)
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

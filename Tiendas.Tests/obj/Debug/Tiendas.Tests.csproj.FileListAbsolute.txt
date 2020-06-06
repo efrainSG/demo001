@@ -69,7 +69,6 @@ C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\System.Web.WebPag
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\System.Web.Optimization.xml
-C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\obj\Debug\Tiendas.Tests.csprojResolveAssemblyReference.cache
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\obj\Debug\Tiendas.Tests.csproj.CoreCompileInputs.cache
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\obj\Debug\Tiendas.Tests.csproj.CopyComplete
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\obj\Debug\Tiendas.Tests.dll
@@ -81,3 +80,4 @@ C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\Microsoft.AspNet.
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\SernaSistemas.Core.pdb
 C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\bin\Debug\SernaSistemas.Core.dll.config
+C:\Users\efrai\Documents\repos\demo001\Tiendas.Tests\obj\Debug\Tiendas.Tests.csprojAssemblyReference.cache

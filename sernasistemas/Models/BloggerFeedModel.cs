@@ -22,4 +22,11 @@ namespace SernaSistemas.Models {
             MsgError = string.Empty;
         }
     }
+    public class sesionModel
+    {
+        public int IdUsuario { get; set; }
+        public string Usuario { get; set; }
+        public string UltimoLogin { get; set; }
+        public int IdTienda { get; set; }
+    }
 }

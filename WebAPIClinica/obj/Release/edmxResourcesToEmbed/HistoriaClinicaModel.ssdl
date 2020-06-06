@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HistoriaClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contrasenia" Type="varbinary" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSexo" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdTipoSangre" Type="int" Nullable="false" />
+    <Property Name="Rh" Type="char" MaxLength="1" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="IdLugarNacimiento" Type="int" Nullable="false" />
+    <Property Name="CiudadNacimiento" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telefonos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="IdTipoTelefono" Type="int" Nullable="false" />
+    <Property Name="NumeroTelefono" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Persona_Medico">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Medico">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Telefonos">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Telefonos" Type="Self.Telefonos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telefonos">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="registraTelefono" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administracion">
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="IdTipoTelefono" Type="int" Mode="In" />
+    <Parameter Name="NumeroTelefono" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="registraPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clinica">
+    <Parameter Name="IdSexo" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="IdTipoSangre" Type="int" Mode="In" />
+    <Parameter Name="Rh" Type="char" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+    <Parameter Name="IdLugarNacimiento" Type="int" Mode="In" />
+    <Parameter Name="CiudadNacimiento" Type="varchar" Mode="In" />
+    <Parameter Name="IdLugarResidencia" Type="int" Mode="In" />
+    <Parameter Name="Domicilio" Type="varchar" Mode="In" />
+    <Parameter Name="Tabaco" Type="bit" Mode="In" />
+    <Parameter Name="Alcohol" Type="bit" Mode="In" />
+    <Parameter Name="CiudadResidencia" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="selPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clinica">
+    <Parameter Name="IdPaciente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Configuracion">
+    <Parameter Name="Catalogo" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="HistoriaClinicaModelStoreContainer">
+    <EntitySet Name="Medico" EntityType="Self.Medico" Schema="Administracion" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="Administracion" store:Type="Tables" />
+    <EntitySet Name="Telefonos" EntityType="Self.Telefonos" Schema="Administracion" store:Type="Tables" />
+    <AssociationSet Name="FK_Persona_Medico" Association="Self.FK_Persona_Medico">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Medico" EntitySet="Medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Telefonos" Association="Self.FK_Persona_Telefonos">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Telefonos" EntitySet="Telefonos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

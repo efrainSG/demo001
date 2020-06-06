@@ -1,0 +1,201 @@
+﻿@model SernaSistemas.Models.PacienteModel
+
+@{
+    ViewBag.Title = "Información del paciente";
+    ViewBag.vista = "_paciente";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#divPaciente" data-toggle="tab">@ViewBag.Title</a>
+    </li>
+    @*<li>
+            <a href="#divExpediente" data-toggle="tab">Expediente</a>
+        </li>*@
+</ul>
+<div class="tab-content">
+    <div id="divPaciente" class="tab-pane accordion in active">
+        @using (Html.BeginForm("postPaciente", "HistoriaClinica", FormMethod.Post)) {
+            @Html.HiddenFor(m => m.IdPaciente, Model.IdPaciente.ToString())
+            @Html.HiddenFor(m => m.IdPersona, Model.IdPersona.ToString())
+            <div class="container containerClinica">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.Nombre)
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(m => m.Nombre, Model.Nombre, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        @Html.DisplayNameFor(m => m.Edad)
+                    </div>
+                    <div class="col-md-1">
+                        @if (Model.Edad != -1) {
+                            @Model.Edad
+                        } años
+                    </div>
+                    <div class="col-md-1">
+                        @Html.DisplayNameFor(m => m.Sexo)
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.Sexo, Model.dicSexo.First().Text.Substring(0, 1))
+                            </div>
+                            <div class="col-md-3">
+                                @Html.RadioButtonFor(m => m.IdSexo, Model.dicSexo.First().Value, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.Sexo, Model.dicSexo.Last().Text.Substring(0, 1))
+                            </div>
+                            <div class="col-md-3">
+                                @Html.RadioButtonFor(m => m.IdSexo, Model.dicSexo.Last().Value, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.Domicilio)
+                    </div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Domicilio, Model.Domicilio, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.FechaNacimiento)
+                    </div>
+                    <div class="col-md-3">
+                        @Html.HiddenFor(m => m.FechaNacimiento, Model.FechaNacimiento.ToShortDateString())
+                        <input type="date" id="dpFechaNacimiento" class="form-control" />
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.IdTipoSangre)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(m => m.IdTipoSangre, Model.dicTipoSangre, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        @Html.DisplayNameFor(m => m.Rh)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.TextBoxFor(m => m.Rh, Model.Rh.ToString(), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.Numero)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(m => m.Numero, Model.Numero, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.IdTipoNumero)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(m => m.IdTipoNumero, Model.dicTipoTelefono, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        @*<a href="#" class="btn btn-block, btn-info"><span class="glyphicon glyphicon-plus"></span></a>*@
+                    </div>
+                </div>
+                <h3>&nbsp;</h3>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.CiudadNacimiento)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.CiudadNacimiento, Model.CiudadNacimiento, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.LugarNacimiento)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.IdLugarNacimiento, Model.dicLugarResidencia, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.CiudadResidencia)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.CiudadResidencia, Model.CiudadResidencia, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.IdLugarResidencia)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.IdLugarResidencia, Model.dicLugarResidencia, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.AnioResidencia)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.TextBoxFor(m => m.AnioResidencia, Model.AnioResidencia.ToString(), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(m => m.Ocupacion)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.Ocupacion, Model.Ocupacion, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <h3>&nbsp;</h3>
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-lg btn-success" style="box-shadow:#203016 0px 5px 5px;" data-toggle="tooltip"
+                            data-placement="bottom" title="Guarda información del paciente">
+                        <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="divExpediente" class="tab-pane accordion">
+        <div class="container containerClinica">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Paciente</th>
+                        <th>Motivo de consulta</th>
+                    </tr>
+                </thead>
+                @*@foreach (var item in Model.Historias) {
+                        <tr class="d-sm-table-row">
+                            <td class="d-sm-table-cell">
+                                @item.Id
+                            </td>
+                            <td class="d-sm-table-cell">
+                                @item.IdPaciente
+                            </td>
+                            <td class="d-sm-table-cell">
+                                @item.MotivoConsulta
+                            </td>
+                        </tr>
+                    }*@
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        var partes = $("#FechaNacimiento").val().split(' ')[0].split('/');
+        $("#dpFechaNacimiento").val(new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0]);
+
+        $("#dpFechaNacimiento")
+            .off()
+            .on("change", function () {
+                $("#FechaNacimiento").val($(this).val());
+            });
+    });
+</script>

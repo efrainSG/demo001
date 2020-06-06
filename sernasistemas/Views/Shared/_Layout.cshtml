@@ -3,33 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Serna Sistemas</title>
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/jquery-ui.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
     <script src="~/Scripts/Serna/contactoWidget.js"></script>
     <script src="~/Scripts/Serna/SeguidorDeProyectoWidget.js"></script>
     <script src="~/Scripts/Serna/LoginWidget.js"></script>
-
+    <script src="~/Scripts/Negocios/BuscarWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarCatalogoWidget.js"></script>
+    <script src="~/Scripts/Negocios/ListarResultadosWidget.js"></script>
+    <script src="~/Scripts/Negocios/MenuWidget.js"></script>
+    <script src="~/Scripts/Negocios/PerfilWidget.js"></script>
+    <script src="~/Scripts/Negocios/ProdServWidget.js"></script>
+    @*<script src="~/Scripts/Negocios/Mapa.js"></script>*@
     <style>
         .btn-gray {
             background-color: #808080;
             color: #000000;
+        }
+        body.serna {
+            background-color: #00001b;
+            color: #ffffff;
         }
     </style>
     <script>
         var viewmodel;
     </script>
 </head>
-<body style="background-color:#00001b; color:#ffffff;">
+<body class="serna">
     <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -47,8 +56,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>*@
+                    <li>@Html.ActionLink("Productos", "Productos", "Home")</li>
                     <li>@Html.ActionLink("Servicios", "Servicios", "Home")</li>
-                    @*<li>@Html.ActionLink("Productos", "Productos", "Home")</li>*@
+                    <li>@Html.ActionLink("Negocios", "Index", "Negocios")</li>
+                    <li>@Html.ActionLink("Exp. Clinicos", "Index", "HistoriaClinica")</li>
+                    <li>@Html.ActionLink("Descargas", "Descargas", "Home")</li>
                     <li>@Html.ActionLink("Acerca de mí", "About", "Home")</li>
                 </ul>
             </div>
@@ -112,6 +124,19 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     @RenderSection("scripts", required: false)
+    <script>
+        function elMapa() {
+            var mapProp = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 5,
+            };
+            var map = new google.maps.Map(document.getElementById("divMapa"), mapProp);
+        };
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3efc9gjSJ6XWWeSA11pb-kSWeq1DSdpc&amp;callback=elMapa"></script>
+    <script src="~/Scripts/pagination.min.js"></script>
+
 </body>
 
 
