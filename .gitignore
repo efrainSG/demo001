@@ -45,3 +45,5 @@ packages/
 SernaSistemasTests1/bin/
 WCFClinica/bin/
 WCFTiendasLibTests/bin/
+
+SernaSistemas.Reportes/obj/
