@@ -59,3 +59,7 @@ WCFTiendasLibTests/bin/
 
 SernaSistemas.Reportes/obj/
 >>>>>>> Negocios
+
+SernaSistemas.DataAccess/obj/Debug/
+
+sernasistemas/node_modules/
