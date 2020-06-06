@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cotedivModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Opiniones" Relationship="Self.fk_Alumno_Opiniones" FromRole="Alumno" ToRole="Opiniones" />
+    <NavigationProperty Name="Publicaciones" Relationship="Self.fk_Alumno_Publiaciones" FromRole="Alumno" ToRole="Publicaciones" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_Persona_Alumno" FromRole="Alumno" ToRole="Persona" />
+    <NavigationProperty Name="Escuela" Relationship="Self.AlumnoEscuela" FromRole="Alumno" ToRole="Escuela" />
+  </EntityType>
+  <EntityType Name="Escuela">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPais" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Catalogo_Escuela" FromRole="Escuela" ToRole="Catalogo" />
+    <NavigationProperty Name="EscuelaUbicacion" Relationship="Self.fk_Escuela_EscuelaUbicacion" FromRole="Escuela" ToRole="EscuelaUbicacion" />
+    <NavigationProperty Name="Alumno" Relationship="Self.AlumnoEscuela" FromRole="Escuela" ToRole="Alumno" />
+    <NavigationProperty Name="Experto" Relationship="Self.ExpertoEscuelas" FromRole="Escuela" ToRole="Experto" />
+  </EntityType>
+  <EntityType Name="EscuelaUbicacion">
+    <Key>
+      <PropertyRef Name="IdEscuela" />
+      <PropertyRef Name="IdCiudad" />
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEscuela" Type="Int32" Nullable="false" />
+    <Property Name="IdCiudad" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Escuela" Relationship="Self.fk_Escuela_EscuelaUbicacion" FromRole="EscuelaUbicacion" ToRole="Escuela" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Ciudad_EscuelaUbicacion" FromRole="EscuelaUbicacion" ToRole="Catalogo" />
+    <NavigationProperty Name="Catalogo1" Relationship="Self.fk_Estado_EscuelaUbicacion" FromRole="EscuelaUbicacion" ToRole="Catalogo" />
+  </EntityType>
+  <EntityType Name="Experto">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EvaluacionPublicaciones" Relationship="Self.fk_Experto_EvaluacionPublicaciones" FromRole="Experto" ToRole="EvaluacionPublicaciones" />
+    <NavigationProperty Name="ExpertoGrados" Relationship="Self.fk_Experto_ExpertoGrados" FromRole="Experto" ToRole="ExpertoGrados" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_Persona_Experto" FromRole="Experto" ToRole="Persona" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.ExpertoAreas" FromRole="Experto" ToRole="Catalogo" />
+    <NavigationProperty Name="Escuela" Relationship="Self.ExpertoEscuelas" FromRole="Experto" ToRole="Escuela" />
+  </EntityType>
+  <EntityType Name="ExpertoGrados">
+    <Key>
+      <PropertyRef Name="IdExperto" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="IdExperto" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Anio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Experto" Relationship="Self.fk_Experto_ExpertoGrados" FromRole="ExpertoGrados" ToRole="Experto" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="usr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pass" Type="Binary" MaxLength="256" FixedLength="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Registro" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_Persona_Alumno" FromRole="Persona" ToRole="Alumno" />
+    <NavigationProperty Name="Experto" Relationship="Self.fk_Persona_Experto" FromRole="Persona" ToRole="Experto" />
+    <NavigationProperty Name="PersonaDetalle" Relationship="Self.fk_Persona_PersonaDetalle" FromRole="Persona" ToRole="PersonaDetalle" />
+  </EntityType>
+  <EntityType Name="PersonaDetalle">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="IdPais" Type="Int32" Nullable="false" />
+    <Property Name="IdCiudad" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdSexo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_Persona_PersonaDetalle" FromRole="PersonaDetalle" ToRole="Persona" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Ciudad_PersonaDetalle" FromRole="PersonaDetalle" ToRole="Catalogo" />
+    <NavigationProperty Name="Catalogo1" Relationship="Self.fk_Estado_PersonaDetalle" FromRole="PersonaDetalle" ToRole="Catalogo" />
+    <NavigationProperty Name="Catalogo2" Relationship="Self.fk_Pais_PersonaDetalle" FromRole="PersonaDetalle" ToRole="Catalogo" />
+    <NavigationProperty Name="Catalogo3" Relationship="Self.fk_Sexo_PersonaDetalle" FromRole="PersonaDetalle" ToRole="Catalogo" />
+  </EntityType>
+  <EntityType Name="Catalogo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoDato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTipoCatalogo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Escuela" Relationship="Self.fk_Catalogo_Escuela" FromRole="Catalogo" ToRole="Escuela" />
+    <NavigationProperty Name="EscuelaUbicacion" Relationship="Self.fk_Ciudad_EscuelaUbicacion" FromRole="Catalogo" ToRole="EscuelaUbicacion" />
+    <NavigationProperty Name="EscuelaUbicacion1" Relationship="Self.fk_Estado_EscuelaUbicacion" FromRole="Catalogo" ToRole="EscuelaUbicacion" />
+    <NavigationProperty Name="PersonaDetalle" Relationship="Self.fk_Ciudad_PersonaDetalle" FromRole="Catalogo" ToRole="PersonaDetalle" />
+    <NavigationProperty Name="PersonaDetalle1" Relationship="Self.fk_Estado_PersonaDetalle" FromRole="Catalogo" ToRole="PersonaDetalle" />
+    <NavigationProperty Name="PersonaDetalle2" Relationship="Self.fk_Pais_PersonaDetalle" FromRole="Catalogo" ToRole="PersonaDetalle" />
+    <NavigationProperty Name="PersonaDetalle3" Relationship="Self.fk_Sexo_PersonaDetalle" FromRole="Catalogo" ToRole="PersonaDetalle" />
+    <NavigationProperty Name="Publicaciones" Relationship="Self.fk_Area_Publiaciones" FromRole="Catalogo" ToRole="Publicaciones" />
+    <NavigationProperty Name="Publicaciones1" Relationship="Self.fk_Status_Publiaciones" FromRole="Catalogo" ToRole="Publicaciones" />
+    <NavigationProperty Name="TipoCatalogo" Relationship="Self.fk_TipoCatalogo_Catalogo" FromRole="Catalogo" ToRole="TipoCatalogo" />
+    <NavigationProperty Name="EvaluacionPublicaciones" Relationship="Self.fk_Valor_EvaluacionPublicaciones" FromRole="Catalogo" ToRole="EvaluacionPublicaciones" />
+    <NavigationProperty Name="Opiniones" Relationship="Self.fk_Valor_Opiniones" FromRole="Catalogo" ToRole="Opiniones" />
+    <NavigationProperty Name="Experto" Relationship="Self.ExpertoAreas" FromRole="Catalogo" ToRole="Experto" />
+  </EntityType>
+  <EntityType Name="TipoCatalogo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_TipoCatalogo_Catalogo" FromRole="TipoCatalogo" ToRole="Catalogo" />
+  </EntityType>
+  <EntityType Name="EvaluacionPublicaciones">
+    <Key>
+      <PropertyRef Name="IdPublicacion" />
+      <PropertyRef Name="IdExperto" />
+    </Key>
+    <Property Name="IdPublicacion" Type="Int32" Nullable="false" />
+    <Property Name="IdExperto" Type="Guid" Nullable="false" />
+    <Property Name="IdValor" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Experto" Relationship="Self.fk_Experto_EvaluacionPublicaciones" FromRole="EvaluacionPublicaciones" ToRole="Experto" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Valor_EvaluacionPublicaciones" FromRole="EvaluacionPublicaciones" ToRole="Catalogo" />
+    <NavigationProperty Name="Publicaciones" Relationship="Self.fk_Publicaciones_EvaluacionPublicaciones" FromRole="EvaluacionPublicaciones" ToRole="Publicaciones" />
+  </EntityType>
+  <EntityType Name="Publicaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contenido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdAlumno" Type="Guid" Nullable="false" />
+    <Property Name="IdArea" Type="Int32" Nullable="false" />
+    <Property Name="IdStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_Alumno_Publiaciones" FromRole="Publicaciones" ToRole="Alumno" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Area_Publiaciones" FromRole="Publicaciones" ToRole="Catalogo" />
+    <NavigationProperty Name="Catalogo1" Relationship="Self.fk_Status_Publiaciones" FromRole="Publicaciones" ToRole="Catalogo" />
+    <NavigationProperty Name="EvaluacionPublicaciones" Relationship="Self.fk_Publicaciones_EvaluacionPublicaciones" FromRole="Publicaciones" ToRole="EvaluacionPublicaciones" />
+    <NavigationProperty Name="Opiniones" Relationship="Self.fk_Publicaciones_Opiniones" FromRole="Publicaciones" ToRole="Opiniones" />
+  </EntityType>
+  <EntityType Name="Opiniones">
+    <Key>
+      <PropertyRef Name="IdPublicacion" />
+      <PropertyRef Name="IdOpinador" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="IdValor" />
+    </Key>
+    <Property Name="IdPublicacion" Type="Int32" Nullable="false" />
+    <Property Name="IdOpinador" Type="Guid" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdValor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_Alumno_Opiniones" FromRole="Opiniones" ToRole="Alumno" />
+    <NavigationProperty Name="Catalogo" Relationship="Self.fk_Valor_Opiniones" FromRole="Opiniones" ToRole="Catalogo" />
+    <NavigationProperty Name="Publicaciones" Relationship="Self.fk_Publicaciones_Opiniones" FromRole="Opiniones" ToRole="Publicaciones" />
+  </EntityType>
+  <Association Name="fk_Alumno_Opiniones">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Opiniones" Type="Self.Opiniones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Opiniones">
+        <PropertyRef Name="IdOpinador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Alumno_Publiaciones">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Publicaciones">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Persona_Alumno">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Catalogo_Escuela">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Escuela">
+        <PropertyRef Name="IdPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Escuela_EscuelaUbicacion">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+    <End Role="EscuelaUbicacion" Type="Self.EscuelaUbicacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EscuelaUbicacion">
+        <PropertyRef Name="IdEscuela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ciudad_EscuelaUbicacion">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="EscuelaUbicacion" Type="Self.EscuelaUbicacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EscuelaUbicacion">
+        <PropertyRef Name="IdCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estado_EscuelaUbicacion">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="EscuelaUbicacion" Type="Self.EscuelaUbicacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EscuelaUbicacion">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Experto_EvaluacionPublicaciones">
+    <End Role="Experto" Type="Self.Experto" Multiplicity="1" />
+    <End Role="EvaluacionPublicaciones" Type="Self.EvaluacionPublicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Experto">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="EvaluacionPublicaciones">
+        <PropertyRef Name="IdExperto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Experto_ExpertoGrados">
+    <End Role="Experto" Type="Self.Experto" Multiplicity="1" />
+    <End Role="ExpertoGrados" Type="Self.ExpertoGrados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Experto">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="ExpertoGrados">
+        <PropertyRef Name="IdExperto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Persona_Experto">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Experto" Type="Self.Experto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Experto">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Persona_PersonaDetalle">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="PersonaDetalle" Type="Self.PersonaDetalle" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonaDetalle">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ciudad_PersonaDetalle">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="PersonaDetalle" Type="Self.PersonaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonaDetalle">
+        <PropertyRef Name="IdCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estado_PersonaDetalle">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="PersonaDetalle" Type="Self.PersonaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonaDetalle">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Pais_PersonaDetalle">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="PersonaDetalle" Type="Self.PersonaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonaDetalle">
+        <PropertyRef Name="IdPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Sexo_PersonaDetalle">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="PersonaDetalle" Type="Self.PersonaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonaDetalle">
+        <PropertyRef Name="IdSexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Area_Publiaciones">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Publicaciones">
+        <PropertyRef Name="IdArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Status_Publiaciones">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Publicaciones">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TipoCatalogo_Catalogo">
+    <End Role="TipoCatalogo" Type="Self.TipoCatalogo" Multiplicity="1" />
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCatalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Catalogo">
+        <PropertyRef Name="IdTipoCatalogo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Valor_EvaluacionPublicaciones">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="EvaluacionPublicaciones" Type="Self.EvaluacionPublicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EvaluacionPublicaciones">
+        <PropertyRef Name="IdValor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Valor_Opiniones">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+    <End Role="Opiniones" Type="Self.Opiniones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Opiniones">
+        <PropertyRef Name="IdValor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Publicaciones_EvaluacionPublicaciones">
+    <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="1" />
+    <End Role="EvaluacionPublicaciones" Type="Self.EvaluacionPublicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publicaciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EvaluacionPublicaciones">
+        <PropertyRef Name="IdPublicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Publicaciones_Opiniones">
+    <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="1" />
+    <End Role="Opiniones" Type="Self.Opiniones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publicaciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Opiniones">
+        <PropertyRef Name="IdPublicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlumnoEscuela">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
+  </Association>
+  <Association Name="ExpertoAreas">
+    <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="*" />
+    <End Role="Experto" Type="Self.Experto" Multiplicity="*" />
+  </Association>
+  <Association Name="ExpertoEscuelas">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="*" />
+    <End Role="Experto" Type="Self.Experto" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="cotedivEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+    <EntitySet Name="Escuela" EntityType="Self.Escuela" />
+    <EntitySet Name="EscuelaUbicacion" EntityType="Self.EscuelaUbicacion" />
+    <EntitySet Name="Experto" EntityType="Self.Experto" />
+    <EntitySet Name="ExpertoGrados" EntityType="Self.ExpertoGrados" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="PersonaDetalle" EntityType="Self.PersonaDetalle" />
+    <EntitySet Name="Catalogo" EntityType="Self.Catalogo" />
+    <EntitySet Name="TipoCatalogo" EntityType="Self.TipoCatalogo" />
+    <EntitySet Name="EvaluacionPublicaciones" EntityType="Self.EvaluacionPublicaciones" />
+    <EntitySet Name="Publicaciones" EntityType="Self.Publicaciones" />
+    <EntitySet Name="Opiniones" EntityType="Self.Opiniones" />
+    <AssociationSet Name="fk_Alumno_Opiniones" Association="Self.fk_Alumno_Opiniones">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Opiniones" EntitySet="Opiniones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Alumno_Publiaciones" Association="Self.fk_Alumno_Publiaciones">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Publicaciones" EntitySet="Publicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Persona_Alumno" Association="Self.fk_Persona_Alumno">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Catalogo_Escuela" Association="Self.fk_Catalogo_Escuela">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="Escuela" EntitySet="Escuela" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Escuela_EscuelaUbicacion" Association="Self.fk_Escuela_EscuelaUbicacion">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="EscuelaUbicacion" EntitySet="EscuelaUbicacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ciudad_EscuelaUbicacion" Association="Self.fk_Ciudad_EscuelaUbicacion">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="EscuelaUbicacion" EntitySet="EscuelaUbicacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estado_EscuelaUbicacion" Association="Self.fk_Estado_EscuelaUbicacion">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="EscuelaUbicacion" EntitySet="EscuelaUbicacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Experto_EvaluacionPublicaciones" Association="Self.fk_Experto_EvaluacionPublicaciones">
+      <End Role="Experto" EntitySet="Experto" />
+      <End Role="EvaluacionPublicaciones" EntitySet="EvaluacionPublicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Experto_ExpertoGrados" Association="Self.fk_Experto_ExpertoGrados">
+      <End Role="Experto" EntitySet="Experto" />
+      <End Role="ExpertoGrados" EntitySet="ExpertoGrados" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Persona_Experto" Association="Self.fk_Persona_Experto">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Experto" EntitySet="Experto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Persona_PersonaDetalle" Association="Self.fk_Persona_PersonaDetalle">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="PersonaDetalle" EntitySet="PersonaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ciudad_PersonaDetalle" Association="Self.fk_Ciudad_PersonaDetalle">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="PersonaDetalle" EntitySet="PersonaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estado_PersonaDetalle" Association="Self.fk_Estado_PersonaDetalle">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="PersonaDetalle" EntitySet="PersonaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Pais_PersonaDetalle" Association="Self.fk_Pais_PersonaDetalle">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="PersonaDetalle" EntitySet="PersonaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Sexo_PersonaDetalle" Association="Self.fk_Sexo_PersonaDetalle">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="PersonaDetalle" EntitySet="PersonaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Area_Publiaciones" Association="Self.fk_Area_Publiaciones">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="Publicaciones" EntitySet="Publicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Status_Publiaciones" Association="Self.fk_Status_Publiaciones">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="Publicaciones" EntitySet="Publicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TipoCatalogo_Catalogo" Association="Self.fk_TipoCatalogo_Catalogo">
+      <End Role="TipoCatalogo" EntitySet="TipoCatalogo" />
+      <End Role="Catalogo" EntitySet="Catalogo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Valor_EvaluacionPublicaciones" Association="Self.fk_Valor_EvaluacionPublicaciones">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="EvaluacionPublicaciones" EntitySet="EvaluacionPublicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Valor_Opiniones" Association="Self.fk_Valor_Opiniones">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="Opiniones" EntitySet="Opiniones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Publicaciones_EvaluacionPublicaciones" Association="Self.fk_Publicaciones_EvaluacionPublicaciones">
+      <End Role="Publicaciones" EntitySet="Publicaciones" />
+      <End Role="EvaluacionPublicaciones" EntitySet="EvaluacionPublicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Publicaciones_Opiniones" Association="Self.fk_Publicaciones_Opiniones">
+      <End Role="Publicaciones" EntitySet="Publicaciones" />
+      <End Role="Opiniones" EntitySet="Opiniones" />
+    </AssociationSet>
+    <AssociationSet Name="AlumnoEscuela" Association="Self.AlumnoEscuela">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Escuela" EntitySet="Escuela" />
+    </AssociationSet>
+    <AssociationSet Name="ExpertoAreas" Association="Self.ExpertoAreas">
+      <End Role="Catalogo" EntitySet="Catalogo" />
+      <End Role="Experto" EntitySet="Experto" />
+    </AssociationSet>
+    <AssociationSet Name="ExpertoEscuelas" Association="Self.ExpertoEscuelas">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="Experto" EntitySet="Experto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
