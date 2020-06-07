@@ -309,18 +309,6 @@
     </Content>
     <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <Content Include="Rotativa\help-wkhtmltoimage.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Rotativa\help-wkhtmltopdf.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Rotativa\wkhtmltoimage.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Rotativa\wkhtmltopdf.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -459,6 +447,7 @@
     <Folder Include="Content\images\negociosimgs\fotos\" />
     <Folder Include="Descargas\" />
     <Folder Include="Reportes\" />
+    <Folder Include="Rotativa\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
