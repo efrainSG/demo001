@@ -18,6 +18,9 @@
             <a href="#divNotas" data-toggle="tab">Notas evolutivas</a>
         </li>
     }
+    <li>
+        <a href="#divRiodoraku" data-toggle="tab">Graficas</a>
+    </li>
 </ul>
 <div class="tab-content">
     <div id="divHistoria" class="tab-pane fade in active">
@@ -73,7 +76,7 @@
                     </div>
                     <div class="col-md-5">
                         @Html.TextBoxFor(m => m.Paciente.Nombre, Model.Paciente.Nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m=>m.Paciente.Nombre, "Se requiere Nombre", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Paciente.Nombre, "Se requiere Nombre", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-1">
                         @if (Model.Paciente.Edad != -1)
@@ -656,22 +659,304 @@
             </table>
         </div>
     </div>
+    <div id="divRiodoraku" class="tab-pane fade">
+        <div class="container containerClinica" style="align-content:center;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <canvas id="riodorakuCanvas" style="width:400px; height:400px;">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider1" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan1"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider2" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan2"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider3" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan3"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider4" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan4"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider5" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan5"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider6" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan6"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider7" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan7"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider8" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan8"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider9" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan9"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider10" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan10"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider11" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan11"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <form class="range-field">
+                        <input id="slider12" type="range" min="0" max="180" />
+                    </form>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan12"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" id="btnGuardarGrafica" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-stats"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     $(document).ready(function () {
+        const $valueSpan1 = $(".valueSpan1");
+        const $value1 = $("#slider1");
+        const $valueSpan2 = $(".valueSpan2");
+        const $value2 = $("#slider2");
+        const $valueSpan3 = $(".valueSpan3");
+        const $value3 = $("#slider3");
+        const $valueSpan4 = $(".valueSpan4");
+        const $value4 = $("#slider4");
+        const $valueSpan5 = $(".valueSpan5");
+        const $value5 = $("#slider5");
+        const $valueSpan6 = $(".valueSpan6");
+        const $value6 = $("#slider6");
+        const $valueSpan7 = $(".valueSpan7");
+        const $value7 = $("#slider7");
+        const $valueSpan8 = $(".valueSpan8");
+        const $value8 = $("#slider8");
+        const $valueSpan9 = $(".valueSpan9");
+        const $value9 = $("#slider9");
+        const $valueSpan10 = $(".valueSpan10");
+        const $value10 = $("#slider10");
+        const $valueSpan11 = $(".valueSpan11");
+        const $value11 = $("#slider11");
+        const $valueSpan12 = $(".valueSpan12");
+        const $value12 = $("#slider12");
+        var contexto = (document.getElementById("riodorakuCanvas")).getContext("2d");
+
+        $valueSpan1.html($value1.val());
+        $value1.on('input change', () => {
+            $valueSpan1.html($value1.val());
+        });
+        $valueSpan2.html($value2.val());
+        $value2.on('input change', () => {
+            $valueSpan2.html($value2.val());
+        });
+        $valueSpan3.html($value3.val());
+        $value3.on('input change', () => {
+            $valueSpan3.html($value3.val());
+        });
+        $valueSpan4.html($value4.val());
+        $value4.on('input change', () => {
+            $valueSpan4.html($value4.val());
+        });
+        $valueSpan5.html($value5.val());
+        $value5.on('input change', () => {
+            $valueSpan5.html($value5.val());
+        });
+        $valueSpan6.html($value6.val());
+        $value6.on('input change', () => {
+            $valueSpan6.html($value6.val());
+        });
+        $valueSpan7.html($value7.val());
+        $value7.on('input change', () => {
+            $valueSpan7.html($value7.val());
+        });
+        $valueSpan8.html($value8.val());
+        $value8.on('input change', () => {
+            $valueSpan8.html($value8.val());
+        });
+        $valueSpan9.html($value9.val());
+        $value9.on('input change', () => {
+            $valueSpan9.html($value9.val());
+        });
+        $valueSpan10.html($value10.val());
+        $value10.on('input change', () => {
+            $valueSpan10.html($value10.val());
+        });
+        $valueSpan11.html($value11.val());
+        $value11.on('input change', () => {
+            $valueSpan11.html($value11.val());
+        });
+        $valueSpan12.html($value12.val());
+        $value12.on('input change', () => {
+            $valueSpan12.html($value12.val());
+        });
+
+        $("#btnGuardarGrafica").on("click", function () {
+            var x = 0;
+            var dx = 400 / 11;
+            contexto.fillStyle = "#FFFFFF";
+            contexto.fillRect(0, 0, 400, 400);
+            contexto.stroke();
+
+            contexto.strokeStyle = "#000000";
+            contexto.moveTo(0, $value1.val());
+            x += dx;
+            contexto.lineTo(x, $value2.val());
+            x += dx;
+            contexto.lineTo(x, $value3.val());
+            x += dx;
+            contexto.lineTo(x, $value4.val());
+            x += dx;
+            contexto.lineTo(x, $value5.val());
+            x += dx;
+            contexto.lineTo(x, $value6.val());
+            x += dx;
+            contexto.lineTo(x, $value7.val());
+            x += dx;
+            contexto.lineTo(x, $value8.val());
+            x += dx;
+            contexto.lineTo(x, $value9.val());
+            x += dx;
+            contexto.lineTo(x, $value10.val());
+            x += dx;
+            contexto.lineTo(x, $value11.val());
+            x += dx;
+            contexto.lineTo(x, $value12.val());
+            x = 0;
+            contexto.stroke();
+
+            contexto.strokeStyle = "#ffeeee";
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            x += dx;
+            contexto.moveTo(x, 0);
+            contexto.lineTo(x, 400);
+            contexto.stroke();
+
+        });
 
         $.each($("[id*='_Fecha']"), function (n, i) {
             var partes = $(i).val().split(' ')[0].split('/');
             var id = $(i).attr('id');
             try {
-                var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
+                var fecha = new Date(partes[2] + '-' + partes[1] + '-' + partes[0]).toISOString().split('T')[0];
                 $("#dp" + id).val(fecha);
             } catch (e) {
             }
         });
 
-        debugger;
         var $sexo = $('input[type = radio][name = "Paciente.IdSexo"]:checked');
         $sexo.change();
 

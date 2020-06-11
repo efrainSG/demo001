@@ -409,7 +409,7 @@ namespace WCFClinica {
                                 Nombre = dr["Nombre"].ToString(),
                                 TipoSangre = dr["TipoSangre"].ToString(),
                                 Rh = dr["Rh"].ToString()[0],
-                                FechaNacimiento = (DateTime)dr["FechaNacimiento"],
+                                FechaNacimiento = (DateTime)dr["Nacimiento"],
                                 LugarNacimiento = dr["LugarNacimiento"].ToString(),
                                 CiudadNacimiento = dr["CiudadNacimiento"].ToString(),
                                 IdPaciente = (int)dr["IdPaciente"],
