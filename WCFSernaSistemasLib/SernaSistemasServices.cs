@@ -108,7 +108,7 @@ namespace WCFSernaSistemasLib
             SqlConnection Conn;
             SqlDataReader dr;
             try {
-                using (Conn = new SqlConnection(ConnString)) {
+                using (Conn = new SqlConnection(@"Data Source=DESKTOP-8RJ1OMB\SQLEXPRESS;Initial Catalog=Proyectos;Integrated Security=True;Pooling=False")) {
                     using (Cmd = new SqlCommand() {
                         Connection = Conn,
                         CommandText = "Proyecto.selStatusActual",
@@ -142,7 +142,7 @@ namespace WCFSernaSistemasLib
             } catch (Exception ex) {
                 response.Error = 1;
                 response.tieneError = true;
-                response.Mensaje = ex.Source;
+                response.Mensaje = ex.Message;
             }
             return response;
         }

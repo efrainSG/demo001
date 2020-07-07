@@ -57,9 +57,43 @@ SernaSistemasTests1/bin/
 WCFClinica/bin/
 WCFTiendasLibTests/bin/
 
+WCFTiendasLib/obj/
+
+WCFSernaSistemasLib/obj/
+
+SernaSistemasTests/bin/
+
+SernaSistemas.DataAccess/obj/
+
+SernaSistemas.Core/obj/
+
+.vs/
+
+Bibliotecas.Tests/obj/
+
+CoTeDiv.Tests/obj/
+
+HistoriasClinicas.Tests/obj/
+
+SernaSistemas.CotedivServices.Implementation/obj/
+
 SernaSistemas.Reportes/obj/
 >>>>>>> Negocios
 
 SernaSistemas.DataAccess/obj/Debug/
 
 sernasistemas/node_modules/
+
+Escolar.Tests/obj/
+
+Hoteles.Tests/obj/
+
+SernaSistemas.CotedivServices.Implementation/bin/
+
+SernaSistemas.DataAccess.Cotediv/bin/
+
+SernaSistemas.DataAccess.Cotediv/obj/
+
+SernaSistemas.Reportes/bin/
+
+Tiendas.Tests/obj/

@@ -13,7 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-    <script src="~/Scripts/Clinica/graficador.js"></script>
 
     <script src="~/Scripts/Clinica/HistoriaClinica.js"></script>
 
@@ -101,38 +100,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (ViewBag.vista != "Index")
-                    {
+                    @if (ViewBag.vista != "Index") {
                         <li>@Html.ActionLink("Inicio", "Index", "HistoriaClinica")</li>
                     }
-                    @if (Session["UsrHc"] == null)
-                    {
+                    @if (Session["UsrHc"] == null) {
                         <li>@Html.ActionLink("Iniciar sesión", "Login", "HistoriaClinica")</li>
-                    }
-                    else
-                    {
-                        if (ViewBag.vista != "_medico")
-                        {
+                    } else {
+                        if (ViewBag.vista != "_medico") {
                             <li>@Html.ActionLink("Ver perfil", "Medico", "HistoriaClinica")</li>
                         }
-                        if (ViewBag.vista == "_historiaClinica")
-                        {
-                            <li>@Html.ActionLink("Nota evolutiva", "NotaEvolutiva", "HistoriaClinica", new { IdHistoria = ViewBag.IdHistoria }, new { style = "background-image:linear-gradient(rgba(0,0,0,0),rgba(24,48,160,0.65));" })</li>
-                            <li>@Html.ActionLink("Gráfica", "Grafica", "HistoriaClinica", new { IdHistoria = ViewBag.IdHistoria }, new { style = "background-image:linear-gradient(rgba(0,0,0,0),rgba(24,48,160,0.65));" })</li>
+                        if (ViewBag.vista == "_historiaClinica") {
+                            <li>@Html.ActionLink("Nota evolutiva","NotaEvolutiva", "HistoriaClinica", new { IdHistoria = ViewBag.IdHistoria }, new { style="background-image:linear-gradient(rgba(0,0,0,0),rgba(24,48,160,0.65));"})</li>
                         }
                         <li>@Html.ActionLink("Nuevo paciente", "Paciente", "HistoriaClinica")</li>
                         <li>@Html.ActionLink("Nueva historia", "Historia", "HistoriaClinica")</li>
-                        if (ViewBag.vista != "_buscarHistorias")
-                        {
+                        if (ViewBag.vista != "_buscarHistorias") {
                             <li>@Html.ActionLink("Buscar historias", "BuscarHistorias", "HistoriaClinica")</li>
                         }
-                        if (ViewBag.vista != "_listaPacientes")
-                        {
+                        if (ViewBag.vista != "_listaPacientes") {
                             <li>@Html.ActionLink("Buscar pacientes", "ListadoPacientes", "HistoriaClinica")</li>
                         }
                         if (ViewBag.vista != "_Agenda")
                         {
-                            <li>@Html.ActionLink("Agenda", "Agenda", "HistoriaClinica")</li>
+                        <li>@Html.ActionLink("Agenda", "Agenda", "HistoriaClinica")</li>
                         }
                     }
                 </ul>

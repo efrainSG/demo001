@@ -10,6 +10,7 @@ namespace WCFClinica.Modelos
     public class HistoriaClinicaPDFModel
     {
         public string Medico { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime FechaHistoria { get; set; }
         public string Paciente { get; set; }
         public int Edad { get; set; }
@@ -31,14 +32,18 @@ namespace WCFClinica.Modelos
         public string Rh { get; set; }
         public string Adicciones { get; set; }
         public string Alergias { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Menarca { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime FUR { get; set; }
         public string Anticonceptivo { get; set; }
         public int G { get; set; }
         public int P { get; set; }
         public int C { get; set; }
         public int A { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Papanicolaou { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Mastografia { get; set; }
         public string MotivoConsulta { get; set; }
         public string TA { get; set; }

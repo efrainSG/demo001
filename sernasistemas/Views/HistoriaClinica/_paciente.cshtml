@@ -190,8 +190,11 @@
     $(document).ready(function () {
         debugger;
         var partes = $("#FechaNacimiento").val().split(' ')[0].split('/');
-        $("#dpFechaNacimiento").val(new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0]);
+        try {
+            $("#dpFechaNacimiento").val(new Date(partes[2] + '-' + partes[1] + '-' + partes[0]).toISOString().split('T')[0]);
+        } catch{
 
+        }
         $("#dpFechaNacimiento")
             .off()
             .on("change", function () {

@@ -1,8 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SernaSistemas.Controllers;
-using Bibliotecas;
-//using Bibliotecas.Controllers;
 
 namespace Bibliotecas.Tests.Controllers
 {

@@ -21,6 +21,9 @@
             <a href="#divNotas" data-toggle="tab">Notas evolutivas</a>
         </li>
     }
+    <li>
+        <a href="#divRiodoraku" data-toggle="tab">Graficas</a>
+    </li>
 </ul>
 <div class="tab-content">
     <div id="divHistoria" class="tab-pane fade in active">
@@ -76,7 +79,7 @@
                     </div>
                     <div class="col-md-5">
                         @Html.TextBoxFor(m => m.Paciente.Nombre, Model.Paciente.Nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m=>m.Paciente.Nombre, "Se requiere Nombre", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Paciente.Nombre, "Se requiere Nombre", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-1">
                         @if (Model.Paciente.Edad != -1)
@@ -628,16 +631,6 @@
             </div>
         }
     </div>
-    <div id="divAcuerdo" class="tab-pane fade">
-        <div class="container containerClinica">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <canvas style="width:400px; height:200px; border:1px solid #000;"></canvas>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <div id="divNotas" class="tab-pane fade">
         <div class="container containerClinica">
             <table class="table table-bordered">
@@ -669,40 +662,273 @@
             </table>
         </div>
     </div>
+    <div id="divRiodoraku" class="tab-pane fade">
+        <div class="container containerClinica" style="align-content:center;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <canvas id="riodorakuCanvas" style="width:657px; height:400px;">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                    TAI<br />YUAN
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider1" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider2" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan1"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    TA<br />LING
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider3" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider4" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan2"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    SHEN<br />MEN
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider5" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider6" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan3"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    YANG<br />KU
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider7" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider8" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan4"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    YANG<br />CHIH
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider9" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider10" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan5"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    YANG<br />XI
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider11" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider12" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan6"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    TAJ<br />PAI
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider13" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider14" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan7"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    TAI<br />CHUNG
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider15" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider16" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan8"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    TAI<br />CHI
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider17" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider18" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan9"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    SHU<br />KU
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider19" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider20" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan10"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    CHIU<br />CHU
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider21" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider22" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan11"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    HSIEN<br />KU
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider23" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 range-field">
+                            <input id="slider24" type="range" min="0" max="180" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan12"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <button type="button" id="btnGrafica" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-stats"></i> Graficar</button>
+                    <button type="button" id="btnGuardarGrafica" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-floppy-saved"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-
-        $.each($("[id*='_Fecha']"), function (n, i) {
-            var partes = $(i).val().split(' ')[0].split('/');
-            var id = $(i).attr('id');
-            try {
-                var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
-                $("#dp" + id).val(fecha);
-            } catch (e) {
-            }
-        });
-
-        debugger;
-        var $sexo = $('input[type = radio][name = "Paciente.IdSexo"]:checked');
-        $sexo.change();
-
-        var partes = $("#AntecedentesGinecoObstetricios_Menarca").val().split(' ')[0].split('/');
-        var fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
-        $("#dpAntecedentesGinecoObstetricios_Menarca").val(fecha);
-
-        partes = $("#AntecedentesGinecoObstetricios_FUR").val().split(' ')[0].split('/');
-        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
-        $("#dpAntecedentesGinecoObstetricios_FUR").val(fecha);
-
-        partes = $("#AntecedentesGinecoObstetricios_Papanicolaou").val().split(' ')[0].split('/');
-        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
-        $("#dpAntecedentesGinecoObstetricios_Papanicolaou").val(fecha);
-
-        partes = $("#AntecedentesGinecoObstetricios_Mastografia").val().split(' ')[0].split('/');
-        fecha = new Date(partes[1] + '-' + partes[0] + '-' + partes[2]).toISOString().split('T')[0];
-        $("#dpAntecedentesGinecoObstetricios_Mastografia").val(fecha);
-
-    });
-</script>

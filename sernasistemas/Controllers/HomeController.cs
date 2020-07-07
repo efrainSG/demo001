@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -123,10 +122,8 @@ namespace SernaSistemas.Controllers
             return Json(new { error = "NO", msg = "Pronto me pondré en contacto contigo." });
         }
 
-        [HttpPost]
         public JsonResult ConsultaProyecto(int Folio) {
             SernaSistemasServices servicio = new SernaSistemasServices();
-            servicio.ConnString = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
             var response = servicio.consultaProyecto(new ConsultaProyectoRequest() {
                 Folio = Folio
             });

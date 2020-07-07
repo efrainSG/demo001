@@ -67,7 +67,5 @@ namespace WCFSernaSistemasLib
         public DateTime FechaTermino { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
-        [DataMember]
-        public string Actividad { get; set; }
     }
 }
