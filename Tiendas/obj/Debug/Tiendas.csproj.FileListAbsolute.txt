@@ -203,7 +203,6 @@ C:\repos\demo001\Tiendas\bin\es\System.Web.Razor.resources.dll
 C:\repos\demo001\Tiendas\bin\es\System.Web.WebPages.resources.dll
 C:\repos\demo001\Tiendas\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\repos\demo001\Tiendas\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\repos\demo001\Tiendas\bin\es\System.Web.Optimization.resources.dll
 C:\repos\demo001\Tiendas\obj\Debug\Tiendas.csprojAssemblyReference.cache
 C:\repos\demo001\Tiendas\obj\Debug\Tiendas.csproj.CoreCompileInputs.cache
 C:\repos\demo001\Tiendas\obj\Debug\Tiendas.csproj.CopyComplete
