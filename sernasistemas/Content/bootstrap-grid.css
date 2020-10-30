@@ -1,8 +1,15 @@
 /*!
+<<<<<<< HEAD
  * Bootstrap Grid v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+=======
+ * Bootstrap Grid v4.5.3 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+>>>>>>> Recuperación
  */
 html {
   box-sizing: border-box;
@@ -15,7 +22,12 @@ html {
   box-sizing: inherit;
 }
 
-.container {
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -24,29 +36,30 @@ html {
 }
 
 @media (min-width: 576px) {
-  .container {
+  .container, .container-sm {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
+  .container, .container-sm, .container-md {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .container, .container-sm, .container-md, .container-lg {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
   }
 }
 
+<<<<<<< HEAD
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   width: 100%;
   padding-right: 15px;
@@ -79,6 +92,8 @@ html {
   }
 }
 
+=======
+>>>>>>> Recuperación
 .row {
   display: -ms-flexbox;
   display: flex;
@@ -126,6 +141,15 @@ html {
   max-width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.row-cols-1 > * {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+>>>>>>> Recuperación
 .row-cols-2 > * {
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
@@ -774,6 +798,14 @@ html {
     flex: 0 0 100%;
     max-width: 100%;
   }
+<<<<<<< HEAD
+=======
+  .row-cols-lg-1 > * {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+>>>>>>> Recuperación
   .row-cols-lg-2 > * {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
@@ -977,6 +1009,14 @@ html {
     flex: 0 0 100%;
     max-width: 100%;
   }
+<<<<<<< HEAD
+=======
+  .row-cols-xl-1 > * {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+>>>>>>> Recuperación
   .row-cols-xl-2 > * {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;

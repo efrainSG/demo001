@@ -78,6 +78,7 @@ HistoriasClinicas.Tests/obj/
 SernaSistemas.CotedivServices.Implementation/obj/
 
 SernaSistemas.Reportes/obj/
+<<<<<<< HEAD
 >>>>>>> Negocios
 
 SernaSistemas.DataAccess/obj/Debug/
@@ -95,5 +96,7 @@ SernaSistemas.DataAccess.Cotediv/bin/
 SernaSistemas.DataAccess.Cotediv/obj/
 
 SernaSistemas.Reportes/bin/
+=======
+>>>>>>> Recuperación
 
 Tiendas.Tests/obj/
