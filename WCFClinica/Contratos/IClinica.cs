@@ -64,5 +64,7 @@ namespace WCFClinica {
         NotaEvolutivaReqResp guardarNotaEvolutiva(NotaEvolutivaReqResp notaEvolutivaReqResp);
         [OperationContract]
         ListaNotasEvolutivasResponse ListaNotasEvolutivas(NotaEvolutivaReqResp notaEvolutivaReq);
+        [OperationContract]
+        RyodorakuResponse guardarGrafica(RyodorakuRequest request);
     }
 }

@@ -1,0 +1,42 @@
+﻿.serna-titulo {
+    background-color: #435b67;
+    color: #FFFFFF;
+    border: #bbd5d8 3px solid;
+}
+
+body {
+    background-color: #ffffff;
+    color: #020d17;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+div.Servicio {
+    background-color: #FFFFFF;
+    border: #FFF9E6 4px solid;
+}
+
+.tituloOferta {
+    color: #b73b22;
+}
+
+.navbar-collapse.collapse.serna-navbar {
+    background-color: #f5eccb;
+}
+
+div.Seccion {
+    background-color: #daeaec;
+    border: #c4d4d6 1 px solid;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: #dccd98;
+}
+
+div.Servicio {
+    background-color: #ffffff;
+    border: #c7d2be 4px solid;
+}
+.precio {
+    font-size: large;
+    font-weight: bolder;
+}

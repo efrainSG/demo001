@@ -43,6 +43,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		AdmonProyectos_Data.sql = AdmonProyectos_Data.sql
 		SQLScripts\contactos.sql = SQLScripts\contactos.sql
 		SQLScripts\data.sql = SQLScripts\data.sql
+		SQLScripts\Esquema_HC_1.sql = SQLScripts\Esquema_HC_1.sql
+		SQLScripts\Esquema_HC_2.sql = SQLScripts\Esquema_HC_2.sql
+		SQLScripts\Esquema_HC_3.sql = SQLScripts\Esquema_HC_3.sql
 		SQLScripts\schema1.sql = SQLScripts\schema1.sql
 	EndProjectSection
 EndProject
@@ -59,8 +62,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemas.Reportes", "SernaSistemas.Reportes\SernaSistemas.Reportes.csproj", "{A19746D9-C224-4D7C-B759-571E8A787488}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SernaSistemas.CotedivServices.Implementation", "SernaSistemas.CotedivServices.Implementation\SernaSistemas.CotedivServices.Implementation.csproj", "{BF11D4E4-C950-4B27-826D-13D1DF439568}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSistemas.DataAccess.Cotediv", "SernaSistemas.DataAccess.Cotediv\SernaSistemas.DataAccess.Cotediv.csproj", "{ED9E6228-59E2-451A-B890-9D71D59408E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,10 +139,6 @@ Global
 		{BF11D4E4-C950-4B27-826D-13D1DF439568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF11D4E4-C950-4B27-826D-13D1DF439568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF11D4E4-C950-4B27-826D-13D1DF439568}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED9E6228-59E2-451A-B890-9D71D59408E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED9E6228-59E2-451A-B890-9D71D59408E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED9E6228-59E2-451A-B890-9D71D59408E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED9E6228-59E2-451A-B890-9D71D59408E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,7 +160,6 @@ Global
 		{369E3388-95AC-452D-9B25-5C4D937819D4} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
 		{A19746D9-C224-4D7C-B759-571E8A787488} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
 		{BF11D4E4-C950-4B27-826D-13D1DF439568} = {8D83C712-00A1-44A6-BF5A-9C7938F776FB}
-		{ED9E6228-59E2-451A-B890-9D71D59408E6} = {90BF2C47-746C-4428-B70E-5F0CAA68C537}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4CC0C561-B9B9-4218-B561-7599DEFCF3BE}
