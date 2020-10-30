@@ -63,7 +63,7 @@ namespace SernaSistemas.Models.Assemblers
             {
                 historiaPDF.Anticonceptivo = historia.dicAnticonceptivos.FirstOrDefault(a => a.Value.Equals(historia.AntecedentesGinecoObstetricios.IdAnticonceptivo)).Text;
             }
-            catch
+            catch (Exception ex)
             {
                 historiaPDF.Anticonceptivo = string.Empty;
             }
